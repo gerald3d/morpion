@@ -176,3 +176,801 @@
 	"logs.h"
 	"morp_sdl.h"
 
+1758965645 source:e:\projets windows\morpion\src\affichage.c
+	"Main.h"
+	"Affichage.h"
+
+1758294774 e:\projets windows\morpion\src\main.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	<math.h>
+	<time.h>
+	"Define.h"
+	"logs.h"
+	"Affichage.h"
+	"ia.h"
+	"morp_sdl.h"
+	"Instruction.h"
+	"Jeu.h"
+	"Tournoi.h"
+
+1757862470 c:\msys64\mingw64\include\stdio.h
+	<corecrt_stdio_config.h>
+	<_mingw_off_t.h>
+	<swprintf.inl>
+	<sec_api/stdio_s.h>
+
+1757862470 c:\msys64\mingw64\include\corecrt_stdio_config.h
+	<corecrt.h>
+
+1757862470 c:\msys64\mingw64\include\corecrt.h
+	<_mingw.h>
+	<winapifamily.h>
+
+1757862470 c:\msys64\mingw64\include\_mingw.h
+	"_mingw_mac.h"
+	"_mingw_secapi.h"
+	"_cygwin.h"
+	<vadefs.h>
+	"sdks/_mingw_ddk.h"
+
+1757862470 c:\msys64\mingw64\include\_mingw_mac.h
+
+1757862470 c:\msys64\mingw64\include\_mingw_secapi.h
+
+1757862470 c:\msys64\mingw64\include\_cygwin.h
+	<stddef.h>
+
+1757862470 c:\msys64\mingw64\include\stddef.h
+	<crtdefs.h>
+
+1757862470 c:\msys64\mingw64\include\crtdefs.h
+	<corecrt.h>
+
+1757862470 c:\msys64\mingw64\include\vadefs.h
+	<_mingw.h>
+
+1757862470 c:\msys64\mingw64\include\sdks\_mingw_ddk.h
+
+1757862470 c:\msys64\mingw64\include\winapifamily.h
+
+1757862470 c:\msys64\mingw64\include\_mingw_off_t.h
+
+1757862470 c:\msys64\mingw64\include\swprintf.inl
+
+1757862470 c:\msys64\mingw64\include\sec_api\stdio_s.h
+	<stdio.h>
+
+1757862470 c:\msys64\mingw64\include\stdlib.h
+	<corecrt.h>
+	<corecrt_wstdlib.h>
+	<limits.h>
+	<sec_api/stdlib_s.h>
+	<malloc.h>
+
+1757862470 c:\msys64\mingw64\include\corecrt_wstdlib.h
+	<corecrt.h>
+
+1757862470 c:\msys64\mingw64\include\limits.h
+	<crtdefs.h>
+
+1757862470 c:\msys64\mingw64\include\sec_api\stdlib_s.h
+	<stdlib.h>
+
+1757862470 c:\msys64\mingw64\include\malloc.h
+	<crtdefs.h>
+	<mm_malloc.h>
+
+1757862470 c:\msys64\mingw64\include\string.h
+	<crtdefs.h>
+	<sec_api/string_s.h>
+
+1757862470 c:\msys64\mingw64\include\sec_api\string_s.h
+	<string.h>
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_gamecontroller.h"
+	"SDL_guid.h"
+	"SDL_haptic.h"
+	"SDL_hidapi.h"
+	"SDL_hints.h"
+	"SDL_joystick.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_metal.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_shape.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"SDL_locale.h"
+	"SDL_misc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<wchar.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	<sal.h>
+	"begin_code.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_platform.h
+	<AvailabilityMacros.h>
+	<TargetConditionals.h>
+	<TargetConditionals.h>
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\begin_code.h
+
+1756917126 c:\msys64\mingw64\include\sdl2\close_code.h
+
+1757862470 c:\msys64\mingw64\include\sys\types.h
+	<crtdefs.h>
+	<_mingw_off_t.h>
+
+1757862470 c:\msys64\mingw64\include\stdarg.h
+	<_mingw_stdarg.h>
+
+1757862470 c:\msys64\mingw64\include\_mingw_stdarg.h
+	<vadefs.h>
+
+1757862470 c:\msys64\mingw64\include\memory.h
+	<crtdefs.h>
+
+1757862470 c:\msys64\mingw64\include\strings.h
+	<string.h>
+
+1757862470 c:\msys64\mingw64\include\wchar.h
+	<corecrt.h>
+	<corecrt_stdio_config.h>
+	<corecrt_wstdlib.h>
+	<corecrt_wctype.h>
+	<_mingw_off_t.h>
+	<_mingw_stat64.h>
+	<swprintf.inl>
+	<sec_api/wchar_s.h>
+
+1757862470 c:\msys64\mingw64\include\corecrt_wctype.h
+	<corecrt.h>
+
+1757862470 c:\msys64\mingw64\include\_mingw_stat64.h
+
+1757862470 c:\msys64\mingw64\include\sec_api\wchar_s.h
+	<wchar.h>
+
+1757862470 c:\msys64\mingw64\include\inttypes.h
+	<crtdefs.h>
+	<stdint.h>
+	<stddef.h>
+
+1757862470 c:\msys64\mingw64\include\stdint.h
+	<crtdefs.h>
+	<stddef.h>
+
+1757862470 c:\msys64\mingw64\include\ctype.h
+	<corecrt_wctype.h>
+
+1757862470 c:\msys64\mingw64\include\math.h
+	<crtdefs.h>
+
+1757862470 c:\msys64\mingw64\include\float.h
+	<crtdefs.h>
+
+1757862470 c:\msys64\mingw64\include\sal.h
+	<concurrencysal.h>
+
+1757862470 c:\msys64\mingw64\include\concurrencysal.h
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_assert.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1757862470 c:\msys64\mingw64\include\signal.h
+	<crtdefs.h>
+	<pthread_signal.h>
+
+1757865448 c:\msys64\mingw64\include\pthread_signal.h
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	<sys/cpuinline.h>
+	<mbarrier.h>
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<endian.h>
+	<sys/byteorder.h>
+	<endian.h>
+	<sys/endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1757862470 c:\msys64\mingw64\include\intrin.h
+	<crtdefs.h>
+	<setjmp.h>
+	<stddef.h>
+	<psdk_inc/intrin-impl.h>
+	<stdlib.h>
+	<errno.h>
+	<malloc.h>
+	<x86intrin.h>
+	<cpuid.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+
+1757862470 c:\msys64\mingw64\include\setjmp.h
+	<crtdefs.h>
+
+1757862470 c:\msys64\mingw64\include\psdk_inc\intrin-impl.h
+	<intrin.h>
+	<psdk_inc/intrin-impl.h>
+
+1757862470 c:\msys64\mingw64\include\errno.h
+	<crtdefs.h>
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	<process.h>
+	<process.h>
+	<stdlib.h>
+	"begin_code.h"
+	"close_code.h"
+
+1757862470 c:\msys64\mingw64\include\process.h
+	<crtdefs.h>
+	<corecrt_startup.h>
+	<sys/types.h>
+
+1757862470 c:\msys64\mingw64\include\corecrt_startup.h
+	<corecrt.h>
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<arm_neon.h>
+	<altivec.h>
+	<arm_neon.h>
+	<armintr.h>
+	<arm_neon.h>
+	<arm64intr.h>
+	<arm64_neon.h>
+	<mm3dnow.h>
+	<lsxintrin.h>
+	<lasxintrin.h>
+	<immintrin.h>
+	<mmintrin.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	<pmmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"SDL_endian.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_guid.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_guid.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_sensor.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_sensor.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_hidapi.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_metal.h
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_shape.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_locale.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1756917126 c:\msys64\mingw64\include\sdl2\sdl_misc.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1741154987 c:\msys64\mingw64\include\sdl2\sdl_image.h
+	"SDL.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1736156142 c:\msys64\mingw64\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
+
+1747578103 c:\msys64\mingw64\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1757862470 c:\msys64\mingw64\include\time.h
+	<crtdefs.h>
+	<sys/timeb.h>
+	<_timeval.h>
+	<pthread_time.h>
+
+1757862470 c:\msys64\mingw64\include\sys\timeb.h
+	<crtdefs.h>
+	<sec_api/sys/timeb_s.h>
+
+1757862470 c:\msys64\mingw64\include\sec_api\sys\timeb_s.h
+	<sys/timeb.h>
+
+1757862470 c:\msys64\mingw64\include\_timeval.h
+
+1757865448 c:\msys64\mingw64\include\pthread_time.h
+	<sys/timeb.h>
+	"pthread_compat.h"
+
+1757865448 c:\msys64\mingw64\include\pthread_compat.h
+
+1758294795 e:\projets windows\morpion\src\define.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+
+1756018970 e:\projets windows\morpion\src\logs.h
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<errno.h>
+
+1758965586 e:\projets windows\morpion\src\affichage.h
+	"logs.h"
+	"Define.h"
+	"morp_sdl.h"
+	"ihm/src/ihm_sdl.h"
+
+1758286032 e:\projets windows\morpion\src\morp_sdl.h
+	"Define.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"logs.h"
+
+1756018989 e:\projets windows\morpion\src\ia.h
+	"Define.h"
+	"logs.h"
+
+1756018984 e:\projets windows\morpion\src\instruction.h
+	"Define.h"
+
+1758289647 e:\projets windows\morpion\src\jeu.h
+	"Define.h"
+	"morp_sdl.h"
+
+1756293074 e:\projets windows\morpion\src\tournoi.h
+	"Define.h"
+	"morp_sdl.h"
+
+1756018986 source:e:\projets windows\morpion\src\ia.c
+	"Main.h"
+
+1758197693 source:e:\projets windows\morpion\src\instruction.c
+	"Main.h"
+
+1758210891 source:e:\projets windows\morpion\src\jeu.c
+	"Main.h"
+
+1756018967 source:e:\projets windows\morpion\src\logs.c
+	"logs.h"
+
+1758294018 source:e:\projets windows\morpion\src\main.c
+	"Main.h"
+
+1758285917 source:e:\projets windows\morpion\src\minmax.c
+	<float.h>
+	<stdbool.h>
+
+1756287902 source:e:\projets windows\morpion\src\texture.c
+	"texture.h"
+
+1756287943 e:\projets windows\morpion\src\texture.h
+	<SDL2/SDL.h>
+
+1755448521 source:e:\projets windows\morpion\src\tournoi.c
+	"Main.h"
+
+1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
+	"chain_list.h"
+
+1757842340 e:\projets windows\morpion\src\ihm\src\chain_list.h
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+
+1758368738 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
+	"button_sdl.h"
+
+1758785301 e:\projets windows\morpion\src\ihm\src\button_sdl.h
+	<string.h>
+	"widget_sdl.h"
+
+1758800018 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+	<stdbool.h>
+	<SDL.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"define_sdl.h"
+	"tooltip_sdl.h"
+	"chain_list.h"
+
+1758785754 e:\projets windows\morpion\src\ihm\src\define_sdl.h
+
+1758800132 e:\projets windows\morpion\src\ihm\src\tooltip_sdl.h
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	<SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	"define_sdl.h"
+
+1758359172 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
+	"case_sdl.h"
+
+1757928382 e:\projets windows\morpion\src\ihm\src\case_sdl.h
+	"widget_sdl.h"
+
+1758787525 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
+	"dialog_sdl.h"
+
+1758785162 e:\projets windows\morpion\src\ihm\src\dialog_sdl.h
+	<string.h>
+	"widget_sdl.h"
+	"button_sdl.h"
+	"game_config_sdl.h"
+
+1758531770 e:\projets windows\morpion\src\ihm\src\game_config_sdl.h
+	"widget_sdl.h"
+
+1758785848 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
+	"game_config_sdl.h"
+
+1758455318 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+	"ihm_sdl.h"
+
+1758800141 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
+	<stdbool.h>
+	<SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"widget_sdl.h"
+	"tooltip_sdl.h"
+	"button_sdl.h"
+	"state_button_sdl.h"
+	"toggle_button_sdl.h"
+	"dialog_sdl.h"
+	"game_config_sdl.h"
+	"case_sdl.h"
+
+1757947914 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
+	"widget_sdl.h"
+	"state_button_sdl.h"
+
+1758283532 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
+	"state_button_sdl.h"
+
+1758785975 source:e:\projets windows\morpion\src\ihm\src\main.c
+	"string.h"
+	"ihm_sdl.h"
+	<stdbool.h>
+
+1758358732 source:e:\projets windows\morpion\src\ihm\src\state_button_sdl.c
+	"state_button_sdl.h"
+
+1758446620 source:e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.c
+	"toggle_button_sdl.h"
+
+1758523702 source:e:\projets windows\morpion\src\ihm\src\tooltip_sdl.c
+	"tooltip_sdl.h"
+
+1758533072 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
+	"widget_sdl.h"
+
+1758290677 source:e:\projets windows\morpion\src\morp_sdl.c
+	"morp_sdl.h"
+

@@ -1,0 +1,13 @@
+<map id="button_sdl_free" name="button_sdl_free">
+<area shape="rect" id="Node000001" title=" " alt="" coords="444,43,567,68"/>
+<area shape="rect" id="Node000002" href="$button__sdl_8c.html#a79d52da0fc2e4040f44a4d9af896ce31" title=" " alt="" coords="249,43,373,68"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="430,58,373,58,373,53,430,53"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="64,5,119,31"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="445,42,396,33,317,25,239,21,119,20,119,15,239,15,317,19,396,27,446,37"/>
+<area shape="rect" id="Node000005" href="$toggle__button__sdl_8c.html#ad4d866cc7804c52c97e46f812d5fd760" title=" " alt="" coords="225,92,396,117"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="442,74,363,94,361,89,441,69"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="235,45,119,25,120,20,236,40"/>
+<area shape="rect" id="Node000004" href="$toggle__button__sdl_8c.html#ab62e297bf013cd8fc39322f64ed01d30" title=" " alt="" coords="5,68,177,93"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="235,67,178,73,177,68,235,61"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="211,96,177,93,178,87,212,91"/>
+</map>

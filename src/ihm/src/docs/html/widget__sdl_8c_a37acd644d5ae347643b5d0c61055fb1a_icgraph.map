@@ -1,0 +1,16 @@
+<map id="widget_sdl_set_callback_create_texture" name="widget_sdl_set_callback_create_texture">
+<area shape="rect" id="Node000001" title=" " alt="" coords="437,73,617,113"/>
+<area shape="rect" id="Node000002" href="$button__sdl_8c.html#a79d52da0fc2e4040f44a4d9af896ce31" title=" " alt="" coords="245,104,369,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="424,107,370,113,369,107,423,101"/>
+<area shape="rect" id="Node000004" href="$toggle__button__sdl_8c.html#ab62e297bf013cd8fc39322f64ed01d30" title=" " alt="" coords="5,129,177,155"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="470,121,431,134,390,145,335,152,280,154,178,152,178,147,279,149,335,146,389,139,430,129,468,116"/>
+<area shape="rect" id="Node000005" href="$case__sdl_8c.html#a0f10111ec18603d32844f98b12654a88" title=" " alt="" coords="251,5,363,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="461,70,388,45,352,33,354,28,390,39,462,65"/>
+<area shape="rect" id="Node000006" href="$state__button__sdl_8c.html#aa2d98a05c4e1e059aa5b909bbd08079a" title=" " alt="" coords="225,55,389,80"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="423,83,389,79,390,74,424,78"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="64,55,119,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,103,118,76,120,71,238,98"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="232,128,178,135,177,129,231,123"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="238,36,120,64,118,59,237,31"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="211,70,119,70,119,65,211,65"/>
+</map>

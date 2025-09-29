@@ -66,6 +66,11 @@
 
 int main(int argc, char **argv)
 {
+/* Rédirection du canal stderr dans error_logs.txt */
+//freopen("error_logs.txt","w",stderr);
+/* Rédirection du canal stdout dans standard_logs.txt */
+//freopen("standard_logs.txt","w",stdout);
+
   /* Initialisation des logs */
   t_logs *logs = logs_init (NULL, NULL);
   if (logs == NULL)

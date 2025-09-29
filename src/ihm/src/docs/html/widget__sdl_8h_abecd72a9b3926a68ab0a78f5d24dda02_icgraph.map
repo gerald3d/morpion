@@ -1,0 +1,10 @@
+<map id="widget_sdl_set_color" name="widget_sdl_set_color">
+<area shape="rect" id="Node000001" title=" " alt="" coords="320,31,479,56"/>
+<area shape="rect" id="Node000002" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="333,30,272,21,154,16,60,19,60,14,154,11,272,15,334,25"/>
+<area shape="rect" id="Node000003" href="$state__button__sdl_8c.html#aa2d98a05c4e1e059aa5b909bbd08079a" title=" " alt="" coords="108,31,272,56"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="306,46,272,46,272,41,306,41"/>
+<area shape="rect" id="Node000004" href="$state__button__sdl_8c.html#a6dafcf253a36927c6e619cfb08f03258" title=" " alt="" coords="111,81,269,121"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="340,62,264,83,263,78,338,57"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="97,31,60,25,60,20,98,26"/>
+</map>

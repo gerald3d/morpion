@@ -1,0 +1,16 @@
+<map id="widget_sdl_new" name="widget_sdl_new">
+<area shape="rect" id="Node000001" title=" " alt="" coords="437,80,564,105"/>
+<area shape="rect" id="Node000002" href="$button__sdl_8c.html#a79d52da0fc2e4040f44a4d9af896ce31" title=" " alt="" coords="245,104,369,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="424,105,370,112,370,106,423,100"/>
+<area shape="rect" id="Node000004" href="$toggle__button__sdl_8c.html#ab62e297bf013cd8fc39322f64ed01d30" title=" " alt="" coords="5,129,177,155"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="467,115,431,132,390,145,335,153,280,157,177,154,177,149,279,151,335,148,389,139,429,127,465,110"/>
+<area shape="rect" id="Node000005" href="$case__sdl_8c.html#a0f10111ec18603d32844f98b12654a88" title=" " alt="" coords="251,5,363,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="461,76,388,44,355,33,356,28,390,40,463,71"/>
+<area shape="rect" id="Node000006" href="$state__button__sdl_8c.html#aa2d98a05c4e1e059aa5b909bbd08079a" title=" " alt="" coords="225,55,389,80"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="423,85,389,81,390,75,424,80"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="64,55,119,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="237,103,118,76,120,71,238,98"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="232,128,178,135,177,129,231,123"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="238,36,120,64,118,59,237,31"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="211,70,119,70,119,65,211,65"/>
+</map>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="morpion" />
+		<Option platforms="Windows;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option platforms="Windows;" />
+				<Option output="bin/Debug/morpion" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<LinkerExe value="CCompiler" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option platforms="Windows;" />
+				<Option output="bin/Release/morpion" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wextra" />
+			<Add option="-Wall" />
+			<Add option="-std=gnu23" />
+		</Compiler>
+		<UnitsGlob directory="src" wildcard="" recursive="0" id="2178398971" addToProject="1">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</UnitsGlob>
+		<UnitsGlob directory="src/ihm" wildcard="" recursive="0" id="2454202086" addToProject="1">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</UnitsGlob>
+		<Unit filename="bin/Debug/SDL2.dll" />
+		<Unit filename="bin/Debug/SDL2_image.dll" />
+		<Unit filename="bin/Debug/SDL2_mixer.dll" />
+		<Unit filename="bin/Debug/SDL2_ttf.dll" />
+		<Unit filename="src/Affichage.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Affichage.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Define.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Define_futur.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Instruction.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Instruction.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Jeu.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Jeu.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Main.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Tournoi.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/Tournoi.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/ia.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/ia.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/ihm/src/button_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/button_sdl.h" />
+		<Unit filename="src/ihm/src/case_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/case_sdl.h" />
+		<Unit filename="src/ihm/src/chain_list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/chain_list.h" />
+		<Unit filename="src/ihm/src/define_sdl.h" />
+		<Unit filename="src/ihm/src/dialog_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/dialog_sdl.h" />
+		<Unit filename="src/ihm/src/game_config_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/game_config_sdl.h" />
+		<Unit filename="src/ihm/src/ihm_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/ihm_sdl.h" />
+		<Unit filename="src/ihm/src/state_button_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/state_button_sdl.h" />
+		<Unit filename="src/ihm/src/toggle_button_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/toggle_button_sdl.h" />
+		<Unit filename="src/ihm/src/tooltip_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/tooltip_sdl.h" />
+		<Unit filename="src/ihm/src/widget_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/widget_sdl.h" />
+		<Unit filename="src/logs.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/logs.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/main.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/minmax.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/morp_sdl.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/morp_sdl.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/texture.c">
+			<Option compilerVar="CC" />
+			<Option glob="2178398971" />
+		</Unit>
+		<Unit filename="src/texture.h">
+			<Option glob="2178398971" />
+		</Unit>
+		<Extensions>
+			<lib_finder>
+				<lib name="sdl2" />
+				<lib name="SDL2_mixer" />
+				<lib name="SDL2_image" />
+				<lib name="SDL2_ttf" />
+				<lib name="libavif" />
+				<lib name="libmpg123" />
+			</lib_finder>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ihm:  Fichier source de /home/gerald/Projects/ihm/src/button_sdl.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ihm
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">/home/gerald/Projects/ihm/src/button_sdl.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="button__sdl_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __BUTTON_SDL__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __BUTTON_SDL__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="widget__sdl_8h.html">widget_sdl.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a11f1e7617dc0877038ec09a05c7a5ed9">   15</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code hl_enumvalue" href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a11f1e7617dc0877038ec09a05c7a5ed9">ACTIF</a>, <a class="code hl_enumvalue" href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a333ed13451c4ce39a63766ebdd40e9cf">INACTIF</a>, <a class="code hl_enumvalue" href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a59810d2438e63be8bce699880cb6dfad">INVISIBLE</a>} <a class="code hl_enumeration" href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03">BUTTON_SDL_TYPE_OF_BUTTON_STATE</a>; <span class="comment">//pour afficher les boutons en gris ou en noir</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4">   19</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code hl_enumvalue" href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4a3501d25cdde2b141c20edb67965fb692">IMAGE</a>, <a class="code hl_enumvalue" href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4ad814e4c706c35ce3e12e61d9582b9475">TEXTE</a>} <a class="code hl_enumeration" href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4">BUTTON_SDL_TYPE_OF_BUTTON</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">typedef</span> <span class="keyword">struct </span>t_button_sdl t_button_sdl;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">struct </span>t_button_sdl {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  t_widget_sdl *widget;    <span class="comment">// widget parent qui gère les fonctions principales graphiques</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <a class="code hl_enumeration" href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4">BUTTON_SDL_TYPE_OF_BUTTON</a> button_type;   <span class="comment">// type de bouton</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  SDL_Surface *image;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordtype">char</span> *text;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  TTF_Font *font;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  SDL_Color couleur_text;  <span class="comment">// Couleur blanche du texte</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  SDL_Surface *surface;    <span class="comment">// Surface pour dessiner le bouton selon son état</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordtype">int</span> style;               <span class="comment">// style d&#39;affichage du texte</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  void (*on_activate)(t_button_sdl *button, <span class="keywordtype">void</span>*user_data); <span class="comment">// callback activé lors du clic souris</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keywordtype">void</span> *userdata;          <span class="comment">// donnée personnelle transmise au callback</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#a79d52da0fc2e4040f44a4d9af896ce31">   52</a></span>t_button_sdl *<a class="code hl_function" href="button__sdl_8h.html#a79d52da0fc2e4040f44a4d9af896ce31">button_sdl_new</a> (<a class="code hl_enumeration" href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4">BUTTON_SDL_TYPE_OF_BUTTON</a> type_de_bouton, TTF_Font *font, SDL_Rect size);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#aaf1f98b144f8bc27a06e25a5152a828c">   60</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="button__sdl_8h.html#aaf1f98b144f8bc27a06e25a5152a828c">button_sdl_free</a> (t_button_sdl **button);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>t_widget_sdl *button_sdl_get_widget (t_button_sdl *button);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#a1ba7bc2d4037b640f7103fb5c0efc3ca">   77</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="button__sdl_8h.html#a1ba7bc2d4037b640f7103fb5c0efc3ca">button_sdl_set_image_from_file</a> (t_button_sdl *button, <span class="keyword">const</span> <span class="keywordtype">char</span> *file);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#af0cf0eea6a35a3425a4c1961bd0e17bd">   86</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="button__sdl_8h.html#af0cf0eea6a35a3425a4c1961bd0e17bd">button_sdl_set_image_from_surface</a> (t_button_sdl *button, SDL_Surface *image);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#a3a6c7f66e1e58984467cd35792418683">  106</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="button__sdl_8h.html#a3a6c7f66e1e58984467cd35792418683">button_sdl_set_text</a> (t_button_sdl *button, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, <span class="keywordtype">int</span> style);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#a16fb8c19cd69d054e30236a5fbd6c524">  114</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="button__sdl_8h.html#a16fb8c19cd69d054e30236a5fbd6c524">button_sdl_get_text</a> (t_button_sdl *button);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">/* Change le style d&#39;affichage de la police */</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="button__sdl_8h.html#afcbe5e7ae1bcc030f78ab7a97d56a795">  124</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="button__sdl_8h.html#afcbe5e7ae1bcc030f78ab7a97d56a795">button_sdl_set_style</a> (t_button_sdl *button, <span class="keywordtype">int</span> style);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="abutton__sdl_8h_html_a16fb8c19cd69d054e30236a5fbd6c524"><div class="ttname"><a href="button__sdl_8h.html#a16fb8c19cd69d054e30236a5fbd6c524">button_sdl_get_text</a></div><div class="ttdeci">const char * button_sdl_get_text(t_button_sdl *button)</div><div class="ttdoc">Renvoie le texte du bouton. S'il n'y a pas de texte la fonction renvoie NULL.</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a1ba7bc2d4037b640f7103fb5c0efc3ca"><div class="ttname"><a href="button__sdl_8h.html#a1ba7bc2d4037b640f7103fb5c0efc3ca">button_sdl_set_image_from_file</a></div><div class="ttdeci">bool button_sdl_set_image_from_file(t_button_sdl *button, const char *file)</div><div class="ttdoc">Choix de l'image à insérer dans le bouton s'il est du type IMAGE en chargeant l'image depuis le disqu...</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a3a6c7f66e1e58984467cd35792418683"><div class="ttname"><a href="button__sdl_8h.html#a3a6c7f66e1e58984467cd35792418683">button_sdl_set_text</a></div><div class="ttdeci">void button_sdl_set_text(t_button_sdl *button, const char *text, int style)</div><div class="ttdoc">Change le texte affiché dans le bouton.</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a58fbb8b668f538dcd709950ef69fad03"><div class="ttname"><a href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03">BUTTON_SDL_TYPE_OF_BUTTON_STATE</a></div><div class="ttdeci">BUTTON_SDL_TYPE_OF_BUTTON_STATE</div><div class="ttdef"><b>Definition</b> button_sdl.h:15</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a58fbb8b668f538dcd709950ef69fad03a11f1e7617dc0877038ec09a05c7a5ed9"><div class="ttname"><a href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a11f1e7617dc0877038ec09a05c7a5ed9">ACTIF</a></div><div class="ttdeci">@ ACTIF</div><div class="ttdef"><b>Definition</b> button_sdl.h:15</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a58fbb8b668f538dcd709950ef69fad03a333ed13451c4ce39a63766ebdd40e9cf"><div class="ttname"><a href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a333ed13451c4ce39a63766ebdd40e9cf">INACTIF</a></div><div class="ttdeci">@ INACTIF</div><div class="ttdef"><b>Definition</b> button_sdl.h:15</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a58fbb8b668f538dcd709950ef69fad03a59810d2438e63be8bce699880cb6dfad"><div class="ttname"><a href="button__sdl_8h.html#a58fbb8b668f538dcd709950ef69fad03a59810d2438e63be8bce699880cb6dfad">INVISIBLE</a></div><div class="ttdeci">@ INVISIBLE</div><div class="ttdef"><b>Definition</b> button_sdl.h:15</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a5f74f411d6dca3b91a3fcc35ec7209a4"><div class="ttname"><a href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4">BUTTON_SDL_TYPE_OF_BUTTON</a></div><div class="ttdeci">BUTTON_SDL_TYPE_OF_BUTTON</div><div class="ttdef"><b>Definition</b> button_sdl.h:19</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a5f74f411d6dca3b91a3fcc35ec7209a4a3501d25cdde2b141c20edb67965fb692"><div class="ttname"><a href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4a3501d25cdde2b141c20edb67965fb692">IMAGE</a></div><div class="ttdeci">@ IMAGE</div><div class="ttdef"><b>Definition</b> button_sdl.h:19</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a5f74f411d6dca3b91a3fcc35ec7209a4ad814e4c706c35ce3e12e61d9582b9475"><div class="ttname"><a href="button__sdl_8h.html#a5f74f411d6dca3b91a3fcc35ec7209a4ad814e4c706c35ce3e12e61d9582b9475">TEXTE</a></div><div class="ttdeci">@ TEXTE</div><div class="ttdef"><b>Definition</b> button_sdl.h:19</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_a79d52da0fc2e4040f44a4d9af896ce31"><div class="ttname"><a href="button__sdl_8h.html#a79d52da0fc2e4040f44a4d9af896ce31">button_sdl_new</a></div><div class="ttdeci">t_button_sdl * button_sdl_new(BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Rect size)</div><div class="ttdoc">Constructeur d'un nouvel objet t_button_sdl.</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_aaf1f98b144f8bc27a06e25a5152a828c"><div class="ttname"><a href="button__sdl_8h.html#aaf1f98b144f8bc27a06e25a5152a828c">button_sdl_free</a></div><div class="ttdeci">void button_sdl_free(t_button_sdl **button)</div><div class="ttdoc">Destructeur de l'objet t_button_sdl.</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_af0cf0eea6a35a3425a4c1961bd0e17bd"><div class="ttname"><a href="button__sdl_8h.html#af0cf0eea6a35a3425a4c1961bd0e17bd">button_sdl_set_image_from_surface</a></div><div class="ttdeci">bool button_sdl_set_image_from_surface(t_button_sdl *button, SDL_Surface *image)</div><div class="ttdoc">Choix de l'image à insérer dans le bouton s'il est du type IMAGE depuis une surface SDL.</div></div>
+<div class="ttc" id="abutton__sdl_8h_html_afcbe5e7ae1bcc030f78ab7a97d56a795"><div class="ttname"><a href="button__sdl_8h.html#afcbe5e7ae1bcc030f78ab7a97d56a795">button_sdl_set_style</a></div><div class="ttdeci">void button_sdl_set_style(t_button_sdl *button, int style)</div><div class="ttdoc">Change le style d'affichage de la police.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html"><div class="ttname"><a href="widget__sdl_8h.html">widget_sdl.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -447,7 +447,7 @@ creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
       if (case_noire==NULL)
         fprintf (stderr, "%s\n", SDL_GetError());
 
-      widget_set_cursor (case_sdl_get_widget (case_sdl[j + i*nbre_casex]), case_noire);
+      widget_sdl_set_cursor_from_surface (case_sdl_get_widget (case_sdl[j + i*nbre_casex]), case_noire);
 
       /* Affectation d'un callback lors du clic de la souris sur la case.
        * Pour l'exemple affiche les caractèritisques de la case en console */

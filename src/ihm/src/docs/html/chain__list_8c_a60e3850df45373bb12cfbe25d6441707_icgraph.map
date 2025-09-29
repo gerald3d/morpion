@@ -1,0 +1,20 @@
+<map id="liste_ajout_fin" name="liste_ajout_fin">
+<area shape="rect" id="Node000001" title=" " alt="" coords="671,71,784,96"/>
+<area shape="rect" id="Node000002" href="$ihm__sdl_8c.html#a96e09a53bf091bb4c9421cc61b03c41a" title=" " alt="" coords="225,5,404,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="677,69,622,54,509,36,404,26,405,20,510,31,623,49,678,64"/>
+<area shape="rect" id="Node000004" href="$widget__sdl_8c.html#a89c6af7afc7244b32c6b9c97e93a60bc" title=" " alt="" coords="452,63,623,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="657,86,623,86,623,81,657,81"/>
+<area shape="rect" id="Node000006" href="$widget__sdl_8c.html#a6856343aad94ced0b803b6ebb0613831" title=" " alt="" coords="452,134,623,174"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="680,103,593,136,591,131,678,98"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="64,81,119,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,38,120,87,118,82,263,33"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="438,88,119,96,119,91,438,83"/>
+<area shape="rect" id="Node000005" href="$state__button__sdl_8c.html#aa2d98a05c4e1e059aa5b909bbd08079a" title=" " alt="" coords="233,107,397,132"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="438,102,394,109,393,104,438,97"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="219,111,118,100,119,94,219,106"/>
+<area shape="rect" id="Node000007" href="$button__sdl_8c.html#a79d52da0fc2e4040f44a4d9af896ce31" title=" " alt="" coords="253,156,377,181"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="438,163,377,167,377,162,438,158"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="249,155,224,147,118,107,120,102,226,142,251,150"/>
+<area shape="rect" id="Node000008" href="$toggle__button__sdl_8c.html#ab62e297bf013cd8fc39322f64ed01d30" title=" " alt="" coords="5,156,177,181"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="239,171,178,171,178,166,239,166"/>
+</map>

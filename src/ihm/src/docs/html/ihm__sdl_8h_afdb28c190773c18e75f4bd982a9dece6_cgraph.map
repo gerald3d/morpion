@@ -1,0 +1,17 @@
+<map id="ihm_sdl_renderer_update" name="ihm_sdl_renderer_update">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,192,80"/>
+<area shape="rect" id="Node000002" href="$widget__sdl_8c.html#a7638ed62d4bd7cbe6880a42df25ff8b0" title=" " alt="" coords="240,5,411,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,52,252,31,253,36,158,57"/>
+<area shape="rect" id="Node000003" href="$widget__sdl_8c.html#a307f04b2f768762f58d9e1e886a7da8e" title=" " alt="" coords="245,55,405,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,65,232,65,232,70,192,70"/>
+<area shape="rect" id="Node000004" href="$widget__sdl_8c.html#a6addbeab9a60665fcb5160ee4cc6ab36" title=" " alt="" coords="248,105,403,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,77,235,99,234,104,149,83"/>
+<area shape="rect" id="Node000005" href="$tooltip__sdl_8c.html#aedb3ba82507f64eea6a69755a3d5c275" title=" " alt="" coords="481,25,623,51"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="380,102,409,89,433,75,458,61,482,52,484,57,460,66,436,79,412,94,382,107"/>
+<area shape="rect" id="Node000006" href="$widget__sdl_8c.html#a73bcb5aee1280f3463ce4e6d021e95b4" title=" " alt="" coords="467,75,637,115"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="403,112,453,105,454,111,403,117"/>
+<area shape="rect" id="Node000007" href="$widget__sdl_8c.html#ad1734314033d195bac95de142e3b631a" title=" " alt="" coords="461,140,643,165"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="403,132,447,137,447,142,403,137"/>
+<area shape="rect" id="Node000008" href="$widget__sdl_8c.html#a1e695c5612d5108e82210c0e2c743a88" title=" " alt="" coords="459,189,645,215"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="375,142,460,174,488,183,487,188,458,179,373,147"/>
+</map>

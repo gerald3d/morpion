@@ -7,21 +7,20 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
+				<Option platforms="Windows;" />
 				<Option output="bin/Debug/morpion" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c17" />
 					<Add option="-g" />
 				</Compiler>
-				<Linker>
-					<Add option="`pkg-config sdl2 --cflags`" />
-					<LinkerExe value="CCompiler" />
-				</Linker>
 			</Target>
 			<Target title="Release">
+				<Option platforms="Windows;" />
 				<Option output="bin/Release/morpion" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Release" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -30,163 +29,293 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add option="`pkg-config --cflags sdl2`" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="`sdl2-config --cflags`" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
+			<Add option="-std=c23" />
+			<Add option="`pkg-config --cflags sdl2`" />
+			<Add option="`pkg-config --cflags SDL2_image`" />
+			<Add option="`pkg-config --cflags SDL2_ttf`" />
+			<Add option="`pkg-config --cflags SDL2_mixer`" />
 		</Compiler>
 		<Linker>
-			<Add option="`sdl2-config --libs`" />
+			<Add option="`pkg-config --libs sdl2`" />
+			<Add option="`pkg-config --libs SDL2_image`" />
+			<Add option="`pkg-config --libs SDL2_ttf`" />
+			<Add option="`pkg-config --libs SDL2_mixer`" />
 		</Linker>
-		<UnitsGlob directory="src" wildcard="" recursive="0" id="2178398971" addToProject="1">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</UnitsGlob>
-		<UnitsGlob directory="src/ihm" wildcard="" recursive="0" id="2454202086" addToProject="1">
-			<Option target="Debug" />
-			<Option target="Release" />
-		</UnitsGlob>
+		<Unit filename="bin/Debug/Ressources/Musique-Gremlins.mp3" />
+		<Unit filename="bin/Debug/Ressources/Musique-HP.mp3" />
+		<Unit filename="bin/Debug/Ressources/Musique-Mario.mp3" />
+		<Unit filename="bin/Debug/Ressources/Musique-Pokemon1.mp3" />
+		<Unit filename="bin/Debug/Ressources/Musique-Pokemon2.mp3" />
+		<Unit filename="bin/Debug/Ressources/Musique-SW1.mp3" />
+		<Unit filename="bin/Debug/Ressources/Musique-SW2.mp3" />
+		<Unit filename="bin/Debug/Ressources/Titre/font.ttf" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre - Copie (2).bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre - Copie.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-I.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-M.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-N.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-O.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-P.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-R.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-Vide.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-Vide1.bmp" />
+		<Unit filename="bin/Debug/Ressources/Titre/image-Titre-Vide2.bmp" />
+		<Unit filename="bin/Debug/Ressources/croix_noire.png" />
+		<Unit filename="bin/Debug/Ressources/image-BoutonConfigDimension.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-BoutonConfigType.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-CaseGrise.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-CoupeGrande.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-CoupePetite.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Curseur.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-CurseurAxe.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-CurseurCroix-Gris.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-CurseurCroix-Noir.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Icone.ico" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-0.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-1.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-10.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-11.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-119.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-12.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-13.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-14.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-15.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-16.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-17.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-18.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-19.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-2.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-20.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-21.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-22.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-23.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-3.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-4.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-5.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-6.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-7.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-8.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Jeton-9.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Musique.bmp" />
+		<Unit filename="bin/Debug/Ressources/image-Titre.bmp" />
+		<Unit filename="bin/Debug/Ressources/image_humain.png" />
+		<Unit filename="bin/Debug/Ressources/image_humain_gris.png" />
+		<Unit filename="bin/Debug/Ressources/image_ordi.png" />
+		<Unit filename="bin/Debug/Ressources/image_ordi_gris.png" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-Gremlins.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-HP.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-Jurassic.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-Mario.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-Pokemon1.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-Pokemon2.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-SW1.mp3" />
+		<Unit filename="bin/Debug/Ressources/m/Musique-SW2.mp3" />
+		<Unit filename="bin/Debug/Ressources/times.ttf" />
+		<Unit filename="bin/Debug/SDL2.dll" />
+		<Unit filename="bin/Debug/SDL2_image.dll" />
+		<Unit filename="bin/Debug/SDL2_mixer.dll" />
+		<Unit filename="bin/Debug/SDL2_ttf.dll" />
+		<Unit filename="bin/Debug/libFLAC++.dll" />
+		<Unit filename="bin/Debug/libFLAC.dll" />
+		<Unit filename="bin/Debug/libIex-3_4.dll" />
+		<Unit filename="bin/Debug/libIlmThread-3_4.dll" />
+		<Unit filename="bin/Debug/libImath-3_2.dll" />
+		<Unit filename="bin/Debug/libLerc.dll" />
+		<Unit filename="bin/Debug/libOpenEXR-3_4.dll" />
+		<Unit filename="bin/Debug/libOpenEXRCore-3_4.dll" />
+		<Unit filename="bin/Debug/libOpenEXRUtil-3_4.dll" />
+		<Unit filename="bin/Debug/libPyImath_Python3_12-3_2.dll" />
+		<Unit filename="bin/Debug/libSvtAv1Enc-3.dll" />
+		<Unit filename="bin/Debug/libaom.dll" />
+		<Unit filename="bin/Debug/libavif-16.dll" />
+		<Unit filename="bin/Debug/libbrotlicommon.dll" />
+		<Unit filename="bin/Debug/libbrotlidec.dll" />
+		<Unit filename="bin/Debug/libbrotlienc.dll" />
+		<Unit filename="bin/Debug/libbz2-1.dll" />
+		<Unit filename="bin/Debug/libcharset-1.dll" />
+		<Unit filename="bin/Debug/libcrypto-3-x64.dll" />
+		<Unit filename="bin/Debug/libdav1d-7.dll" />
+		<Unit filename="bin/Debug/libdeflate.dll" />
+		<Unit filename="bin/Debug/libexpat-1.dll" />
+		<Unit filename="bin/Debug/libffi-8.dll" />
+		<Unit filename="bin/Debug/libfluidsynth-3.dll" />
+		<Unit filename="bin/Debug/libformw6.dll" />
+		<Unit filename="bin/Debug/libfreetype-6.dll" />
+		<Unit filename="bin/Debug/libgcc_s_seh-1.dll" />
+		<Unit filename="bin/Debug/libgif-7.dll" />
+		<Unit filename="bin/Debug/libgio-2.0-0.dll" />
+		<Unit filename="bin/Debug/libgirepository-2.0-0.dll" />
+		<Unit filename="bin/Debug/libglib-2.0-0.dll" />
+		<Unit filename="bin/Debug/libgmodule-2.0-0.dll" />
+		<Unit filename="bin/Debug/libgmp-10.dll" />
+		<Unit filename="bin/Debug/libgmpxx-4.dll" />
+		<Unit filename="bin/Debug/libgobject-2.0-0.dll" />
+		<Unit filename="bin/Debug/libgomp-1.dll" />
+		<Unit filename="bin/Debug/libgraphite2.dll" />
+		<Unit filename="bin/Debug/libgthread-2.0-0.dll" />
+		<Unit filename="bin/Debug/libharfbuzz-0.dll" />
+		<Unit filename="bin/Debug/libharfbuzz-gobject-0.dll" />
+		<Unit filename="bin/Debug/libharfbuzz-subset-0.dll" />
+		<Unit filename="bin/Debug/libhistory8.dll" />
+		<Unit filename="bin/Debug/libhwy.dll" />
+		<Unit filename="bin/Debug/libhwy_contrib.dll" />
+		<Unit filename="bin/Debug/libhwy_test.dll" />
+		<Unit filename="bin/Debug/libiconv-2.dll" />
+		<Unit filename="bin/Debug/libintl-8.dll" />
+		<Unit filename="bin/Debug/libisl-23.dll" />
+		<Unit filename="bin/Debug/libjbig-0.dll" />
+		<Unit filename="bin/Debug/libjpeg-8.dll" />
+		<Unit filename="bin/Debug/libjxl.dll" />
+		<Unit filename="bin/Debug/libjxl_cms.dll" />
+		<Unit filename="bin/Debug/libjxl_threads.dll" />
+		<Unit filename="bin/Debug/liblcms2-2.dll" />
+		<Unit filename="bin/Debug/liblcms2_fast_float-2.dll" />
+		<Unit filename="bin/Debug/liblzma-5.dll" />
+		<Unit filename="bin/Debug/libmenuw6.dll" />
+		<Unit filename="bin/Debug/libmp3lame-0.dll" />
+		<Unit filename="bin/Debug/libmpc-3.dll" />
+		<Unit filename="bin/Debug/libmpdec++-4.dll" />
+		<Unit filename="bin/Debug/libmpdec-4.dll" />
+		<Unit filename="bin/Debug/libmpfr-6.dll" />
+		<Unit filename="bin/Debug/libmpg123-0.dll" />
+		<Unit filename="bin/Debug/libncurses++w6.dll" />
+		<Unit filename="bin/Debug/libncursesw6.dll" />
+		<Unit filename="bin/Debug/libogg-0.dll" />
+		<Unit filename="bin/Debug/libopenjph-0.23.dll" />
+		<Unit filename="bin/Debug/libopus-0.dll" />
+		<Unit filename="bin/Debug/libopusfile-0.dll" />
+		<Unit filename="bin/Debug/libopusurl-0.dll" />
+		<Unit filename="bin/Debug/libout123-0.dll" />
+		<Unit filename="bin/Debug/libpanelw6.dll" />
+		<Unit filename="bin/Debug/libpcre2-16-0.dll" />
+		<Unit filename="bin/Debug/libpcre2-32-0.dll" />
+		<Unit filename="bin/Debug/libpcre2-8-0.dll" />
+		<Unit filename="bin/Debug/libpcre2-posix-3.dll" />
+		<Unit filename="bin/Debug/libpkgconf-7.dll" />
+		<Unit filename="bin/Debug/libpng-config" />
+		<Unit filename="bin/Debug/libpng16-16.dll" />
+		<Unit filename="bin/Debug/libpng16-config" />
+		<Unit filename="bin/Debug/libportaudio.dll" />
+		<Unit filename="bin/Debug/libportaudiocpp.dll" />
+		<Unit filename="bin/Debug/libpython3.12.dll" />
+		<Unit filename="bin/Debug/libpython3.dll" />
+		<Unit filename="bin/Debug/libquadmath-0.dll" />
+		<Unit filename="bin/Debug/librav1e.dll" />
+		<Unit filename="bin/Debug/libreadline8.dll" />
+		<Unit filename="bin/Debug/libsharpyuv-0.dll" />
+		<Unit filename="bin/Debug/libsndfile-1.dll" />
+		<Unit filename="bin/Debug/libsqlite3-0.dll" />
+		<Unit filename="bin/Debug/libssl-3-x64.dll" />
+		<Unit filename="bin/Debug/libstdc++-6.dll" />
+		<Unit filename="bin/Debug/libsyn123-0.dll" />
+		<Unit filename="bin/Debug/libsystre-0.dll" />
+		<Unit filename="bin/Debug/libtermcap-0.dll" />
+		<Unit filename="bin/Debug/libtiff-6.dll" />
+		<Unit filename="bin/Debug/libtiffxx-6.dll" />
+		<Unit filename="bin/Debug/libtre-5.dll" />
+		<Unit filename="bin/Debug/libturbojpeg.dll" />
+		<Unit filename="bin/Debug/libvorbis-0.dll" />
+		<Unit filename="bin/Debug/libvorbisenc-2.dll" />
+		<Unit filename="bin/Debug/libvorbisfile-3.dll" />
+		<Unit filename="bin/Debug/libwavpack-1.dll" />
+		<Unit filename="bin/Debug/libwebp-7.dll" />
+		<Unit filename="bin/Debug/libwebpdecoder-3.dll" />
+		<Unit filename="bin/Debug/libwebpdemux-2.dll" />
+		<Unit filename="bin/Debug/libwebpmux-3.dll" />
+		<Unit filename="bin/Debug/libwinpthread-1.dll" />
+		<Unit filename="bin/Debug/libxml2-16.dll" />
+		<Unit filename="bin/Debug/libxmp.dll" />
+		<Unit filename="bin/Debug/libxxhash.dll" />
+		<Unit filename="bin/Debug/libyuv.dll" />
+		<Unit filename="bin/Debug/libzstd.dll" />
+		<Unit filename="bin/Debug/zlib1.dll" />
 		<Unit filename="src/Affichage.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/Affichage.h">
-			<Option glob="2178398971" />
-		</Unit>
-		<Unit filename="src/Define.h">
-			<Option glob="2178398971" />
-		</Unit>
-		<Unit filename="src/Define_futur.h">
-			<Option glob="2178398971" />
-		</Unit>
+		<Unit filename="src/Affichage.h" />
+		<Unit filename="src/Define.h" />
+		<Unit filename="src/Define_futur.h" />
 		<Unit filename="src/Instruction.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/Instruction.h">
-			<Option glob="2178398971" />
-		</Unit>
+		<Unit filename="src/Instruction.h" />
 		<Unit filename="src/Jeu.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/Jeu.h">
-			<Option glob="2178398971" />
-		</Unit>
-		<Unit filename="src/Main.h">
-			<Option glob="2178398971" />
-		</Unit>
+		<Unit filename="src/Jeu.h" />
+		<Unit filename="src/Main.h" />
 		<Unit filename="src/Tournoi.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/Tournoi.h">
-			<Option glob="2178398971" />
-		</Unit>
+		<Unit filename="src/Tournoi.h" />
 		<Unit filename="src/ia.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/ia.h">
-			<Option glob="2178398971" />
-		</Unit>
-		<Unit filename="src/ihm/button_sdl.c">
+		<Unit filename="src/ia.h" />
+		<Unit filename="src/ihm/src/button_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/button_sdl.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/case_sdl.c">
+		<Unit filename="src/ihm/src/button_sdl.h" />
+		<Unit filename="src/ihm/src/case_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/case_sdl.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/chain_list.c">
+		<Unit filename="src/ihm/src/case_sdl.h" />
+		<Unit filename="src/ihm/src/chain_list.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/chain_list.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/dialog_sdl.c">
+		<Unit filename="src/ihm/src/chain_list.h" />
+		<Unit filename="src/ihm/src/define_sdl.h" />
+		<Unit filename="src/ihm/src/dialog_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="src/ihm/dialog_sdl.h">
-			<Option glob="2454202086" />
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="src/ihm/ihm_sdl.c">
+		<Unit filename="src/ihm/src/dialog_sdl.h" />
+		<Unit filename="src/ihm/src/game_config_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/ihm_sdl.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/state_button_sdl.c">
+		<Unit filename="src/ihm/src/game_config_sdl.h" />
+		<Unit filename="src/ihm/src/ihm_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/state_button_sdl.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/toggle_button_sdl.c">
+		<Unit filename="src/ihm/src/ihm_sdl.h" />
+		<Unit filename="src/ihm/src/state_button_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/toggle_button_sdl.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/tooltip_sdl.c">
+		<Unit filename="src/ihm/src/state_button_sdl.h" />
+		<Unit filename="src/ihm/src/toggle_button_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/tooltip_sdl.h">
-			<Option glob="2454202086" />
-		</Unit>
-		<Unit filename="src/ihm/widget_sdl.c">
+		<Unit filename="src/ihm/src/toggle_button_sdl.h" />
+		<Unit filename="src/ihm/src/tooltip_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2454202086" />
 		</Unit>
-		<Unit filename="src/ihm/widget_sdl.h">
-			<Option glob="2454202086" />
+		<Unit filename="src/ihm/src/tooltip_sdl.h" />
+		<Unit filename="src/ihm/src/widget_sdl.c">
+			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/ihm/src/widget_sdl.h" />
 		<Unit filename="src/logs.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/logs.h">
-			<Option glob="2178398971" />
-		</Unit>
+		<Unit filename="src/logs.h" />
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
-		</Unit>
-		<Unit filename="src/minmax.c">
-			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
 		<Unit filename="src/morp_sdl.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/morp_sdl.h">
-			<Option glob="2178398971" />
-		</Unit>
+		<Unit filename="src/morp_sdl.h" />
 		<Unit filename="src/texture.c">
 			<Option compilerVar="CC" />
-			<Option glob="2178398971" />
 		</Unit>
-		<Unit filename="src/texture.h">
-			<Option glob="2178398971" />
-		</Unit>
-		<Extensions />
+		<Unit filename="src/texture.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

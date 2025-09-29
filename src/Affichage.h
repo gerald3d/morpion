@@ -1,10 +1,15 @@
 #ifndef DEF_Affichage
 #define DEF_Affichage
 
+#include <SDL2/SDL.h>// pour utiliser la sdl
+#include <SDL2/SDL_image.h>// pour coller autre que des bmp
+#include <SDL2/SDL_ttf.h> // Pour utiliser les polices avec la SDL
+#include <SDL2/SDL_mixer.h> // Pour utiliser les sons avec la SDL
+
 #include "logs.h"
 #include "Define.h"
 #include "morp_sdl.h"
-#include "ihm/ihm_sdl.h"
+#include "ihm/src/ihm_sdl.h"
 
 void SDL_RenderCopyTransparent(t_morp_sdl *morp_sdl, SDL_Texture * texture,SDL_Rect *selection,SDL_Rect *position);
 

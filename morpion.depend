@@ -1,181 +1,4 @@
 # depslib dependency file v1.0
-1758289343 source:/home/gerald/Projects/morpion/src/Affichage.c
-	"Main.h"
-	"Affichage.h"
-
-1758289655 /home/gerald/Projects/morpion/src/Main.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	<math.h>
-	<time.h>
-	"Define.h"
-	"logs.h"
-	"Affichage.h"
-	"ia.h"
-	"morp_sdl.h"
-	"Instruction.h"
-	"Jeu.h"
-	"Tournoi.h"
-
-1758294075 /home/gerald/Projects/morpion/src/Define.h
-
-1756018970 /home/gerald/Projects/morpion/src/logs.h
-	<stdbool.h>
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<errno.h>
-
-1758289870 /home/gerald/Projects/morpion/src/Affichage.h
-	"logs.h"
-	"Define.h"
-	"morp_sdl.h"
-	"ihm/ihm_sdl.h"
-
-1758286032 /home/gerald/Projects/morpion/src/morp_sdl.h
-	"Define.h"
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	"logs.h"
-
-1758288726 /home/gerald/Projects/morpion/src/ihm/ihm_sdl.h
-	<stdbool.h>
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	"widget_sdl.h"
-	"tooltip_sdl.h"
-	"button_sdl.h"
-	"state_button_sdl.h"
-	"toggle_button_sdl.h"
-	"case_sdl.h"
-
-1758289832 /home/gerald/Projects/morpion/src/ihm/widget_sdl.h
-	<stdbool.h>
-	"tooltip_sdl.h"
-	"chain_list.h"
-
-1757849542 /home/gerald/Projects/morpion/src/ihm/tooltip_sdl.h
-	<stdbool.h>
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-
-1757842340 /home/gerald/Projects/morpion/src/ihm/chain_list.h
-	<stdbool.h>
-	<stdio.h>
-	<stdlib.h>
-
-1758289819 /home/gerald/Projects/morpion/src/ihm/button_sdl.h
-	"widget_sdl.h"
-
-1757947914 /home/gerald/Projects/morpion/src/ihm/state_button_sdl.h
-	"widget_sdl.h"
-	"state_button_sdl.h"
-
-1758283532 /home/gerald/Projects/morpion/src/ihm/toggle_button_sdl.h
-	"state_button_sdl.h"
-
-1757928383 /home/gerald/Projects/morpion/src/ihm/case_sdl.h
-	"widget_sdl.h"
-
-1756018989 /home/gerald/Projects/morpion/src/ia.h
-	"Define.h"
-	"logs.h"
-
-1756018984 /home/gerald/Projects/morpion/src/Instruction.h
-	"Define.h"
-
-1758289647 /home/gerald/Projects/morpion/src/Jeu.h
-	"Define.h"
-	"morp_sdl.h"
-
-1756293074 /home/gerald/Projects/morpion/src/Tournoi.h
-	"Define.h"
-	"morp_sdl.h"
-
-1756018986 source:/home/gerald/Projects/morpion/src/ia.c
-	"Main.h"
-
-1757836620 source:/home/gerald/Projects/morpion/src/ihm/button_sdl.c
-	"button_sdl.h"
-
-1757836659 source:/home/gerald/Projects/morpion/src/ihm/case_sdl.c
-	"case_sdl.h"
-
-1757671163 source:/home/gerald/Projects/morpion/src/ihm/chain_list.c
-	"chain_list.h"
-
-1758211476 source:/home/gerald/Projects/morpion/src/ihm/dialog_sdl.c
-	"dialog_sdl.h"
-
-1758211500 /home/gerald/Projects/morpion/src/ihm/dialog_sdl.h
-	"widget_sdl.h"
-
-1758283436 source:/home/gerald/Projects/morpion/src/ihm/ihm_sdl.c
-	"ihm_sdl.h"
-
-1758273633 source:/home/gerald/Projects/morpion/src/ihm/state_button_sdl.c
-	"state_button_sdl.h"
-
-1758283394 source:/home/gerald/Projects/morpion/src/ihm/toggle_button_sdl.c
-	"toggle_button_sdl.h"
-
-1757836465 source:/home/gerald/Projects/morpion/src/ihm/tooltip_sdl.c
-	"tooltip_sdl.h"
-
-1758282618 source:/home/gerald/Projects/morpion/src/ihm/widget_sdl.c
-	"widget_sdl.h"
-
-1758197693 source:/home/gerald/Projects/morpion/src/Instruction.c
-	"Main.h"
-
-1758210891 source:/home/gerald/Projects/morpion/src/Jeu.c
-	"Main.h"
-
-1756018967 source:/home/gerald/Projects/morpion/src/logs.c
-	"logs.h"
-
-1758286479 source:/home/gerald/Projects/morpion/src/main.c
-	"Main.h"
-
-1758286634 source:/home/gerald/Projects/morpion/src/morp_sdl.c
-	"Main.h"
-	"morp_sdl.h"
-
-1756287902 source:/home/gerald/Projects/morpion/src/texture.c
-	"texture.h"
-
-1756287943 /home/gerald/Projects/morpion/src/texture.h
-	<SDL2/SDL.h>
-
-1755448521 source:/home/gerald/Projects/morpion/src/Tournoi.c
-	"Main.h"
-
-1758285917 source:/home/gerald/Projects/morpion/src/minmax.c
-	<float.h>
-	<stdbool.h>
-
-1758286274 /home/gerald/Projects/morpion/src/Jeu_futur.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	"Define.h"
-	"logs.h"
-	"morp_sdl.h"
-
 1758965645 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
@@ -198,6 +21,160 @@
 	"Instruction.h"
 	"Jeu.h"
 	"Tournoi.h"
+
+1758294795 e:\projets windows\morpion\src\define.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+
+1756018970 e:\projets windows\morpion\src\logs.h
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<errno.h>
+
+1758978593 e:\projets windows\morpion\src\affichage.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"logs.h"
+	"Define.h"
+	"morp_sdl.h"
+	"ihm/src/ihm_sdl.h"
+
+1758286032 e:\projets windows\morpion\src\morp_sdl.h
+	"Define.h"
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"logs.h"
+
+1758978602 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"widget_sdl.h"
+	"tooltip_sdl.h"
+	"button_sdl.h"
+	"state_button_sdl.h"
+	"toggle_button_sdl.h"
+	"dialog_sdl.h"
+	"game_config_sdl.h"
+	"case_sdl.h"
+
+1758978582 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_ttf.h>
+	<SDL2/SDL_mixer.h>
+	"define_sdl.h"
+	"tooltip_sdl.h"
+	"chain_list.h"
+
+1758785754 e:\projets windows\morpion\src\ihm\src\define_sdl.h
+
+1758978611 e:\projets windows\morpion\src\ihm\src\tooltip_sdl.h
+	<stdio.h>
+	<string.h>
+	<stdbool.h>
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+	"define_sdl.h"
+
+1757842340 e:\projets windows\morpion\src\ihm\src\chain_list.h
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+
+1758785301 e:\projets windows\morpion\src\ihm\src\button_sdl.h
+	<string.h>
+	"widget_sdl.h"
+
+1757947914 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
+	"widget_sdl.h"
+	"state_button_sdl.h"
+
+1758283532 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
+	"state_button_sdl.h"
+
+1758785162 e:\projets windows\morpion\src\ihm\src\dialog_sdl.h
+	<string.h>
+	"widget_sdl.h"
+	"button_sdl.h"
+	"game_config_sdl.h"
+
+1758531770 e:\projets windows\morpion\src\ihm\src\game_config_sdl.h
+	"widget_sdl.h"
+
+1757928382 e:\projets windows\morpion\src\ihm\src\case_sdl.h
+	"widget_sdl.h"
+
+1756018989 e:\projets windows\morpion\src\ia.h
+	"Define.h"
+	"logs.h"
+
+1756018984 e:\projets windows\morpion\src\instruction.h
+	"Define.h"
+
+1758289647 e:\projets windows\morpion\src\jeu.h
+	"Define.h"
+	"morp_sdl.h"
+
+1756293074 e:\projets windows\morpion\src\tournoi.h
+	"Define.h"
+	"morp_sdl.h"
+
+1756018986 source:e:\projets windows\morpion\src\ia.c
+	"Main.h"
+
+1758368738 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
+	"button_sdl.h"
+
+1758359172 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
+	"case_sdl.h"
+
+1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
+	"chain_list.h"
+
+1758787525 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
+	"dialog_sdl.h"
+
+1758785848 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
+	"game_config_sdl.h"
+
+1758197693 source:e:\projets windows\morpion\src\instruction.c
+	"Main.h"
+
+1758210891 source:e:\projets windows\morpion\src\jeu.c
+	"Main.h"
+
+1756018967 source:e:\projets windows\morpion\src\logs.c
+	"logs.h"
+
+1758981835 source:e:\projets windows\morpion\src\main.c
+	"Main.h"
+
+1758290677 source:e:\projets windows\morpion\src\morp_sdl.c
+	"morp_sdl.h"
+
+1756287902 source:e:\projets windows\morpion\src\texture.c
+	"texture.h"
+
+1756287943 e:\projets windows\morpion\src\texture.h
+	<SDL2/SDL.h>
+
+1755448521 source:e:\projets windows\morpion\src\tournoi.c
+	"Main.h"
+
+1758455318 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+	"ihm_sdl.h"
 
 1757862470 c:\msys64\mingw64\include\stdio.h
 	<corecrt_stdio_config.h>
@@ -803,162 +780,6 @@
 
 1757865448 c:\msys64\mingw64\include\pthread_compat.h
 
-1758294795 e:\projets windows\morpion\src\define.h
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-
-1756018970 e:\projets windows\morpion\src\logs.h
-	<stdbool.h>
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<errno.h>
-
-1758965586 e:\projets windows\morpion\src\affichage.h
-	"logs.h"
-	"Define.h"
-	"morp_sdl.h"
-	"ihm/src/ihm_sdl.h"
-
-1758286032 e:\projets windows\morpion\src\morp_sdl.h
-	"Define.h"
-	<SDL2/SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	"logs.h"
-
-1756018989 e:\projets windows\morpion\src\ia.h
-	"Define.h"
-	"logs.h"
-
-1756018984 e:\projets windows\morpion\src\instruction.h
-	"Define.h"
-
-1758289647 e:\projets windows\morpion\src\jeu.h
-	"Define.h"
-	"morp_sdl.h"
-
-1756293074 e:\projets windows\morpion\src\tournoi.h
-	"Define.h"
-	"morp_sdl.h"
-
-1756018986 source:e:\projets windows\morpion\src\ia.c
-	"Main.h"
-
-1758197693 source:e:\projets windows\morpion\src\instruction.c
-	"Main.h"
-
-1758210891 source:e:\projets windows\morpion\src\jeu.c
-	"Main.h"
-
-1756018967 source:e:\projets windows\morpion\src\logs.c
-	"logs.h"
-
-1758294018 source:e:\projets windows\morpion\src\main.c
-	"Main.h"
-
-1758285917 source:e:\projets windows\morpion\src\minmax.c
-	<float.h>
-	<stdbool.h>
-
-1756287902 source:e:\projets windows\morpion\src\texture.c
-	"texture.h"
-
-1756287943 e:\projets windows\morpion\src\texture.h
-	<SDL2/SDL.h>
-
-1755448521 source:e:\projets windows\morpion\src\tournoi.c
-	"Main.h"
-
-1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
-	"chain_list.h"
-
-1757842340 e:\projets windows\morpion\src\ihm\src\chain_list.h
-	<stdbool.h>
-	<stdio.h>
-	<stdlib.h>
-
-1758368738 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
-	"button_sdl.h"
-
-1758785301 e:\projets windows\morpion\src\ihm\src\button_sdl.h
-	<string.h>
-	"widget_sdl.h"
-
-1758800018 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
-	<stdbool.h>
-	<SDL.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	"define_sdl.h"
-	"tooltip_sdl.h"
-	"chain_list.h"
-
-1758785754 e:\projets windows\morpion\src\ihm\src\define_sdl.h
-
-1758800132 e:\projets windows\morpion\src\ihm\src\tooltip_sdl.h
-	<stdio.h>
-	<string.h>
-	<stdbool.h>
-	<SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	"define_sdl.h"
-
-1758359172 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
-	"case_sdl.h"
-
-1757928382 e:\projets windows\morpion\src\ihm\src\case_sdl.h
-	"widget_sdl.h"
-
-1758787525 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
-	"dialog_sdl.h"
-
-1758785162 e:\projets windows\morpion\src\ihm\src\dialog_sdl.h
-	<string.h>
-	"widget_sdl.h"
-	"button_sdl.h"
-	"game_config_sdl.h"
-
-1758531770 e:\projets windows\morpion\src\ihm\src\game_config_sdl.h
-	"widget_sdl.h"
-
-1758785848 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
-	"game_config_sdl.h"
-
-1758455318 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
-	"ihm_sdl.h"
-
-1758800141 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
-	<stdbool.h>
-	<SDL.h>
-	<SDL2/SDL_image.h>
-	<SDL2/SDL_ttf.h>
-	<SDL2/SDL_mixer.h>
-	"widget_sdl.h"
-	"tooltip_sdl.h"
-	"button_sdl.h"
-	"state_button_sdl.h"
-	"toggle_button_sdl.h"
-	"dialog_sdl.h"
-	"game_config_sdl.h"
-	"case_sdl.h"
-
-1757947914 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
-	"widget_sdl.h"
-	"state_button_sdl.h"
-
-1758283532 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
-	"state_button_sdl.h"
-
-1758785975 source:e:\projets windows\morpion\src\ihm\src\main.c
-	"string.h"
-	"ihm_sdl.h"
-	<stdbool.h>
-
 1758358732 source:e:\projets windows\morpion\src\ihm\src\state_button_sdl.c
 	"state_button_sdl.h"
 
@@ -970,7 +791,4 @@
 
 1758533072 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
 	"widget_sdl.h"
-
-1758290677 source:e:\projets windows\morpion\src\morp_sdl.c
-	"morp_sdl.h"
 

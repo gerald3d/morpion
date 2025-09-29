@@ -2,7 +2,7 @@
 #define __IHM_SDL__
 
 #include <stdbool.h>
-#include <SDL.h>// pour utiliser la sdl
+#include <SDL2/SDL.h>// pour utiliser la sdl
 #include <SDL2/SDL_image.h>// pour coller autre que des bmp
 #include <SDL2/SDL_ttf.h> // Pour utiliser les polices avec la SDL
 #include <SDL2/SDL_mixer.h> // Pour utiliser les sons avec la SDL

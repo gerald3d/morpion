@@ -1,0 +1,10 @@
+<map id="widget_sdl_is_visible" name="widget_sdl_is_visible">
+<area shape="rect" id="Node000001" title=" " alt="" coords="343,31,503,56"/>
+<area shape="rect" id="Node000002" href="$ihm__sdl_8c.html#afdb28c190773c18e75f4bd982a9dece6" title=" " alt="" coords="108,5,295,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="329,35,295,31,295,26,329,30"/>
+<area shape="rect" id="Node000004" href="$ihm__sdl_8c.html#a029f6bd076f3497a307dfbac2a81a240" title=" " alt="" coords="126,55,277,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="329,56,277,62,276,57,328,51"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,60,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,35,61,42,60,37,103,30"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="112,57,60,50,60,44,113,52"/>
+</map>

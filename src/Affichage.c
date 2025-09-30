@@ -380,6 +380,13 @@ clic_sur_le_bouton_coudpous (t_button_sdl *button, void *userdata) {
 
 }
 
+/* Callback appelé lorsque le bouton CousPous est cliqué */
+void
+clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
+  printf ("Enter in %s ();\n", __func__);
+
+}
+
 /* Callback appelé lorsque le bouton Tournoi est cliqué */
 void
 clic_sur_le_bouton_tournoi (t_button_sdl *button, void *userdata) {
@@ -511,8 +518,38 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Pour changer la couleur de fond du bouton */
   widget_sdl_set_color (button_sdl_get_widget (bouton_coudpous), couleurTexteMarron, FOND);
 
+  /* Ajout d'une bulle d'aide */
+  widget_sdl_set_tooltip (button_sdl_get_widget (bouton_coudpous), "Propose un coup calculé par l'IA.");
+
+
   /* Insertion du bouton CoudPous dans l'ihm */
   ihm_sdl_widget_append (ihm_sdl, button_sdl_get_widget (bouton_coudpous));
+
+  /*******************/
+
+  /* Création d'un bouton pour l'outil de configuration de la taille du plateau */
+  t_button_sdl *bouton_size_config = button_sdl_new (IMAGE, NULL, (SDL_Rect){630, 420, 150, 40});
+  button_sdl_set_image_from_file (bouton_size_config, "ihm/images/config_size_3.png");
+
+  /* Affectation d'un callback lors du clic de la souris sur le bouton. */
+  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_size_config), clic_sur_le_bouton_size_config, NULL);
+
+  /* Pour changer la couleur de fond du bouton */
+  widget_sdl_set_color (button_sdl_get_widget (bouton_coudpous), couleurTexteMarron, FOND);
+
+  /* Ajout d'une bulle d'aide */
+  widget_sdl_set_tooltip (button_sdl_get_widget (bouton_size_config), "Modification de la taille du plateau de jeu.");
+
+  /* Insertion du bouton CoudPous dans l'ihm */
+  ihm_sdl_widget_append (ihm_sdl, button_sdl_get_widget (bouton_size_config));
+
+
+
+
+//  t_game_config_sdl *game_config = game_config_sdl_new ((SDL_Rect){630, 420, 150, 40});
+
+  /* Insertion du configurateur dans l'ihm */
+//  ihm_sdl_widget_append (ihm_sdl, game_config_sdl_get_widget (game_config));
 
   /*******************/
 

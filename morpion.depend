@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1758965645 source:e:\projets windows\morpion\src\affichage.c
+1759247512 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
 
@@ -146,7 +146,7 @@
 1758787525 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
 	"dialog_sdl.h"
 
-1758785848 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
+1759247977 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
 	"game_config_sdl.h"
 
 1758197693 source:e:\projets windows\morpion\src\instruction.c
@@ -158,7 +158,7 @@
 1756018967 source:e:\projets windows\morpion\src\logs.c
 	"logs.h"
 
-1758981835 source:e:\projets windows\morpion\src\main.c
+1759247734 source:e:\projets windows\morpion\src\main.c
 	"Main.h"
 
 1758290677 source:e:\projets windows\morpion\src\morp_sdl.c

@@ -1,0 +1,1 @@
+Enter in clic_sur_le_bouton_quitter ();

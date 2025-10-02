@@ -6,7 +6,7 @@ static SDL_Texture *case_sdl_create_texture (t_case_sdl *case_sdl, SDL_Renderer 
 static void case_sdl_update (t_widget_sdl *widget, void *userdata);
 
 t_case_sdl*
-case_sdl_new (SDL_Rect size) {
+case_sdl_new (SDL_Rect size, t_logs *logs) {
   t_case_sdl *case_sdl = malloc (sizeof(t_case_sdl));
 
   if (case_sdl == NULL) {
@@ -14,7 +14,7 @@ case_sdl_new (SDL_Rect size) {
     return NULL;
   }
 
-  case_sdl->widget = widget_sdl_new ();
+  case_sdl->widget = widget_sdl_new (logs);
   if (case_sdl->widget == NULL) {
     case_sdl_free ((void**)case_sdl);
     return NULL;

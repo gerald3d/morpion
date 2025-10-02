@@ -34,7 +34,7 @@ struct t_state_button_sdl {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_state_button_sdl *state_button_sdl_new (SDL_Rect size);
+t_state_button_sdl *state_button_sdl_new (SDL_Rect size, t_logs *logs);
 
 /*! \private
  * \brief Destructeur de l'objet t_state_button_sdl.

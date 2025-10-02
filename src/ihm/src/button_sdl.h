@@ -50,7 +50,7 @@ struct t_button_sdl {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_button_sdl *button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Rect size);
+t_button_sdl *button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Rect size, t_logs *logs);
 
 /*! \private
  * \brief Destructeur de l'objet t_button_sdl.

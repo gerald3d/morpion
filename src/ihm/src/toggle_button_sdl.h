@@ -31,7 +31,7 @@ struct t_toggle_button_sdl {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_toggle_button_sdl *toggle_button_sdl_new (SDL_Rect size);
+t_toggle_button_sdl *toggle_button_sdl_new (SDL_Rect size, t_logs *logs);
 
 /*! \private
  * \brief Destructeur de l'objet t_toggle_button_sdl.

@@ -7,16 +7,17 @@ static void button_sdl_update (t_widget_sdl *widget, void *userdata);
 
 
 t_button_sdl*
-button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Rect size) {
+button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Rect size, t_logs *logs) {
   /* Tentative d'allocation d'un nouveau t_button_sdl */
   t_button_sdl *button = malloc (sizeof(t_button_sdl));
 
   if (button == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : erreur d'allocation mémoire de *button.\n", __func__);
+		FILE *error = logs_descripteur_fichier (logs, LOG_ERROR);
+    fprintf (error, "Erreur dans %s(); : erreur d'allocation mémoire de *button.\n", __func__);
     return NULL;
   }
 
-  button->widget = widget_sdl_new ();
+  button->widget = widget_sdl_new (logs);
   if (button->widget == NULL) {
     button_sdl_free ((void**)button);
     return NULL;

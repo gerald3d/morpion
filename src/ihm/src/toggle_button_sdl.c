@@ -4,12 +4,12 @@ static void toggle_button_sdl_update (t_widget_sdl *widget, void *userdata);
 static void toggle_button_sdl_clic_callback (t_state_button_sdl *button, void *userdata);
 
 t_toggle_button_sdl*
-toggle_button_sdl_new (SDL_Rect size) {
+toggle_button_sdl_new (SDL_Rect size, t_logs *logs) {
   t_toggle_button_sdl *toggle_button = malloc (sizeof (t_toggle_button_sdl));
   if (toggle_button == NULL)
     return NULL;
 
-  toggle_button->widget = widget_sdl_new ();
+  toggle_button->widget = widget_sdl_new (logs);
   if (toggle_button->widget == NULL) {
     toggle_button_sdl_free ((void**)toggle_button);
     return NULL;
@@ -28,7 +28,7 @@ toggle_button_sdl_new (SDL_Rect size) {
   widget_sdl_set_color (toggle_button->widget, (SDL_Color){0, 0, 0, 0}, ACTIVE);
 
   SDL_Rect button1_size = (SDL_Rect){size.x, size.y, size.w/2, size.h};
-  toggle_button->button1 = state_button_sdl_new (button1_size);
+  toggle_button->button1 = state_button_sdl_new (button1_size, logs);
   if (toggle_button->button1 == NULL) {
   	t_widget_sdl *widget = state_button_sdl_get_widget (toggle_button->button1);
     widget_sdl_free(&widget);
@@ -42,7 +42,7 @@ toggle_button_sdl_new (SDL_Rect size) {
   state_button_sdl_set_active (toggle_button->button1, true);
 
   SDL_Rect button2_size = (SDL_Rect){size.x+size.w/2, size.y, size.w/2, size.h};
-  toggle_button->button2 = state_button_sdl_new (button2_size);
+  toggle_button->button2 = state_button_sdl_new (button2_size, logs);
   if (toggle_button->button2 == NULL) {
 		t_widget_sdl *widget = state_button_sdl_get_widget(toggle_button->button1);
     widget_sdl_free(&widget);

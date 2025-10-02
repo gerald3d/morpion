@@ -4,7 +4,7 @@ static bool widget_sdl_pt_is_in_rect (int x, int y, SDL_Rect *rect);
 static void widget_sdl_set_pointer_position (t_widget_sdl *widget, int x, int y);
 
 t_widget_sdl*
-widget_sdl_new () {
+widget_sdl_new (t_logs *logs) {
   t_widget_sdl *widget = malloc (sizeof(t_widget_sdl));
 
   if (widget == NULL) {
@@ -13,6 +13,7 @@ widget_sdl_new () {
   }
 
   widget->renderer = NULL;
+  widget->logs = logs;
   widget->tooltip = NULL;
 
   widget->cursor = NULL;

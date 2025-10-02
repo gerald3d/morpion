@@ -420,6 +420,7 @@ void clic_sur_un_bouton_a_bascule (t_toggle_button_sdl *toggle_button, void *use
 
 static void
 creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
+	t_logs *logs = ihm_sdl->logs;
   int nbre_casex = taille;
   int nbre_casey = taille;
 
@@ -437,7 +438,7 @@ creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
 
   for (int i = 0; i < nbre_casey; i++) {
     for (int j = 0; j < nbre_casex; j++) {
-      case_sdl[j + i*nbre_casex] = case_sdl_new ((SDL_Rect){j*dim_casex, i*dim_casey, dim_casex, dim_casey});
+      case_sdl[j + i*nbre_casex] = case_sdl_new ((SDL_Rect){j*dim_casex, i*dim_casey, dim_casex, dim_casey}, logs);
       case_sdl[j + i*nbre_casex]->type_de_case = VIDE;
 
        /* Changement de la couleur de fond par défaut */
@@ -469,12 +470,12 @@ creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
 
 t_ihm_sdl*
 creation_interface (t_morp_sdl *morp_sdl) {
-  t_ihm_sdl *ihm_sdl = ihm_sdl_new (morp_sdl->renderer);
+  t_ihm_sdl *ihm_sdl = ihm_sdl_new (morp_sdl->renderer, morp_sdl->logs);
   if (ihm_sdl == NULL)
     return NULL;
 
  /* Création d'un bouton Nouveau */
-  t_button_sdl *bouton_nouveau = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 50, 150, 40});
+  t_button_sdl *bouton_nouveau = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 50, 150, 40}, morp_sdl->logs);
   button_sdl_set_text (bouton_nouveau, "Nouveau", TTF_STYLE_NORMAL);
   /* Affectation d'un callback lors du clic de la souris sur le bouton.
    * Pour l'exemple on attache un texte à la donnée personnelle */
@@ -493,7 +494,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création du bouton Annuler */
-  t_button_sdl *bouton_annuler = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 150, 150, 40});
+  t_button_sdl *bouton_annuler = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 150, 150, 40}, morp_sdl->logs);
   button_sdl_set_text (bouton_annuler, "Annuler", TTF_STYLE_NORMAL);
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_annuler), clic_sur_le_bouton_annuler, NULL);
@@ -510,7 +511,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création du bouton CoudPous */
-  t_button_sdl *bouton_coudpous = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 190, 150, 40});
+  t_button_sdl *bouton_coudpous = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 190, 150, 40}, morp_sdl->logs);
   button_sdl_set_text (bouton_coudpous, "CoudPous", TTF_STYLE_NORMAL);
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_coudpous), clic_sur_le_bouton_coudpous, NULL);
@@ -528,7 +529,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création d'un bouton pour l'outil de configuration de la taille du plateau */
-  t_button_sdl *bouton_size_config = button_sdl_new (IMAGE, NULL, (SDL_Rect){630, 420, 150, 40});
+  t_button_sdl *bouton_size_config = button_sdl_new (IMAGE, NULL, (SDL_Rect){630, 420, 150, 40}, morp_sdl->logs);
   button_sdl_set_image_from_file (bouton_size_config, "ihm/images/config_size_3.png");
 
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
@@ -554,7 +555,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création du bouton Tournoi */
-  t_button_sdl *bouton_tournoi = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 350, 150, 40});
+  t_button_sdl *bouton_tournoi = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 350, 150, 40}, morp_sdl->logs);
   button_sdl_set_text (bouton_tournoi, "Tournoi", TTF_STYLE_NORMAL);
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_tournoi), clic_sur_le_bouton_tournoi, NULL);
@@ -571,7 +572,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création de deux boutons à bascule pour choisir les adversaires */
-  t_toggle_button_sdl *left_toogle_button = toggle_button_sdl_new ((SDL_Rect){650, 390, 40, 20});
+  t_toggle_button_sdl *left_toogle_button = toggle_button_sdl_new ((SDL_Rect){650, 390, 40, 20}, morp_sdl->logs);
 
   /* Récupération des deux boutons pour configuration */
   t_state_button_sdl *button1 = toggle_button_sdl_get_state_button (left_toogle_button, BUTTON1);
@@ -590,7 +591,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Insertion du bouton à bascule dans l'ihm */
   ihm_sdl_widget_append (ihm_sdl, toggle_button_sdl_get_widget (left_toogle_button));
 
-  t_toggle_button_sdl *right_toogle_button = toggle_button_sdl_new ((SDL_Rect){720, 390, 40, 20});
+  t_toggle_button_sdl *right_toogle_button = toggle_button_sdl_new ((SDL_Rect){720, 390, 40, 20}, morp_sdl->logs);
 
   /* Récupération des deux boutons pour configuration */
   button1 = toggle_button_sdl_get_state_button (right_toogle_button, BUTTON1);
@@ -612,7 +613,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création du bouton Quitter */
-  t_button_sdl *bouton_quitter = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 500, 150, 40});
+  t_button_sdl *bouton_quitter = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 500, 150, 40}, morp_sdl->logs);
   button_sdl_set_text (bouton_quitter, "quitter", TTF_STYLE_NORMAL);
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_quitter), clic_sur_le_bouton_quitter, NULL);

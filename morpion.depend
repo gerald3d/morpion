@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1759248751 source:e:\projets windows\morpion\src\affichage.c
+1759395552 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
 
@@ -53,12 +53,13 @@
 	<SDL2/SDL_mixer.h>
 	"logs.h"
 
-1758978602 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
+1759395525 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_mixer.h>
+	"../../logs.h"
 	"widget_sdl.h"
 	"tooltip_sdl.h"
 	"button_sdl.h"
@@ -68,18 +69,19 @@
 	"game_config_sdl.h"
 	"case_sdl.h"
 
-1759389267 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+1759395625 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_mixer.h>
+	"../../logs.h"
 	"define_sdl.h"
 	"tooltip_sdl.h"
 	"chain_list.h"
 
 1758785754 e:\projets windows\morpion\src\ihm\src\define_sdl.h
 
-1758978611 e:\projets windows\morpion\src\ihm\src\tooltip_sdl.h
+1759393681 e:\projets windows\morpion\src\ihm\src\tooltip_sdl.h
 	<stdio.h>
 	<string.h>
 	<stdbool.h>
@@ -93,27 +95,27 @@
 	<stdio.h>
 	<stdlib.h>
 
-1759390287 e:\projets windows\morpion\src\ihm\src\button_sdl.h
+1759395807 e:\projets windows\morpion\src\ihm\src\button_sdl.h
 	<string.h>
 	"widget_sdl.h"
 
-1759391737 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
+1759396114 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
 	"widget_sdl.h"
 	"state_button_sdl.h"
 
-1759392808 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
+1759396053 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
 	"state_button_sdl.h"
 
-1758785162 e:\projets windows\morpion\src\ihm\src\dialog_sdl.h
+1759395911 e:\projets windows\morpion\src\ihm\src\dialog_sdl.h
 	<string.h>
 	"widget_sdl.h"
 	"button_sdl.h"
 	"game_config_sdl.h"
 
-1758531770 e:\projets windows\morpion\src\ihm\src\game_config_sdl.h
+1759396002 e:\projets windows\morpion\src\ihm\src\game_config_sdl.h
 	"widget_sdl.h"
 
-1759391318 e:\projets windows\morpion\src\ihm\src\case_sdl.h
+1759395860 e:\projets windows\morpion\src\ihm\src\case_sdl.h
 	"widget_sdl.h"
 
 1756018989 e:\projets windows\morpion\src\ia.h
@@ -134,19 +136,19 @@
 1756018986 source:e:\projets windows\morpion\src\ia.c
 	"Main.h"
 
-1759390287 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
+1759395807 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
 	"button_sdl.h"
 
-1759391556 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
+1759395860 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
 	"case_sdl.h"
 
 1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
 	"chain_list.h"
 
-1759393160 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
+1759396017 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
 	"dialog_sdl.h"
 
-1759247977 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
+1759395982 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
 	"game_config_sdl.h"
 
 1758197693 source:e:\projets windows\morpion\src\instruction.c
@@ -158,7 +160,7 @@
 1756018967 source:e:\projets windows\morpion\src\logs.c
 	"logs.h"
 
-1759247734 source:e:\projets windows\morpion\src\main.c
+1759395179 source:e:\projets windows\morpion\src\main.c
 	"Main.h"
 
 1758290677 source:e:\projets windows\morpion\src\morp_sdl.c
@@ -173,7 +175,7 @@
 1755448521 source:e:\projets windows\morpion\src\tournoi.c
 	"Main.h"
 
-1758455318 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+1759395503 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
 	"ihm_sdl.h"
 
 1757862470 c:\msys64\mingw64\include\stdio.h
@@ -780,15 +782,15 @@
 
 1757865448 c:\msys64\mingw64\include\pthread_compat.h
 
-1759392891 source:e:\projets windows\morpion\src\ihm\src\state_button_sdl.c
+1759396114 source:e:\projets windows\morpion\src\ihm\src\state_button_sdl.c
 	"state_button_sdl.h"
 
-1758446620 source:e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.c
+1759396147 source:e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.c
 	"toggle_button_sdl.h"
 
 1758523702 source:e:\projets windows\morpion\src\ihm\src\tooltip_sdl.c
 	"tooltip_sdl.h"
 
-1759389596 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
+1759395658 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
 	"widget_sdl.h"
 

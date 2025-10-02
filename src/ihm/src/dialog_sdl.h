@@ -41,7 +41,7 @@ struct t_dialog_sdl {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_dialog_sdl *dialog_sdl_new (SDL_Rect size);
+t_dialog_sdl *dialog_sdl_new (SDL_Rect size, t_logs *logs);
 
 /*!
  * \brief Destructeur de l'objet t_dialog_sdl.

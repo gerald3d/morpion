@@ -1,12 +1,12 @@
 #include "ihm_sdl.h"
 
 t_ihm_sdl*
-ihm_sdl_new (SDL_Renderer *renderer) {
+ihm_sdl_new (SDL_Renderer *renderer, t_logs *logs) {
   if (renderer == NULL) {
     fprintf (stderr, "Erreur dans %s(); : renderder ne doit pas être NULL.\n", __func__);
     return NULL;
   }
-  
+
   t_ihm_sdl *ihm_sdl = malloc (sizeof (t_ihm_sdl));
 
   if (ihm_sdl == NULL) {
@@ -15,6 +15,7 @@ ihm_sdl_new (SDL_Renderer *renderer) {
   }
 
   ihm_sdl->renderer = renderer;
+  ihm_sdl->logs = logs;
   ihm_sdl->widget_list = NULL;
   ihm_sdl->insensible_widgets_list = NULL;
 
@@ -33,9 +34,19 @@ ihm_sdl_free (t_ihm_sdl **ihm_sdl) {
     return;
   }
 
-  if ((*ihm_sdl)->widget_list)
+  if ((*ihm_sdl)->widget_list) {
+		t_liste *liste_tmp = (*ihm_sdl)->widget_list;
+		t_widget_sdl *widget = NULL;
+		while (liste_tmp) {
+			widget = (t_widget_sdl*)liste_tmp->donnee;
+			widget_sdl_free(&widget);
+fprintf (stdout, "destruction du widget\n");
+			liste_tmp = liste_tmp->suivant;
+		}
+
     liste_liberation (&(*ihm_sdl)->widget_list);
-  
+  }
+
   if ((*ihm_sdl)->insensible_widgets_list)
     liste_liberation (&(*ihm_sdl)->insensible_widgets_list);
 
@@ -81,7 +92,7 @@ ihm_get_widget_list (t_ihm_sdl *ihm_sdl) {
   }
 
  return ihm_sdl->widget_list;
-  
+
 }
 
 void
@@ -95,10 +106,10 @@ ihm_sdl_set_events (t_ihm_sdl *ihm_sdl, SDL_Event *event) {
   t_widget_sdl *widget;
   while (liste_tmp) {
     widget = (t_widget_sdl*)liste_tmp->donnee;
-   
+
     if (widget_sdl_is_visible (widget) == true)
       widget_sdl_set_events (widget, event);
- 
+
     liste_tmp = liste_tmp->suivant;
   }
 }
@@ -121,33 +132,33 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
   liste_tmp = ihm_sdl->widget_list;
   while (liste_tmp) {
     widget = (t_widget_sdl*)liste_tmp->donnee;
-   
+
     if (widget_sdl_is_visible (widget) == true) {
       if (widget->activate == true && widget->sensitive == true)
-	widget_cursor_change = widget;
+				widget_cursor_change = widget;
 
       if (widget_sdl_is_modale (widget))
-	modale_widget = widget;
-      
+				modale_widget = widget;
+
       /* Si des widgets enfants sont incorporés */
       t_liste *list = NULL;
       if ((list = widget_sdl_get_child_widgets_list (widget))) {
-	while (list) {
-	  t_widget_sdl *child = (t_widget_sdl*)list->donnee;
-	    
-	  if (child->activate == true) {
-	    widget_cursor_change = child;
-	    /* printf ("un widget enfant est trouvé: %p\n", widget_cursor_change); */
-	  }
+				while (list) {
+	  			t_widget_sdl *child = (t_widget_sdl*)list->donnee;
 
-	  if (widget_sdl_is_modale (child) && widget_sdl_is_visible (child))
-	    modale_widget = child;
- 
-	  list = list->suivant;
-	}
+	  			if (child->activate == true) {
+	    			widget_cursor_change = child;
+	    			/* printf ("un widget enfant est trouvé: %p\n", widget_cursor_change); */
+	  			}
+
+	  			if (widget_sdl_is_modale (child) && widget_sdl_is_visible (child))
+	   				 modale_widget = child;
+
+	 					 list = list->suivant;
+				}
       }
     }
- 
+
     liste_tmp = liste_tmp->suivant;
   }
 
@@ -161,15 +172,15 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
     if (ihm_sdl->insensible_widgets_list == NULL) { // C'est la première fois qu'un widget est modale
       liste_tmp = ihm_sdl->widget_list;
       while (liste_tmp) {
-	widget = (t_widget_sdl*)liste_tmp->donnee;
-	if (widget != modale_widget) {
-	  /* Désactivation du widget */
-	  widget_sdl_set_sensitive (widget, false);
-	  /* Sauvegarde du widget dans la liste */
-	  ihm_sdl->insensible_widgets_list = liste_ajout_fin (ihm_sdl->insensible_widgets_list, widget);
-	}
+				widget = (t_widget_sdl*)liste_tmp->donnee;
+				if (widget != modale_widget) {
+					/* Désactivation du widget */
+					widget_sdl_set_sensitive (widget, false);
+					/* Sauvegarde du widget dans la liste */
+					ihm_sdl->insensible_widgets_list = liste_ajout_fin (ihm_sdl->insensible_widgets_list, widget);
+				}
 
-	liste_tmp = liste_tmp->suivant;
+				liste_tmp = liste_tmp->suivant;
       }
     }
   } else { // Réactivation si ce n'est déjà fait des autres widgets */
@@ -177,9 +188,9 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
       t_liste *list = ihm_sdl->insensible_widgets_list;
       t_widget_sdl *widget = NULL;
       while (list) {
-	widget = (t_widget_sdl*)list->donnee;
-	widget_sdl_set_sensitive (widget, true);
-	list = list->suivant;
+				widget = (t_widget_sdl*)list->donnee;
+				widget_sdl_set_sensitive (widget, true);
+				list = list->suivant;
       }
 
       /* Libération de la liste */
@@ -192,30 +203,30 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
   liste_tmp = ihm_sdl->widget_list;
   while (liste_tmp) {
     widget = (t_widget_sdl*)liste_tmp->donnee;
-   
+
     if (widget_sdl_is_visible (widget) == true) {
       /* Si le widget à afficher doit aussi afficher son tooltip le widget sera affiché en dernier */
       if (widget->tooltip && widget->activate)
-	widget_with_tooltip = widget;
+				widget_with_tooltip = widget;
       else if (widget != modale_widget || modale_widget == NULL) {
-	/* Affichage du widget principal */
-	widget_sdl_renderer_update (widget);
-	/* Si des widgets enfants sont incorporés -> affichage de ces derniers */
-	t_liste *list = NULL;
-	if ((list = widget_sdl_get_child_widgets_list (widget))) {
-	  while (list) {
-	    t_widget_sdl *child = (t_widget_sdl*)list->donnee;
-	    
-	    /* Transmission du renderer au widget */
-	    widget_sdl_set_renderer (child, ihm_sdl->renderer);
-	    /* Affichage des widgets enfants */
-	    widget_sdl_renderer_update (child);
-	    list = list->suivant;
-	  }
-	}
+				/* Affichage du widget principal */
+				widget_sdl_renderer_update (widget);
+				/* Si des widgets enfants sont incorporés -> affichage de ces derniers */
+				t_liste *list = NULL;
+				if ((list = widget_sdl_get_child_widgets_list (widget))) {
+					while (list) {
+						t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+						/* Transmission du renderer au widget */
+						widget_sdl_set_renderer (child, ihm_sdl->renderer);
+						/* Affichage des widgets enfants */
+						widget_sdl_renderer_update (child);
+						list = list->suivant;
+					}
+				}
       }
     }
- 
+
     liste_tmp = liste_tmp->suivant;
   }
 
@@ -227,14 +238,14 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
     t_liste *list = NULL;
     if ((list = widget_sdl_get_child_widgets_list (modale_widget))) {
       while (list) {
-	t_widget_sdl *child = (t_widget_sdl*)list->donnee;
-	    
-	/* Transmission du renderer au widget */
-	widget_sdl_set_renderer (child, ihm_sdl->renderer);
-	/* Affichage des widgets enfants */
-	widget_sdl_renderer_update (child);
-	list = list->suivant;
-      }
+				t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+				/* Transmission du renderer au widget */
+				widget_sdl_set_renderer (child, ihm_sdl->renderer);
+				/* Affichage des widgets enfants */
+				widget_sdl_renderer_update (child);
+				list = list->suivant;
+			}
     }
   }
 
@@ -242,18 +253,18 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
   if (widget_with_tooltip && widget_sdl_is_sensitive (widget_with_tooltip)) {
     /* Affichage du widget principal */
     widget_sdl_renderer_update (widget_with_tooltip);
-    
+
     /* Si des widgets enfants sont incorporés -> affichage de ces derniers */
     t_liste *list = NULL;
     if ((list = widget_sdl_get_child_widgets_list (widget_with_tooltip))) {
       while (list) {
-	t_widget_sdl *child = (t_widget_sdl*)list->donnee;
-	/* Affichage du child */
-	/* Transmission du renderer au widget */
-	widget_sdl_set_renderer (child, ihm_sdl->renderer);
-	widget_sdl_renderer_update (child);
+				t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+				/* Affichage du child */
+				/* Transmission du renderer au widget */
+				widget_sdl_set_renderer (child, ihm_sdl->renderer);
+				widget_sdl_renderer_update (child);
 
-	list = list->suivant;
+				list = list->suivant;
       }
     }
   }
@@ -262,7 +273,7 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
 
   /* int xmouse, ymouse; */
   /* SDL_GetMouseState(&xmouse, &ymouse); */
-    
+
   if (widget_cursor_change && widget_cursor_change->cursor) {
     int x, y;
     widget_sdl_get_mouse_position (widget_cursor_change, &x, &y);
@@ -276,7 +287,7 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
       fprintf(stderr, "Erreur dans %s(); : problème pour transformer la Surface en Texture : %s\n", __func__, SDL_GetError());
       return;
     }
- 
+
     /* Récupération de la taille de l'image du curseur */
     SDL_Rect pointer_size = {0, 0, 0, 0};
     SDL_QueryTexture(cursor, NULL, NULL, &pointer_size.w, &pointer_size.h);

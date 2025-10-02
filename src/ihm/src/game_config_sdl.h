@@ -5,7 +5,7 @@
 
 /*! \class t_game_config_sdl
     \brief Graphique de configuration de la taille du jeu.
-    
+
     Il permet d'afficher un repère gradué avec deux curseurs réglables.
 */
 
@@ -33,7 +33,7 @@ struct t_game_config_sdl {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_game_config_sdl *game_config_sdl_new (SDL_Rect size);
+t_game_config_sdl *game_config_sdl_new (SDL_Rect size, t_logs *logs);
 
 /*!
  * \brief Destructeur de l'objet t_game_config_sdl.

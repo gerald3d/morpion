@@ -1,2 +1,0 @@
-[../mpg123-1.33.2/src/libmpg123/id3.c:process_extra():689] error: No extra frame text / valid description?
-[../mpg123-1.33.2/src/libmpg123/id3.c:process_extra():689] error: No extra frame text / valid description?

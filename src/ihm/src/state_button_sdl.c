@@ -4,7 +4,7 @@ static SDL_Texture *state_button_sdl_create_texture (t_state_button_sdl *state_b
 static void state_button_changed_cb (t_state_button_sdl *state_button, void *userdata);
 
 t_state_button_sdl*
-state_button_sdl_new (SDL_Rect size) {
+state_button_sdl_new (SDL_Rect size, t_logs *logs) {
   t_state_button_sdl *state_button = malloc (sizeof(t_state_button_sdl));
 
   if (state_button == NULL) {
@@ -12,7 +12,7 @@ state_button_sdl_new (SDL_Rect size) {
     return NULL;
   }
 
-  state_button->widget = widget_sdl_new ();
+  state_button->widget = widget_sdl_new (logs);
   if (state_button->widget == NULL) {
     state_button_sdl_free ((void**)state_button);
     return NULL;

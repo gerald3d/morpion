@@ -29,7 +29,7 @@ typedef struct {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_case_sdl *case_sdl_new (SDL_Rect size);
+t_case_sdl *case_sdl_new (SDL_Rect size, t_logs *logs);
 
 /*! \private
  * \brief Destructeur de l'objet t_case_sdl.

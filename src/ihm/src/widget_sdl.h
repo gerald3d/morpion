@@ -6,6 +6,7 @@
 #include <SDL2/SDL_ttf.h> // Pour utiliser les polices avec la SDL
 #include <SDL2/SDL_mixer.h> // Pour utiliser les sons avec la SDL
 
+#include "../../logs.h"
 #include "define_sdl.h"
 #include "tooltip_sdl.h"
 #include "chain_list.h"
@@ -33,6 +34,7 @@ typedef struct t_widget_sdl t_widget_sdl;
  */
 struct t_widget_sdl {
   SDL_Renderer *renderer;
+  t_logs *logs;
   SDL_Surface *cursor;
   void *widget_child;                // pointeur sur le widget enfant qui implémente le widget actuel du type spécifique au widget enfant
   void (*destroy_widget_child_fct)(void **widget_whild); // Pointeur sur la fonction spécifique de destruction du widget enfant
@@ -97,7 +99,7 @@ typedef struct {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_widget_sdl *widget_sdl_new ();
+t_widget_sdl *widget_sdl_new (t_logs *logs);
 
 /*!
  * \brief Destructeur de l'objet t_widget_sdl.

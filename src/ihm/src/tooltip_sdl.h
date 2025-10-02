@@ -38,7 +38,7 @@ typedef struct {
  */
 t_tooltip_sdl *tooltip_sdl_new (const char* text);
 
-/*!
+/*! \private
  * \brief Destructeur de l'objet t_tooltip_sdl.
  * @param tooltip pointeur de l'adresse de l'objet à détruire.
  *

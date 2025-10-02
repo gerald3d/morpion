@@ -6,7 +6,7 @@ static void game_config_sdl_update (t_widget_sdl *widget, void *userdata);
 
 
 t_game_config_sdl*
-game_config_sdl_new (SDL_Rect size) {
+game_config_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Tentative d'allocation d'un nouveau t_game_config_sdl */
   t_game_config_sdl *game_config = malloc (sizeof(t_game_config_sdl));
 
@@ -15,7 +15,7 @@ game_config_sdl_new (SDL_Rect size) {
     return NULL;
   }
 
-  game_config->widget = widget_sdl_new ();
+  game_config->widget = widget_sdl_new (logs);
   if (game_config->widget == NULL) {
     game_config_sdl_free (&game_config);
     return NULL;

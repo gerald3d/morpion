@@ -7,6 +7,7 @@
 #include <SDL2/SDL_ttf.h> // Pour utiliser les polices avec la SDL
 #include <SDL2/SDL_mixer.h> // Pour utiliser les sons avec la SDL
 
+#include "../../logs.h"
 #include "widget_sdl.h"
 #include "tooltip_sdl.h"
 #include "button_sdl.h"
@@ -29,6 +30,7 @@
  */
 typedef struct {
   SDL_Renderer *renderer;
+  t_logs *logs;
   t_liste *widget_list;             // Liste de tous les widgets contenus dans l'interface
   t_liste *insensible_widgets_list; // Liste des widgets désactivés lorsque l'un d'entre-eux et modale
 } t_ihm_sdl;
@@ -40,7 +42,7 @@ typedef struct {
  *
  * Le constructeur renvoie NULL en cas d'erreur.
  */
-t_ihm_sdl *ihm_sdl_new (SDL_Renderer *renderer);
+t_ihm_sdl *ihm_sdl_new (SDL_Renderer *renderer, t_logs *logs);
 
 /*!
  * \brief Destructeur de l'objet t_ihm_sdl.

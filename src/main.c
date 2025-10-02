@@ -70,7 +70,8 @@ int main(int argc, char **argv)
 freopen("debug_error_logs.txt","w",stderr);
 /* Rédirection du canal stdout dans standard_logs.txt */
 freopen("debug_standard_logs.txt","w",stdout);
-
+fprintf(stderr, "Test du fichier error\n");
+fprintf(stdout, "Test du fichier standard\n");
   /* Initialisation des logs */
   t_logs *logs = logs_init (NULL, NULL);
   if (logs == NULL)

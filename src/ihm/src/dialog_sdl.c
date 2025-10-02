@@ -4,7 +4,7 @@ static void dialog_sdl_update (t_widget_sdl *widget, void *userdata);
 static void dialog_sdl_close_button_clic_callback (t_button_sdl *close_button, void *userdata);
 
 t_dialog_sdl*
-dialog_sdl_new (SDL_Rect size) {
+dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Tentative d'allocation d'un nouveau t_dialog_sdl */
   t_dialog_sdl *dialog = malloc (sizeof(t_dialog_sdl));
 
@@ -13,7 +13,7 @@ dialog_sdl_new (SDL_Rect size) {
     return NULL;
   }
 
-  dialog->widget = widget_sdl_new ();
+  dialog->widget = widget_sdl_new (logs);
   if (dialog->widget == NULL) {
     dialog_sdl_free (&dialog);
     return NULL;
@@ -34,7 +34,7 @@ dialog_sdl_new (SDL_Rect size) {
   dialog->surface = NULL;
 
   /* Ajout du bouton de fermeture en haut à droite */
-  dialog->close_button = button_sdl_new (IMAGE, NULL, (SDL_Rect){size.x + size.w - 30, size.y, 30, 30});
+  dialog->close_button = button_sdl_new (IMAGE, NULL, (SDL_Rect){size.x + size.w - 30, size.y, 30, 30}, logs);
   if (dialog->close_button == NULL) {
     dialog_sdl_free (&dialog);
     return NULL;
@@ -63,7 +63,7 @@ dialog_sdl_new (SDL_Rect size) {
     return NULL;
   }
 
-  dialog->annul_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 170, size.y + size.h - 30, 80, 20});
+  dialog->annul_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 170, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->annul_button == NULL) {
     dialog_sdl_free (&dialog);
     return NULL;
@@ -82,7 +82,7 @@ dialog_sdl_new (SDL_Rect size) {
 				      dialog_sdl_close_button_clic_callback, dialog);
 
   /* Ajout du bouton Valider  */
-  dialog->valid_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 85, size.y + size.h - 30, 80, 20});
+  dialog->valid_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 85, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->valid_button == NULL) {
     dialog_sdl_free (&dialog);
     return NULL;
@@ -103,7 +103,7 @@ dialog_sdl_new (SDL_Rect size) {
   int config_width = 210;
   int config_height = 210;
   dialog->game_config = game_config_sdl_new ((SDL_Rect){size.x + size.w / 2 - config_width /2, size.y + size.h / 2 - config_height / 2,
-							config_width, config_height});
+							config_width, config_height}, logs);
   if (dialog->game_config == NULL) {
     dialog_sdl_free (&dialog);
     return NULL;

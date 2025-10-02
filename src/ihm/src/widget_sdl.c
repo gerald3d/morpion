@@ -18,6 +18,7 @@ widget_sdl_new () {
   widget->cursor = NULL;
 
   widget->widget_child = NULL;
+  widget->destroy_widget_child_fct = NULL;
   widget->child_widget_list = NULL;
 
   widget->create_texture_cb = NULL;
@@ -32,14 +33,14 @@ widget_sdl_new () {
 
   widget->couleur_fond = couleur_fond_sdl;
   widget->couleur_cadre = couleur_cadre_sdl;
-  widget->couleur_active = couleur_active_sdl;		   
+  widget->couleur_active = couleur_active_sdl;
   widget->couleur_insensible = couleur_insensible_sdl;
 
   widget->activate = false;
   widget->sensitive = true;
   widget->visible = true;
   widget->modale = false;
-  
+
   return widget;
 }
 
@@ -85,10 +86,16 @@ widget_sdl_free (t_widget_sdl **widget) {
     liste_liberation (&(*widget)->mouse_on_cb_list);
   }
 
+  if ((*widget)->destroy_widget_child_fct)
+    (*widget)->destroy_widget_child_fct (&(*widget)->widget_child);
+
   if ((*widget)->child_widget_list) {
     t_liste *liste = (*widget)->child_widget_list;
     while (liste) {
       t_widget_sdl *child = (t_widget_sdl*)liste->donnee;
+      if (child->destroy_widget_child_fct)
+        child->destroy_widget_child_fct (&child->widget_child);
+
       widget_sdl_free (&child);
       liste = liste->suivant;
     }
@@ -153,7 +160,7 @@ widget_sdl_renderer_update (t_widget_sdl *widget) {
   SDL_SetRenderDrawColor(widget->renderer, widget->couleur_cadre.r, widget->couleur_cadre.g,
 			 widget->couleur_cadre.b, widget->couleur_cadre.a);
   SDL_RenderDrawRect(widget->renderer, &widget->actual_size);
-  
+
   /* Affichage du tooltip s'il est présent */
   if (widget->activate == true) {
     if (widget->tooltip && widget->activate) {
@@ -250,18 +257,18 @@ widget_sdl_get_size (t_widget_sdl *widget, SDL_Rect *size) {
   if (widget == NULL) {
     fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
     return false;
-  } 
+  }
 
   if (size == NULL) {
     fprintf (stderr, "Erreur dans %s(); : size ne doit pas être NULL.\n", __func__);
     return false;
   }
- 
+
   size->x = widget->actual_size.x;
   size->y = widget->actual_size.y;
   size->w = widget->actual_size.w;
   size->h = widget->actual_size.h;
-  
+
   return true;
 }
 
@@ -270,7 +277,7 @@ widget_sdl_set_modale (t_widget_sdl *widget, bool modale) {
   if (widget == NULL) {
     fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
     return;
-  } 
+  }
 
   widget->modale = modale;
 }
@@ -296,7 +303,7 @@ widget_sdl_set_position (t_widget_sdl *widget, int x, int y){
   widget->original_size.y = y;
   widget->actual_size.x = x;
   widget->actual_size.y = y;
-  
+
 }
 
 void
@@ -450,7 +457,7 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
 
     /* Mise à jour de la position de la souris */
     widget_sdl_mouse_motion_update (widget, event);
-    
+
     break;
   case SDL_MOUSEBUTTONUP :
     {
@@ -465,7 +472,7 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
 	}
       }
        widget_sdl_mouse_button_up_update (widget, event);
-     
+
       break;
     }
   default :
@@ -518,7 +525,7 @@ widget_sdl_set_color (t_widget_sdl *widget, SDL_Color color, WIDGET_SDL_TYPE_OF_
   case CADRE :
     widget->couleur_cadre = color;
     break;
-    
+
   case ACTIVE :
     widget->couleur_active = color;
     break;
@@ -546,7 +553,7 @@ widget_sdl_get_color (t_widget_sdl *widget, WIDGET_SDL_TYPE_OF_COLOR type_of_col
 
   case CADRE :
     return &widget->couleur_cadre;
-    
+
   case ACTIVE :
     return &widget->couleur_active;
 
@@ -580,10 +587,10 @@ widget_sdl_set_tooltip (t_widget_sdl *widget, const char *text) {
   if (widget->tooltip) {
     tooltip_sdl_free (&widget->tooltip);
   }
-  
+
   if (text == NULL)
     return;
-  
+
   widget->tooltip = tooltip_sdl_new (text);
 }
 
@@ -649,7 +656,7 @@ widget_sdl_get_user_data (t_widget_sdl *widget, const char *name) {
     fprintf (stderr, "Aucune donnée personnelle est attachée au widget.\n");
     return NULL;
   }
-  
+
   t_liste *list = widget->userdata;
   while (list) {
     t_userdata *data = (t_userdata*)list->donnee;
@@ -660,7 +667,7 @@ widget_sdl_get_user_data (t_widget_sdl *widget, const char *name) {
   }
 
   fprintf (stderr, "La donnée \"%s\" n'a pas été trouvée.\n", name);
-  
+
   return NULL;
 }
 
@@ -675,11 +682,11 @@ widget_sdl_set_cursor_from_file (t_widget_sdl *widget, const char *file)
   if (file == NULL) {
     if (widget->cursor)
       SDL_FreeSurface (widget->cursor);
-    
+
     widget->cursor = NULL;
     return true;
   }
-  
+
   widget->cursor = IMG_Load(file);
 
   if( widget->cursor==NULL) {//si image non chargée

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1759247512 source:e:\projets windows\morpion\src\affichage.c
+1759248751 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
 
@@ -68,7 +68,7 @@
 	"game_config_sdl.h"
 	"case_sdl.h"
 
-1758978582 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+1759389267 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>

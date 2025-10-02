@@ -34,8 +34,9 @@ typedef struct t_widget_sdl t_widget_sdl;
 struct t_widget_sdl {
   SDL_Renderer *renderer;
   SDL_Surface *cursor;
-  void *widget_child;                // pointeur sur le widget enfant qui implémente le widget actuel
-  t_liste *child_widget_list;        // Liste des widgets enfants incorporés dans ce widget (contient des pointerus de type t_widget_sdl)
+  void *widget_child;                // pointeur sur le widget enfant qui implémente le widget actuel du type spécifique au widget enfant
+  void (*destroy_widget_child_fct)(void **widget_whild); // Pointeur sur la fonction spécifique de destruction du widget enfant
+  t_liste *child_widget_list;        // Liste des widgets enfants incorporés dans ce widget (contient des pointeurs de type t_widget_sdl)
   int x, y;                          // position de la souris
   SDL_Color couleur_fond;            // Couleur noire transparente
   SDL_Color couleur_active;          // Couleur grise à moitié transparente

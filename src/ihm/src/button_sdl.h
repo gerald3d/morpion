@@ -52,13 +52,13 @@ struct t_button_sdl {
  */
 t_button_sdl *button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Rect size);
 
-/*!
+/*! \private
  * \brief Destructeur de l'objet t_button_sdl.
  * @param button Pointeur de l'adresse de l'objet à détruire.
  *
  * Le pointeur vaut NULL au retour de la fonction.
  */
-void button_sdl_free (t_button_sdl **button);
+void button_sdl_free (void **button);
 
 /*! \private
  * \brief Renvoie le widget parent.

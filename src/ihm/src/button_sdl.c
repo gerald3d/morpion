@@ -18,13 +18,16 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
 
   button->widget = widget_sdl_new ();
   if (button->widget == NULL) {
-    button_sdl_free (&button);
+    button_sdl_free ((void**)button);
     return NULL;
   }
 
   /* Affectation du pointeur de l'objet à l'objet parent */
   button->widget->widget_child = button;
-  
+
+  /* Affectation de la fonction de destruction du bouton au widget */
+  button->widget->destroy_widget_child_fct = button_sdl_free;
+
   widget_sdl_set_size (button->widget, &size.x, &size.y, &size.w, &size.h);
 
   button->font = font;
@@ -34,13 +37,13 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
     button->button_type = type_de_bouton;
   else {
     fprintf (stderr, "Erreur dans %s(); : type__de_bouton doit avoir la valeur TEXTE ou IMAGE.\n", __func__);
-    button_sdl_free (&button);
+    button_sdl_free ((void**)button);
     return NULL;
   }
 
   if (type_de_bouton == TEXTE && font == NULL) {
     fprintf (stderr, "Erreur dans %s(); : font ne doit pas être NULL.\n", __func__);
-    button_sdl_free (&button);
+    button_sdl_free ((void**)button);
     return NULL;
   }
 
@@ -51,18 +54,18 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
   button->userdata = NULL;
 
   button->couleur_text = (SDL_Color){0, 0, 0, 255};
- 
+
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (button->widget, button_sdl_update, button);
 
   /* Affectation du callback lorsque la souris est sur le bouton. Permet de changer le style de la font */
   /* widget_sdl_set_mouse_on_callback (button->widget, button_sdl_mouse_in, NULL); */
-  
+
   return button;
 }
 
 void
-button_sdl_free (t_button_sdl **button) {
+button_sdl_free (void **button) {
   if (button == NULL) {
     fprintf (stderr, "Erreur dans %s(); : **button ne doit pas être NULL.\n", __func__);
     return;
@@ -73,21 +76,22 @@ button_sdl_free (t_button_sdl **button) {
     return;
   }
 
-  if ((*button)->widget)
-    widget_sdl_free (&(*button)->widget);
-  
-  if ((*button)->text)
-    free ((*button)->text);
+  t_button_sdl *intern_button = *button;
+//  if (intern_button->widget)
+//    widget_sdl_free (&intern_button->widget);
 
-  if ((*button)->surface)
-    SDL_FreeSurface ((*button)->surface);
+  if (intern_button->text)
+    free (intern_button->text);
 
-  if ((*button)->image)
-    SDL_FreeSurface ((*button)->image);
+  if (intern_button->surface)
+    SDL_FreeSurface (intern_button->surface);
 
-  free (*button);
+  if (intern_button->image)
+    SDL_FreeSurface (intern_button->image);
 
-  *button = NULL;
+  free (intern_button);
+
+  intern_button = NULL;
 }
 
 t_widget_sdl*
@@ -114,7 +118,7 @@ button_sdl_set_image_from_file (t_button_sdl *button, const char *file) {
 
   if (button->image)
     SDL_FreeSurface (button->image);
-  
+
   button->image = IMG_Load(file);
   if(button->image==NULL) {
     fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
@@ -167,7 +171,7 @@ button_sdl_set_text (t_button_sdl *button, const char *text, int style) {
     button->text = strdup (" ");
   else
     button->text = strdup (text);
-  
+
   button->style = style;
 
   button_sdl_text_surface_new (button);
@@ -254,7 +258,7 @@ button_sdl_update (t_widget_sdl *widget, void *userdata) {
     button->style = TTF_STYLE_NORMAL;
     color = button->widget->couleur_fond;
   }
-  
+
   /* Remplissage du fond du bouton */
   SDL_SetRenderDrawColor(button->widget->renderer, color.r, color.g, color.b, color.a);
   SDL_RenderFillRect(widget_sdl_get_renderer (button->widget), &button->widget->actual_size);
@@ -263,7 +267,7 @@ button_sdl_update (t_widget_sdl *widget, void *userdata) {
   button_sdl_text_surface_new (button);
 
   SDL_Texture *texture = button_sdl_create_texture (button, widget_sdl_get_renderer (widget));
-						    
+
   /* Récupération de la texture du texte ou de l'image */
   if (texture == NULL)
     return;
@@ -275,7 +279,7 @@ button_sdl_update (t_widget_sdl *widget, void *userdata) {
   if (button->button_type == TEXTE) {
     SDL_Rect size;
     SDL_QueryTexture(texture, NULL, NULL, &size.w, &size.h);
- 
+
     /* Calcul de la position du texte (centré) dans le cadre */
     size.x = widget_size.x + widget_size.w/2 - size.w/2;
     size.y = widget_size.y + widget_size.h/2 - size.h/2;

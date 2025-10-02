@@ -139,14 +139,23 @@ dialog_sdl_free (t_dialog_sdl **dialog) {
   if ((*dialog)->game_config)
     game_config_sdl_free (&(*dialog)->game_config);
 
-  if ((*dialog)->close_button)
-    button_sdl_free (&(*dialog)->close_button);
+  if ((*dialog)->close_button) {
+		t_widget_sdl *widget = button_sdl_get_widget((*dialog)->close_button);
+    widget_sdl_free(&widget);
+//    button_sdl_free (&(*dialog)->close_button);
+  }
 
-  if ((*dialog)->valid_button)
-    button_sdl_free (&(*dialog)->valid_button);
+  if ((*dialog)->valid_button) {
+//    button_sdl_free (&(*dialog)->valid_button);
+    t_widget_sdl *widget = button_sdl_get_widget((*dialog)->valid_button);
+    widget_sdl_free(&widget);
+  }
 
-  if ((*dialog)->annul_button)
-    button_sdl_free (&(*dialog)->annul_button);
+  if ((*dialog)->annul_button) {
+  t_widget_sdl *widget = button_sdl_get_widget((*dialog)->annul_button);
+    widget_sdl_free(&widget);
+//    button_sdl_free (&(*dialog)->annul_button);
+  }
 
   if ((*dialog)->font)
     TTF_CloseFont((*dialog)->font);

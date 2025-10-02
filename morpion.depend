@@ -93,7 +93,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1758785301 e:\projets windows\morpion\src\ihm\src\button_sdl.h
+1759390287 e:\projets windows\morpion\src\ihm\src\button_sdl.h
 	<string.h>
 	"widget_sdl.h"
 
@@ -134,7 +134,7 @@
 1756018986 source:e:\projets windows\morpion\src\ia.c
 	"Main.h"
 
-1758368738 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
+1759390287 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
 	"button_sdl.h"
 
 1758359172 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
@@ -789,6 +789,6 @@
 1758523702 source:e:\projets windows\morpion\src\ihm\src\tooltip_sdl.c
 	"tooltip_sdl.h"
 
-1758533072 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
+1759389596 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
 	"widget_sdl.h"
 

@@ -130,8 +130,8 @@ dialog_sdl_free (t_dialog_sdl **dialog) {
     return;
   }
 
-  if ((*dialog)->widget)
-    widget_sdl_free (&(*dialog)->widget);
+//  if ((*dialog)->widget)
+//    widget_sdl_free (&(*dialog)->widget);
 
   if ((*dialog)->surface)
     SDL_FreeSurface ((*dialog)->surface);

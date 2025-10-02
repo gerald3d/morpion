@@ -33,13 +33,13 @@ struct t_toggle_button_sdl {
  */
 t_toggle_button_sdl *toggle_button_sdl_new (SDL_Rect size);
 
-/*!
+/*! \private
  * \brief Destructeur de l'objet t_toggle_button_sdl.
  * @param toggle_button Pointeur de l'adresse de l'objet à détruire.
  *
  * Le pointeur vaut NULL au retour de la fonction.
  */
-void toggle_button_sdl_free (t_toggle_button_sdl **toggle_button);
+void toggle_button_sdl_free (void **toggle_button);
 
 /*!
  * \brief Renvoie le bouton interne sélectionné.

@@ -21,7 +21,7 @@ state_button_sdl_new (SDL_Rect size) {
   /* Affectation du pointeur de l'objet à l'objet parent */
   state_button->widget->widget_child = state_button;
 
-  /* Affectation de la fonction de destruction de la case au widget */
+  /* Affectation de la fonction de destruction du state button au widget */
   state_button->widget->destroy_widget_child_fct = state_button_sdl_free;
 
   widget_sdl_set_size (state_button->widget, &size.x, &size.y, &size.w, &size.h);

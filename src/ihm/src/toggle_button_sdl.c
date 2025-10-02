@@ -11,13 +11,16 @@ toggle_button_sdl_new (SDL_Rect size) {
 
   toggle_button->widget = widget_sdl_new ();
   if (toggle_button->widget == NULL) {
-    toggle_button_sdl_free (&toggle_button);
+    toggle_button_sdl_free ((void**)toggle_button);
     return NULL;
   }
 
   /* Affectation du pointeur de l'objet à l'objet parent */
   toggle_button->widget->widget_child = toggle_button;
-  
+
+  /* Affectation de la fonction de destruction du toggle button au widget */
+  toggle_button->widget->destroy_widget_child_fct = toggle_button_sdl_free;
+
   widget_sdl_set_size (toggle_button->widget, &size.x, &size.y, &size.w, &size.h);
 
   /* Mise en transparence du widget */
@@ -27,7 +30,11 @@ toggle_button_sdl_new (SDL_Rect size) {
   SDL_Rect button1_size = (SDL_Rect){size.x, size.y, size.w/2, size.h};
   toggle_button->button1 = state_button_sdl_new (button1_size);
   if (toggle_button->button1 == NULL) {
-    toggle_button_sdl_free (&toggle_button);
+  	t_widget_sdl *widget = state_button_sdl_get_widget (toggle_button->button1);
+    widget_sdl_free(&widget);
+////    state_button_sdl_free (&(*toggle_button)->button1);
+//  }
+//    toggle_button_sdl_free (&toggle_button);
     return NULL;
   }
 
@@ -37,7 +44,10 @@ toggle_button_sdl_new (SDL_Rect size) {
   SDL_Rect button2_size = (SDL_Rect){size.x+size.w/2, size.y, size.w/2, size.h};
   toggle_button->button2 = state_button_sdl_new (button2_size);
   if (toggle_button->button2 == NULL) {
-    toggle_button_sdl_free (&toggle_button);
+		t_widget_sdl *widget = state_button_sdl_get_widget(toggle_button->button1);
+    widget_sdl_free(&widget);
+
+    toggle_button_sdl_free ((void**)toggle_button);
     return NULL;
   }
 
@@ -57,7 +67,7 @@ toggle_button_sdl_new (SDL_Rect size) {
 				      toggle_button_sdl_clic_callback, toggle_button);
   widget_sdl_set_mouse_clic_callback (state_button_sdl_get_widget (toggle_button->button2),
 				      toggle_button_sdl_clic_callback, toggle_button);
-  
+
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (toggle_button->widget, toggle_button_sdl_update, toggle_button);
 
@@ -67,7 +77,7 @@ toggle_button_sdl_new (SDL_Rect size) {
 }
 
 void
-toggle_button_sdl_free (t_toggle_button_sdl **toggle_button) {
+toggle_button_sdl_free (void **toggle_button) {
   if (toggle_button == NULL) {
     fprintf (stderr, "Erreur dans %s(); : **toggle_button ne doit pas être NULL.\n", __func__);
     return;
@@ -78,17 +88,24 @@ toggle_button_sdl_free (t_toggle_button_sdl **toggle_button) {
     return;
   }
 
-  if ((*toggle_button)->widget)
-    widget_sdl_free (&(*toggle_button)->widget);
-    
-  if ((*toggle_button)->button1)
-    state_button_sdl_free (&(*toggle_button)->button1);
+//  if ((*toggle_button)->widget)
+//    widget_sdl_free (&(*toggle_button)->widget);
 
-  if ((*toggle_button)->button2)
-    state_button_sdl_free (&(*toggle_button)->button2);
+	t_toggle_button_sdl *intern_toggle= *toggle_button;
+  if (intern_toggle->button1) {
+  	t_widget_sdl *widget = state_button_sdl_get_widget(intern_toggle->button1);
+    widget_sdl_free(&widget);
+//    state_button_sdl_free (&(*toggle_button)->button1);
+  }
 
-  free (*toggle_button);
-  *toggle_button = NULL;
+  if (intern_toggle->button2) {
+		t_widget_sdl *widget = state_button_sdl_get_widget(intern_toggle->button2);
+    widget_sdl_free(&widget);
+//    state_button_sdl_free (&(*toggle_button)->button2);
+  }
+
+  free (intern_toggle);
+  intern_toggle = NULL;
 }
 
 t_state_button_sdl*
@@ -97,7 +114,7 @@ toggle_button_sdl_get_state_button (t_toggle_button_sdl *toggle_button, TOGGLE_B
     fprintf (stderr, "Erreur dans %s(); : toggle_button ne doit pas être NULL.\n", __func__);
     return NULL;
   }
-  
+
   if (button_number == BUTTON1)
     return toggle_button->button1;
 
@@ -139,7 +156,7 @@ toggle_button_sdl_clic_callback (t_state_button_sdl *button, void *userdata) {
     /* Si le bouton1 est déjà actif on ne change rien */
     if (toggle_button->button1_is_activated == false)
       toggle_button->button1_is_activated = true;
- 
+
     /* Mise à jour de l'état des deux boutons */
     state_button_sdl_set_active (toggle_button->button1, true);
     state_button_sdl_set_active (toggle_button->button2, false);

@@ -101,7 +101,7 @@
 	"widget_sdl.h"
 	"state_button_sdl.h"
 
-1758283532 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
+1759392808 e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.h
 	"state_button_sdl.h"
 
 1758785162 e:\projets windows\morpion\src\ihm\src\dialog_sdl.h
@@ -143,7 +143,7 @@
 1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
 	"chain_list.h"
 
-1759391135 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
+1759393160 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
 	"dialog_sdl.h"
 
 1759247977 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
@@ -780,7 +780,7 @@
 
 1757865448 c:\msys64\mingw64\include\pthread_compat.h
 
-1758358732 source:e:\projets windows\morpion\src\ihm\src\state_button_sdl.c
+1759392891 source:e:\projets windows\morpion\src\ihm\src\state_button_sdl.c
 	"state_button_sdl.h"
 
 1758446620 source:e:\projets windows\morpion\src\ihm\src\toggle_button_sdl.c

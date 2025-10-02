@@ -16,25 +16,28 @@ case_sdl_new (SDL_Rect size) {
 
   case_sdl->widget = widget_sdl_new ();
   if (case_sdl->widget == NULL) {
-    case_sdl_free (&case_sdl);
+    case_sdl_free ((void**)case_sdl);
     return NULL;
   }
 
   /* Affectation du pointeur de l'objet à l'objet parent */
   case_sdl->widget->widget_child = case_sdl;
 
+  /* Affectation de la fonction de destruction de la case au widget */
+  case_sdl->widget->destroy_widget_child_fct = case_sdl_free;
+
   case_sdl->image = NULL;
- 
+
   widget_sdl_set_size (case_sdl->widget, &size.x, &size.y, &size.w, &size.h);
 
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (case_sdl->widget, case_sdl_update, case_sdl);
-  
+
   return case_sdl;
 }
 
 void
-case_sdl_free (t_case_sdl **case_sdl) {
+case_sdl_free (void **case_sdl) {
   if (case_sdl == NULL) {
     fprintf (stderr, "Erreur dans %s(); : **case ne doit pas être NULL.\n", __func__);
     return;
@@ -45,15 +48,16 @@ case_sdl_free (t_case_sdl **case_sdl) {
     return;
   }
 
-  if ((*case_sdl)->widget)
-    widget_sdl_free (&(*case_sdl)->widget);
+//  if ((*case_sdl)->widget)
+//    widget_sdl_free (&(*case_sdl)->widget);
 
-  if ((*case_sdl)->image)
-    SDL_FreeSurface ((*case_sdl)->image);
+	t_case_sdl *intern_case= *case_sdl;
+  if (intern_case->image)
+    SDL_FreeSurface (intern_case->image);
 
-  free (*case_sdl);
+  free (intern_case);
 
-  *case_sdl = NULL;
+  intern_case = NULL;
 }
 
 t_widget_sdl*
@@ -94,7 +98,7 @@ case_sdl_create_texture (t_case_sdl *case_sdl, SDL_Renderer *renderer) {
 
   if (case_sdl == NULL)
     return NULL;
-  
+
   SDL_Texture *texture;
   texture = SDL_CreateTextureFromSurface(widget_sdl_get_renderer (case_sdl->widget), case_sdl->image);
 
@@ -120,13 +124,13 @@ case_sdl_update (t_widget_sdl *widget, void *userdata) {
     color = case_sdl->widget->couleur_active;
   else
     color = case_sdl->widget->couleur_fond;
-  
+
   /* Remplissage du fond du bouton */
   SDL_SetRenderDrawColor(case_sdl->widget->renderer, color.r, color.g, color.b, color.a);
   SDL_RenderFillRect(widget_sdl_get_renderer (case_sdl->widget), &case_sdl->widget->actual_size);
-  
+
   SDL_Texture *texture = case_sdl_create_texture (case_sdl, widget_sdl_get_renderer (widget));
-						    
+
   /* Récupération de la texture du texte ou de l'image */
   if (texture == NULL)
     return;
@@ -134,7 +138,7 @@ case_sdl_update (t_widget_sdl *widget, void *userdata) {
   /* Remplissage du bouton */
   SDL_Rect widget_size;
   widget_sdl_get_size (widget, &widget_size);
- 
+
   // Affichage de l'image
   SDL_RenderCopy(widget_sdl_get_renderer (widget), texture, NULL, &widget_size);
 

@@ -4,7 +4,7 @@
 
 /*! \class t_case_sdl
     \brief Une simple case cliquable (Ressemble à un t_button_sdl).
-    
+
     Affiche une case dans laquelle il est possible d'insérer une image.
 */
 
@@ -31,13 +31,13 @@ typedef struct {
  */
 t_case_sdl *case_sdl_new (SDL_Rect size);
 
-/*!
+/*! \private
  * \brief Destructeur de l'objet t_case_sdl.
  * @param case_sdl Pointeur de l'adresse de l'objet à détruire.
  *
  * Le pointeur vaut NULL au retour de la fonction.
  */
-void case_sdl_free (t_case_sdl **case_sdl);
+void case_sdl_free (void **case_sdl);
 
 /*! \private
  * \brief Renvoie le widget parent.

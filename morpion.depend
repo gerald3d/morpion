@@ -97,7 +97,7 @@
 	<string.h>
 	"widget_sdl.h"
 
-1757947914 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
+1759391737 e:\projets windows\morpion\src\ihm\src\state_button_sdl.h
 	"widget_sdl.h"
 	"state_button_sdl.h"
 
@@ -137,7 +137,7 @@
 1759390287 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
 	"button_sdl.h"
 
-1758359172 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
+1759391556 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
 	"case_sdl.h"
 
 1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c

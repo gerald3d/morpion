@@ -6,7 +6,7 @@
 
 /*! \class t_state_button_sdl
     \brief Un simple bouton cliquable à état..
-    
+
     Il ne permet d'afficher qu'image. La couleur de fond change en fonction de son état relâché ou enfoncé.
 */
 
@@ -36,13 +36,13 @@ struct t_state_button_sdl {
  */
 t_state_button_sdl *state_button_sdl_new (SDL_Rect size);
 
-/*!
+/*! \private
  * \brief Destructeur de l'objet t_state_button_sdl.
  * @param state_button Pointeur de l'adresse de l'objet à détruire.
  *
  * Le pointeur vaut NULL au retour de la fonction.
  */
-void state_button_sdl_free (t_state_button_sdl **state_button);
+void state_button_sdl_free (void **state_button);
 
 /*! \private
  * \brief Renvoie le widget parent.

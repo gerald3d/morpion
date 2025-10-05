@@ -1,10 +1,7 @@
 #include "ihm_sdl.h"
 
 t_ihm_sdl*
-ihm_sdl_new (SDL_Renderer *renderer, t_logs *logs) {
-	/* Redirection du canal stderr vers le fichier des logs spécifiques à l'ihm */
-	freopen("ihm_error_logs.txt","w",stderr);
-fprintf (stderr, "Test du fichier des erreurs spécifiques à l'ihm\n");
+ihm_sdl_new (SDL_Renderer *renderer) {
   if (renderer == NULL) {
     fprintf (stderr, "Erreur dans %s(); : renderder ne doit pas être NULL.\n", __func__);
     return NULL;
@@ -18,7 +15,13 @@ fprintf (stderr, "Test du fichier des erreurs spécifiques à l'ihm\n");
   }
 
   ihm_sdl->renderer = renderer;
-  ihm_sdl->logs = logs;
+
+  ihm_sdl->logs = logs_init (NULL, "ihm_error_logs.txt");
+  if (ihm_sdl->logs == NULL) {
+	  ihm_sdl_free (&ihm_sdl);
+	  return NULL;
+  }
+
   ihm_sdl->file_error = logs_descripteur_fichier (ihm_sdl->logs, LOG_ERROR);
   ihm_sdl->widget_list = NULL;
   ihm_sdl->insensible_widgets_list = NULL;
@@ -54,6 +57,9 @@ ihm_sdl_free (t_ihm_sdl **ihm_sdl) {
   if ((*ihm_sdl)->insensible_widgets_list)
     liste_liberation (&(*ihm_sdl)->insensible_widgets_list);
 
+	if ((*ihm_sdl)->logs)
+		logs_liberation ((*ihm_sdl)->logs);
+
   free (*ihm_sdl);
 
   *ihm_sdl = NULL;
@@ -77,7 +83,7 @@ ihm_sdl_widget_append (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget) {
   }
 
   if (widget == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    fprintf (ihm_sdl->file_error, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -152,7 +158,6 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
 
 	  			if (child->activate == true) {
 	    			widget_cursor_change = child;
-	    			/* printf ("un widget enfant est trouvé: %p\n", widget_cursor_change); */
 	  			}
 
 	  			if (widget_sdl_is_modale (child) && widget_sdl_is_visible (child))
@@ -288,7 +293,7 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
     /* Création de la texture du curseur */
     SDL_Texture *cursor = SDL_CreateTextureFromSurface(ihm_sdl->renderer, widget_cursor_change->cursor);
     if(cursor == NULL) {
-      fprintf(stderr, "Erreur dans %s(); : problème pour transformer la Surface en Texture : %s\n", __func__, SDL_GetError());
+      fprintf(ihm_sdl->file_error, "Erreur dans %s(); : problème pour transformer la Surface en Texture : %s\n", __func__, SDL_GetError());
       return;
     }
 

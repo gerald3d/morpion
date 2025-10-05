@@ -6,7 +6,7 @@
 #include <SDL2/SDL_image.h>// pour coller autre que des bmp
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
-#include "logs.h"
+#include "ihm/src/logs.h"
 
 typedef struct
 {

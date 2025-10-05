@@ -119,7 +119,7 @@ widget_sdl_set_renderer (t_widget_sdl *widget, SDL_Renderer *renderer) {
   }
 
   if (renderer == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -183,7 +183,7 @@ widget_sdl_set_mouse_clic_callback (t_widget_sdl *widget, void *callback, void *
 
   t_mouse_clic *mouse_clic = malloc (sizeof(t_mouse_clic));
   if (mouse_clic == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : erreur d'allocation mémoire.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : erreur d'allocation mémoire.\n", __func__);
     return;
   }
 
@@ -202,7 +202,7 @@ widget_sdl_set_mouse_on_callback (t_widget_sdl *widget, void *callback, void *us
 
   t_mouse_on *mouse_on = malloc (sizeof(t_mouse_on));
   if (mouse_on == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : erreur d'allocation mémoire.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : erreur d'allocation mémoire.\n", __func__);
     return;
   }
 
@@ -220,7 +220,7 @@ widget_sdl_add_child_widget (t_widget_sdl *widget, t_widget_sdl *child) {
   }
 
   if (child == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : child ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : child ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -264,7 +264,7 @@ widget_sdl_get_size (t_widget_sdl *widget, SDL_Rect *size) {
   }
 
   if (size == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : size ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : size ne doit pas être NULL.\n", __func__);
     return false;
   }
 
@@ -408,7 +408,7 @@ void widget_sdl_mouse_button_up_update (t_widget_sdl *widget, SDL_Event *event) 
   }
 
   if (event == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : event ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : event ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -438,7 +438,7 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
   }
 
   if (event == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : event ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : event ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -539,7 +539,7 @@ widget_sdl_set_color (t_widget_sdl *widget, SDL_Color color, WIDGET_SDL_TYPE_OF_
     break;
 
   default :
-    fprintf (stderr, "Erreur dans %s(); : type_of_color doit avoir comme valeur FOND, CADRE, ACTIVE ou INSENSIBLE.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : type_of_color doit avoir comme valeur FOND, CADRE, ACTIVE ou INSENSIBLE.\n", __func__);
     break;
   }
 }
@@ -565,7 +565,7 @@ widget_sdl_get_color (t_widget_sdl *widget, WIDGET_SDL_TYPE_OF_COLOR type_of_col
     return &widget->couleur_insensible;
 
   default :
-    fprintf (stderr, "Erreur dans %s(); : type_of_color doit avoir comme valeur FOND, CADRE, ACTIVE ou INSENSIBLE.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : type_of_color doit avoir comme valeur FOND, CADRE, ACTIVE ou INSENSIBLE.\n", __func__);
     return NULL;
   }
 }
@@ -606,7 +606,7 @@ widget_sdl_set_user_data (t_widget_sdl *widget, const char *name, void *userdata
   }
 
   if (name == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : name ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : name ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -617,8 +617,8 @@ widget_sdl_set_user_data (t_widget_sdl *widget, const char *name, void *userdata
     while (list) {
       t_userdata *data = (t_userdata*)list->donnee;
       if (strcmp (data->name, name)==0) {
-	fprintf (stderr, "Erreur dans %s(); : une donnée personnelle attachée avec le nom %s existe déjà.\n", __func__, name);
-	return;
+				fprintf (widget->file_error, "Erreur dans %s(); : une donnée personnelle attachée avec le nom %s existe déjà.\n", __func__, name);
+				return;
       }
       list = list->suivant;
     }
@@ -626,7 +626,7 @@ widget_sdl_set_user_data (t_widget_sdl *widget, const char *name, void *userdata
 
   /* Si la donnée est NULL on sort */
   if (userdata == NULL) {
-    fprintf (stderr, "Attention ! Vous tentez d'ajouter une donnée personnelle de valeur NULL dans %s();\n", __func__);
+    fprintf (widget->file_error, "Attention ! Vous tentez d'ajouter une donnée personnelle de valeur NULL dans %s();\n", __func__);
     return;
   }
 
@@ -634,7 +634,7 @@ widget_sdl_set_user_data (t_widget_sdl *widget, const char *name, void *userdata
   t_userdata *data = malloc (sizeof (t_userdata));
 
   if (data == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : problème d'allocation mémoire pour la donnée personnelle.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : problème d'allocation mémoire pour la donnée personnelle.\n", __func__);
     return;
   }
 
@@ -652,12 +652,12 @@ widget_sdl_get_user_data (t_widget_sdl *widget, const char *name) {
   }
 
   if (name == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : name ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : name ne doit pas être NULL.\n", __func__);
     return NULL;
   }
 
   if (widget->userdata == NULL) {
-    fprintf (stderr, "Aucune donnée personnelle est attachée au widget.\n");
+    fprintf (widget->file_error, "Aucune donnée personnelle est attachée au widget.\n");
     return NULL;
   }
 
@@ -670,7 +670,7 @@ widget_sdl_get_user_data (t_widget_sdl *widget, const char *name) {
     list = list->suivant;
   }
 
-  fprintf (stderr, "La donnée \"%s\" n'a pas été trouvée.\n", name);
+  fprintf (widget->file_error, "La donnée \"%s\" n'a pas été trouvée.\n", name);
 
   return NULL;
 }
@@ -694,7 +694,7 @@ widget_sdl_set_cursor_from_file (t_widget_sdl *widget, const char *file)
   widget->cursor = IMG_Load(file);
 
   if( widget->cursor==NULL) {//si image non chargée
-    fprintf(stderr, "Erreur dans %s(); : problème lors du chargement de l'image  : %s. (%s)\n",__func__, file, SDL_GetError());
+    fprintf(widget->file_error, "Erreur dans %s(); : problème lors du chargement de l'image  : %s. (%s)\n",__func__, file, SDL_GetError());
     return false;
   }
 

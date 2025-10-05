@@ -13,7 +13,7 @@
 #include <time.h> //pour les nombres aleatoires
 
 #include "Define.h"
-#include "logs.h"
+#include "ihm/src/logs.h"
 #include "Affichage.h"
 #include "ia.h"
 #include "morp_sdl.h"

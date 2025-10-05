@@ -470,7 +470,7 @@ creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
 
 t_ihm_sdl*
 creation_interface (t_morp_sdl *morp_sdl) {
-  t_ihm_sdl *ihm_sdl = ihm_sdl_new (morp_sdl->renderer, morp_sdl->logs);
+  t_ihm_sdl *ihm_sdl = ihm_sdl_new (morp_sdl->renderer);
   if (ihm_sdl == NULL)
     return NULL;
 

@@ -6,7 +6,7 @@
 #include <SDL2/SDL_ttf.h> // Pour utiliser les polices avec la SDL
 #include <SDL2/SDL_mixer.h> // Pour utiliser les sons avec la SDL
 
-#include "logs.h"
+#include "ihm/src/logs.h"
 #include "Define.h"
 #include "morp_sdl.h"
 #include "ihm/src/ihm_sdl.h"

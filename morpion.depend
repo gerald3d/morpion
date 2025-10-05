@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1759507065 source:e:\projets windows\morpion\src\affichage.c
+1759678686 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
 
@@ -45,21 +45,21 @@
 	"morp_sdl.h"
 	"ihm/src/ihm_sdl.h"
 
-1758286032 e:\projets windows\morpion\src\morp_sdl.h
+1759679425 e:\projets windows\morpion\src\morp_sdl.h
 	"Define.h"
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_mixer.h>
-	"logs.h"
+	"ihm/src/logs.h"
 
-1759505473 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
+1759678619 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_mixer.h>
-	"../../logs.h"
+	"logs.h"
 	"widget_sdl.h"
 	"tooltip_sdl.h"
 	"button_sdl.h"
@@ -69,12 +69,12 @@
 	"game_config_sdl.h"
 	"case_sdl.h"
 
-1759506076 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+1759679395 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_mixer.h>
-	"../../logs.h"
+	"logs.h"
 	"define_sdl.h"
 	"tooltip_sdl.h"
 	"chain_list.h"
@@ -175,7 +175,7 @@
 1755448521 source:e:\projets windows\morpion\src\tournoi.c
 	"Main.h"
 
-1759507386 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+1759678880 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
 	"ihm_sdl.h"
 
 1757862470 c:\msys64\mingw64\include\stdio.h
@@ -791,6 +791,16 @@
 1758523702 source:e:\projets windows\morpion\src\ihm\src\tooltip_sdl.c
 	"tooltip_sdl.h"
 
-1759506322 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
+1759679160 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
 	"widget_sdl.h"
+
+1756018970 e:\projets windows\morpion\src\ihm\src\logs.h
+	<stdbool.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<errno.h>
+
+1756018967 source:e:\projets windows\morpion\src\ihm\src\logs.c
+	"logs.h"
 

@@ -54,7 +54,15 @@ t_ihm_sdl *ihm_sdl_new (SDL_Renderer *renderer);
 void ihm_sdl_free (t_ihm_sdl **ihm_sdl);
 
 /*!
- * \brief Renvoie le renderer dela neêtre SDL.
+ * \brief Renvoie le pointeur des logs internes à l'ihm
+ * @param ihm_sdl Pointeur de l'ihm.
+ *
+ * Si une erreur survient la fonction renvoie NULL et un message de log est envoyé
+ */
+t_logs *ihm_sdl_get_logs(t_ihm_sdl *ihm_sdl);
+
+/*!
+ * \brief Renvoie le renderer de la fenêtre SDL.
  * @param ihm_sdl Pointeur de l'ihm.
  *
  * Si une erreur survient la fonction renvoie NULL et un message est affiché en console.

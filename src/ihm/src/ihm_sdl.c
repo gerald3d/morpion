@@ -16,7 +16,7 @@ ihm_sdl_new (SDL_Renderer *renderer) {
 
   ihm_sdl->renderer = renderer;
 
-  ihm_sdl->logs = logs_init (NULL, "ihm_error_logs.txt");
+  ihm_sdl->logs = logs_init ("ihm_standard_logs.txt", "ihm_error_logs.txt");
   if (ihm_sdl->logs == NULL) {
 	  ihm_sdl_free (&ihm_sdl);
 	  return NULL;
@@ -63,6 +63,16 @@ ihm_sdl_free (t_ihm_sdl **ihm_sdl) {
   free (*ihm_sdl);
 
   *ihm_sdl = NULL;
+}
+
+t_logs*
+ihm_sdl_get_logs(t_ihm_sdl *ihm_sdl) {
+	if (ihm_sdl == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : ihm_sdl ne doit pas être NULL.\n", __func__);
+    return NULL;
+  }
+
+ return ihm_sdl->logs;
 }
 
 SDL_Renderer*

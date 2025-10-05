@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1759678686 source:e:\projets windows\morpion\src\affichage.c
+1759679899 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
 
-1758294774 e:\projets windows\morpion\src\main.h
+1759679396 e:\projets windows\morpion\src\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -14,7 +14,7 @@
 	<math.h>
 	<time.h>
 	"Define.h"
-	"logs.h"
+	"ihm/src/logs.h"
 	"Affichage.h"
 	"ia.h"
 	"morp_sdl.h"
@@ -35,12 +35,12 @@
 	<string.h>
 	<errno.h>
 
-1758978593 e:\projets windows\morpion\src\affichage.h
+1759679415 e:\projets windows\morpion\src\affichage.h
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
 	<SDL2/SDL_mixer.h>
-	"logs.h"
+	"ihm/src/logs.h"
 	"Define.h"
 	"morp_sdl.h"
 	"ihm/src/ihm_sdl.h"
@@ -53,7 +53,7 @@
 	<SDL2/SDL_mixer.h>
 	"ihm/src/logs.h"
 
-1759678619 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
+1759679752 e:\projets windows\morpion\src\ihm\src\ihm_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_image.h>
@@ -118,9 +118,9 @@
 1759395860 e:\projets windows\morpion\src\ihm\src\case_sdl.h
 	"widget_sdl.h"
 
-1756018989 e:\projets windows\morpion\src\ia.h
+1759679439 e:\projets windows\morpion\src\ia.h
 	"Define.h"
-	"logs.h"
+	"ihm/src/logs.h"
 
 1756018984 e:\projets windows\morpion\src\instruction.h
 	"Define.h"
@@ -175,7 +175,7 @@
 1755448521 source:e:\projets windows\morpion\src\tournoi.c
 	"Main.h"
 
-1759678880 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+1759679799 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
 	"ihm_sdl.h"
 
 1757862470 c:\msys64\mingw64\include\stdio.h

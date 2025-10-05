@@ -1,8 +1,0 @@
-Ouverture du fichier : standard_logs.txt : OK
-Chargement des windows, renderer, sdl, ttf,... : en cours.
-Chargement de SDL_Init (video et audio) : OK
-Chargement de Window et Renderer  : OK
-Chargement de TTF_Init  : OK
-Ouverture de la musique : OK
-Initialisation SDL : OK
-Chargement des polices : en attente...

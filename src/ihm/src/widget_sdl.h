@@ -35,6 +35,7 @@ typedef struct t_widget_sdl t_widget_sdl;
 struct t_widget_sdl {
   SDL_Renderer *renderer;
   t_logs *logs;
+  FILE *file_error;                  // Descripteur du fichier des logs errors
   SDL_Surface *cursor;
   void *widget_child;                // pointeur sur le widget enfant qui implémente le widget actuel du type spécifique au widget enfant
   void (*destroy_widget_child_fct)(void **widget_whild); // Pointeur sur la fonction spécifique de destruction du widget enfant

@@ -37,13 +37,13 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
   if (type_de_bouton == IMAGE || type_de_bouton == TEXTE)
     button->button_type = type_de_bouton;
   else {
-    fprintf (stderr, "Erreur dans %s(); : type__de_bouton doit avoir la valeur TEXTE ou IMAGE.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : type__de_bouton doit avoir la valeur TEXTE ou IMAGE.\n", __func__);
     button_sdl_free ((void**)button);
     return NULL;
   }
 
   if (type_de_bouton == TEXTE && font == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : font ne doit pas être NULL.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : font ne doit pas être NULL.\n", __func__);
     button_sdl_free ((void**)button);
     return NULL;
   }
@@ -113,7 +113,7 @@ button_sdl_set_image_from_file (t_button_sdl *button, const char *file) {
   }
 
   if (file == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : file ne doit pas être NULL.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : file ne doit pas être NULL.\n", __func__);
     return false;
   }
 
@@ -122,7 +122,7 @@ button_sdl_set_image_from_file (t_button_sdl *button, const char *file) {
 
   button->image = IMG_Load(file);
   if(button->image==NULL) {
-    fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
+    fprintf (button->widget->file_error, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
     return false;
   }
 
@@ -137,7 +137,7 @@ button_sdl_set_image_from_surface (t_button_sdl *button, SDL_Surface *image) {
   }
 
   if (image == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : image ne doit pas être NULL.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : image ne doit pas être NULL.\n", __func__);
     return false;
   }
 
@@ -146,7 +146,7 @@ button_sdl_set_image_from_surface (t_button_sdl *button, SDL_Surface *image) {
 
   button->image = image;
   if(button->image==NULL) {
-    fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
+    fprintf (button->widget->file_error, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
     return false;
   }
 
@@ -161,7 +161,7 @@ button_sdl_set_text (t_button_sdl *button, const char *text, int style) {
   }
 
   if (button->button_type == IMAGE) {
-    fprintf (stderr, "Erreur dans %s(); : button est du type IMAGE.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : button est du type IMAGE.\n", __func__);
     return;
   }
 
@@ -186,7 +186,7 @@ button_sdl_get_text (t_button_sdl *button) {
   }
 
   if (button->button_type == IMAGE) {
-    fprintf (stderr, "Erreur dans %s(); : button est du type IMAGE.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : button est du type IMAGE.\n", __func__);
     return NULL;
   }
 
@@ -203,7 +203,7 @@ button_sdl_create_texture (t_button_sdl *button, SDL_Renderer *renderer) {
   }
 
   if (renderer == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
+    fprintf (button->widget->file_error, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
     return NULL;
   }
 
@@ -244,7 +244,7 @@ button_sdl_update (t_widget_sdl *widget, void *userdata) {
   }
 
   if (userdata == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
     return;
   }
 

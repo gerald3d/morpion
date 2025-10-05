@@ -2,6 +2,9 @@
 
 t_ihm_sdl*
 ihm_sdl_new (SDL_Renderer *renderer, t_logs *logs) {
+	/* Redirection du canal stderr vers le fichier des logs spécifiques à l'ihm */
+	freopen("ihm_error_logs.txt","w",stderr);
+fprintf (stderr, "Test du fichier des erreurs spécifiques à l'ihm\n");
   if (renderer == NULL) {
     fprintf (stderr, "Erreur dans %s(); : renderder ne doit pas être NULL.\n", __func__);
     return NULL;
@@ -16,6 +19,7 @@ ihm_sdl_new (SDL_Renderer *renderer, t_logs *logs) {
 
   ihm_sdl->renderer = renderer;
   ihm_sdl->logs = logs;
+  ihm_sdl->file_error = logs_descripteur_fichier (ihm_sdl->logs, LOG_ERROR);
   ihm_sdl->widget_list = NULL;
   ihm_sdl->insensible_widgets_list = NULL;
 
@@ -40,7 +44,7 @@ ihm_sdl_free (t_ihm_sdl **ihm_sdl) {
 		while (liste_tmp) {
 			widget = (t_widget_sdl*)liste_tmp->donnee;
 			widget_sdl_free(&widget);
-fprintf (stdout, "destruction du widget\n");
+
 			liste_tmp = liste_tmp->suivant;
 		}
 

@@ -1,0 +1,6 @@
+Ouverture du fichier : error_logs.txt : OK
+
+ Au revoir 
+
+Sep 27 2025 - 16:08:57
+

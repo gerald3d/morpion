@@ -1,0 +1,210 @@
+Ouverture du fichier : standard_logs.txt : OK
+Chargement des windows, renderer, sdl, ttf,... : en cours.
+Chargement de SDL_Init (video et audio) : OK
+Chargement de Window et Renderer  : OK
+Chargement de TTF_Init  : OK
+Ouverture de la musique : OK
+Initialisation SDL : OK
+Chargement des polices : en attente...
+Chargement de la police : OK
+Chargement de l'icône Icone.ico: OK 
+Chargement de l'image ./Ressources/image-BoutonConfigDimension.bmp : OK
+Chargement de l'image ./Ressources/image-BoutonConfigType.bmp : OK
+Chargement de l'image ./Ressources/image-CaseGrise.bmp : OK
+Chargement de l'image ./Ressources/image-CoupeGrande.bmp : OK
+Chargement de l'image ./Ressources/image-CoupePetite.bmp : OK
+Chargement de l'image ./Ressources/image-Curseur.bmp : OK
+Chargement de l'image ./Ressources/image-CurseurAxe.bmp : OK
+Chargement de l'image ./Ressources/image-CurseurCroix-Gris.bmp : OK
+Chargement de l'image ./Ressources/image-CurseurCroix-Noir.bmp : OK
+Chargement de l'image ./Ressources/image-Musique.bmp : OK
+Chargement de l'image ./Ressources/image-Titre.bmp : OK
+Nombre d'images correctement chargées : 11 
+Chargement de l'image ./Ressources/image-Jeton-0.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-1.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-2.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-3.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-4.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-5.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-6.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-7.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-8.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-9.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-10.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-11.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-12.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-13.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-14.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-15.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-16.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-17.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-18.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-19.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-20.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-21.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-22.bmp : OK
+Chargement de l'image ./Ressources/image-Jeton-23.bmp : OK
+Nombre de pions correctement chargés : 24 
+Chargement du texte " Pour jouer une partie de morpion classique,  ": OK
+Chargement du texte " il suffit d'aligner (verticalement, horizontalement,  ": OK
+Chargement du texte " ou diagonalement) trois jetons. ": OK
+Chargement du texte " Ce bouton permet d'annuler plusieurs ----------->  ": OK
+Chargement du texte " derniers coups joués. ------------------------------->  ": OK
+Chargement du texte " Ce bouton permet de jouer contre l'ordinateur, ": OK
+Chargement du texte " de choisir son jeton, de modifier la musique. --> ": OK
+Chargement du texte " Ce bouton permet de changer le nombre -------> ": OK
+Chargement du texte " de cases et le nombre de jetons à aligner. -------> ": OK
+Chargement du texte " Ce bouton permet de définir un tournoi de ----->  ": OK
+Chargement du texte " 10 manches maximum. ----------------------------> ": OK
+Chargement du texte " Manche  ": OK
+Chargement du texte " Joueur 1 ": OK
+Chargement du texte " Joueur 2 ": OK
+Chargement du texte " Dimensions ": OK
+Nombre de messages Texte correctement chargés : 15 
+Chargement du texte " Annuler ": OK
+Chargement du texte " A ": OK
+Chargement du texte " nnuler ": OK
+Chargement du texte " A ": OK
+Chargement du texte " nnuler ": OK
+Chargement du texte " CoudPouS ": OK
+Chargement du texte " C ": OK
+Chargement du texte " oudPouS ": OK
+Chargement du texte " C ": OK
+Chargement du texte " oudPouS ": OK
+Chargement du texte " Instruction ": OK
+Chargement du texte " I ": OK
+Chargement du texte " nstruction ": OK
+Chargement du texte " I ": OK
+Chargement du texte " nstruction ": OK
+Chargement du texte " Nouveau ": OK
+Chargement du texte " N ": OK
+Chargement du texte " ouveau ": OK
+Chargement du texte " N ": OK
+Chargement du texte " ouveau ": OK
+Chargement du texte " Quitter ": OK
+Chargement du texte " Q ": OK
+Chargement du texte " uitter ": OK
+Chargement du texte " Q ": OK
+Chargement du texte " uitter ": OK
+Chargement du texte " Tournoi ": OK
+Chargement du texte " T ": OK
+Chargement du texte " ournoi ": OK
+Chargement du texte " T ": OK
+Chargement du texte " ournoi ": OK
+Chargement du texte " Valider ": OK
+Chargement du texte " V ": OK
+Chargement du texte " alider ": OK
+Chargement du texte " V ": OK
+Chargement du texte " alider ": OK
+Chargement du texte "   ": OK
+Nombre de messages correctement chargés : 36 
+Chargement de la musique " ./Ressources/Musique-Gremlins.mp3 ": OK
+Chargement de la musique " ./Ressources/Musique-HP.mp3 ": OK
+Chargement de la musique " ./Ressources/Musique-Mario.mp3 ": OK
+Chargement de la musique " ./Ressources/Musique-Pokemon1.mp3 ": OK
+Chargement de la musique " ./Ressources/Musique-Pokemon2.mp3 ": OK
+Chargement de la musique " ./Ressources/Musique-SW1.mp3 ": OK
+Chargement de la musique " ./Ressources/Musique-SW2.mp3 ": OK
+Nombre de musiques correctement chargées : 8 
+Chargement des images, des messages et des musiques : OK
+Détermination des dimensions des images et des messages : OK
+Chargement de l'icône de l'application : OK
+Libération icône : OK 
+Libération image n°0 : OK 
+Libération image n°1 : OK 
+Libération image n°2 : OK 
+Libération image n°3 : OK 
+Libération image n°4 : OK 
+Libération image n°5 : OK 
+Libération image n°6 : OK 
+Libération image n°7 : OK 
+Libération image n°8 : OK 
+Libération image n°9 : OK 
+Libération image n°10 : OK 
+Libération pion n°0 : OK 
+Libération pion n°1 : OK 
+Libération pion n°2 : OK 
+Libération pion n°3 : OK 
+Libération pion n°4 : OK 
+Libération pion n°5 : OK 
+Libération pion n°6 : OK 
+Libération pion n°7 : OK 
+Libération pion n°8 : OK 
+Libération pion n°9 : OK 
+Libération pion n°10 : OK 
+Libération pion n°11 : OK 
+Libération pion n°12 : OK 
+Libération pion n°13 : OK 
+Libération pion n°14 : OK 
+Libération pion n°15 : OK 
+Libération pion n°16 : OK 
+Libération pion n°17 : OK 
+Libération pion n°18 : OK 
+Libération pion n°19 : OK 
+Libération pion n°20 : OK 
+Libération pion n°21 : OK 
+Libération pion n°22 : OK 
+Libération pion n°23 : OK 
+Libération message n°0 : OK 
+Libération message n°1 : OK 
+Libération message n°2 : OK 
+Libération message n°3 : OK 
+Libération message n°4 : OK 
+Libération message n°5 : OK 
+Libération message n°6 : OK 
+Libération message n°7 : OK 
+Libération message n°8 : OK 
+Libération message n°9 : OK 
+Libération message n°10 : OK 
+Libération message n°11 : OK 
+Libération message n°12 : OK 
+Libération message n°13 : OK 
+Libération message n°14 : OK 
+Libération message Bouton n°0 : OK 
+Libération message Bouton n°1 : OK 
+Libération message Bouton n°2 : OK 
+Libération message Bouton n°3 : OK 
+Libération message Bouton n°4 : OK 
+Libération message Bouton n°5 : OK 
+Libération message Bouton n°6 : OK 
+Libération message Bouton n°7 : OK 
+Libération message Bouton n°8 : OK 
+Libération message Bouton n°9 : OK 
+Libération message Bouton n°10 : OK 
+Libération message Bouton n°11 : OK 
+Libération message Bouton n°12 : OK 
+Libération message Bouton n°13 : OK 
+Libération message Bouton n°14 : OK 
+Libération message Bouton n°15 : OK 
+Libération message Bouton n°16 : OK 
+Libération message Bouton n°17 : OK 
+Libération message Bouton n°18 : OK 
+Libération message Bouton n°19 : OK 
+Libération message Bouton n°20 : OK 
+Libération message Bouton n°21 : OK 
+Libération message Bouton n°22 : OK 
+Libération message Bouton n°23 : OK 
+Libération message Bouton n°24 : OK 
+Libération message Bouton n°25 : OK 
+Libération message Bouton n°26 : OK 
+Libération message Bouton n°27 : OK 
+Libération message Bouton n°28 : OK 
+Libération message Bouton n°29 : OK 
+Libération message Bouton n°30 : OK 
+Libération message Bouton n°31 : OK 
+Libération message Bouton n°32 : OK 
+Libération message Bouton n°33 : OK 
+Libération message Bouton n°34 : OK 
+Libération message Bouton n°35 : OK 
+Libération musique n°0 : OK 
+Libération musique n°1 : OK 
+Libération musique n°2 : OK 
+Libération musique n°3 : OK 
+Libération musique n°4 : OK 
+Libération musique n°5 : OK 
+Libération musique n°6 : OK 
+Libération musique n°7 : OK 
+
+ Au revoir 
+
+Sep 27 2025 - 16:08:57

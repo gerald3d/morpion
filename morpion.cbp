@@ -5,6 +5,17 @@
 		<Option title="morpion" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option show_notes="0">
+			<notes>
+				<![CDATA[Créer les fonctions dans l'ihm pour retrouver un widget en fonction de son nom ou de son adresse.
+
+Créer les fonctions dans l'ihm pour enlever un widget de l'interface.
+
+Créer les fonction dans l'ihm pour que lors de sa destruction il détruise aussi tous les widgets enfants qui la compose.
+
+Les widgets internes à d'autres widgets sont détruis lorsque l'ihm est détruit. C'est en conflit avec les widgets conteneurs qui détuisent eux aussi ces mêmes widgets]]>
+			</notes>
+		</Option>
 		<Build>
 			<Target title="Debug">
 				<Option platforms="Windows;" />

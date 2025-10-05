@@ -8,7 +8,8 @@ state_button_sdl_new (SDL_Rect size, t_logs *logs) {
   t_state_button_sdl *state_button = malloc (sizeof(t_state_button_sdl));
 
   if (state_button == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : erreur d'allocation mémoire de *state_button.\n", __func__);
+		FILE *error = logs_descripteur_fichier (logs, LOG_ERROR);
+    fprintf (error, "Erreur dans %s(); : erreur d'allocation mémoire de *state_button.\n", __func__);
     return NULL;
   }
 
@@ -82,7 +83,7 @@ state_button_sdl_set_image (t_state_button_sdl *state_button, const char *file) 
   state_button->image = IMG_Load(file);
 
   if(state_button->image == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
+    fprintf (state_button->widget->file_error, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
     return false;
   }
 
@@ -126,7 +127,7 @@ state_button_sdl_create_texture (t_state_button_sdl *state_button, SDL_Renderer 
   }
 
   if (renderer == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
+    fprintf (state_button->widget->file_error, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
     return NULL;
   }
 
@@ -168,7 +169,7 @@ state_button_sdl_update (t_widget_sdl *widget, void *userdata) {
 
   /* Récupération de la texture du texte ou de l'image */
   if (texture == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
+    fprintf (state_button->widget->file_error, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
     return;
   }
 

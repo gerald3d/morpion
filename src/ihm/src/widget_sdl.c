@@ -14,6 +14,7 @@ widget_sdl_new (t_logs *logs) {
 
   widget->renderer = NULL;
   widget->logs = logs;
+  widget->file_error = logs_descripteur_fichier (logs, LOG_ERROR);
   widget->tooltip = NULL;
 
   widget->cursor = NULL;
@@ -94,10 +95,12 @@ widget_sdl_free (t_widget_sdl **widget) {
     t_liste *liste = (*widget)->child_widget_list;
     while (liste) {
       t_widget_sdl *child = (t_widget_sdl*)liste->donnee;
-      if (child->destroy_widget_child_fct)
-        child->destroy_widget_child_fct (&child->widget_child);
+      if (child) {
+				if (child->destroy_widget_child_fct)
+					child->destroy_widget_child_fct (&child->widget_child);
 
-      widget_sdl_free (&child);
+				widget_sdl_free (&child);
+      }
       liste = liste->suivant;
     }
     liste_liberation (&(*widget)->child_widget_list);

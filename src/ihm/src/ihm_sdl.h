@@ -31,6 +31,7 @@
 typedef struct {
   SDL_Renderer *renderer;
   t_logs *logs;
+  FILE *file_error;                      // Descripteur du fichier des erreurs
   t_liste *widget_list;             // Liste de tous les widgets contenus dans l'interface
   t_liste *insensible_widgets_list; // Liste des widgets désactivés lorsque l'un d'entre-eux et modale
 } t_ihm_sdl;

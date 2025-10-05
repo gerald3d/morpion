@@ -1,4 +1,0 @@
-Ouverture du fichier : error_logs.txt : OK
-Erreur de chargement de la police : Couldn't open ./Ressources/times.ttf
-
-Sep 27 2025 - 15:56:51

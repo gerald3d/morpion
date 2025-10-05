@@ -10,7 +10,8 @@ case_sdl_new (SDL_Rect size, t_logs *logs) {
   t_case_sdl *case_sdl = malloc (sizeof(t_case_sdl));
 
   if (case_sdl == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : erreur d'allocation mémoire de *case.\n", __func__);
+		FILE *error = logs_descripteur_fichier (logs, LOG_ERROR);
+    fprintf (error, "Erreur dans %s(); : erreur d'allocation mémoire de *case.\n", __func__);
     return NULL;
   }
 
@@ -92,7 +93,7 @@ case_sdl_create_texture (t_case_sdl *case_sdl, SDL_Renderer *renderer) {
   }
 
   if (renderer == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
+    fprintf (case_sdl->widget->file_error, "Erreur dans %s(); : renderer ne doit pas être NULL.\n", __func__);
     return NULL;
   }
 
@@ -113,7 +114,7 @@ case_sdl_update (t_widget_sdl *widget, void *userdata) {
   }
 
   if (userdata == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
+    fprintf (widget->file_error, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
     return;
   }
 

@@ -29,14 +29,14 @@ logs_init (const char *fichier_standard, const char *fichier_erreur) {
     logs_liberation (logs);
     return NULL;
   }
-  
+
   /* Ouverture (en mode ecriture) du fichier log pour les réussites */
   logs->descripteur_de_fichier_standard = fopen(logs->fichier_standard, "w");
   if (logs->descripteur_de_fichier_standard) {
     fprintf (logs->descripteur_de_fichier_standard, "Ouverture du fichier : %s : OK\n", logs->fichier_standard);
   } else {
-    fprintf (stderr,"Erreur d'ouverture du fichier : %s\n", logs->fichier_standard);
-    fprintf (stderr, "errno : %d\n", errno);
+    fprintf (logs->descripteur_de_fichier_erreur,"Erreur d'ouverture du fichier : %s\n", logs->fichier_standard);
+    fprintf (logs->descripteur_de_fichier_erreur, "errno : %d\n", errno);
 
     logs_liberation (logs);
 
@@ -46,10 +46,10 @@ logs_init (const char *fichier_standard, const char *fichier_erreur) {
   /* Ouverture (en mode ecriture) du fichier log pour les erreurs */
   logs->descripteur_de_fichier_erreur = fopen(logs->fichier_erreur, "w");
   if (logs->descripteur_de_fichier_erreur) {
-    fprintf (logs->descripteur_de_fichier_erreur, "Ouverture du fichier : %s : OK\n", logs->fichier_erreur);
+    fprintf (logs->descripteur_de_fichier_standard, "Ouverture du fichier : %s : OK\n", logs->fichier_erreur);
   }  else {
-    fprintf (stderr,"Erreur d'ouverture du fichier : %s\n", logs->fichier_erreur);
-    fprintf (stderr, "errno : %d\n", errno);
+    fprintf (logs->descripteur_de_fichier_erreur,"Erreur d'ouverture du fichier : %s\n", logs->fichier_erreur);
+    fprintf (logs->descripteur_de_fichier_erreur, "errno : %d\n", errno);
 
     logs_liberation (logs);
 
@@ -62,16 +62,16 @@ logs_init (const char *fichier_standard, const char *fichier_erreur) {
 void logs_liberation (t_logs *logs) {
   if (logs == NULL)
       return;
-    
+
     if (logs->fichier_standard)
       free (logs->fichier_standard);
-    
+
     if (logs->fichier_erreur)
       free (logs->fichier_erreur);
-    
+
     if (logs->descripteur_de_fichier_standard)
       fclose (logs->descripteur_de_fichier_standard);
-    
+
     if (logs->descripteur_de_fichier_erreur)
       fclose (logs->descripteur_de_fichier_erreur);
 
@@ -90,8 +90,29 @@ logs_descripteur_fichier (t_logs *logs, TYPE_OF_LOGS log_type) {
   } else if (log_type == LOG_ERROR) {
     return logs->descripteur_de_fichier_erreur;
   }
-  
-  fprintf (stderr, "log_type doit prendre une des deux valeurs suivantes : LOG_STANDARD ou LOG_ERROR dans %s();\n", __func__);
-  
+
+  fprintf (logs->descripteur_de_fichier_erreur, "log_type doit prendre une des deux valeurs suivantes : LOG_STANDARD ou LOG_ERROR dans %s();\n", __func__);
+
   return NULL;
+}
+
+void
+logs_save (t_logs *logs, const char *text, TYPE_OF_LOGS log_type) {
+  if (logs == NULL) {
+    fprintf (stderr, "logs vaut NULL dans %s();\n", __func__);
+    return;
+  }
+
+  if (text == NULL)
+  	return;
+
+  if (log_type == LOG_STANDARD) {
+    fprintf (logs->descripteur_de_fichier_standard, "%s : %s",  __TIME__, text);
+    return;
+  } else if (log_type == LOG_ERROR) {
+    fprintf (logs->descripteur_de_fichier_erreur, "%s : %s",  __TIME__, text);
+    return;
+  }
+
+  fprintf (logs->descripteur_de_fichier_erreur, "log_type doit prendre une des deux valeurs suivantes : LOG_STANDARD ou LOG_ERROR dans %s();\n", __func__);
 }

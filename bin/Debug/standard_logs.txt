@@ -1,4 +1,5 @@
 Ouverture du fichier : standard_logs.txt : OK
+Ouverture du fichier : error_logs.txt : OK
 Chargement des windows, renderer, sdl, ttf,... : en cours.
 Chargement de SDL_Init (video et audio) : OK
 Chargement de Window et Renderer  : OK
@@ -207,4 +208,4 @@ Libération musique n°7 : OK
 
  Au revoir 
 
-Oct  5 2025 - 17:50:26
+Oct  5 2025 - 18:08:06

@@ -40,4 +40,6 @@ void logs_liberation (t_logs *logs);
  * la fonction renvoie NULL */
 FILE *logs_descripteur_fichier (t_logs *logs, TYPE_OF_LOGS log_type);
 
+/* Ajoute un texte dans le descripteur choisi.*/
+void logs_save (t_logs *logs, const char *text, TYPE_OF_LOGS log_type);
 #endif

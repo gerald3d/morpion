@@ -175,7 +175,7 @@
 1755448521 source:e:\projets windows\morpion\src\tournoi.c
 	"Main.h"
 
-1759679799 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+1759679982 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
 	"ihm_sdl.h"
 
 1757862470 c:\msys64\mingw64\include\stdio.h
@@ -794,7 +794,7 @@
 1759679160 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
 	"widget_sdl.h"
 
-1756018970 e:\projets windows\morpion\src\ihm\src\logs.h
+1759680270 e:\projets windows\morpion\src\ihm\src\logs.h
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>

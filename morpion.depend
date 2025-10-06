@@ -805,7 +805,10 @@
 1759680570 source:e:\projets windows\morpion\src\ihm\src\logs.c
 	"logs.h"
 
-1759762317 e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.h
+1759763530 e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.h
 	<string.h>
 	"widget_sdl.h"
+
+1759762746 source:e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.c
+	"config_cursor_sdl.h"
 

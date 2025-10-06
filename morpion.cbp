@@ -282,6 +282,10 @@ La libération mémoire des widgets ne fonctionnent pas. L'appel (void**)widget 
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ihm/src/chain_list.h" />
+		<Unit filename="src/ihm/src/config_cursor_sdl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/config_cursor_sdl.h" />
 		<Unit filename="src/ihm/src/define_sdl.h" />
 		<Unit filename="src/ihm/src/dialog_sdl.c">
 			<Option compilerVar="CC" />

@@ -10,15 +10,11 @@
     Il est spécifique au configurateur de taille du tableau _config_game_sdl.
 */
 
-//
-///*! \enum BUTTON_SDL_TYPE_OF_BUTTON_STATE
-// * Indique dans quel état doit être le bouton.
-// */
-//typedef enum {ACTIF, INACTIF, INVISIBLE} BUTTON_SDL_TYPE_OF_BUTTON_STATE; //pour afficher les boutons en gris ou en noir
-///*! \enum BUTTON_SDL_TYPE_OF_BUTTON
-// * Choix du type de bouton.
-// */
-//typedef enum {IMAGE, TEXTE} BUTTON_SDL_TYPE_OF_BUTTON;
+
+/*! \enum TYPE_OF_CONFIG_CURSOR
+ * Indique le type de curseur.
+ */
+typedef enum {HORIZONTAL, VERTICAL} TYPE_OF_CONFIG_CURSOR; // type de déplacement du curseur
 
 /*!
  * \private Structure privée.
@@ -31,16 +27,19 @@ typedef struct t_config_cursor_sdl t_config_cursor_sdl;
  * L'utilisateur final ne doit pas accéder à un de ses membres directement.
  */
 struct t_config_cursor_sdl {
-  t_widget_sdl *widget;    // widget parent qui gère les fonctions principales graphiques
+  t_widget_sdl *widget;              // widget parent qui gère les fonctions principales graphiques
   SDL_Surface *image;
-  SDL_Surface *surface;    // Surface pour dessiner le bouton selon son état
+  SDL_Surface *surface;              // Surface pour dessiner le curseur selon son état
+  TYPE_OF_CONFIG_CURSOR cursor_type; // Choix de déplacement du curseur
+  int offset;                        // Décalage en pixels pour chaque pas de déplacement
+  unsigned int position;             // La position du curseur. Démarre à 0
 //  void (*on_activate)(t_button_sdl *button, void*user_data); // callback activé lors du clic souris
 //  void *userdata;          // donnée personnelle transmise au callback
 };
 
 /*!
  * \brief Constructeur d'un nouvel objet t_config_cursor_sdl.
- * @param size Position est taille initiale du bouton.
+ * @param size Position est taille initiale du curseur.
  * @param logs Objet pour inscrire les logs dans des fichiers
  *
  * Le constructeur renvoie NULL en cas d'erreur.
@@ -74,12 +73,29 @@ bool config_cursor_sdl_set_image_from_file (t_config_cursor_sdl *config_cursor, 
 
 /*!
  * \brief Choix de l'image pour représenter le curseur depuis une surface SDL.
- * @param config_cursor Le bouton.
+ * @param config_cursor Le curseur.
  * @param image Image à insérer.
  *
  * Si une erreur survient la fonction est sans effet et un message est affiché en console.
  */
 bool config_cursor_sdl_set_image_from_surface (t_config_cursor_sdl *config_cursor, SDL_Surface *image);
+
+/*!
+ * \brief Donne la position du curseur [0, ..]
+ * @param config_cursor Le curseur.
+ * @param position La nouvelle position
+ *
+ * Si une erreur survient la fonction est sans effet et un message est affiché en console.
+ */
+void config_cursor_set_position (t_config_cursor_sdl *config_cursor, unsigned int position);
+
+/*!
+ * \brief Renvoie la position actuelle du curseur
+ * @param config_cursor Le curseur.
+ *
+ * Si une erreur survient la fonction est sans effet et un message est affiché en console.
+ */
+unsigned int config_cursor_sdl_get_position (t_config_cursor_sdl *config_cursor);
 
 
 #endif

@@ -36,6 +36,10 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (config_cursor->widget, config_cursor_sdl_update, config_cursor);
 
+  config_cursor->cursor_type = HORIZONTAL;
+  config_cursor->offset = 14;
+  config_cursor->position = 0;
+
   return config_cursor;
 }
 
@@ -117,6 +121,26 @@ config_cursor_sdl_set_image_from_surface (t_config_cursor_sdl *config_cursor, SD
   }
 
   return true;
+}
+
+void
+config_cursor_set_position (t_config_cursor_sdl *config_cursor, unsigned int position) {
+  if (config_cursor == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  config_cursor->position = position;
+}
+
+unsigned int
+config_cursor_sdl_get_position (t_config_cursor_sdl *config_cursor) {
+  if (config_cursor == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
+    return 0;
+  }
+
+  return config_cursor->position;
 }
 
 

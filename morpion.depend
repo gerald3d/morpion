@@ -136,7 +136,7 @@
 1756018986 source:e:\projets windows\morpion\src\ia.c
 	"Main.h"
 
-1759752673 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
+1759755116 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
 	"button_sdl.h"
 
 1759740504 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
@@ -145,7 +145,7 @@
 1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
 	"chain_list.h"
 
-1759753098 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
+1759755246 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
 	"dialog_sdl.h"
 
 1759742542 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c

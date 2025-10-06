@@ -422,8 +422,15 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 	/* Ajout d'un titre */
 	dialog_sdl_set_title (dialog, "Changement de la taille du plateau de jeu");
 
+	/* Changement de la couleur de fond */
+  widget_sdl_set_color (dialog_sdl_get_widget(dialog), (SDL_Color){231, 226, 226, 255}, FOND);
+
 	/* Récupération des boutons "Fermeture", "Annuler" et "Valider" pour configuration */
 	t_button_sdl *close_button = dialog_sdl_get_close_button  (dialog);
+
+	/* Changement de la couleur de fond */
+  widget_sdl_set_color (button_sdl_get_widget(close_button), (SDL_Color){231, 226, 226, 255}, FOND);
+
 	/* Ajout d'une bulle d'aide */
 	widget_sdl_set_tooltip (button_sdl_get_widget(close_button), "Fermeture sans modification de la configuration");
 
@@ -432,6 +439,10 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(close_button), clic_sur_le_bouton_de_fermeture_du_dialogue, dialog);
 
 	t_button_sdl *annul_button = dialog_sdl_get_annul_button  (dialog);
+
+	/* Changement de la couleur de fond */
+  widget_sdl_set_color (button_sdl_get_widget(annul_button), (SDL_Color){231, 226, 226, 255}, FOND);
+
 	/* Ajout d'une bulle d'aide */
 	widget_sdl_set_tooltip (button_sdl_get_widget(annul_button), "Fermeture sans modification de la configuration");
 
@@ -440,6 +451,10 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(annul_button), clic_sur_le_bouton_de_fermeture_du_dialogue, dialog);
 
 	t_button_sdl *valid_button = dialog_sdl_get_valid_button  (dialog);
+
+	/* Changement de la couleur de fond */
+  widget_sdl_set_color (button_sdl_get_widget(valid_button), (SDL_Color){231, 226, 226, 255}, FOND);
+
 	/* Ajout d'une bulle d'aide */
 	widget_sdl_set_tooltip (button_sdl_get_widget(valid_button), "La partie en cours sera initialisée");
 

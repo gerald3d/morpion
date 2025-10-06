@@ -29,9 +29,6 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Rendre la fenêtre de dialogue modale */
   widget_sdl_set_modale (dialog->widget, true);
 
-  /* Changement de la couleur de fond */
-  widget_sdl_set_color (dialog->widget, (SDL_Color){231, 226, 226, 255}, FOND);
-
   dialog->title = NULL;
   dialog->surface = NULL;
 

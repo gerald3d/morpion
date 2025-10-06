@@ -15,6 +15,7 @@
 #include "toggle_button_sdl.h"
 #include "dialog_sdl.h"
 #include "game_config_sdl.h"
+#include "config_cursor_sdl.h"
 
 #include "case_sdl.h"
 

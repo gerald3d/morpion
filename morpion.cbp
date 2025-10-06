@@ -11,9 +11,10 @@
 
 Créer les fonctions dans l'ihm pour enlever un widget de l'interface.
 
-Créer les fonction dans l'ihm pour que lors de sa destruction il détruise aussi tous les widgets enfants qui la compose.
+Créer le widget t_config_cursor_sdl pour gérer les curseurs dans le configurateur de la taille du plateau.
 
-Les widgets internes à d'autres widgets sont détruis lorsque l'ihm est détruit. C'est en conflit avec les widgets conteneurs qui détuisent eux aussi ces mêmes widgets]]>
+La libération mémoire des widgets ne fonctionnent pas. L'appel (void**)widget n'est pas conforme !!!
+]]>
 			</notes>
 		</Option>
 		<Build>

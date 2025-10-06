@@ -41,7 +41,7 @@ t_game_config_sdl *game_config_sdl_new (SDL_Rect size, t_logs *logs);
  *
  * Le pointeur vaut NULL au retour de la fonction.
  */
-void game_config_sdl_free (t_game_config_sdl **game_config);
+void game_config_sdl_free (void **game_config);
 
 /*! \private
  * \brief Renvoie le widget parent.

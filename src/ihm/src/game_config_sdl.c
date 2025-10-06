@@ -17,12 +17,15 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
 
   game_config->widget = widget_sdl_new (logs);
   if (game_config->widget == NULL) {
-    game_config_sdl_free (&game_config);
+    game_config_sdl_free ((void**)game_config);
     return NULL;
   }
 
   /* Affectation du pointeur de l'objet à l'objet parent */
   game_config->widget->widget_child = game_config;
+
+  /* Affectation de la fonction de destruction du configurateur au widget */
+  game_config->widget->destroy_widget_child_fct = game_config_sdl_free;
 
   widget_sdl_set_size (game_config->widget, &size.x, &size.y, &size.w, &size.h);
 
@@ -32,14 +35,14 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
   game_config->image = IMG_Load("ihm/images/image-CurseurAxe.png");
   if(game_config->image==NULL) {
     fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
-    game_config_sdl_free (&game_config);
+    game_config_sdl_free ((void**)game_config);
     return NULL;
   }
 
   game_config->surface = IMG_Load("ihm/images/image-Curseur.png");
   if(game_config->surface==NULL) {
     fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
-    game_config_sdl_free (&game_config);
+    game_config_sdl_free ((void**)game_config);
     return NULL;
   }
 
@@ -53,7 +56,7 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
 }
 
 void
-game_config_sdl_free (t_game_config_sdl **game_config) {
+game_config_sdl_free (void **game_config) {
   if (game_config == NULL) {
     fprintf (stderr, "Erreur dans %s(); : **game_config ne doit pas être NULL.\n", __func__);
     return;
@@ -64,18 +67,20 @@ game_config_sdl_free (t_game_config_sdl **game_config) {
     return;
   }
 
-  if ((*game_config)->widget)
-    widget_sdl_free (&(*game_config)->widget);
+  t_game_config_sdl *config = *game_config;
 
-  if ((*game_config)->surface)
-    SDL_FreeSurface ((*game_config)->surface);
+  if (config->widget)
+    widget_sdl_free (&config->widget);
 
-  if ((*game_config)->image)
-    SDL_FreeSurface ((*game_config)->image);
+  if (config->surface)
+    SDL_FreeSurface (config->surface);
 
-  free (*game_config);
+  if (config->image)
+    SDL_FreeSurface (config->image);
 
-  *game_config = NULL;
+  free (config);
+
+  config = NULL;
 }
 
 t_widget_sdl*

@@ -30,7 +30,6 @@ struct t_dialog_sdl {
   t_button_sdl *close_button;     // bouton de fermeture
   t_button_sdl *valid_button;     // Bouton de validation
   t_button_sdl *annul_button;     // Bouton d'annulation
-  t_game_config_sdl *game_config; // Configurateur de la taille du jeu
   TTF_Font *font;                 // Police utilisée pour afficher les boutons et les différents textes
   char *title;                    // Titre de la fenêtre
 };
@@ -49,7 +48,7 @@ t_dialog_sdl *dialog_sdl_new (SDL_Rect size, t_logs *logs);
  *
  * Le pointeur vaut NULL au retour de la fonction.
  */
-void dialog_sdl_free (t_dialog_sdl **dialog);
+void dialog_sdl_free (void **dialog);
 
 /*! \private
  * \brief Renvoie le widget parent.

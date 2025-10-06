@@ -380,11 +380,67 @@ clic_sur_le_bouton_coudpous (t_button_sdl *button, void *userdata) {
 
 }
 
-/* Callback appelé lorsque le bouton CousPous est cliqué */
+/* Callback appelé lors du clic sur le bouton de fermeture de la fenêtre de dialogue
+ * du configurateur du plateau de jeu */
+void clic_sur_le_bouton_de_fermeture_du_dialogue (t_button_sdl, void *userdata) {
+	t_dialog_sdl *dialog = (t_dialog_sdl*)userdata;
+
+	/* Rend invisible la fernêtre de dialogue */
+	widget_sdl_set_visible(dialog_sdl_get_widget(dialog), false);
+}
+
+/* Callback appelé lorsque le bouton configurateur de plateau de jeu est cliqué */
 void
 clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
-  printf ("Enter in %s ();\n", __func__);
+	t_ihm_sdl *ihm_sdl = (t_ihm_sdl*)userdata;
 
+	/* Création d'une fenêtre de dialogue */
+	static t_dialog_sdl *dialog = NULL;
+
+	/* Si c'est la première fois qu'on ouvre le dialogue alors on le crée */
+	if (dialog == NULL)
+		dialog = dialog_sdl_new((SDL_Rect){200, 100, 400, 400}, ihm_sdl_get_logs(ihm_sdl));
+	else { // On rend la fenêtre de dialogue visible
+		widget_sdl_set_visible(dialog_sdl_get_widget(dialog), true);
+		return;
+	}
+
+	/* Ajout d'un titre */
+	dialog_sdl_set_title (dialog, "Changement de la taille du plateau de jeu");
+
+	/* Récupération des boutons "Fermeture", "Annuler" et "Valider" pour configuration */
+	t_button_sdl *close_button = dialog_sdl_get_close_button  (dialog);
+	/* Ajout d'une bulle d'aide */
+	widget_sdl_set_tooltip (button_sdl_get_widget(close_button), "Fermeture sans modification de la configuration");
+
+	/* Ajout d'un callback pour gérer le clic de la souris.
+	* Ce callback va rendre la fenêtre de dialogue invisible */
+	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(close_button), clic_sur_le_bouton_de_fermeture_du_dialogue, NULL);
+
+	t_button_sdl *annul_button = dialog_sdl_get_annul_button  (dialog);
+	/* Ajout d'une bulle d'aide */
+	widget_sdl_set_tooltip (button_sdl_get_widget(annul_button), "Fermeture sans modification de la configuration");
+
+	t_button_sdl *valid_button = dialog_sdl_get_valid_button  (dialog);
+
+
+	/* Création et insertion du configurateur dans la fenêtre de dialogue */
+	/* Récupération de la position et de la taille de la fenêtre de dialogue */
+	SDL_Rect dial_size;
+	widget_sdl_get_size (dialog_sdl_get_widget(dialog), &dial_size);
+
+	int config_width = 210;
+  int config_height = 210;
+  /* Création du configateur centré sur le dialogue */
+  t_game_config_sdl *game_config = game_config_sdl_new ((SDL_Rect){dial_size.x + dial_size.w / 2 - config_width /2,
+																												dial_size.y + dial_size.h / 2 - config_height / 2,
+																												config_width, config_height}, ihm_sdl_get_logs(ihm_sdl));
+
+  /* Insertion du configurateur dans la fenêtre de dialogue */
+  widget_sdl_add_child_widget(dialog_sdl_get_widget(dialog), game_config_sdl_get_widget(game_config));
+
+  /* Insertion de la fenêtre de dialogue dans l'ihm */
+  ihm_sdl_widget_append (ihm_sdl, dialog_sdl_get_widget(dialog));
 }
 
 /* Callback appelé lorsque le bouton Tournoi est cliqué */
@@ -508,6 +564,9 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Insertion du bouton Annuler dans l'ihm */
   ihm_sdl_widget_append (ihm_sdl, button_sdl_get_widget (bouton_annuler));
 
+  /* Pour test */
+  widget_sdl_set_sensitive(button_sdl_get_widget(bouton_annuler), false);
+
   /*******************/
 
   /* Création du bouton CoudPous */
@@ -533,7 +592,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   button_sdl_set_image_from_file (bouton_size_config, "ihm/images/config_size_3.png");
 
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
-  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_size_config), clic_sur_le_bouton_size_config, NULL);
+  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_size_config), clic_sur_le_bouton_size_config, ihm_sdl);
 
   /* Pour changer la couleur de fond du bouton */
   widget_sdl_set_color (button_sdl_get_widget (bouton_coudpous), couleurTexteMarron, FOND);
@@ -543,14 +602,6 @@ creation_interface (t_morp_sdl *morp_sdl) {
 
   /* Insertion du bouton CoudPous dans l'ihm */
   ihm_sdl_widget_append (ihm_sdl, button_sdl_get_widget (bouton_size_config));
-
-
-
-
-//  t_game_config_sdl *game_config = game_config_sdl_new ((SDL_Rect){630, 420, 150, 40});
-
-  /* Insertion du configurateur dans l'ihm */
-//  ihm_sdl_widget_append (ihm_sdl, game_config_sdl_get_widget (game_config));
 
   /*******************/
 

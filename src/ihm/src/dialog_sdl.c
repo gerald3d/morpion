@@ -1,7 +1,6 @@
 #include "dialog_sdl.h"
 
 static void dialog_sdl_update (t_widget_sdl *widget, void *userdata);
-static void dialog_sdl_close_button_clic_callback (t_button_sdl *close_button, void *userdata);
 
 t_dialog_sdl*
 dialog_sdl_new (SDL_Rect size, t_logs *logs) {
@@ -15,17 +14,20 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
 
   dialog->widget = widget_sdl_new (logs);
   if (dialog->widget == NULL) {
-    dialog_sdl_free (&dialog);
+    dialog_sdl_free ((void**)dialog);
     return NULL;
   }
 
   /* Affectation du pointeur de l'objet à l'objet parent */
   dialog->widget->widget_child = dialog;
 
+  /* Affectation de la fonction de destruction du dialog au widget */
+  dialog->widget->destroy_widget_child_fct = dialog_sdl_free;
+
   widget_sdl_set_size (dialog->widget, &size.x, &size.y, &size.w, &size.h);
 
   /* Rendre la fenêtre de dialogue modale */
-  /* widget_sdl_set_modale (dialog->widget, true); */
+   widget_sdl_set_modale (dialog->widget, true);
 
   /* Changement de la couleur de fond */
   widget_sdl_set_color (dialog->widget, (SDL_Color){231, 226, 226, 255}, FOND);
@@ -36,7 +38,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Ajout du bouton de fermeture en haut à droite */
   dialog->close_button = button_sdl_new (IMAGE, NULL, (SDL_Rect){size.x + size.w - 30, size.y, 30, 30}, logs);
   if (dialog->close_button == NULL) {
-    dialog_sdl_free (&dialog);
+    dialog_sdl_free ((void**)dialog);
     return NULL;
   }
 
@@ -51,22 +53,18 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
 
   widget_sdl_add_child_widget (dialog->widget, button_sdl_get_widget (dialog->close_button));
 
-  /* Affectation du callback pour le bouton de fermeture. */
-  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (dialog->close_button),
-				      dialog_sdl_close_button_clic_callback, dialog);
-
   /* Chargement de la police */
   dialog->font = TTF_OpenFont(font_sdl, 20);
   if (dialog->font == NULL) {
     fprintf (stderr, "Erreur dans %s (); : %s\n", __func__, SDL_GetError());
-    dialog_sdl_free (&dialog);
+    dialog_sdl_free ((void**)dialog);
     return NULL;
   }
 
   /* Ajout du bouton d'annulation  */
   dialog->annul_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 170, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->annul_button == NULL) {
-    dialog_sdl_free (&dialog);
+    dialog_sdl_free ((void**)dialog);
     return NULL;
   }
 
@@ -78,13 +76,10 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
 
   widget_sdl_add_child_widget (dialog->widget, button_sdl_get_widget (dialog->annul_button));
 
-  /* Affectation du callback pour le bouton d'annulation. */
-  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (dialog->annul_button), dialog_sdl_close_button_clic_callback, dialog);
-
   /* Ajout du bouton Valider  */
   dialog->valid_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 85, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->valid_button == NULL) {
-    dialog_sdl_free (&dialog);
+    dialog_sdl_free ((void**)dialog);
     return NULL;
   }
 
@@ -99,19 +94,6 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
 
   widget_sdl_add_child_widget (dialog->widget, button_sdl_get_widget (dialog->valid_button));
 
-  /* Ajout du configurateur de jeu */
-  int config_width = 210;
-  int config_height = 210;
-  dialog->game_config = game_config_sdl_new ((SDL_Rect){size.x + size.w / 2 - config_width /2, size.y + size.h / 2 - config_height / 2,
-							config_width, config_height}, logs);
-  if (dialog->game_config == NULL) {
-    dialog_sdl_free (&dialog);
-    return NULL;
-  }
-
-  /* Insertion du configurateur dans la fenêtre de dialogue. */
-  widget_sdl_add_child_widget (dialog->widget, game_config_sdl_get_widget (dialog->game_config));
-
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (dialog->widget, dialog_sdl_update, dialog);
 
@@ -119,7 +101,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
 }
 
 void
-dialog_sdl_free (t_dialog_sdl **dialog) {
+dialog_sdl_free (void **dialog) {
   if (dialog == NULL) {
     fprintf (stderr, "Erreur dans %s(); : **dialog ne doit pas être NULL.\n", __func__);
     return;
@@ -130,39 +112,35 @@ dialog_sdl_free (t_dialog_sdl **dialog) {
     return;
   }
 
-  if ((*dialog)->surface)
-    SDL_FreeSurface ((*dialog)->surface);
+  t_dialog_sdl *dial = *dialog;
 
-  if ((*dialog)->game_config)
-    game_config_sdl_free (&(*dialog)->game_config);
+  if (dial->surface)
+    SDL_FreeSurface (dial->surface);
 
-  if ((*dialog)->close_button) {
-		t_widget_sdl *widget = button_sdl_get_widget((*dialog)->close_button);
-    widget_sdl_free(&widget);
-//    button_sdl_free (&(*dialog)->close_button);
-  }
-
-  if ((*dialog)->valid_button) {
-//    button_sdl_free (&(*dialog)->valid_button);
-    t_widget_sdl *widget = button_sdl_get_widget((*dialog)->valid_button);
+  if (dial->close_button) {
+		t_widget_sdl *widget = button_sdl_get_widget(dial->close_button);
     widget_sdl_free(&widget);
   }
 
-  if ((*dialog)->annul_button) {
-  t_widget_sdl *widget = button_sdl_get_widget((*dialog)->annul_button);
+  if (dial->valid_button) {
+    t_widget_sdl *widget = button_sdl_get_widget(dial->valid_button);
     widget_sdl_free(&widget);
-//    button_sdl_free (&(*dialog)->annul_button);
   }
 
-  if ((*dialog)->font)
-    TTF_CloseFont((*dialog)->font);
+  if (dial->annul_button) {
+  	t_widget_sdl *widget = button_sdl_get_widget(dial->annul_button);
+    widget_sdl_free(&widget);
+  }
 
-  if ((*dialog)->title)
-    free ((*dialog)->title);
+  if (dial->font)
+    TTF_CloseFont(dial->font);
 
-  free (*dialog);
+  if (dial->title)
+    free (dial->title);
 
-  *dialog = NULL;
+  free (dial);
+
+  dial = NULL;
 }
 
 t_widget_sdl*
@@ -297,23 +275,4 @@ dialog_sdl_update (t_widget_sdl *widget, void *userdata) {
   SDL_RenderCopy(widget_sdl_get_renderer (dialog->widget), texture, NULL, &texture_size);
 
   SDL_DestroyTexture (texture);
-}
-
-static void
-dialog_sdl_close_button_clic_callback (t_button_sdl *close_button, void *userdata) {
- if (close_button == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : button ne doit pas être NULL.\n", __func__);
-    return;
-  }
-
-  if (userdata == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
-    return;
-  }
-
-  /* Récupération du dialog */
-  t_dialog_sdl *dialog = (t_dialog_sdl*)userdata;
-
-  /* La fenêtre de dialogue devient invisible */
-  widget_sdl_set_visible (dialog_sdl_get_widget (dialog), false);
 }

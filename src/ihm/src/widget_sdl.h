@@ -59,6 +59,7 @@ struct t_widget_sdl {
   t_liste *userdata;                 // données personnelles attachées au widget
   t_liste *mouse_clic_cb_list;       // liste des fonctions à appeler lorsque un clic de la souris survient
   t_liste *mouse_on_cb_list;         // liste des fonctions à appeler lorsque la souris est sur le widget
+  t_liste *mouse_down_clic_cb_list;  // liste des fonctions à appeler lorsque le bouton de la souris reste enfoncée.
   t_tooltip_sdl *tooltip;            // Bulle d'aide affichée si elle existe
 };
 
@@ -85,6 +86,18 @@ typedef struct {
   void (*mouse_on_cb)(void *any_widget, void *userdata);
   void *userdata;                                            // donnée personnelle pour le callback mouse_is_on_cb
 } t_mouse_on;
+
+/*!
+ * \private Structure privée.
+ * L'utilisateur final ne doit pas accéder à un de ses membres directement.
+ */
+typedef struct {
+  /* Callback activé lorsque la souris est sur le widget.
+   * Le paramètre any_widget pourra être de n'importe quel type
+   * de widget enfant à t_widget_sdl. */
+  void (*mouse_down_clic_cb)(void *any_widget, void *userdata);
+  void *userdata;  // donnée personnelle pour le callback mouse_is_down_clic_cb
+} t_mouse_down_clic;
 
 /*!
  * \private Structure privée.

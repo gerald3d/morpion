@@ -124,6 +124,21 @@ config_cursor_sdl_set_image_from_surface (t_config_cursor_sdl *config_cursor, SD
 }
 
 void
+config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment) {
+  if (config_cursor == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+    if (alignment != VERTICAL && alignment!=HORIZONTAL) {
+    fprintf (stderr, "Erreur dans %s(); : alignment doit être VERTICAL ou HORIZONTAL.\n", __func__);
+    return;
+  }
+
+  config_cursor->cursor_type = alignment;
+}
+
+void
 config_cursor_set_position (t_config_cursor_sdl *config_cursor, unsigned int position) {
   if (config_cursor == NULL) {
     fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);

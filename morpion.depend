@@ -70,7 +70,7 @@
 	"config_cursor_sdl.h"
 	"case_sdl.h"
 
-1759679395 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+1759765045 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
@@ -805,10 +805,10 @@
 1759680570 source:e:\projets windows\morpion\src\ihm\src\logs.c
 	"logs.h"
 
-1759763530 e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.h
+1759763913 e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.h
 	<string.h>
 	"widget_sdl.h"
 
-1759762746 source:e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.c
+1759763913 source:e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.c
 	"config_cursor_sdl.h"
 

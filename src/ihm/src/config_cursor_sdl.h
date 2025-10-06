@@ -81,6 +81,15 @@ bool config_cursor_sdl_set_image_from_file (t_config_cursor_sdl *config_cursor, 
 bool config_cursor_sdl_set_image_from_surface (t_config_cursor_sdl *config_cursor, SDL_Surface *image);
 
 /*!
+ * \brief Change le type de déplacement du cureseur
+ * @param config_cursor Le curseur.
+ * @param alignment Type de déplacement (HORIZONTAL par défaut).
+ *
+ * Si une erreur survient la fonction est sans effet et un message est affiché en console.
+ */
+void config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment);
+
+/*!
  * \brief Donne la position du curseur [0, ..]
  * @param config_cursor Le curseur.
  * @param position La nouvelle position

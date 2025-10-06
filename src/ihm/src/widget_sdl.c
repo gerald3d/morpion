@@ -30,6 +30,7 @@ widget_sdl_new (t_logs *logs) {
   widget->userdata = NULL;
   widget->mouse_clic_cb_list = NULL;
   widget->mouse_on_cb_list = NULL;
+  widget->mouse_down_clic_cb_list = NULL;
 
   widget->original_size = (SDL_Rect){0, 0, 0, 0};
 
@@ -86,6 +87,16 @@ widget_sdl_free (t_widget_sdl **widget) {
       liste = liste->suivant;
     }
     liste_liberation (&(*widget)->mouse_on_cb_list);
+  }
+
+  if ((*widget)->mouse_down_clic_cb_list) {
+    t_liste *liste = (*widget)->mouse_down_clic_cb_list;
+    while (liste) {
+      t_mouse_down_clic *mouse_down_clic = (t_mouse_down_clic*)liste->donnee;
+      free (mouse_down_clic);
+      liste = liste->suivant;
+    }
+    liste_liberation (&(*widget)->mouse_down_clic_cb_list);
   }
 
   if ((*widget)->destroy_widget_child_fct)
@@ -210,6 +221,25 @@ widget_sdl_set_mouse_on_callback (t_widget_sdl *widget, void *callback, void *us
   mouse_on->userdata = userdata;
 
   widget->mouse_on_cb_list = liste_ajout_fin (widget->mouse_on_cb_list, mouse_on);
+}
+
+void
+widget_sdl_set_mouse_down_clic_callback (t_widget_sdl *widget, void *callback, void *userdata) {
+  if (widget == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  t_mouse_down_clic *mouse_down_clic = malloc (sizeof(t_mouse_down_clic));
+  if (mouse_down_clic == NULL) {
+    fprintf (widget->file_error, "Erreur dans %s(); : erreur d'allocation mémoire.\n", __func__);
+    return;
+  }
+
+  mouse_down_clic->mouse_down_clic_cb = callback;
+  mouse_down_clic->userdata = userdata;
+
+  widget->mouse_down_clic_cb_list = liste_ajout_fin (widget->mouse_down_clic_cb_list, mouse_down_clic);
 }
 
 void
@@ -401,6 +431,36 @@ void widget_sdl_mouse_motion_update (t_widget_sdl *widget, SDL_Event *event) {
 }
 
 static
+void widget_sdl_mouse_button_down_update (t_widget_sdl *widget, SDL_Event *event) {
+  if (widget == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  if (event == NULL) {
+    fprintf (widget->file_error, "Erreur dans %s(); : event ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  /* Mise à jour de la position de la souris */
+  widget->x = event->motion.x;
+  widget->y = event->motion.y;
+  widget_sdl_set_pointer_position (widget, event->motion.x, event->motion.y);
+
+  /* Exécution du callback pour l'appui du bouton de la souris */
+  if (widget_sdl_pt_is_in_rect (widget->x, widget->y, &widget->actual_size)) {
+    t_liste *liste = widget->mouse_clic_cb_list;
+    while (liste) {
+      if (liste->donnee) {
+				t_mouse_down_clic *donnee = (t_mouse_down_clic*)liste->donnee;
+				donnee->mouse_down_clic_cb (widget->widget_child, donnee->userdata);
+      }
+      liste = liste->suivant;
+    }
+  }
+}
+
+static
 void widget_sdl_mouse_button_up_update (t_widget_sdl *widget, SDL_Event *event) {
   if (widget == NULL) {
     fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
@@ -453,9 +513,9 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
       t_liste *liste = widget->child_widget_list;
       t_widget_sdl *child = NULL;
       while (liste) {
-	child = (t_widget_sdl*)liste->donnee;
-	widget_sdl_mouse_motion_update (child, event);
-	liste = liste->suivant;
+				child = (t_widget_sdl*)liste->donnee;
+				widget_sdl_mouse_motion_update (child, event);
+				liste = liste->suivant;
       }
     }
 
@@ -463,19 +523,36 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
     widget_sdl_mouse_motion_update (widget, event);
 
     break;
+	case SDL_MOUSEBUTTONDOWN :
+		{
+			/* Si le widget contient des widgets enfants il faut recommencer l'opération pour chacun d'eux */
+			if (widget->child_widget_list) {
+				t_liste *liste = widget->child_widget_list;
+				t_widget_sdl *child = NULL;
+				while (liste) {
+					child = (t_widget_sdl*)liste->donnee;
+					widget_sdl_mouse_button_down_update (child, event);
+					liste = liste->suivant;
+				}
+			}
+
+			/* Mise à jour de la position de la souris */
+			widget_sdl_mouse_button_down_update (widget, event);
+			break;
+		}
   case SDL_MOUSEBUTTONUP :
     {
       /* Si le widget contient des widgets enfants il faut recommencer l'opération pour chacun d'eux */
       if (widget->child_widget_list) {
-	t_liste *liste = widget->child_widget_list;
-	t_widget_sdl *child = NULL;
-	while (liste) {
-	  child = (t_widget_sdl*)liste->donnee;
-	  widget_sdl_mouse_button_up_update (child, event);
-	  liste = liste->suivant;
-	}
+				t_liste *liste = widget->child_widget_list;
+				t_widget_sdl *child = NULL;
+				while (liste) {
+	  			child = (t_widget_sdl*)liste->donnee;
+	  			widget_sdl_mouse_button_up_update (child, event);
+	  			liste = liste->suivant;
+				}
       }
-       widget_sdl_mouse_button_up_update (widget, event);
+			widget_sdl_mouse_button_up_update (widget, event);
 
       break;
     }

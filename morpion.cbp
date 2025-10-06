@@ -14,7 +14,8 @@ Créer les fonctions dans l'ihm pour enlever un widget de l'interface.
 Créer le widget t_config_cursor_sdl pour gérer les curseurs dans le configurateur de la taille du plateau.
 
 La libération mémoire des widgets ne fonctionnent pas. L'appel (void**)widget n'est pas conforme !!!
-]]>
+
+Dans widget_sdl.c : voir pour gérer l'appui du bouton de la souris dans widget_sdl_mouse_button_down_update();.]]>
 			</notes>
 		</Option>
 		<Build>

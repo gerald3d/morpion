@@ -156,9 +156,6 @@ morp_sdl_init (t_logs *logs)
 
   SDL_SetWindowTitle(morp_sdl->window,"Jeu de Morpion");//affiche le titre de la fenetre
 
-  //on cache le pointeur de la souris
-  /* SDL_ShowCursor(SDL_DISABLE);  */
-
   //ignore tous les clics. A reactiver apres le titre avec SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE);
   SDL_EventState(SDL_MOUSEBUTTONUP, SDL_IGNORE);
 

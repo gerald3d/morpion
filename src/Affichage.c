@@ -389,6 +389,20 @@ void clic_sur_le_bouton_de_fermeture_du_dialogue (t_button_sdl, void *userdata) 
 	widget_sdl_set_visible(dialog_sdl_get_widget(dialog), false);
 }
 
+/* Callback appelé lors du clic sur le bouton de validation de la fenêtre de dialogue
+ * du configurateur du plateau de jeu */
+void clic_sur_le_bouton_de_validation_du_dialogue (t_button_sdl, void *userdata) {
+	t_dialog_sdl *dialog = (t_dialog_sdl*)userdata;
+
+	/* Rend invisible la fernêtre de dialogue */
+	widget_sdl_set_visible(dialog_sdl_get_widget(dialog), false);
+
+	/* Change les caractéristiques du plateau jeu */
+
+	/* Initialise le jeu */
+
+}
+
 /* Callback appelé lorsque le bouton configurateur de plateau de jeu est cliqué */
 void
 clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
@@ -415,13 +429,23 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 
 	/* Ajout d'un callback pour gérer le clic de la souris.
 	* Ce callback va rendre la fenêtre de dialogue invisible */
-	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(close_button), clic_sur_le_bouton_de_fermeture_du_dialogue, NULL);
+	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(close_button), clic_sur_le_bouton_de_fermeture_du_dialogue, dialog);
 
 	t_button_sdl *annul_button = dialog_sdl_get_annul_button  (dialog);
 	/* Ajout d'une bulle d'aide */
 	widget_sdl_set_tooltip (button_sdl_get_widget(annul_button), "Fermeture sans modification de la configuration");
 
+	/* Ajout d'un callback pour gérer le clic de la souris.
+	* Ce callback va rendre la fenêtre de dialogue invisible */
+	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(annul_button), clic_sur_le_bouton_de_fermeture_du_dialogue, dialog);
+
 	t_button_sdl *valid_button = dialog_sdl_get_valid_button  (dialog);
+	/* Ajout d'une bulle d'aide */
+	widget_sdl_set_tooltip (button_sdl_get_widget(valid_button), "La partie en cours sera initialisée");
+
+	/* Ajout d'un callback pour gérer le clic de la souris.
+	* Ce callback va rendre la fenêtre de dialogue invisible, modifier les caractéristiques du jeu et initialiser une nouvelle partie */
+	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(annul_button), clic_sur_le_bouton_de_validation_du_dialogue, dialog);
 
 
 	/* Création et insertion du configurateur dans la fenêtre de dialogue */
@@ -507,7 +531,7 @@ creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
       widget_sdl_set_color (case_sdl_get_widget (case_sdl[j + i*nbre_casex]), couleurMarron, INSENSIBLE);
 
       /* Change le cursor lorsque la souris est dessus */
-      SDL_Surface *case_noire = IMG_Load ("./Ressources/croix_noire.png");
+      SDL_Surface *case_noire = IMG_Load ("Ressources/croix_noire.png");
       if (case_noire==NULL)
         fprintf (stderr, "%s\n", SDL_GetError());
 
@@ -533,6 +557,10 @@ creation_interface (t_morp_sdl *morp_sdl) {
  /* Création d'un bouton Nouveau */
   t_button_sdl *bouton_nouveau = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 50, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_nouveau, "Nouveau", TTF_STYLE_NORMAL);
+
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_nouveau), cursor_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton.
    * Pour l'exemple on attache un texte à la donnée personnelle */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_nouveau), clic_sur_le_bouton_nouveau, NULL);
@@ -552,6 +580,10 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Création du bouton Annuler */
   t_button_sdl *bouton_annuler = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 150, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_annuler, "Annuler", TTF_STYLE_NORMAL);
+
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_annuler), cursor_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_annuler), clic_sur_le_bouton_annuler, NULL);
 
@@ -564,14 +596,15 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Insertion du bouton Annuler dans l'ihm */
   ihm_sdl_widget_append (ihm_sdl, button_sdl_get_widget (bouton_annuler));
 
-  /* Pour test */
-  widget_sdl_set_sensitive(button_sdl_get_widget(bouton_annuler), false);
-
   /*******************/
 
   /* Création du bouton CoudPous */
   t_button_sdl *bouton_coudpous = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 190, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_coudpous, "CoudPous", TTF_STYLE_NORMAL);
+
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_coudpous), cursor_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_coudpous), clic_sur_le_bouton_coudpous, NULL);
 
@@ -591,11 +624,14 @@ creation_interface (t_morp_sdl *morp_sdl) {
   t_button_sdl *bouton_size_config = button_sdl_new (IMAGE, NULL, (SDL_Rect){630, 420, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_image_from_file (bouton_size_config, "ihm/images/config_size_3.png");
 
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_size_config), cursor_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_size_config), clic_sur_le_bouton_size_config, ihm_sdl);
 
   /* Pour changer la couleur de fond du bouton */
-  widget_sdl_set_color (button_sdl_get_widget (bouton_coudpous), couleurTexteMarron, FOND);
+  widget_sdl_set_color (button_sdl_get_widget (bouton_size_config), couleurTexteMarron, FOND);
 
   /* Ajout d'une bulle d'aide */
   widget_sdl_set_tooltip (button_sdl_get_widget (bouton_size_config), "Modification de la taille du plateau de jeu.");
@@ -608,6 +644,10 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Création du bouton Tournoi */
   t_button_sdl *bouton_tournoi = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 350, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_tournoi, "Tournoi", TTF_STYLE_NORMAL);
+
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_tournoi), cursor_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_tournoi), clic_sur_le_bouton_tournoi, NULL);
 
@@ -632,6 +672,10 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Ajout d'une image pour chaque bouton */
   state_button_sdl_set_image (button1, "./Ressources/image_humain.png");
   state_button_sdl_set_image (button2, "./Ressources/image_ordi.png");
+
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (state_button_sdl_get_widget (button1), cursor_sdl);
+  widget_sdl_set_cursor_from_file (state_button_sdl_get_widget (button2), cursor_sdl);
 
   /* Affectation d'un callback lors du clic de la souris sur chaque bouton. */
   widget_sdl_set_mouse_clic_callback (toggle_button_sdl_get_widget (left_toogle_button), clic_sur_un_bouton_a_bascule, NULL);
@@ -666,6 +710,10 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Création du bouton Quitter */
   t_button_sdl *bouton_quitter = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 500, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_quitter, "quitter", TTF_STYLE_NORMAL);
+
+  /* Change le curseur lorsque la souris est sur le bouton */
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_quitter), cursor_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_quitter), clic_sur_le_bouton_quitter, NULL);
 

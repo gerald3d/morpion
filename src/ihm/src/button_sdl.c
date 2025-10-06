@@ -59,9 +59,6 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (button->widget, button_sdl_update, button);
 
-  /* Affectation du callback lorsque la souris est sur le bouton. Permet de changer le style de la font */
-  /* widget_sdl_set_mouse_on_callback (button->widget, button_sdl_mouse_in, NULL); */
-
   return button;
 }
 
@@ -228,10 +225,8 @@ button_sdl_text_surface_new (t_button_sdl *button) {
     SDL_FreeSurface(button->surface);
 
   TTF_SetFontStyle(button->font, button->style);
-  if (widget_sdl_is_sensitive (button->widget) == true)
-    button->surface = TTF_RenderUTF8_Blended(button->font, button->text, button->couleur_text);
-  else
-    button->surface = TTF_RenderUTF8_Blended(button->font, button->text, button->widget->couleur_insensible);
+
+  button->surface = TTF_RenderUTF8_Blended(button->font, button->text, button->couleur_text);
 }
 
 static void

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1759750340 source:e:\projets windows\morpion\src\affichage.c
+1759753845 source:e:\projets windows\morpion\src\affichage.c
 	"Main.h"
 	"Affichage.h"
 
@@ -79,7 +79,7 @@
 	"tooltip_sdl.h"
 	"chain_list.h"
 
-1758785754 e:\projets windows\morpion\src\ihm\src\define_sdl.h
+1759752792 e:\projets windows\morpion\src\ihm\src\define_sdl.h
 
 1759393681 e:\projets windows\morpion\src\ihm\src\tooltip_sdl.h
 	<stdio.h>
@@ -136,7 +136,7 @@
 1756018986 source:e:\projets windows\morpion\src\ia.c
 	"Main.h"
 
-1759740504 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
+1759752673 source:e:\projets windows\morpion\src\ihm\src\button_sdl.c
 	"button_sdl.h"
 
 1759740504 source:e:\projets windows\morpion\src\ihm\src\case_sdl.c
@@ -145,7 +145,7 @@
 1757671162 source:e:\projets windows\morpion\src\ihm\src\chain_list.c
 	"chain_list.h"
 
-1759750529 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
+1759753098 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
 	"dialog_sdl.h"
 
 1759742542 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
@@ -160,7 +160,7 @@
 1756018967 source:e:\projets windows\morpion\src\logs.c
 	"logs.h"
 
-1759507257 source:e:\projets windows\morpion\src\main.c
+1759751649 source:e:\projets windows\morpion\src\main.c
 	"Main.h"
 
 1758290677 source:e:\projets windows\morpion\src\morp_sdl.c
@@ -175,7 +175,7 @@
 1755448521 source:e:\projets windows\morpion\src\tournoi.c
 	"Main.h"
 
-1759740649 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
+1759751112 source:e:\projets windows\morpion\src\ihm\src\ihm_sdl.c
 	"ihm_sdl.h"
 
 1757862470 c:\msys64\mingw64\include\stdio.h

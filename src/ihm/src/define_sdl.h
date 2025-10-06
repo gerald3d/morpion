@@ -7,5 +7,5 @@
 #define couleur_insensible_sdl (SDL_Color){200, 200, 200, 255} // Couleur du fond du widget lorsqu'il est insensible aux évènements
 
 #define font_sdl "times.ttf"    // Police utilisée pour tous les textes de l'ihm
-#define cursor_sdl "images/cursor.png" // Image du curseur lorsque le pointeur de la souris est sur un widget
+#define cursor_sdl "ihm/images/cursor.png" // Image du curseur lorsque le pointeur de la souris est sur un widget
 #endif

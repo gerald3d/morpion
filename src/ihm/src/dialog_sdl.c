@@ -27,7 +27,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   widget_sdl_set_size (dialog->widget, &size.x, &size.y, &size.w, &size.h);
 
   /* Rendre la fenêtre de dialogue modale */
-   widget_sdl_set_modale (dialog->widget, true);
+  widget_sdl_set_modale (dialog->widget, true);
 
   /* Changement de la couleur de fond */
   widget_sdl_set_color (dialog->widget, (SDL_Color){231, 226, 226, 255}, FOND);
@@ -43,7 +43,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   }
 
   /* Affectation d'une image pour le bouton de fermeture */
-  button_sdl_set_image_from_file (dialog->close_button,	"images/croix_noire.png");
+  button_sdl_set_image_from_file (dialog->close_button,	"ihm/images/croix_noire.png");
 
   /* Change le curseur lorsque la souris est sur le bouton de fermeture */
   widget_sdl_set_cursor_from_file (button_sdl_get_widget (dialog->close_button), cursor_sdl);
@@ -87,7 +87,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   button_sdl_set_text (dialog->valid_button, "Valider", TTF_STYLE_NORMAL);
 
   /* Change le curseur lorsque la souris est sur le bouton */
-  widget_sdl_set_cursor_from_file (button_sdl_get_widget (dialog->valid_button), "images/cursor.png");
+  widget_sdl_set_cursor_from_file (button_sdl_get_widget (dialog->valid_button), "ihm/images/cursor.png");
 
   /* Ajout d'une bulle d'aide au bouton */
   widget_sdl_set_tooltip (button_sdl_get_widget (dialog->valid_button), "La partie en cours sera réinitialisée");

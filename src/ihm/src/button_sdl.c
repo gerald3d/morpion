@@ -2,7 +2,7 @@
 
 static void button_sdl_text_surface_new (t_button_sdl *button);
 static SDL_Texture *button_sdl_create_texture (t_button_sdl *button, SDL_Renderer *renderer);
-/* Affiche le bouton sur renderer transmis */
+/* Affiche le bouton sur le renderer transmis */
 static void button_sdl_update (t_widget_sdl *widget, void *userdata);
 
 
@@ -270,19 +270,16 @@ button_sdl_update (t_widget_sdl *widget, void *userdata) {
   SDL_Rect widget_size;
   widget_sdl_get_size (widget, &widget_size);
 
-  if (button->button_type == TEXTE) {
-    SDL_Rect size;
-    SDL_QueryTexture(texture, NULL, NULL, &size.w, &size.h);
+  SDL_Rect size;
+	SDL_QueryTexture(texture, NULL, NULL, &size.w, &size.h);
 
-    /* Calcul de la position du texte (centré) dans le cadre */
-    size.x = widget_size.x + widget_size.w/2 - size.w/2;
-    size.y = widget_size.y + widget_size.h/2 - size.h/2;
+	/* Calcul de la position de la texture (centrée) dans le cadre */
+	size.x = widget_size.x + widget_size.w/2 - size.w/2;
+	size.y = widget_size.y + widget_size.h/2 - size.h/2;
 
-    /* Application de la texture dans le rendu */
-    SDL_RenderCopy(widget_sdl_get_renderer (widget), texture, NULL, &size);
-  } else { // Affichage de l'image
-    SDL_RenderCopy(widget_sdl_get_renderer (widget), texture, NULL, &widget_size);
-  }
+  /* Application de la texture dans le rendu */
+  SDL_RenderCopy(widget_sdl_get_renderer (widget), texture, NULL, &size);
+
 
   SDL_DestroyTexture (texture);
 }

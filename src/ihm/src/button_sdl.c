@@ -78,8 +78,6 @@ button_sdl_free (void **button) {
   }
 
   t_button_sdl *intern_button = *button;
-//  if (intern_button->widget)
-//    widget_sdl_free (&intern_button->widget);
 
   if (intern_button->text)
     free (intern_button->text);

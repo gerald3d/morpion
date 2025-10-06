@@ -32,9 +32,7 @@ toggle_button_sdl_new (SDL_Rect size, t_logs *logs) {
   if (toggle_button->button1 == NULL) {
   	t_widget_sdl *widget = state_button_sdl_get_widget (toggle_button->button1);
     widget_sdl_free(&widget);
-////    state_button_sdl_free (&(*toggle_button)->button1);
-//  }
-//    toggle_button_sdl_free (&toggle_button);
+
     return NULL;
   }
 
@@ -88,20 +86,15 @@ toggle_button_sdl_free (void **toggle_button) {
     return;
   }
 
-//  if ((*toggle_button)->widget)
-//    widget_sdl_free (&(*toggle_button)->widget);
-
 	t_toggle_button_sdl *intern_toggle= *toggle_button;
   if (intern_toggle->button1) {
   	t_widget_sdl *widget = state_button_sdl_get_widget(intern_toggle->button1);
     widget_sdl_free(&widget);
-//    state_button_sdl_free (&(*toggle_button)->button1);
   }
 
   if (intern_toggle->button2) {
 		t_widget_sdl *widget = state_button_sdl_get_widget(intern_toggle->button2);
     widget_sdl_free(&widget);
-//    state_button_sdl_free (&(*toggle_button)->button2);
   }
 
   free (intern_toggle);
@@ -197,6 +190,9 @@ toggle_button_sdl_update (t_widget_sdl *widget, void *userdata) {
     fprintf (stderr, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
     return;
   }
+
+  /* Affichage des widgets internes */
+
 }
 
 

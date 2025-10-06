@@ -51,9 +51,6 @@ state_button_sdl_free (void **state_button) {
     return;
   }
 
-//  if ((*state_button)->widget)
-//    widget_sdl_free (&(*state_button)->widget);
-
 	t_state_button_sdl *intern_button= *state_button;
   if (intern_button->image)
     SDL_FreeSurface (intern_button->image);

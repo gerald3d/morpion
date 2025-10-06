@@ -217,7 +217,6 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
     }
   }
 
-
   /* Affichage de tous les widgets avec en dernier le widget modale s'il existe */
   liste_tmp = ihm_sdl->widget_list;
   while (liste_tmp) {
@@ -289,10 +288,6 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
   }
 
   /* Changement de la forme du curseur si la souris est sur un widget */
-
-  /* int xmouse, ymouse; */
-  /* SDL_GetMouseState(&xmouse, &ymouse); */
-
   if (widget_cursor_change && widget_cursor_change->cursor) {
     int x, y;
     widget_sdl_get_mouse_position (widget_cursor_change, &x, &y);
@@ -322,8 +317,5 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
   }
   else { // Affichage du curseur système
     SDL_ShowCursor(SDL_ENABLE);
-    /* SDL_Window *window = SDL_RenderGetWindow (ihm_sdl->renderer); */
-    /* SDL_WarpMouseInWindow(window, xmouse, ymouse); */
-    /*   printf ("position souris : %d, %d\n", xmouse, ymouse); */
   }
 }

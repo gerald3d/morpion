@@ -55,7 +55,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (dialog->close_button),
 				      dialog_sdl_close_button_clic_callback, dialog);
 
-  /* Ajout du bouton d'annulation  */
+  /* Chargement de la police */
   dialog->font = TTF_OpenFont(font_sdl, 20);
   if (dialog->font == NULL) {
     fprintf (stderr, "Erreur dans %s (); : %s\n", __func__, SDL_GetError());
@@ -63,6 +63,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
     return NULL;
   }
 
+  /* Ajout du bouton d'annulation  */
   dialog->annul_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 170, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->annul_button == NULL) {
     dialog_sdl_free (&dialog);
@@ -78,8 +79,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   widget_sdl_add_child_widget (dialog->widget, button_sdl_get_widget (dialog->annul_button));
 
   /* Affectation du callback pour le bouton d'annulation. */
-  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (dialog->annul_button),
-				      dialog_sdl_close_button_clic_callback, dialog);
+  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (dialog->annul_button), dialog_sdl_close_button_clic_callback, dialog);
 
   /* Ajout du bouton Valider  */
   dialog->valid_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 85, size.y + size.h - 30, 80, 20}, logs);
@@ -129,9 +129,6 @@ dialog_sdl_free (t_dialog_sdl **dialog) {
     fprintf (stderr, "Erreur dans %s(); : dialog ne doit pas être NULL.\n", __func__);
     return;
   }
-
-//  if ((*dialog)->widget)
-//    widget_sdl_free (&(*dialog)->widget);
 
   if ((*dialog)->surface)
     SDL_FreeSurface ((*dialog)->surface);

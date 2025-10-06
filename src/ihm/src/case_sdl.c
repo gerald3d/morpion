@@ -49,9 +49,6 @@ case_sdl_free (void **case_sdl) {
     return;
   }
 
-//  if ((*case_sdl)->widget)
-//    widget_sdl_free (&(*case_sdl)->widget);
-
 	t_case_sdl *intern_case= *case_sdl;
   if (intern_case->image)
     SDL_FreeSurface (intern_case->image);

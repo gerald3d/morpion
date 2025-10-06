@@ -294,6 +294,10 @@ Les widgets internes à d'autres widgets sont détruis lorsque l'ihm est détrui
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ihm/src/ihm_sdl.h" />
+		<Unit filename="src/ihm/src/logs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/ihm/src/logs.h" />
 		<Unit filename="src/ihm/src/state_button_sdl.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -310,10 +314,6 @@ Les widgets internes à d'autres widgets sont détruis lorsque l'ihm est détrui
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/ihm/src/widget_sdl.h" />
-		<Unit filename="src/logs.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/logs.h" />
 		<Unit filename="src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>

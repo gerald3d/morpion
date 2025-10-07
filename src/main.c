@@ -332,7 +332,7 @@ int main(int argc, char **argv)
 
   logs_liberation (logs);
 
-//  ihm_sdl_free (&ihm_sdl);
+  ihm_sdl_free (&ihm_sdl);
 
   return EXIT_SUCCESS; //on quitte le jeu avec succes
 }

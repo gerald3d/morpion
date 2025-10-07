@@ -19,7 +19,7 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
 
   button->widget = widget_sdl_new (logs);
   if (button->widget == NULL) {
-    button_sdl_free ((void**)button);
+    button_sdl_free ((void**)&button);
     return NULL;
   }
 
@@ -38,13 +38,13 @@ button_sdl_new (BUTTON_SDL_TYPE_OF_BUTTON type_de_bouton, TTF_Font *font, SDL_Re
     button->button_type = type_de_bouton;
   else {
     fprintf (button->widget->file_error, "Erreur dans %s(); : type__de_bouton doit avoir la valeur TEXTE ou IMAGE.\n", __func__);
-    button_sdl_free ((void**)button);
+    button_sdl_free ((void**)&button);
     return NULL;
   }
 
   if (type_de_bouton == TEXTE && font == NULL) {
     fprintf (button->widget->file_error, "Erreur dans %s(); : font ne doit pas être NULL.\n", __func__);
-    button_sdl_free ((void**)button);
+    button_sdl_free ((void**)&button);
     return NULL;
   }
 

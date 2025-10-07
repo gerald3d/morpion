@@ -332,6 +332,15 @@ Dans widget_sdl.c : voir pour gérer l'appui du bouton de la souris dans widget_
 		</Unit>
 		<Unit filename="src/texture.h" />
 		<Extensions>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

@@ -35,7 +35,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Ajout du bouton de fermeture en haut à droite */
   dialog->close_button = button_sdl_new (IMAGE, NULL, (SDL_Rect){size.x + size.w - 30, size.y, 30, 30}, logs);
   if (dialog->close_button == NULL) {
-    dialog_sdl_free ((void**)dialog);
+    dialog_sdl_free ((void**)&dialog);
     return NULL;
   }
 
@@ -54,14 +54,14 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   dialog->font = TTF_OpenFont(font_sdl, 20);
   if (dialog->font == NULL) {
     fprintf (stderr, "Erreur dans %s (); : %s\n", __func__, SDL_GetError());
-    dialog_sdl_free ((void**)dialog);
+    dialog_sdl_free ((void**)&dialog);
     return NULL;
   }
 
   /* Ajout du bouton d'annulation  */
   dialog->annul_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 170, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->annul_button == NULL) {
-    dialog_sdl_free ((void**)dialog);
+    dialog_sdl_free ((void**)&dialog);
     return NULL;
   }
 
@@ -76,7 +76,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
   /* Ajout du bouton Valider  */
   dialog->valid_button = button_sdl_new (TEXTE, dialog->font, (SDL_Rect){size.x + size.w - 85, size.y + size.h - 30, 80, 20}, logs);
   if (dialog->valid_button == NULL) {
-    dialog_sdl_free ((void**)dialog);
+    dialog_sdl_free ((void**)&dialog);
     return NULL;
   }
 

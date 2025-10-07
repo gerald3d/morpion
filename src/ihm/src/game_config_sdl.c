@@ -35,14 +35,14 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
   game_config->image = IMG_Load("ihm/images/image-CurseurAxe.png");
   if(game_config->image==NULL) {
     fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
-    game_config_sdl_free ((void**)game_config);
+    game_config_sdl_free ((void**)&game_config);
     return NULL;
   }
 
   game_config->surface = IMG_Load("ihm/images/image-Curseur.png");
   if(game_config->surface==NULL) {
     fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
-    game_config_sdl_free ((void**)game_config);
+    game_config_sdl_free ((void**)&game_config);
     return NULL;
   }
 

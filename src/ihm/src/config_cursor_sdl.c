@@ -17,7 +17,7 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
 
   config_cursor->widget = widget_sdl_new (logs);
   if (config_cursor->widget == NULL) {
-    config_cursor_sdl_free ((void**)config_cursor);
+    config_cursor_sdl_free ((void**)&config_cursor);
     return NULL;
   }
 

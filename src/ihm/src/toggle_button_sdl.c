@@ -11,7 +11,7 @@ toggle_button_sdl_new (SDL_Rect size, t_logs *logs) {
 
   toggle_button->widget = widget_sdl_new (logs);
   if (toggle_button->widget == NULL) {
-    toggle_button_sdl_free ((void**)toggle_button);
+    toggle_button_sdl_free ((void**)&toggle_button);
     return NULL;
   }
 
@@ -45,7 +45,7 @@ toggle_button_sdl_new (SDL_Rect size, t_logs *logs) {
 		t_widget_sdl *widget = state_button_sdl_get_widget(toggle_button->button1);
     widget_sdl_free(&widget);
 
-    toggle_button_sdl_free ((void**)toggle_button);
+    toggle_button_sdl_free ((void**)&toggle_button);
     return NULL;
   }
 

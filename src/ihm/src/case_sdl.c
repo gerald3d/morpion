@@ -17,7 +17,7 @@ case_sdl_new (SDL_Rect size, t_logs *logs) {
 
   case_sdl->widget = widget_sdl_new (logs);
   if (case_sdl->widget == NULL) {
-    case_sdl_free ((void**)case_sdl);
+    case_sdl_free ((void**)&case_sdl);
     return NULL;
   }
 

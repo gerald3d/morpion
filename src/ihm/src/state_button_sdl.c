@@ -15,7 +15,7 @@ state_button_sdl_new (SDL_Rect size, t_logs *logs) {
 
   state_button->widget = widget_sdl_new (logs);
   if (state_button->widget == NULL) {
-    state_button_sdl_free ((void**)state_button);
+    state_button_sdl_free ((void**)&state_button);
     return NULL;
   }
 

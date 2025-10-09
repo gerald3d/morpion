@@ -158,7 +158,7 @@ void widget_sdl_renderer_update (t_widget_sdl *widget);
  */
 void widget_sdl_set_callback_renderer_update (t_widget_sdl *widget);
 
-/*! \private
+/*!
  * \brief Affecte la fonction callback lorsque un clic de souris est émis sur le widget
  * @param widget Le widget.
  * @param callback Fonction à appeler.
@@ -168,7 +168,7 @@ void widget_sdl_set_callback_renderer_update (t_widget_sdl *widget);
  */
 void widget_sdl_set_mouse_clic_callback (t_widget_sdl *widget, void *callback, void *userdata);
 
-/*! \private
+/*!
  * \brief Affecte la fonction callback lorsque la souris se déplace sur le widget
  * @param widget Le widget.
  * @param callback Fonction à appeler.
@@ -177,6 +177,16 @@ void widget_sdl_set_mouse_clic_callback (t_widget_sdl *widget, void *callback, v
  * Si une erreur survient la fonction est sans effet et un message est affiché en console.
  */
 void widget_sdl_set_mouse_on_callback (t_widget_sdl *widget, void *callback, void *userdata);
+
+/*!
+ * \brief Affecte la fonction callback lorsqu'un bouton de la souris est enfoncé
+ * @param widget Le widget.
+ * @param callback Fonction à appeler.
+ * @param userdata Donnée personnelle transmise au callback.
+ *
+ * Si une erreur survient la fonction est sans effet et un message est affiché en console.
+ */
+void widget_sdl_set_mouse_down_clic_callback (t_widget_sdl *widget, void *callback, void *userdata);
 
 /*!
  * \brief Ajoute au widget courant un widget enfant.

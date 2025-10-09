@@ -48,13 +48,14 @@ Dans widget_sdl.c : voir pour gérer l'appui du bouton de la souris dans widget_
 		<Compiler>
 			<Add option="-Wextra" />
 			<Add option="-Wall" />
-			<Add option="-std=c23" />
+			<Add option="-pg" />
 			<Add option="`pkg-config --cflags sdl2`" />
 			<Add option="`pkg-config --cflags SDL2_image`" />
 			<Add option="`pkg-config --cflags SDL2_ttf`" />
 			<Add option="`pkg-config --cflags SDL2_mixer`" />
 		</Compiler>
 		<Linker>
+			<Add option="-pg -lgmon" />
 			<Add option="`pkg-config --libs sdl2`" />
 			<Add option="`pkg-config --libs SDL2_image`" />
 			<Add option="`pkg-config --libs SDL2_ttf`" />

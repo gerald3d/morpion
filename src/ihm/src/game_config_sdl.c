@@ -11,13 +11,13 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
   t_game_config_sdl *game_config = malloc (sizeof(t_game_config_sdl));
 
   if (game_config == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : erreur d'allocation mémoire de *game_config.\n", __func__);
+    fprintf (logs_descripteur_fichier(logs, LOG_ERROR), "Erreur dans %s(); : erreur d'allocation mémoire de *game_config.\n", __func__);
     return NULL;
   }
 
   game_config->widget = widget_sdl_new (logs);
   if (game_config->widget == NULL) {
-    game_config_sdl_free ((void**)game_config);
+    game_config_sdl_free ((void**)&game_config);
     return NULL;
   }
 
@@ -34,20 +34,40 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
 
   game_config->image = IMG_Load("ihm/images/image-CurseurAxe.png");
   if(game_config->image==NULL) {
-    fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
-    game_config_sdl_free ((void**)&game_config);
-    return NULL;
-  }
-
-  game_config->surface = IMG_Load("ihm/images/image-Curseur.png");
-  if(game_config->surface==NULL) {
-    fprintf (stderr, "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
+    fprintf (logs_descripteur_fichier(logs, LOG_ERROR), "Erreur dans %s(); : %s\n", __func__, SDL_GetError());
     game_config_sdl_free ((void**)&game_config);
     return NULL;
   }
 
   game_config->columns = 3;
   game_config->lines = 3;
+fprintf (logs_descripteur_fichier(logs, LOG_STANDARD), "position du curseur vertical : %d, %d\n", size.x - 10, size.y + 35 + (14 * (game_config->lines-3)));
+
+  /* Création du curseur vertical */
+  game_config->vert_cursor = config_cursor_sdl_new((SDL_Rect){size.x - 10, size.y + 35 + (14 * (game_config->lines-3)), 14, 14}, logs);
+  if (game_config->vert_cursor == NULL) {
+		fprintf (logs_descripteur_fichier(logs, LOG_ERROR), "Erreur dans %s(); : erreur d'allocation mémoire de vert_cursor.\n", __func__);
+    game_config_sdl_free ((void**)&game_config);
+    return NULL;
+  }
+
+  config_cursor_set_type (game_config->vert_cursor, VERTICAL);
+  config_cursor_sdl_set_image_from_file(game_config->vert_cursor, "ihm/images/image-Curseur.png");
+  /* Ajout du curseur vertical au game_config */
+  widget_sdl_add_child_widget (game_config->widget, config_cursor_sdl_get_widget(game_config->vert_cursor));
+
+  /* Création du curseur horizontal */
+  game_config->horiz_cursor = config_cursor_sdl_new((SDL_Rect){size.x + 35 + (14 * (game_config->columns-3)), size.y - 10, 14, 14}, logs);
+  if (game_config->horiz_cursor == NULL) {
+		fprintf (logs_descripteur_fichier(logs, LOG_ERROR), "Erreur dans %s(); : erreur d'allocation mémoire de horiz_cursor.\n", __func__);
+    game_config_sdl_free ((void**)&game_config);
+    return NULL;
+  }
+
+  config_cursor_set_type (game_config->horiz_cursor, HORIZONTAL);
+  config_cursor_sdl_set_image_from_file(game_config->horiz_cursor, "ihm/images/image-Curseur.png");
+	/* Ajout du curseur horizontal au game_config */
+  widget_sdl_add_child_widget (game_config->widget, config_cursor_sdl_get_widget(game_config->horiz_cursor));
 
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (game_config->widget, game_config_sdl_update, game_config);
@@ -72,11 +92,18 @@ game_config_sdl_free (void **game_config) {
   if (config->widget)
     widget_sdl_free (&config->widget);
 
-  if (config->surface)
-    SDL_FreeSurface (config->surface);
-
   if (config->image)
     SDL_FreeSurface (config->image);
+
+	if (config->horiz_cursor) {
+		t_widget_sdl *widget = config_cursor_sdl_get_widget(config->horiz_cursor);
+		widget_sdl_free(&widget);
+	}
+
+	if (config->vert_cursor) {
+		t_widget_sdl *widget = config_cursor_sdl_get_widget(config->vert_cursor);
+		widget_sdl_free(&widget);
+	}
 
   free (config);
 
@@ -144,15 +171,15 @@ game_config_sdl_update (t_widget_sdl *widget, void *userdata) {
   SDL_DestroyTexture (texture);
 
   /* Calcul de la position actuelle des deux curseurs */
-  SDL_Rect column_position = (SDL_Rect){widget_size.x + 35 + (14 * (game_config->columns-3)), widget_size.y - 10, 14, 14};
-  SDL_Rect line_position = (SDL_Rect){widget_size.x - 10, widget_size.y + 35 + (14 * (game_config->lines-3)), 14, 14};
+//  SDL_Rect column_position = (SDL_Rect){widget_size.x + 35 + (14 * (game_config->columns-3)), widget_size.y - 10, 14, 14};
+//  SDL_Rect line_position = (SDL_Rect){widget_size.x - 10, widget_size.y + 35 + (14 * (game_config->lines-3)), 14, 14};
 
-  /* Création de la texture du curseur */
-  texture = SDL_CreateTextureFromSurface(widget_sdl_get_renderer (game_config->widget), game_config->surface);
-
-  /* Affichage des deux curseurs */
-  SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &column_position);
-  SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &line_position);
+//  /* Création de la texture du curseur */
+//  texture = SDL_CreateTextureFromSurface(widget_sdl_get_renderer (game_config->widget), game_config->surface);
+//
+//  /* Affichage des deux curseurs */
+//  SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &column_position);
+//  SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &line_position);
 
   SDL_DestroyTexture (texture);
 }

@@ -2,6 +2,7 @@
 #define __GAME_CONFIG_SDL__
 
 #include "widget_sdl.h"
+#include "config_cursor_sdl.h"
 
 /*! \class t_game_config_sdl
     \brief Graphique de configuration de la taille du jeu.
@@ -20,11 +21,13 @@ typedef struct t_game_config_sdl t_game_config_sdl;
  * L'utilisateur final ne doit pas accéder à un de ses membres directement.
  */
 struct t_game_config_sdl {
-  t_widget_sdl *widget;    // widget parent qui gère les fonctions principales graphiques
-  SDL_Surface *image;      // image globale du widget
-  SDL_Surface *surface;    // Surface qui contient le curseur rouge
-  unsigned char columns;   // nbre de colonnes du plateau de jeu (par défaut 3)
-  unsigned char lines;     // nbre de lignes du plateau de jeu (par défaut 3)
+  t_widget_sdl *widget;              // widget parent qui gère les fonctions principales graphiques
+  SDL_Surface *image;                // image globale du widget
+//  SDL_Surface *surface;            // Surface qui contient le curseur rouge
+  t_config_cursor_sdl *vert_cursor;  // Curseur vertical à déplacer
+  t_config_cursor_sdl *horiz_cursor; // Curseur horizontal à déplacer
+  unsigned char columns;             // nbre de colonnes du plateau de jeu (par défaut 3)
+  unsigned char lines;               // nbre de lignes du plateau de jeu (par défaut 3)
 };
 
 /*!

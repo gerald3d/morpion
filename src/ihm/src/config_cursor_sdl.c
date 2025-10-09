@@ -3,6 +3,9 @@
 /* Affiche le bouton sur le renderer transmis */
 static void config_cursor_sdl_update (t_widget_sdl *widget, void *userdata);
 
+/* Callback appelé tant que le bouton de la souris est appuyé */
+static void config_cursor_sdl_mouse_button_down_cb (t_widget_sdl *widget, void *userdata);
+
 
 t_config_cursor_sdl*
 config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
@@ -30,8 +33,6 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
   widget_sdl_set_size (config_cursor->widget, &size.x, &size.y, &size.w, &size.h);
 
   config_cursor->image = NULL;
-//  config_cursor->on_activate = NULL;
-//  config_cursor->userdata = NULL;
 
   /* Affectation du callback du dessin de la texture au widget parent */
   widget_sdl_set_callback_create_texture (config_cursor->widget, config_cursor_sdl_update, config_cursor);
@@ -40,6 +41,8 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
   config_cursor->offset = 14;
   config_cursor->position = 0;
 
+  /* Affectation d'un callback activé tant que le bouton de la souris est enfoncé */
+  widget_sdl_set_mouse_down_clic_callback(config_cursor->widget, config_cursor_sdl_mouse_button_down_cb, NULL);
   return config_cursor;
 }
 
@@ -205,4 +208,12 @@ config_cursor_sdl_update (t_widget_sdl *widget, void *userdata) {
   SDL_DestroyTexture (texture);
 }
 
+static void
+config_cursor_sdl_mouse_button_down_cb (t_widget_sdl *widget, void *userdata) {
+  if (widget == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return;
+  }
 
+  printf ("Enter in %s\n", __func__);
+}

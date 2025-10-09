@@ -30,10 +30,10 @@ logs_init (const char *fichier_standard, const char *fichier_erreur) {
     return NULL;
   }
 
-  /* Ouverture (en mode ecriture) du fichier log pour les réussites */
+  /* Ouverture (en mode écriture) du fichier log pour les réussites */
   logs->descripteur_de_fichier_standard = fopen(logs->fichier_standard, "w");
   if (logs->descripteur_de_fichier_standard) {
-    fprintf (logs->descripteur_de_fichier_standard, "Ouverture du fichier : %s : OK\n", logs->fichier_standard);
+    fprintf (logs->descripteur_de_fichier_standard, "%s : Ouverture du fichier : %s : OK\n", __TIME__, logs->fichier_standard);
   } else {
     fprintf (logs->descripteur_de_fichier_erreur,"Erreur d'ouverture du fichier : %s\n", logs->fichier_standard);
     fprintf (logs->descripteur_de_fichier_erreur, "errno : %d\n", errno);

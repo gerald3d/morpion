@@ -78,6 +78,11 @@ morp_sdl_init (t_logs *logs)
     return NULL;
   }
 
+  /* Redirection des sorties console vers les sorties standards.
+	 * La SDL redirige par défaut stdout vers stdout.txt et stderr vers sdterr.txt*/
+//	freopen( "CON", "w", stdout );
+//	freopen( "con", "w", stderr );
+
   fprintf (descripteur_fichier_standard, "Chargement de SDL_Init (video et audio) : OK\n");
 
   //si creation = erreur

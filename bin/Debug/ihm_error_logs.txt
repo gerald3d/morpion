@@ -1,0 +1,8 @@
+Enter in config_cursor_sdl_mouse_button_down_cb
+widget name curseur horizontal
+Enter in config_cursor_sdl_mouse_button_down_cb
+widget name curseur horizontal
+Enter in config_cursor_sdl_mouse_button_down_cb
+widget name curseur horizontal
+Enter in config_cursor_sdl_mouse_button_down_cb
+widget name curseur horizontal

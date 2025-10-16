@@ -463,9 +463,8 @@ void widget_sdl_mouse_button_down_update (t_widget_sdl *widget, SDL_Event *event
   widget_sdl_set_pointer_position (widget, event->motion.x, event->motion.y);
 
   /* Exécution du callback pour l'appui du bouton de la souris */
-  if (widget_sdl_pt_is_in_rect (widget->x, widget->y, &widget->actual_size))
- {
-    t_liste *liste = widget->mouse_clic_cb_list;
+  if (widget_sdl_pt_is_in_rect (widget->x, widget->y, &widget->actual_size)) {
+    t_liste *liste = widget->mouse_down_clic_cb_list;
     while (liste) {
       if (liste->donnee) {
 				t_mouse_down_clic *donnee = (t_mouse_down_clic*)liste->donnee;
@@ -498,8 +497,8 @@ void widget_sdl_mouse_button_up_update (t_widget_sdl *widget, SDL_Event *event) 
     t_liste *liste = widget->mouse_clic_cb_list;
     while (liste) {
       if (liste->donnee) {
-	t_mouse_clic *donnee = (t_mouse_clic*)liste->donnee;
-	donnee->mouse_clic_cb (widget->widget_child, donnee->userdata);
+				t_mouse_clic *donnee = (t_mouse_clic*)liste->donnee;
+				donnee->mouse_clic_cb (widget->widget_child, donnee->userdata);
       }
       liste = liste->suivant;
     }

@@ -61,7 +61,7 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
 
   config_cursor_set_type (game_config->vert_cursor, VERTICAL);
   config_cursor_sdl_set_image_from_file(game_config->vert_cursor, "ihm/images/image-Curseur.png");
-  widget_sdl_set_tooltip(game_config->vert_cursor->widget, "Curseur vertical");
+
   /* Ajout du curseur vertical au game_config */
   widget_sdl_add_child_widget (game_config->widget, config_cursor_sdl_get_widget(game_config->vert_cursor));
 
@@ -78,7 +78,7 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
 
   config_cursor_set_type (game_config->horiz_cursor, HORIZONTAL);
   config_cursor_sdl_set_image_from_file(game_config->horiz_cursor, "ihm/images/image-Curseur.png");
-  widget_sdl_set_tooltip(game_config->horiz_cursor->widget, "Curseur horizontal");
+
 	/* Ajout du curseur horizontal au game_config */
   widget_sdl_add_child_widget (game_config->widget, config_cursor_sdl_get_widget(game_config->horiz_cursor));
 

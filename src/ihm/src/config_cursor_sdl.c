@@ -2,10 +2,12 @@
 
 /* Affiche le bouton sur le renderer transmis */
 static void config_cursor_sdl_update (t_widget_sdl *widget, void *userdata);
-
-/* Callback appelé tant que le bouton de la souris est appuyé */
+/* Callback activé lorsque le bouton de la souris est enfoncé */
 static void config_cursor_sdl_mouse_button_down_cb (t_config_cursor_sdl *config_cursor, void *userdata);
-
+/* Callback activé lorsque la souris se déplace */
+static void config_cursor_sdl_mouse_move_cb(t_config_cursor_sdl *config_cursor, void *userdata);
+/* Callback activé lorsque le bouton de la souris est relâché */
+static void config_cursor_sdl_mouse_button_up_cb(t_config_cursor_sdl *config_cursor, void *userdata);
 
 t_config_cursor_sdl*
 config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
@@ -44,9 +46,22 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
   config_cursor->cursor_type = HORIZONTAL;
   config_cursor->offset = 14;
   config_cursor->position = 3;
+  config_cursor->new_xoffset = 0;
+  config_cursor->new_yoffset = 0;
 
-  /* Affectation d'un callback activé tant que le bouton de la souris est enfoncé */
+	config_cursor->mouse_posx=0;
+	config_cursor->mouse_posy=0;
+  config_cursor->first_use = true;
+  config_cursor->pressed_button = false;
+
+  /* Affectation d'un callback activé lorsque le bouton de la souris est enfoncé */
   widget_sdl_set_mouse_down_clic_callback(config_cursor->widget, config_cursor_sdl_mouse_button_down_cb, NULL);
+
+  /* Affectation d'un callback activé lorsque la souris se déplace */
+  widget_sdl_set_mouse_on_callback (config_cursor->widget, config_cursor_sdl_mouse_move_cb, NULL);
+
+  /* Affectation d'un callback activé lorsque le bouton de la souris est relâché */
+  widget_sdl_set_mouse_clic_callback (config_cursor->widget, config_cursor_sdl_mouse_button_up_cb, NULL);
 
   /* Change le curseur lorsque la souris est sur le curseur */
   widget_sdl_set_cursor_from_file (config_cursor->widget, cursor_sdl);
@@ -206,13 +221,16 @@ config_cursor_sdl_update (t_widget_sdl *widget, void *userdata) {
 
 	/* Calcul de la position de la texture (centrée) dans le cadre */
 	if (config_cursor->cursor_type == HORIZONTAL) {
-		size.x = widget_size.x + ((config_cursor->position-3)*config_cursor->offset) + widget_size.w/2 - size.w/2;
+		size.x = widget_size.x + ((config_cursor->new_xoffset)*config_cursor->offset) + widget_size.w/2 - size.w/2;
 		size.y = widget_size.y + widget_size.h/2 - size.h/2;
+		/* Remise à zéro du nouveau décalage puisqu'il vient d'être pris en compte */
+		config_cursor->new_xoffset = 0;
 	} else {
 		size.x = widget_size.x + widget_size.w/2 - size.w/2;
-		size.y = widget_size.y + ((config_cursor->position-3)*config_cursor->offset) + widget_size.h/2 - size.h/2;
+		size.y = widget_size.y + ((config_cursor->new_yoffset)*config_cursor->offset) + widget_size.h/2 - size.h/2;
+		/* Remise à zéro du nouveau décalage puisqu'il vient d'être pris en compte */
+		config_cursor->new_yoffset = 0;
 	}
-
 	widget_sdl_set_size (widget, &size.x, &size.y, &widget_size.w, &widget_size.h);
 
   /* Application de la texture dans le rendu */
@@ -227,49 +245,94 @@ config_cursor_sdl_mouse_button_down_cb (t_config_cursor_sdl *config_cursor, void
     fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
     return;
   }
-fprintf (logs_descripteur_fichier(config_cursor->widget->logs, LOG_ERROR), "Enter in %s\n", __func__);
-  fprintf (logs_descripteur_fichier(config_cursor->widget->logs, LOG_ERROR), "widget name %s\n", widget_sdl_get_name(config_cursor->widget));
 
-  static int mouse_posx=0, mouse_posy=0;
-  static bool first_use = true;
+  /* Pour éviter un warning à la compilation. userdata n'est pas utilisé ici */
+  (void)userdata;
 
-  if (first_use) {
-		mouse_posx = config_cursor->widget->events->motion.x;
-		mouse_posy = config_cursor->widget->events->motion.y;
-		first_use = false;
+  if (config_cursor->first_use) {
+		config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
+		config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
+		config_cursor->first_use = false;
+		config_cursor->pressed_button = true;
+		fprintf (config_cursor->widget->file_error, "première entrée dans %s(); Sauvegarde de la position de la souris : %d, %d\n", __func__, config_cursor->mouse_posx, config_cursor->mouse_posy);
 		return;
   }
+}
 
-//  t_config_cursor_sdl *config_cursor = (t_config_cursor_sdl*)widget->widget_child;
-  switch (config_cursor->cursor_type) {
-		case HORIZONTAL :
-			if (config_cursor->widget->events->motion.x - mouse_posx <=-config_cursor->offset ||
-					config_cursor->widget->events->motion.x + mouse_posx >=config_cursor->offset) {
-				/* Mise à jour du décalage */
-				if (config_cursor->widget->events->motion.x - mouse_posx <=-config_cursor->offset) {
-					if (config_cursor->position >0)
-						config_cursor->position --;
-				} else {
-					if (config_cursor->position <27)
+static void
+config_cursor_sdl_mouse_button_up_cb (t_config_cursor_sdl *config_cursor, void *userdata) {
+  if (config_cursor == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  /* Pour éviter un warning à la compilation. userdata n'est pas utilisé ici */
+  (void)userdata;
+
+  config_cursor->pressed_button = false;
+  config_cursor->first_use = true;
+  config_cursor->new_xoffset = 0;
+  config_cursor->new_yoffset = 0;
+}
+
+static void
+config_cursor_sdl_mouse_move_cb (t_config_cursor_sdl *config_cursor, void *userdata) {
+  if (config_cursor == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  /* Pour éviter un warning à la compilation. userdata n'est pas utilisé ici */
+  (void)userdata;
+
+  /* Si le bouton de la souris est toujours enfoncé on regarde le déplacement de la souris */
+  if (config_cursor->pressed_button) {
+		switch (config_cursor->cursor_type) {
+			case HORIZONTAL :
+				int ecart = config_cursor->widget->events->motion.x - config_cursor->mouse_posx;
+				if (ecart >= config_cursor->offset) {
+					if (config_cursor->position < 14) {
 						config_cursor->position ++;
-				}
-			}
-			break;
-		case VERTICAL :
-			if (config_cursor->widget->events->motion.y - mouse_posy <=-config_cursor->offset ||
-					config_cursor->widget->events->motion.y + mouse_posy >=config_cursor->offset) {
-				/* Mise à jour du décalage */
-				if (config_cursor->widget->events->motion.y - mouse_posy <=-config_cursor->offset) {
-					if (config_cursor->position >0)
-						config_cursor->position --;
-				} else {
-					if (config_cursor->position <27)
-						config_cursor->position ++;
+						/* Mise à jour de la position de la souris */
+						config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
+						config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
+						/* décalage graphique */
+						config_cursor->new_xoffset = 1;
+					}
+					break;
 				}
 
-			}
-			break;
-		default :
-			break;
+				if (ecart <= -config_cursor->offset) {
+					if (config_cursor->position > 3) {
+						config_cursor->position --;
+						/* Mise à jour de la position de la souris */
+					config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
+					config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
+					/* décalage graphique */
+					config_cursor->new_xoffset = -1;
+					}
+					break;
+				}
+				break;
+//			case VERTICAL :
+//				if (config_cursor->widget->events->motion.y - config_cursor->mouse_posy <= -config_cursor->offset ||
+//						config_cursor->widget->events->motion.y - config_cursor->mouse_posy >= config_cursor->offset) {
+//					/* Mise à jour du décalage */
+//					if (config_cursor->widget->events->motion.y - config_cursor->mouse_posy <= -config_cursor->offset) {
+//						if (config_cursor->position > 3)
+//							config_cursor->position --;
+//					} else {
+//						if (config_cursor->position < 27)
+//							config_cursor->position ++;
+//					}
+//					/* Mise à jour de la position de la souris */
+//					config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
+//					config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
+//				}
+//				break;
+			default :
+				break;
+		}
+//		fprintf (config_cursor->widget->file_error, "Etat position du curseur après modification : %d\n\n", config_cursor->position);
   }
 }

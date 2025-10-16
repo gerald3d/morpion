@@ -70,7 +70,7 @@
 	"config_cursor_sdl.h"
 	"case_sdl.h"
 
-1760511985 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
+1760605197 e:\projets windows\morpion\src\ihm\src\widget_sdl.h
 	<stdbool.h>
 	<SDL2/SDL.h>
 	<SDL2/SDL_ttf.h>
@@ -150,7 +150,7 @@
 1760366349 source:e:\projets windows\morpion\src\ihm\src\dialog_sdl.c
 	"dialog_sdl.h"
 
-1760513230 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
+1760605390 source:e:\projets windows\morpion\src\ihm\src\game_config_sdl.c
 	"game_config_sdl.h"
 
 1760450276 source:e:\projets windows\morpion\src\instruction.c
@@ -162,7 +162,7 @@
 1756018967 source:e:\projets windows\morpion\src\logs.c
 	"logs.h"
 
-1760597857 source:e:\projets windows\morpion\src\main.c
+1760599300 source:e:\projets windows\morpion\src\main.c
 	"Main.h"
 
 1760014564 source:e:\projets windows\morpion\src\morp_sdl.c
@@ -793,7 +793,7 @@
 1760371121 source:e:\projets windows\morpion\src\ihm\src\tooltip_sdl.c
 	"tooltip_sdl.h"
 
-1760514806 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
+1760606061 source:e:\projets windows\morpion\src\ihm\src\widget_sdl.c
 	"widget_sdl.h"
 
 1759680270 e:\projets windows\morpion\src\ihm\src\logs.h
@@ -806,10 +806,10 @@
 1760014860 source:e:\projets windows\morpion\src\ihm\src\logs.c
 	"logs.h"
 
-1760366824 e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.h
+1760604990 e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.h
 	<string.h>
 	"widget_sdl.h"
 
-1760516877 source:e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.c
+1760606001 source:e:\projets windows\morpion\src\ihm\src\config_cursor_sdl.c
 	"config_cursor_sdl.h"
 

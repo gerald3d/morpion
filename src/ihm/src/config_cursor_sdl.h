@@ -32,9 +32,11 @@ struct t_config_cursor_sdl {
   SDL_Surface *surface;              // Surface pour dessiner le curseur selon son état
   TYPE_OF_CONFIG_CURSOR cursor_type; // Choix de déplacement du curseur
   int offset;                        // Décalage en pixels pour chaque pas de déplacement
+  int new_xoffset, new_yoffset;      // Prend la valeur 1 à chaque fois que le curseur se déplace. Utilisé pour calculer la nouvelle position graphique du curseur
   unsigned int position;             // La position du curseur. Démarre à 0
-//  void (*on_activate)(t_button_sdl *button, void*user_data); // callback activé lors du clic souris
-//  void *userdata;          // donnée personnelle transmise au callback
+  int mouse_posx, mouse_posy;        // Sauvegarde de la position de la souris lorsque le bouton de la souris vient d'être enfoncé sur le curseur
+  bool first_use;                    // Si le bouton vient d'être enfoncé.
+  bool pressed_button;               // Vaut true tant que le bouton est enfoncé
 };
 
 /*!

@@ -250,15 +250,15 @@ int main(int argc, char **argv)
 						ConfigType(morp_sdl, &DimJeu.TypeJeu, &Joueur, positionSouris.x-BoutonX, positionSouris.y-BoutonYConfigType); //Les coordonnéees envoyées sont relatives au coin superieur gauche du bouton Config
 						JouerMusique(morp_sdl->musique);
 						break;
-					case CONFIGDIMENSION:
-						memcpy(&AncienDimJeu,&DimJeu,sizeof(*plateau));//copie dans AncienDimJeu des données de DimJeu
-						ConfigDimension(morp_sdl, Joueur, &DimJeu,Jeu); //on ouvre la configuration pour determiner le nombre de lignes et de colonnes du plateau de jeu et le nombre de jetons a aligner pour gagner
-						if((AncienDimJeu.N !=DimJeu.N)||(AncienDimJeu.M!=DimJeu.M)) //si on modifie les dimensions du plateau de jeu alors on vide redimensionne et vide
-							ModificationConfigDimension(AncienDimJeu, DimJeu, &positionSouris, &plateau, &Jeu, logs);
-
-						if(AncienDimJeu.NbJetonsAAligner!=DimJeu.NbJetonsAAligner) //si on modifie juste le NbJetonsAAligner alors vide seulement le plateu
-							videJeu(plateau, &Jeu, DimJeu);
-						break;
+//					case CONFIGDIMENSION:
+//						memcpy(&AncienDimJeu,&DimJeu,sizeof(*plateau));//copie dans AncienDimJeu des données de DimJeu
+//						ConfigDimension(morp_sdl, Joueur, &DimJeu,Jeu); //on ouvre la configuration pour determiner le nombre de lignes et de colonnes du plateau de jeu et le nombre de jetons a aligner pour gagner
+//						if((AncienDimJeu.N !=DimJeu.N)||(AncienDimJeu.M!=DimJeu.M)) //si on modifie les dimensions du plateau de jeu alors on vide redimensionne et vide
+//							ModificationConfigDimension(AncienDimJeu, DimJeu, &positionSouris, &plateau, &Jeu, logs);
+//
+//						if(AncienDimJeu.NbJetonsAAligner!=DimJeu.NbJetonsAAligner) //si on modifie juste le NbJetonsAAligner alors vide seulement le plateu
+//							videJeu(plateau, &Jeu, DimJeu);
+//						break;
 					case TOURNOI:
 						if(TournoiInitialise==NON) {//si non initialise, alors on lance la fonction de calcul des positions de collage et de clic
 							initTournoi(morp_sdl, Tournoi, MaxMancheTournoi,TitreColonne, positionTitreColonne,PositionZonesCliquables,PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner);

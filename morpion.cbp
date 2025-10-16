@@ -9,13 +9,15 @@
 			<notes>
 				<![CDATA[Créer les fonctions dans l'ihm pour retrouver un widget en fonction de son nom ou de son adresse.
 
-Créer les fonctions dans l'ihm pour enlever un widget de l'interface.
+
 
 Créer le widget t_config_cursor_sdl pour gérer les curseurs dans le configurateur de la taille du plateau.
 
-La libération mémoire des widgets ne fonctionnent pas. L'appel (void**)widget n'est pas conforme !!!
+La libération mémoire des widgets ne fonctionnent pas. L'appel (void**)widget n'est pas conforme !!! pb de désallocation de la font dans le t_tooltip_sdl.
 
-Dans widget_sdl.c : voir pour gérer l'appui du bouton de la souris dans widget_sdl_mouse_button_down_update();.]]>
+Dans widget_sdl.c : voir pour gérer l'appui du bouton de la souris dans widget_sdl_mouse_button_down_update();.
+
+voir pour changer la position d'affichage des curseurs dans config_cursor_sdl_update();]]>
 			</notes>
 		</Option>
 		<Build>
@@ -24,7 +26,7 @@ Dans widget_sdl.c : voir pour gérer l'appui du bouton de la souris dans widget_
 				<Option output="bin/Debug/morpion" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="bin/Debug" />
 				<Option object_output="obj/Debug/" />
-				<Option type="0" />
+				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />

@@ -27,7 +27,7 @@ state_button_sdl_new (SDL_Rect size, t_logs *logs) {
 
   widget_sdl_set_size (state_button->widget, &size.x, &size.y, &size.w, &size.h);
 
-	state_button->state = false;
+  state_button->state = false;
   state_button->image = NULL;
 
   /* Affectation du callback du dessin de la texture au widget parent */
@@ -51,7 +51,7 @@ state_button_sdl_free (void **state_button) {
     return;
   }
 
-	t_state_button_sdl *intern_button= *state_button;
+  t_state_button_sdl *intern_button= *state_button;
   if (intern_button->image)
     SDL_FreeSurface (intern_button->image);
 

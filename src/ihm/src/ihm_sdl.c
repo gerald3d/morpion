@@ -104,6 +104,54 @@ ihm_sdl_widget_append (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget) {
   ihm_sdl->widget_list = liste_ajout_fin (ihm_sdl->widget_list, widget);
 }
 
+void
+ihm_sdl_widget_remove_by_name (t_ihm_sdl *ihm_sdl, const char *name) {
+  if (ihm_sdl == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : ihm_sdl ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  if (name == NULL)
+	  return;
+
+	t_liste *list = ihm_sdl->widget_list;
+	t_widget_sdl *widget;
+	while (list) {
+		widget = (t_widget_sdl*)list->donnee;
+		/* Si un widget porte le même nom que name */
+		if (strcmp (widget_sdl_get_name(widget), name)==0) {
+			ihm_sdl->widget_list = liste_enleve_un_maillon(ihm_sdl->widget_list, (void*)widget);
+			return;
+		}
+
+		list = list->suivant;
+	}
+}
+
+void
+ihm_sdl_widget_remove_by_pointer (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget) {
+  if (ihm_sdl == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : ihm_sdl ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  if (widget == NULL)
+	  return;
+
+	t_liste *list = ihm_sdl->widget_list;
+	t_widget_sdl *widget_tmp;
+	while (list) {
+		widget_tmp = (t_widget_sdl*)list->donnee;
+		/* Si les adresses correspondent */
+		if (widget_tmp == widget) {
+			ihm_sdl->widget_list = liste_enleve_un_maillon(ihm_sdl->widget_list, (void*)widget);
+			return;
+		}
+
+		list = list->suivant;
+	}
+}
+
 t_liste*
 ihm_get_widget_list (t_ihm_sdl *ihm_sdl) {
  if (ihm_sdl == NULL) {
@@ -113,6 +161,25 @@ ihm_get_widget_list (t_ihm_sdl *ihm_sdl) {
 
  return ihm_sdl->widget_list;
 
+}
+
+static void
+ihm_sdl_recursive_set_events (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget, SDL_Event *event) {
+	/* Si des widgets enfants sont incorporés -> transmisions des évènements à ces derniers */
+	t_liste *list = NULL;
+	if ((list = widget_sdl_get_child_widgets_list (widget))) {
+		while (list) {
+			t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+			/* Transmission des évenèments au widget */
+			widget_sdl_set_events (child, event);
+
+			/* Relance de la fonction avec le widget enfant comme widget principal */
+			ihm_sdl_recursive_set_events (ihm_sdl, child, event);
+
+			list = list->suivant;
+		}
+	}
 }
 
 void
@@ -127,11 +194,104 @@ ihm_sdl_set_events (t_ihm_sdl *ihm_sdl, SDL_Event *event) {
   while (liste_tmp) {
     widget = (t_widget_sdl*)liste_tmp->donnee;
 
-    if (widget_sdl_is_visible (widget) == true)
+    if (widget_sdl_is_visible (widget) == true) {
       widget_sdl_set_events (widget, event);
+      ihm_sdl_recursive_set_events (ihm_sdl, widget, event);
+    }
 
     liste_tmp = liste_tmp->suivant;
   }
+}
+
+static void
+ihm_sdl_recursive_renderer (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget) {
+	/* Si des widgets enfants sont incorporés -> affichage de ces derniers */
+	t_liste *list = NULL;
+	if ((list = widget_sdl_get_child_widgets_list (widget))) {
+		while (list) {
+			t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+			if (widget_sdl_is_visible (child) == true) {
+				/* Transmission du renderer au widget */
+				widget_sdl_set_renderer (child, ihm_sdl->renderer);
+
+				/* Affichage des widgets enfants */
+				widget_sdl_renderer_update (child);
+			}
+
+			/* Relance de la fonction avec le widget enfant comme widget principal */
+			ihm_sdl_recursive_renderer(ihm_sdl, child);
+
+			list = list->suivant;
+		}
+	}
+}
+
+static void
+ihm_sdl_recursive_cursor_change (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget, t_widget_sdl **widget_cursor_change) {
+	/* Si des widgets enfants sont incorporés -> changement de la forme du curseur */
+	t_liste *list = NULL;
+	if ((list = widget_sdl_get_child_widgets_list (widget))) {
+		while (list) {
+			t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+			if (widget_sdl_is_visible (child) == true) {
+      	if (child->activate == true && child->sensitive == true)
+					*widget_cursor_change = child;
+
+				/* Relance de la fonction avec le widget enfant comme widget principal */
+				ihm_sdl_recursive_cursor_change (ihm_sdl, child, widget_cursor_change);
+
+				list = list->suivant;
+			}
+		}
+	}
+}
+
+static void
+ihm_sdl_recursive_modale (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget, t_widget_sdl **modale_widget) {
+	/* Si des widgets enfants sont incorporés -> vérification si l'n d'entre-eux est modale */
+	t_liste *list = NULL;
+	if ((list = widget_sdl_get_child_widgets_list (widget))) {
+		while (list) {
+			t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+			if (widget_sdl_is_modale (child)) {
+				*modale_widget = child;
+				ihm_sdl_recursive_modale (ihm_sdl, widget, modale_widget);
+      }
+
+			/* Relance de la fonction avec le widget enfant comme widget principal */
+			ihm_sdl_recursive_modale (ihm_sdl, child, modale_widget);
+
+			list = list->suivant;
+		}
+	}
+}
+
+static void
+ihm_sdl_recursive_set_sensitive (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget, t_widget_sdl **modale_widget) {
+	/* Si des widgets enfants sont incorporés -> désactivation de ces derniers */
+	t_liste *list = NULL;
+	if ((list = widget_sdl_get_child_widgets_list (widget))) {
+		while (list) {
+			t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+
+			if (child != *modale_widget) {
+					/* Désactivation du widget sauf s'il l'est déjà pour une autre raison */
+					if (widget_sdl_is_sensitive(child)) {
+						widget_sdl_set_sensitive (child, false);
+						/* Sauvegarde du widget child dans la liste */
+						ihm_sdl->insensible_widgets_list = liste_ajout_fin (ihm_sdl->insensible_widgets_list, child);
+					}
+				}
+
+			/* Relance de la fonction avec le widget enfant comme widget principal */
+			ihm_sdl_recursive_modale (ihm_sdl, child, modale_widget);
+
+			list = list->suivant;
+		}
+	}
 }
 
 void
@@ -154,11 +314,15 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
     widget = (t_widget_sdl*)liste_tmp->donnee;
 
     if (widget_sdl_is_visible (widget) == true) {
-      if (widget->activate == true && widget->sensitive == true)
+      if (widget->activate == true && widget->sensitive == true) {
 				widget_cursor_change = widget;
+				ihm_sdl_recursive_cursor_change (ihm_sdl, widget, &widget_cursor_change);
+      }
 
-      if (widget_sdl_is_modale (widget))
+      if (widget_sdl_is_modale (widget)) {
 				modale_widget = widget;
+				ihm_sdl_recursive_modale (ihm_sdl, widget, &modale_widget);
+      }
 
       /* Si des widgets enfants sont incorporés */
       t_liste *list = NULL;
@@ -186,17 +350,21 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
      * Cette sauvegarde permet lorsqu'aucun widget est modale de remettre les autres
      * dans leur état d'origine.
      * Si lors de cette vérification la liste des widgets désactivés est déjà
-     * initialisée alors il est inuile de les désactiver à nouveau. */
+     * initialisée alors il est inutile de les désactiver à nouveau. */
   if (modale_widget) {
     if (ihm_sdl->insensible_widgets_list == NULL) { // C'est la première fois qu'un widget est modale
       liste_tmp = ihm_sdl->widget_list;
       while (liste_tmp) {
 				widget = (t_widget_sdl*)liste_tmp->donnee;
 				if (widget != modale_widget) {
-					/* Désactivation du widget */
-					widget_sdl_set_sensitive (widget, false);
-					/* Sauvegarde du widget dans la liste */
-					ihm_sdl->insensible_widgets_list = liste_ajout_fin (ihm_sdl->insensible_widgets_list, widget);
+					/* Désactivation du widget sauf s'il l'est déjà pour une autre raison */
+					if (widget_sdl_is_sensitive(widget)) {
+						widget_sdl_set_sensitive (widget, false);
+						/* Sauvegarde du widget dans la liste */
+						ihm_sdl->insensible_widgets_list = liste_ajout_fin (ihm_sdl->insensible_widgets_list, widget);
+					}
+					/* Désensibilisation des widgets enfants */
+					ihm_sdl_recursive_set_sensitive (ihm_sdl, widget, &modale_widget);
 				}
 
 				liste_tmp = liste_tmp->suivant;
@@ -222,68 +390,42 @@ ihm_sdl_renderer_update (t_ihm_sdl *ihm_sdl) {
   while (liste_tmp) {
     widget = (t_widget_sdl*)liste_tmp->donnee;
 
-    if (widget_sdl_is_visible (widget) == true) {
-      /* Si le widget à afficher doit aussi afficher son tooltip le widget sera affiché en dernier */
-      if (widget->tooltip && widget->activate)
+    /* Si le widget n'est pas modale ou s'il ne doit pas afficher son tooltip on l'affiche */
+		if (widget_sdl_is_visible (widget) == true) {
+			/* Si le widget à afficher doit aussi afficher son tooltip le widget sera affiché en dernier */
+			if (widget->tooltip && widget->activate)
 				widget_with_tooltip = widget;
-      else if (widget != modale_widget || modale_widget == NULL) {
+			else if (widget != modale_widget || modale_widget == NULL) {
 				/* Affichage du widget principal */
 				widget_sdl_renderer_update (widget);
-				/* Si des widgets enfants sont incorporés -> affichage de ces derniers */
-				t_liste *list = NULL;
-				if ((list = widget_sdl_get_child_widgets_list (widget))) {
-					while (list) {
-						t_widget_sdl *child = (t_widget_sdl*)list->donnee;
+				ihm_sdl_recursive_renderer(ihm_sdl, widget);
+			}
 
-						/* Transmission du renderer au widget */
-						widget_sdl_set_renderer (child, ihm_sdl->renderer);
-						/* Affichage des widgets enfants */
-						widget_sdl_renderer_update (child);
-						list = list->suivant;
-					}
-				}
-      }
-    }
-
-    liste_tmp = liste_tmp->suivant;
+			liste_tmp = liste_tmp->suivant;
+  	}
   }
 
   /* Affichage du widget modale s'il existe */
   if (modale_widget) {
-    widget_sdl_renderer_update (modale_widget);
-
-    /* Si des widgets enfants sont incorporés -> affichage de ces derniers */
-    t_liste *list = NULL;
-    if ((list = widget_sdl_get_child_widgets_list (modale_widget))) {
-      while (list) {
-				t_widget_sdl *child = (t_widget_sdl*)list->donnee;
-
-				/* Transmission du renderer au widget */
-				widget_sdl_set_renderer (child, ihm_sdl->renderer);
-				/* Affichage des widgets enfants */
-				widget_sdl_renderer_update (child);
-				list = list->suivant;
+		if (widget_sdl_is_visible (modale_widget) == true) {
+			/* Si le widget à afficher doit aussi afficher son tooltip le widget sera affiché en dernier */
+			if (widget->tooltip && widget->activate)
+				widget_with_tooltip = widget;
+			else {
+				/* Affichage du widget principal */
+				widget_sdl_renderer_update (modale_widget);
+				ihm_sdl_recursive_renderer(ihm_sdl, modale_widget);
 			}
-    }
-  }
+		}
+ 	}
+
 
   /* Affichage du widget avec son tooltip au cas où */
   if (widget_with_tooltip && widget_sdl_is_sensitive (widget_with_tooltip)) {
     /* Affichage du widget principal */
-    widget_sdl_renderer_update (widget_with_tooltip);
-
-    /* Si des widgets enfants sont incorporés -> affichage de ces derniers */
-    t_liste *list = NULL;
-    if ((list = widget_sdl_get_child_widgets_list (widget_with_tooltip))) {
-      while (list) {
-				t_widget_sdl *child = (t_widget_sdl*)list->donnee;
-				/* Affichage du child */
-				/* Transmission du renderer au widget */
-				widget_sdl_set_renderer (child, ihm_sdl->renderer);
-				widget_sdl_renderer_update (child);
-
-				list = list->suivant;
-      }
+    if (widget_sdl_is_visible (widget_with_tooltip) == true) {
+			widget_sdl_renderer_update (widget_with_tooltip);
+			ihm_sdl_recursive_renderer(ihm_sdl, widget_with_tooltip);
     }
   }
 

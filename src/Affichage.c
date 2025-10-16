@@ -69,7 +69,7 @@ void AfficheBoutons(t_morp_sdl *morp_sdl, Joueur Joueur, DimPlateau DimJeu, Ecra
         /* AfficheBoutonTexte(morp_sdl, Texte_Annuler, ACTIF); //ecriture du bouton Annuler */
         /* AfficheBoutonTexte(morp_sdl, Texte_CoudPouS, ACTIF); //ecriture du bouton CoupDePouce */
         AfficheBoutonConfigType(morp_sdl, Joueur, DimJeu.TypeJeu, ACTIF); //Affichage de l'image du bouton Config selon le type
-        AfficheBoutonConfigDim(morp_sdl, DimJeu, ACTIF); //Affichage de l'image du bouton Config selon le type
+//        AfficheBoutonConfigDim(morp_sdl, DimJeu, ACTIF); //Affichage de l'image du bouton Config selon le type
         /* AfficheBoutonTexte(morp_sdl, Texte_Tournoi,  ACTIF); */
         AfficheBoutonTexte(morp_sdl, Texte_Valider, INVISIBLE);
         /* AfficheBoutonTexte(morp_sdl, Texte_Instruction, ACTIF); */
@@ -92,7 +92,6 @@ void AfficheBoutons(t_morp_sdl *morp_sdl, Joueur Joueur, DimPlateau DimJeu, Ecra
     default:
         break;
     }
-    // SDL_RenderPresent(morp_sdl->renderer);//Actualisation
 }
 
 /*********************************************/
@@ -373,7 +372,7 @@ clic_sur_le_bouton_annuler (t_button_sdl *button, void *userdata) {
 
 }
 
-/* Callback appelé lorsque le bouton CousPous est cliqué */
+/* Callback appelé lorsque le bouton CoudPous est cliqué */
 void
 clic_sur_le_bouton_coudpous (t_button_sdl *button, void *userdata) {
   printf ("Enter in %s ();\n", __func__);
@@ -382,25 +381,31 @@ clic_sur_le_bouton_coudpous (t_button_sdl *button, void *userdata) {
 
 /* Callback appelé lors du clic sur le bouton de fermeture de la fenêtre de dialogue
  * du configurateur du plateau de jeu */
-void clic_sur_le_bouton_de_fermeture_du_dialogue (t_button_sdl, void *userdata) {
+void
+clic_sur_le_bouton_de_fermeture_du_dialogue (t_button_sdl *button, void *userdata) {
 	t_dialog_sdl *dialog = (t_dialog_sdl*)userdata;
 
-	/* Rend invisible la fernêtre de dialogue */
-	widget_sdl_set_visible(dialog_sdl_get_widget(dialog), false);
+	/* Récupération du pointeur sur l'ihm */
+	t_ihm_sdl *ihm_sdl = (t_ihm_sdl*)widget_sdl_get_user_data(dialog_sdl_get_widget(dialog), "ihm_sdl");
+
+	/* La fenêtre de dialogue est enlevée de l'ihm */
+	ihm_sdl_widget_remove_by_pointer (ihm_sdl, dialog_sdl_get_widget(dialog));
+
+	/* La fenêtre de dialogue est détruite */
+	dialog_sdl_free((void**)&dialog);
 }
 
 /* Callback appelé lors du clic sur le bouton de validation de la fenêtre de dialogue
  * du configurateur du plateau de jeu */
-void clic_sur_le_bouton_de_validation_du_dialogue (t_button_sdl, void *userdata) {
+void clic_sur_le_bouton_de_validation_du_dialogue (t_button_sdl *button, void *userdata) {
 	t_dialog_sdl *dialog = (t_dialog_sdl*)userdata;
 
-	/* Rend invisible la fernêtre de dialogue */
-	widget_sdl_set_visible(dialog_sdl_get_widget(dialog), false);
-
-	/* Change les caractéristiques du plateau jeu */
+	/* Changer les caractéristiques du plateau jeu */
 
 	/* Initialise le jeu */
 
+	/* Détruire la fenêtre dialogue */
+	clic_sur_le_bouton_de_fermeture_du_dialogue (button, dialog);
 }
 
 /* Callback appelé lorsque le bouton configurateur de plateau de jeu est cliqué */
@@ -409,15 +414,13 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 	t_ihm_sdl *ihm_sdl = (t_ihm_sdl*)userdata;
 
 	/* Création d'une fenêtre de dialogue */
-	static t_dialog_sdl *dialog = NULL;
+	t_dialog_sdl *dialog = NULL;
 
-	/* Si c'est la première fois qu'on ouvre le dialogue alors on le crée */
-	if (dialog == NULL)
-		dialog = dialog_sdl_new((SDL_Rect){200, 100, 400, 400}, ihm_sdl_get_logs(ihm_sdl));
-	else { // On rend la fenêtre de dialogue visible
-		widget_sdl_set_visible(dialog_sdl_get_widget(dialog), true);
-		return;
-	}
+	dialog = dialog_sdl_new((SDL_Rect){200, 100, 400, 400}, ihm_sdl_get_logs(ihm_sdl));
+
+	/* Attachement du pointeur de l'ihm en donnée personnelle au dialogue.
+	 * Nous aurons besoin de ce pointeur dans les fonctions de callback pour fermer la fenêtre */
+	 widget_sdl_set_user_data(dialog_sdl_get_widget(dialog), "ihm_sdl", ihm_sdl);
 
 	/* Ajout d'un titre */
 	dialog_sdl_set_title (dialog, "Changement de la taille du plateau de jeu");
@@ -460,7 +463,7 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 
 	/* Ajout d'un callback pour gérer le clic de la souris.
 	* Ce callback va rendre la fenêtre de dialogue invisible, modifier les caractéristiques du jeu et initialiser une nouvelle partie */
-	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(annul_button), clic_sur_le_bouton_de_validation_du_dialogue, dialog);
+	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(valid_button), clic_sur_le_bouton_de_validation_du_dialogue, dialog);
 
 
 	/* Création et insertion du configurateur dans la fenêtre de dialogue */
@@ -493,7 +496,9 @@ clic_sur_le_bouton_tournoi (t_button_sdl *button, void *userdata) {
 void
 clic_sur_le_bouton_quitter (t_button_sdl *button, void *userdata) {
   printf ("Enter in %s ();\n", __func__);
-
+	//		JeuFini=OUI; //On met JeuFini a OUI pour quitter la 1ere boucle principale
+//		Jeu.PartieFinie=OUI; //On met PartieFinie a OUI pour quitter la 2eme boucle principale
+//		ZoneEvenement=MARGE;
 }
 
 /* Callback appelé lorsqu'une case est cliquée */
@@ -614,7 +619,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création du bouton CoudPous */
-  t_button_sdl *bouton_coudpous = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 190, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
+  t_button_sdl *bouton_coudpous = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 195, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_coudpous, "CoudPous", TTF_STYLE_NORMAL);
 
   /* Change le curseur lorsque la souris est sur le bouton */
@@ -636,7 +641,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création d'un bouton pour l'outil de configuration de la taille du plateau */
-  t_button_sdl *bouton_size_config = button_sdl_new (IMAGE, NULL, (SDL_Rect){630, 420, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
+  t_button_sdl *bouton_size_config = button_sdl_new (IMAGE, NULL, (SDL_Rect){630, 300, 150, 50}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_image_from_file (bouton_size_config, "ihm/images/config_size_3.png");
 
   /* Change le curseur lorsque la souris est sur le bouton */
@@ -657,7 +662,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /*******************/
 
   /* Création du bouton Tournoi */
-  t_button_sdl *bouton_tournoi = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 350, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
+  t_button_sdl *bouton_tournoi = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 355, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
   button_sdl_set_text (bouton_tournoi, "Tournoi", TTF_STYLE_NORMAL);
 
   /* Change le curseur lorsque la souris est sur le bouton */
@@ -724,7 +729,7 @@ creation_interface (t_morp_sdl *morp_sdl) {
 
   /* Création du bouton Quitter */
   t_button_sdl *bouton_quitter = button_sdl_new (TEXTE, morp_sdl->police, (SDL_Rect){630, 500, 150, 40}, ihm_sdl_get_logs(ihm_sdl));
-  button_sdl_set_text (bouton_quitter, "quitter", TTF_STYLE_NORMAL);
+  button_sdl_set_text (bouton_quitter, "Quitter", TTF_STYLE_NORMAL);
 
   /* Change le curseur lorsque la souris est sur le bouton */
   widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_quitter), cursor_sdl);

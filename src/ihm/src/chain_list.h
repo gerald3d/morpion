@@ -7,7 +7,7 @@
 
 /*! \class t_liste
     \brief Chaîne doublement chaînée.
-    
+
     Pour l'instant elle permet seulement d'ajouter en début ou en fin de liste un nouvel élément.
 */
 
@@ -44,6 +44,19 @@ t_liste *liste_ajout_fin (t_liste *liste, void *donnee);
  * Si liste vaut NULL une nouvelle liste est créée.
  */
 t_liste *list_ajout_debut (t_liste *liste, void *donnee);
+
+/*!
+ * \brief Enlève un élément de la liste.
+ * @param liste Pointeur sur la liste à modifier.
+ * @param donnee Pointeur sur la donnée à enlever.
+ *
+ * L'élément enlevé n'est pas désalloué durant l'opération.
+ *
+ * Si donnee vaut NULL l'opération est sans effet.
+ *
+ * Si liste vaut NULL un mesage est envoié à la console.
+ */
+t_liste *liste_enleve_un_maillon (t_liste *liste, void *donnee);
 
 /*!
  * \brief Destructeur de l'objet t_ihm_sdl.

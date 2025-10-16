@@ -36,6 +36,8 @@ struct t_widget_sdl {
   SDL_Renderer *renderer;
   t_logs *logs;
   FILE *file_error;                  // Descripteur du fichier des logs errors
+  SDL_Event *events;                 // Liste des évènements actuels transmis
+  char *name;                        // Nom du widget. Utile pour le retrouver dans la liste des widgets incorporés dans l'ihm
   SDL_Surface *cursor;
   void *widget_child;                // pointeur sur le widget enfant qui implémente le widget actuel du type spécifique au widget enfant
   void (*destroy_widget_child_fct)(void **widget_whild); // Pointeur sur la fonction spécifique de destruction du widget enfant
@@ -54,7 +56,7 @@ struct t_widget_sdl {
   bool visible;                      // Affichage ou non du widget
   bool modale;                       // Si vaut true le widget doit être affiché par dessus les autres et tous les autres sont désactivés tant que ce dernier est apparent.
   void (*create_texture_cb)(t_widget_sdl *widget, void *userdata);  // callback de calcul de la texture du widget enfant
-  void *create_texture_userdata; // donnée personnelle du callback du même nom
+  void *create_texture_userdata;     // donnée personnelle du callback du même nom
   void (*draw_on_renderer_cb)(t_widget_sdl *widget);                // callback pour dessiner la texture dans le renderer
   t_liste *userdata;                 // données personnelles attachées au widget
   t_liste *mouse_clic_cb_list;       // liste des fonctions à appeler lorsque un clic de la souris survient
@@ -318,7 +320,7 @@ bool widget_sdl_is_visible (t_widget_sdl *widget);
 
 /*!
  * \brief Rend sensible ou non le widget. Lorsqu'il est insensible le widget est grisé par défaut.
- * @param widget Le widget
+ * @param widget Le widget.
  * @param state true pour sensible (par défaut).
  *
  * Si une erreur survient la fonction est sans effet et un message est affiché en console.
@@ -332,6 +334,31 @@ void widget_sdl_set_sensitive (t_widget_sdl *widget, bool state);
  * Si une erreur survient la fonction renvoie false et un message est affiché en console.
  */
 bool widget_sdl_is_sensitive (t_widget_sdl *widget);
+
+/*!
+ * \brief Change le nom du widget.
+ * @param widget Le widget.
+ * @param name Le nouveau nom.
+ *
+ * Si une erreur survient ou si name est NULL la fonction est sans effet et un message est affiché en console.
+ */
+void widget_sdl_set_name (t_widget_sdl *widget, const char *name);
+
+/*!
+ * \brief  Renvoie le nom du widget.
+ * @param widget Le widget.
+ *
+ * Si une erreur survient la fonction renvoie NULL et un message est affiché en console.
+ */
+char *widget_sdl_get_name (t_widget_sdl *widget);
+
+/*!
+ * \brief  Renvoie le pointeur des logs de l'ihm.
+ * @param widget Le widget.
+ *
+ * Si une erreur survient la fonction renvoie NULL et un message est affiché en console.
+ */
+t_logs *widget_sdl_get_logs (t_widget_sdl *widget);
 
 /*! \private
  * \brief  Renvoie true si la souris est sur le widget.

@@ -1,0 +1,20 @@
+AUTOMAKE_OPTIONS = subdir-objects
+
+bin_PROGRAMS = button
+
+button_SOURCES = chain_list.c\
+ihm_sdl.c\
+widget_sdl.c\
+tooltip_sdl.c\
+button_sdl.c\
+state_button_sdl.c\
+toggle_button_sdl.c\
+dialog_sdl.c\
+game_config_sdl.c\
+case_sdl.c\
+main.c
+
+ACLOCAL_AMFLAGS = -I m4
+
+AM_CFLAGS = -Wunused -Wall -Wextra -g $(SLD2_CFLAGS) $(ICU_CFLAGS)
+LDADD = -lm $(SDL2_LIBS) $(ICU_LIBS) -lSDL2_ttf -lSDL2_mixer -lSDL2_image

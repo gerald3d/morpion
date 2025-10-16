@@ -7,6 +7,11 @@ static void game_config_sdl_update (t_widget_sdl *widget, void *userdata);
 
 t_game_config_sdl*
 game_config_sdl_new (SDL_Rect size, t_logs *logs) {
+	if (logs == NULL) {
+		fprintf (stderr, "Erreur dans %s(); : logs doit être non NULL.\n", __func__);
+		return NULL;
+	}
+
   /* Tentative d'allocation d'un nouveau t_game_config_sdl */
   t_game_config_sdl *game_config = malloc (sizeof(t_game_config_sdl));
 
@@ -41,7 +46,7 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
 
   game_config->columns = 3;
   game_config->lines = 3;
-fprintf (logs_descripteur_fichier(logs, LOG_STANDARD), "position du curseur vertical : %d, %d\n", size.x - 10, size.y + 35 + (14 * (game_config->lines-3)));
+//fprintf (logs_descripteur_fichier(logs, LOG_STANDARD), "position du curseur vertical : %d, %d\n", size.x - 10, size.y + 35 + (14 * (game_config->lines-3)));
 
   /* Création du curseur vertical */
   game_config->vert_cursor = config_cursor_sdl_new((SDL_Rect){size.x - 10, size.y + 35 + (14 * (game_config->lines-3)), 14, 14}, logs);
@@ -51,8 +56,12 @@ fprintf (logs_descripteur_fichier(logs, LOG_STANDARD), "position du curseur vert
     return NULL;
   }
 
+  /**** POUR DEBUG */
+  widget_sdl_set_name(game_config->vert_cursor->widget, "curseur vertical");
+
   config_cursor_set_type (game_config->vert_cursor, VERTICAL);
   config_cursor_sdl_set_image_from_file(game_config->vert_cursor, "ihm/images/image-Curseur.png");
+  widget_sdl_set_tooltip(game_config->vert_cursor->widget, "Curseur vertical");
   /* Ajout du curseur vertical au game_config */
   widget_sdl_add_child_widget (game_config->widget, config_cursor_sdl_get_widget(game_config->vert_cursor));
 
@@ -64,8 +73,12 @@ fprintf (logs_descripteur_fichier(logs, LOG_STANDARD), "position du curseur vert
     return NULL;
   }
 
+  /**** POUR DEBUG */
+  widget_sdl_set_name(game_config->horiz_cursor->widget, "curseur horizontal");
+
   config_cursor_set_type (game_config->horiz_cursor, HORIZONTAL);
   config_cursor_sdl_set_image_from_file(game_config->horiz_cursor, "ihm/images/image-Curseur.png");
+  widget_sdl_set_tooltip(game_config->horiz_cursor->widget, "Curseur horizontal");
 	/* Ajout du curseur horizontal au game_config */
   widget_sdl_add_child_widget (game_config->widget, config_cursor_sdl_get_widget(game_config->horiz_cursor));
 
@@ -167,19 +180,6 @@ game_config_sdl_update (t_widget_sdl *widget, void *userdata) {
   widget_sdl_get_size (game_config->widget, &widget_size);
 
   SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &widget_size);
-
-  SDL_DestroyTexture (texture);
-
-  /* Calcul de la position actuelle des deux curseurs */
-//  SDL_Rect column_position = (SDL_Rect){widget_size.x + 35 + (14 * (game_config->columns-3)), widget_size.y - 10, 14, 14};
-//  SDL_Rect line_position = (SDL_Rect){widget_size.x - 10, widget_size.y + 35 + (14 * (game_config->lines-3)), 14, 14};
-
-//  /* Création de la texture du curseur */
-//  texture = SDL_CreateTextureFromSurface(widget_sdl_get_renderer (game_config->widget), game_config->surface);
-//
-//  /* Affichage des deux curseurs */
-//  SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &column_position);
-//  SDL_RenderCopy(widget_sdl_get_renderer (game_config->widget), texture, NULL, &line_position);
 
   SDL_DestroyTexture (texture);
 }

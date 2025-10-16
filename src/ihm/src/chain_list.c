@@ -43,7 +43,7 @@ list_ajout_debut (t_liste *liste, void *donnee) {
   t_liste *liste_tmp = liste;
   while (liste_tmp->precedent)
     liste_tmp = liste_tmp->precedent;
- 
+
   /* Si c'est une nouvelle liste */
   if (liste == NULL) {
     nouvel_element->suivant = NULL;
@@ -58,6 +58,52 @@ list_ajout_debut (t_liste *liste, void *donnee) {
   nouvel_element->donnee = donnee;
 
   return nouvel_element;
+}
+
+t_liste*
+liste_enleve_un_maillon (t_liste *liste, void *donnee) {
+	if (liste == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : **liste ne doit pas être NULL.\n", __func__);
+    return NULL;
+  }
+
+  if (donnee == NULL)
+    return NULL;
+
+	/* Recherche de la donnée dans la liste et suppression du maillon correspondant*/
+  t_liste *list = liste;
+  t_liste *element_a_supprimer = NULL;
+  t_liste *nouvelle_liste = NULL;
+  while (list) {
+		if (list->donnee == donnee) {
+			t_liste *maillon_precedent = list->precedent;
+			t_liste *maillon_suivant = list->suivant;
+
+			/* Si c'est le premier élément de la liste à supprimer -> mémorisation de l'élément suivant comme nouveau pointeur pour la liste */
+			if (list == liste)
+				nouvelle_liste = maillon_suivant;
+			else
+				nouvelle_liste = liste;
+
+			element_a_supprimer = list;
+
+			/* Attachement du maillon précédent au maillon suivant */
+			if (maillon_precedent)
+				maillon_precedent->suivant = maillon_suivant;
+			/* Attachement du maillon suivant au maillon précédent */
+			if (maillon_suivant)
+				maillon_suivant->precedent = maillon_precedent;
+
+			/* Destruction du maillon courant */
+			free (element_a_supprimer);
+
+			return nouvelle_liste;
+		}
+
+		list = list->suivant;
+  }
+
+  return liste;
 }
 
 void

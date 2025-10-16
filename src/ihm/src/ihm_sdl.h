@@ -80,6 +80,28 @@ SDL_Renderer *ihm_sdl_get_renderer (t_ihm_sdl *ihm_sdl);
 void ihm_sdl_widget_append (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget);
 
 /*!
+ * \brief Enlève un widget de l'ihm.
+ * @param ihm_sdl Pointeur de l'ihm.
+ * @param name Nom du widget à enlever.
+ *
+ * Le widget n'est pas détruit au cours de l'opération.
+ *
+ * Si une erreur survient la fonction est sans effet et un message est affiché en console.
+ */
+void ihm_sdl_widget_remove_by_name (t_ihm_sdl *ihm_sdl, const char *name);
+
+/*!
+ * \brief Enlève un widget de l'ihm.
+ * @param ihm_sdl Pointeur de l'ihm.
+ * @param widget Widget à enlever
+ *
+ * Le widget n'est pas détruit au cours de l'opération.
+ *
+ * Si une erreur survient la fonction est sans effet et un message est affiché en console.
+ */
+void ihm_sdl_widget_remove_by_pointer (t_ihm_sdl *ihm_sdl, t_widget_sdl *widget);
+
+/*!
  * \private Fonction privée à l'objet.
  * @param ihm_sdl Pointeur de l'ihm.
  *

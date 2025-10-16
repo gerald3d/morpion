@@ -4,7 +4,7 @@
 static void config_cursor_sdl_update (t_widget_sdl *widget, void *userdata);
 
 /* Callback appelé tant que le bouton de la souris est appuyé */
-static void config_cursor_sdl_mouse_button_down_cb (t_widget_sdl *widget, void *userdata);
+static void config_cursor_sdl_mouse_button_down_cb (t_config_cursor_sdl *config_cursor, void *userdata);
 
 
 t_config_cursor_sdl*
@@ -32,6 +32,10 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
 
   widget_sdl_set_size (config_cursor->widget, &size.x, &size.y, &size.w, &size.h);
 
+  /* transparence du cadre et du fond */
+  widget_sdl_set_color (config_cursor->widget, (SDL_Color){0, 0, 0, 0}, CADRE);
+  widget_sdl_set_color (config_cursor->widget, (SDL_Color){0, 0, 0, 0}, FOND);
+
   config_cursor->image = NULL;
 
   /* Affectation du callback du dessin de la texture au widget parent */
@@ -39,10 +43,14 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
 
   config_cursor->cursor_type = HORIZONTAL;
   config_cursor->offset = 14;
-  config_cursor->position = 0;
+  config_cursor->position = 3;
 
   /* Affectation d'un callback activé tant que le bouton de la souris est enfoncé */
   widget_sdl_set_mouse_down_clic_callback(config_cursor->widget, config_cursor_sdl_mouse_button_down_cb, NULL);
+
+  /* Change le curseur lorsque la souris est sur le curseur */
+  widget_sdl_set_cursor_from_file (config_cursor->widget, cursor_sdl);
+
   return config_cursor;
 }
 
@@ -134,7 +142,7 @@ config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSO
   }
 
     if (alignment != VERTICAL && alignment!=HORIZONTAL) {
-    fprintf (stderr, "Erreur dans %s(); : alignment doit être VERTICAL ou HORIZONTAL.\n", __func__);
+    fprintf (config_cursor->widget->file_error, "Erreur dans %s(); : alignment doit être VERTICAL ou HORIZONTAL.\n", __func__);
     return;
   }
 
@@ -175,7 +183,6 @@ config_cursor_sdl_update (t_widget_sdl *widget, void *userdata) {
     fprintf (widget->file_error, "Erreur dans %s(); : userdata ne doit pas être NULL.\n", __func__);
     return;
   }
-
   t_config_cursor_sdl *config_cursor = (t_config_cursor_sdl*)userdata;
 
   SDL_Color color = config_cursor->widget->couleur_fond;
@@ -198,22 +205,71 @@ config_cursor_sdl_update (t_widget_sdl *widget, void *userdata) {
 	SDL_QueryTexture(texture, NULL, NULL, &size.w, &size.h);
 
 	/* Calcul de la position de la texture (centrée) dans le cadre */
-	size.x = widget_size.x + widget_size.w/2 - size.w/2;
-	size.y = widget_size.y + widget_size.h/2 - size.h/2;
+	if (config_cursor->cursor_type == HORIZONTAL) {
+		size.x = widget_size.x + ((config_cursor->position-3)*config_cursor->offset) + widget_size.w/2 - size.w/2;
+		size.y = widget_size.y + widget_size.h/2 - size.h/2;
+	} else {
+		size.x = widget_size.x + widget_size.w/2 - size.w/2;
+		size.y = widget_size.y + ((config_cursor->position-3)*config_cursor->offset) + widget_size.h/2 - size.h/2;
+	}
+
+	widget_sdl_set_size (widget, &size.x, &size.y, &widget_size.w, &widget_size.h);
 
   /* Application de la texture dans le rendu */
-  SDL_RenderCopy(widget_sdl_get_renderer (widget), texture, NULL, &size);
-
+  SDL_RenderCopy(widget_sdl_get_renderer (widget), texture, NULL, &widget_size);
 
   SDL_DestroyTexture (texture);
 }
 
 static void
-config_cursor_sdl_mouse_button_down_cb (t_widget_sdl *widget, void *userdata) {
-  if (widget == NULL) {
-    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+config_cursor_sdl_mouse_button_down_cb (t_config_cursor_sdl *config_cursor, void *userdata) {
+  if (config_cursor == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
     return;
   }
+fprintf (logs_descripteur_fichier(config_cursor->widget->logs, LOG_ERROR), "Enter in %s\n", __func__);
+  fprintf (logs_descripteur_fichier(config_cursor->widget->logs, LOG_ERROR), "widget name %s\n", widget_sdl_get_name(config_cursor->widget));
 
-  printf ("Enter in %s\n", __func__);
+  static int mouse_posx=0, mouse_posy=0;
+  static bool first_use = true;
+
+  if (first_use) {
+		mouse_posx = config_cursor->widget->events->motion.x;
+		mouse_posy = config_cursor->widget->events->motion.y;
+		first_use = false;
+		return;
+  }
+
+//  t_config_cursor_sdl *config_cursor = (t_config_cursor_sdl*)widget->widget_child;
+  switch (config_cursor->cursor_type) {
+		case HORIZONTAL :
+			if (config_cursor->widget->events->motion.x - mouse_posx <=-config_cursor->offset ||
+					config_cursor->widget->events->motion.x + mouse_posx >=config_cursor->offset) {
+				/* Mise à jour du décalage */
+				if (config_cursor->widget->events->motion.x - mouse_posx <=-config_cursor->offset) {
+					if (config_cursor->position >0)
+						config_cursor->position --;
+				} else {
+					if (config_cursor->position <27)
+						config_cursor->position ++;
+				}
+			}
+			break;
+		case VERTICAL :
+			if (config_cursor->widget->events->motion.y - mouse_posy <=-config_cursor->offset ||
+					config_cursor->widget->events->motion.y + mouse_posy >=config_cursor->offset) {
+				/* Mise à jour du décalage */
+				if (config_cursor->widget->events->motion.y - mouse_posy <=-config_cursor->offset) {
+					if (config_cursor->position >0)
+						config_cursor->position --;
+				} else {
+					if (config_cursor->position <27)
+						config_cursor->position ++;
+				}
+
+			}
+			break;
+		default :
+			break;
+  }
 }

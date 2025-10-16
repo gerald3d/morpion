@@ -131,208 +131,199 @@ int main(int argc, char **argv)
     exit (EXIT_FAILURE);
   }
 
+  // Restaurer stdout et stderr
+//  freopen("CON", "w", stdout);
+  // Restaurer stderr
+//  freopen("CON", "w", stderr);
+
 
   AfficheTitre(morp_sdl); //Affiche le titre du jeu sur fond marron
-  AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu);
+  /* AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu); */
 
   SDL_RenderPresent(morp_sdl->renderer);//Actualisation
   SDL_Delay(1000); //attend 1000ms = 1 seconde avant de passer a la suite
 
   srand(time(NULL)*1000); //
 
-  while(JeuFini==NON) //Maintenant que l'initialisation est valide, on entre dans la boucle de jeu
-    {
+  while(JeuFini==NON) {//Maintenant que l'initialisation est valide, on entre dans la boucle de jeu
+		videJeu(plateau, &Jeu, DimJeu); //Vide le plateau de jeu
+//       AfficheJeu(morp_sdl, plateau, Joueur, DimJeu, Jeu.PartieFinie); //affiche le jeu vide
+		 AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu);
 
-      videJeu(plateau, &Jeu, DimJeu); //Vide le plateau de jeu
-      AfficheJeu(morp_sdl, plateau, Joueur, DimJeu, Jeu.PartieFinie); //affiche le jeu vide
-      /* AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu); */
+		SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE); //reactive les clics
 
-      SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE); //reactive les clics
+		while(Jeu.PartieFinie==NON) {
+			//Joueur.NumeroJEnCours=(Jeu.NbCasesJouees)%2;//juste le numero 0 ou 1
+			if(Joueur.ListeJ[Jeu.NumeroJEnCours].joueur==O) {//Si c'est a l'ordi de jouerr
+				SDL_Delay(500); // Pourqoi faire une attente ?
+			//              DefinirZoneEtendue(Jeu, DimJeu, &InfoZoneDeRecherche); //determine la zone a etudier (InfoZoneDeRecherche)
+			//              DefinirListeCaseVide(&Jeu, DimJeu, InfoZoneDeRecherche); //Détermine le Jeu.TableauCaseVide
+				OrdiJoue(plateau, Joueur, &Jeu, DimJeu, logs);
+				if(Jeu.NbCasesJouees>=2*DimJeu.NbJetonsAAligner-1) { //on verifie s'il y a alignement au bout du 5eme jeton rond posé, (Jouées = 3*o+2*x)
+					verifFini(plateau, Joueur, DimJeu, &Jeu, &NbAlignements); //Fonction pour vérifier si la partie est terminée
+				}
+			}
 
-      while(Jeu.PartieFinie==NON)
-        {
-	  //          Joueur.NumeroJEnCours=(Jeu.NbCasesJouees)%2;//juste le numero 0 ou 1
-	  if(Joueur.ListeJ[Jeu.NumeroJEnCours].joueur==O) //Si c'est a l'ordi de jouerr
-            {
-	      SDL_Delay(500);
-	      //              DefinirZoneEtendue(Jeu, DimJeu, &InfoZoneDeRecherche); //determine la zone a etudier (InfoZoneDeRecherche)
-	      //              DefinirListeCaseVide(&Jeu, DimJeu, InfoZoneDeRecherche); //Détermine le Jeu.TableauCaseVide
-	      OrdiJoue(plateau, Joueur, &Jeu, DimJeu, logs);
-	      if(Jeu.NbCasesJouees>=2*DimJeu.NbJetonsAAligner-1) //on verifie s'il y a alignement au bout du 5eme jeton rond posé, (Jouées = 3*o+2*x)
-                {
-		  verifFini(plateau, Joueur, DimJeu, &Jeu, &NbAlignements); //Fonction pour vérifier si la partie est terminée
-                }
-            }
+			while(SDL_PollEvent(&event)) {//Traiter les évènements
+				/* Effacement de la fenêtre */
+				SDL_SetRenderDrawColor(morp_sdl->renderer, 187, 122, 87, 255);
+				SDL_RenderClear (morp_sdl->renderer);
 
-	  while(SDL_PollEvent(&event)) //Traiter les évènements
-            {
-	      /* Effacement de la fenêtre */
-	      SDL_SetRenderDrawColor(morp_sdl->renderer, 187, 122, 87, 255);
-	      SDL_RenderClear (morp_sdl->renderer);
+				/* Transmission des évènements à l'ihm */
+				ihm_sdl_set_events (ihm_sdl, &event);
 
-	      /* Transmission des évènements à l'ihm */
-	      ihm_sdl_set_events (ihm_sdl, &event);
+				switch(event.type) {
+					case SDL_QUIT: //Si on a cliqué sur la croix
+						ZoneEvenement=QUITTER;
+						break;
+					case SDL_KEYUP: //Si touche du clavier enfoncée
+						switch (event.key.keysym.sym) {//selon la touche enfoncée
+							case SDLK_ESCAPE: // Appui sur la touche Echap, on va arrêter le jeu
+							case SDLK_a: // Appui sur la touche q (Attention a<->q avec les claviers qwerty-azerty), on va arrêter le jeu
+								ZoneEvenement=QUITTER;
+								break;
+							case SDLK_q: // Appui sur la touche a (Attention a<->q avec les claviers qwerty-azerty), on va annuler le dernier coup
+								ZoneEvenement=ANNULER;
+								break;
+							case SDLK_n: //si on presse le n de nouveau
+								ZoneEvenement=NOUVEAU;
+								break;
+							case SDLK_c: // Appui sur la touche a (Attention a<->q avec les claviers qwerty-azerty), on va annuler le dernier coup
+								ZoneEvenement=COUPDEPOUCE;
+								break;
+							case SDLK_t: //si on presse le t de Tournoi
+								ZoneEvenement=TOURNOI;
+								break;
+						/* case SDLK_i: //si on presse le i de Instruction */
+							/*   ZoneEvenement=INSTRUCTION; */
+							/*   break; */
+							case SDLK_v: //si on presse le v de Valider
+							case SDLK_RETURN: //si on presse Return
+								ZoneEvenement=VALIDER;
+								break;
+							case SDLK_d: //si on presse le d de configDim
+								ZoneEvenement=CONFIGDIMENSION;
+								break;
+							default : //sinon rien pour eviter message d'alerte lors de la compilation
+								break;
+						}
+						break;
+					case SDL_MOUSEMOTION: //Si souris déplacée
+						positionSouris.x=event.motion.x; //position souris
+						positionSouris.y=event.motion.y;
+						ZoneEvenement=MARGE;
+						break;
+					case SDL_MOUSEBUTTONUP: //Si clic souris
+						positionSouris.x=event.button.x; //position clic
+						positionSouris.y=event.button.y;
+						ZoneEvenement = QuelleZoneCliquee(DimJeu,positionSouris, Joueur,Jeu);
+						break;
+					default: //Sinon on ne fait rien
+						break;
+				}
 
-	      switch(event.type)
-                {
-                case SDL_QUIT: //Si on a cliqué sur la croix
-		  ZoneEvenement=QUITTER;
-		  break;
-                case SDL_KEYUP: //Si touche du clavier enfoncée
-		  switch (event.key.keysym.sym) //selon la touche enfoncée
-                    {
-                    case SDLK_ESCAPE: // Appui sur la touche Echap, on va arrêter le jeu
-                    case SDLK_a: // Appui sur la touche q (Attention a<->q avec les claviers qwerty-azerty), on va arrêter le jeu
-		      ZoneEvenement=QUITTER;
-		      break;
-                    case SDLK_q: // Appui sur la touche a (Attention a<->q avec les claviers qwerty-azerty), on va annuler le dernier coup
-		      ZoneEvenement=ANNULER;
-		      break;
-                    case SDLK_n: //si on presse le n de nouveau
-		      ZoneEvenement=NOUVEAU;
-		      break;
-                    case SDLK_c: // Appui sur la touche a (Attention a<->q avec les claviers qwerty-azerty), on va annuler le dernier coup
-		      ZoneEvenement=COUPDEPOUCE;
-		      break;
-                    case SDLK_t: //si on presse le t de Tournoi
-		      ZoneEvenement=TOURNOI;
-		      break;
-                    /* case SDLK_i: //si on presse le i de Instruction */
-		    /*   ZoneEvenement=INSTRUCTION; */
-		    /*   break; */
-                    case SDLK_v: //si on presse le v de Valider
-                    case SDLK_RETURN: //si on presse Return
-		      ZoneEvenement=VALIDER;
-		      break;
-                    case SDLK_d: //si on presse le d de configDim
-		      ZoneEvenement=CONFIGDIMENSION;
-		      break;
-                    default : //sinon rien pour eviter message d'alerte lors de la compilation
-		      break;
-                    }
-		  break;
-                case SDL_MOUSEMOTION: //Si souris déplacée
-		  positionSouris.x=event.motion.x; //position souris
-		  positionSouris.y=event.motion.y;
-		  ZoneEvenement=MARGE;
-		  break;
-                case SDL_MOUSEBUTTONUP: //Si clic souris
-		  positionSouris.x=event.button.x; //position clic
-		  positionSouris.y=event.button.y;
-		  ZoneEvenement = QuelleZoneCliquee(DimJeu,positionSouris, Joueur,Jeu);
-		  break;
-                default: //Sinon on ne fait rien
-		  break;
-                }
+				switch(ZoneEvenement) {
+					case JEU :
+						HumainJoue(plateau, Joueur, &Jeu, DimJeu, positionSouris); //gestion du clic souris
+						if((Jeu.NbCasesJouees)>=2*DimJeu.NbJetonsAAligner-1) //on verifie s'il y a alignement au bout du 5eme jeton rond posé, (Jouées = 3*o+2*x)
+							verifFini(plateau, Joueur, DimJeu, &Jeu, &NbAlignements); //Fonction pour vérifier si la partie est terminée
+						break;
+					case NOUVEAU:
+						videJeu(plateau, &Jeu, DimJeu);
+						Jeu.PartieFinie=OUI; //On met PartieFinie a OUI pour quitter la boucle secondaire*/
+						break;
+					case ANNULER:
+						if(Joueur.ListeJ[(Jeu.NbCasesJouees-1)%2].joueur==O) //si le joueur precedent est l'ordi, alors il faut annuler 2 jetons
+							AnnulerCoup(plateau, &Jeu); //on annule le coup obligatoire
+						AnnulerCoup(plateau, &Jeu); //on annule le coup obligatoire
+						break;
+					case COUPDEPOUCE:
+						if(Joueur.ListeJ[Jeu.NumeroJEnCours].joueur==H) { //Le COUPDEPOUCE n'est valable que si je joueur est Humain et pas Ordi
+						//                     DefinirZoneEtendue(Jeu, DimJeu, &InfoZoneDeRecherche); //determine la zone a etudier (InfoZoneDeRecherche)
+						//                     DefinirListeCaseVide(&Jeu, DimJeu, InfoZoneDeRecherche); //Détermine le Jeu.TableauCaseVide
+						/**/ //                       ia(plateau, Joueur, &Jeu, DimJeu);
+							for (i=0; i<Jeu.NbMeilleuresCases; i++)
+								plateau[Jeu.tabMeilleuresCases[i]]=CoupDePouce; //indique les meilleures cases
+						}
+						break;
+					case CONFIGTYPE:
+						ConfigType(morp_sdl, &DimJeu.TypeJeu, &Joueur, positionSouris.x-BoutonX, positionSouris.y-BoutonYConfigType); //Les coordonnéees envoyées sont relatives au coin superieur gauche du bouton Config
+						JouerMusique(morp_sdl->musique);
+						break;
+					case CONFIGDIMENSION:
+						memcpy(&AncienDimJeu,&DimJeu,sizeof(*plateau));//copie dans AncienDimJeu des données de DimJeu
+						ConfigDimension(morp_sdl, Joueur, &DimJeu,Jeu); //on ouvre la configuration pour determiner le nombre de lignes et de colonnes du plateau de jeu et le nombre de jetons a aligner pour gagner
+						if((AncienDimJeu.N !=DimJeu.N)||(AncienDimJeu.M!=DimJeu.M)) //si on modifie les dimensions du plateau de jeu alors on vide redimensionne et vide
+							ModificationConfigDimension(AncienDimJeu, DimJeu, &positionSouris, &plateau, &Jeu, logs);
 
-	      switch(ZoneEvenement)
-                {
-                case JEU :
-		  HumainJoue(plateau, Joueur, &Jeu, DimJeu, positionSouris); //gestion du clic souris
-		  if((Jeu.NbCasesJouees)>=2*DimJeu.NbJetonsAAligner-1) //on verifie s'il y a alignement au bout du 5eme jeton rond posé, (Jouées = 3*o+2*x)
-		    verifFini(plateau, Joueur, DimJeu, &Jeu, &NbAlignements); //Fonction pour vérifier si la partie est terminée
-		  break;
-                case NOUVEAU:
-		  videJeu(plateau, &Jeu, DimJeu);
-		  Jeu.PartieFinie=OUI; //On met PartieFinie a OUI pour quitter la boucle secondaire*/
-		  break;
-                case ANNULER:
-		  if(Joueur.ListeJ[(Jeu.NbCasesJouees-1)%2].joueur==O) //si le joueur precedent est l'ordi, alors il faut annuler 2 jetons
-		    AnnulerCoup(plateau, &Jeu); //on annule le coup obligatoire
-		  AnnulerCoup(plateau, &Jeu); //on annule le coup obligatoire
-		  break;
-                case COUPDEPOUCE:
-		  if(Joueur.ListeJ[Jeu.NumeroJEnCours].joueur==H) //Le COUPDEPOUCE n'est valable que si je joueur est Humain et pas Ordi
-                    {
-		      //                     DefinirZoneEtendue(Jeu, DimJeu, &InfoZoneDeRecherche); //determine la zone a etudier (InfoZoneDeRecherche)
-		      //                     DefinirListeCaseVide(&Jeu, DimJeu, InfoZoneDeRecherche); //Détermine le Jeu.TableauCaseVide
-		      /**/ //                       ia(plateau, Joueur, &Jeu, DimJeu);
-		      for (i=0; i<Jeu.NbMeilleuresCases; i++)
-			plateau[Jeu.tabMeilleuresCases[i]]=CoupDePouce; //indique les meilleures cases
-                    }
-		  break;
-                case CONFIGTYPE:
-		  ConfigType(morp_sdl, &DimJeu.TypeJeu, &Joueur, positionSouris.x-BoutonX, positionSouris.y-BoutonYConfigType); //Les coordonnéees envoyées sont relatives au coin superieur gauche du bouton Config
-		  JouerMusique(morp_sdl->musique);
-		  break;
-                case CONFIGDIMENSION:
-		  memcpy(&AncienDimJeu,&DimJeu,sizeof(*plateau));//copie dans AncienDimJeu des données de DimJeu
-		  ConfigDimension(morp_sdl, Joueur, &DimJeu,Jeu); //on ouvre la configuration pour determiner le nombre de lignes et de colonnes du plateau de jeu et le nombre de jetons a aligner pour gagner
-		  if((AncienDimJeu.N !=DimJeu.N)||(AncienDimJeu.M!=DimJeu.M)) //si on modifie les dimensions du plateau de jeu alors on vide redimensionne et vide
-		    ModificationConfigDimension(AncienDimJeu, DimJeu, &positionSouris, &plateau, &Jeu, logs);
+						if(AncienDimJeu.NbJetonsAAligner!=DimJeu.NbJetonsAAligner) //si on modifie juste le NbJetonsAAligner alors vide seulement le plateu
+							videJeu(plateau, &Jeu, DimJeu);
+						break;
+					case TOURNOI:
+						if(TournoiInitialise==NON) {//si non initialise, alors on lance la fonction de calcul des positions de collage et de clic
+							initTournoi(morp_sdl, Tournoi, MaxMancheTournoi,TitreColonne, positionTitreColonne,PositionZonesCliquables,PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner);
+							TournoiInitialise=OUI; //On valide l'initialisation}
+						}
 
-		  if(AncienDimJeu.NbJetonsAAligner!=DimJeu.NbJetonsAAligner) //si on modifie juste le NbJetonsAAligner alors vide seulement le plateu
-		    videJeu(plateau, &Jeu, DimJeu);
-		  break;
-                case TOURNOI:
+				//     AfficheMancheTournoi(police,Tournoi,MaxMancheTournoi,&Jeton, DimJeu, TitreColonne,positionTitreColonne,PositionZonesCliquables,PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner); //affichage
+						ModifMancheTournoi(morp_sdl, Tournoi, &MaxMancheTournoi, Joueur, DimJeu, TitreColonne,positionTitreColonne,PositionZonesCliquables, PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner);
+						break;
+					case INSTRUCTION:
+						Instruction(morp_sdl, Joueur, Jeu, DimJeu); //on ouvre le menu d'Instruction
+						break;
+					case QUITTER:
+						JeuFini=OUI; //On met JeuFini a OUI pour quitter la 1ere boucle principale
+						Jeu.PartieFinie=OUI; //On met PartieFinie a OUI pour quitter la 2eme boucle principale
+						ZoneEvenement=MARGE;
+						break;
+					case MARGE:
+						break;
+					default: //Sinon on ne fait rien
+						break;
+				}
+			}
 
-		  if(TournoiInitialise==NON) //si non initialise, alors on lance la fonction de calcul des positions de collage et de clic
-                    {
-		      initTournoi(morp_sdl, Tournoi, MaxMancheTournoi,TitreColonne, positionTitreColonne,PositionZonesCliquables,PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner);
-		      TournoiInitialise=OUI; //On valide l'initialisation}
-                    }
+//	  AfficheJeu(morp_sdl, plateau, Joueur, DimJeu, Jeu.PartieFinie);
+			AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu);
+//	  AffichePointeur(morp_sdl, plateau, Joueur, DimJeu, positionSouris, Jeu); //pour afficher le pointeur quand on clique et que l'on ne bouge pas
+//	  ZoneEvenement=MARGE;
 
-		  //     AfficheMancheTournoi(police,Tournoi,MaxMancheTournoi,&Jeton, DimJeu, TitreColonne,positionTitreColonne,PositionZonesCliquables,PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner); //affichage
-		  ModifMancheTournoi(morp_sdl, Tournoi, &MaxMancheTournoi, Joueur, DimJeu, TitreColonne,positionTitreColonne,PositionZonesCliquables, PositionZonesTournoiAAfficher,PositionZonesTournoiASelectionner);
-		  break;
-                case INSTRUCTION:
-		  Instruction(morp_sdl, Joueur, Jeu, DimJeu); //on ouvre le menu d'Instruction
-		  break;
-                case QUITTER:
-		  JeuFini=OUI; //On met JeuFini a OUI pour quitter la 1ere boucle principale
-		  Jeu.PartieFinie=OUI; //On met PartieFinie a OUI pour quitter la 2eme boucle principale
-		  ZoneEvenement=MARGE;
-		  break;
-                case MARGE:
-		  break;
-                default: //Sinon on ne fait rien
-		  break;
-                }
-            }
+			/* Mise à jour graphique de l'ihm */
+			ihm_sdl_renderer_update (ihm_sdl);
 
-	  AfficheJeu(morp_sdl, plateau, Joueur, DimJeu, Jeu.PartieFinie);
-	  AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu);
-	  AffichePointeur(morp_sdl, plateau, Joueur, DimJeu, positionSouris, Jeu); //pour afficher le pointeur quand on clique et que l'on ne bouge pas
-	  ZoneEvenement=MARGE;
+			SDL_RenderPresent(morp_sdl->renderer); //Rafraichissement de l'écran. Il faut le sortir du while car sinon il attend de bouger la souris pour faire jouer le joueur suivant
+		}
+//      SDL_Delay(1000); //Attendre avant de fermer ou de commencer une nouvelle partie : 1000 ms = 1 s
+	}
 
-	  /* Mise à jour graphique de l'ihm */
-	  ihm_sdl_renderer_update (ihm_sdl);
+	for (i=0; i<4; i++) { //liberation des mots des colonnes du mode tournoi
+		free(TitreColonne[i]);
+		TitreColonne[i]=NULL;
+	}
+	free(plateau); //liberation du plateau de jeu
+	plateau=NULL;
+	free(Jeu.HistoriqueJeton);
+	Jeu.HistoriqueJeton=NULL;
+	free(Jeu.ListeCasesVides);
+	Jeu.ListeCasesVides=NULL;
+/*  free(Jeu.ListeCasesVides_C1);
+		Jeu.ListeCasesVides_C1=NULL;
+		free(Jeu.ListeCasesVides_C2);
+		Jeu.ListeCasesVides_C2=NULL;
+		free(Jeu.ListeCasesVides_C3);
+		Jeu.ListeCasesVides_C3=NULL;
+		free(Jeu.ListeCasesVides_C4);
+		Jeu.ListeCasesVides_C4=NULL;*/
 
-	  SDL_RenderPresent(morp_sdl->renderer); //Rafraichissement de l'écran. Il faut le sortir du while car sinon il attend de bouger la souris pour faire jouer le joueur suivant
-        }
-      SDL_Delay(1000); //Attendre avant de fermer ou de commencer une nouvelle partie : 1000 ms = 1 s
-    }
+	morp_sdl_liberation_ressources(morp_sdl, NbImagesMax, NbImagesPionMax, NbTexteMessageMax, NbTexteBoutonMax, NbMusiquesMax);
 
-  for (i=0; i<4; i++) //liberation des mots des colonnes du mode tournoi
-    {
-      free(TitreColonne[i]);
-      TitreColonne[i]=NULL;
-    }
-  free(plateau); //liberation du plateau de jeu
-  plateau=NULL;
-  free(Jeu.HistoriqueJeton);
-  Jeu.HistoriqueJeton=NULL;
-  free(Jeu.ListeCasesVides);
-  Jeu.ListeCasesVides=NULL;
-  /*  free(Jeu.ListeCasesVides_C1);
-      Jeu.ListeCasesVides_C1=NULL;
-      free(Jeu.ListeCasesVides_C2);
-      Jeu.ListeCasesVides_C2=NULL;
-      free(Jeu.ListeCasesVides_C3);
-      Jeu.ListeCasesVides_C3=NULL;
-      free(Jeu.ListeCasesVides_C4);
-      Jeu.ListeCasesVides_C4=NULL;*/
+	morp_sdl_quit_SDL(morp_sdl);
 
-  morp_sdl_liberation_ressources(morp_sdl, NbImagesMax, NbImagesPionMax,
-				 NbTexteMessageMax, NbTexteBoutonMax, NbMusiquesMax);
+	morp_sdl_liberation (&morp_sdl);
 
-  morp_sdl_quit_SDL(morp_sdl);
+	logs_liberation (logs);
 
-  morp_sdl_liberation (&morp_sdl);
+//  ihm_sdl_free (&ihm_sdl);
 
-  logs_liberation (logs);
-
-  ihm_sdl_free (&ihm_sdl);
-
-  return EXIT_SUCCESS; //on quitte le jeu avec succes
+	return EXIT_SUCCESS; //on quitte le jeu avec succes
 }

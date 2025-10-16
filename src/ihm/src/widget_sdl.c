@@ -16,7 +16,9 @@ widget_sdl_new (t_logs *logs) {
   widget->logs = logs;
   widget->file_error = logs_descripteur_fichier (logs, LOG_ERROR);
   widget->tooltip = NULL;
+  widget->name = strdup ("widget");
 
+  widget->events = NULL;
   widget->cursor = NULL;
 
   widget->widget_child = NULL;
@@ -58,6 +60,9 @@ widget_sdl_free (t_widget_sdl **widget) {
     fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
     return;
   }
+
+  if ((*widget)->name)
+  	free ((*widget)->name);
 
   if ((*widget)->cursor)
     SDL_FreeSurface((*widget)->cursor);
@@ -155,10 +160,10 @@ widget_sdl_renderer_update (t_widget_sdl *widget) {
     return;
   }
 
-  /* Mise à jour de la taille réelle du widget s'il n'est pas fixe */
-  SDL_Window *window = SDL_RenderGetWindow(widget->renderer);
-  int w, h;
-  SDL_GetWindowSize(window, &w, &h);
+  /* Mise à jour de la taille réelle du widget s'il n'est pas fixe  A VOIR PLUS TARD POUR LE REDIMENSSIONNEMENT DE LA FENETRE */
+//  SDL_Window *window = SDL_RenderGetWindow(widget->renderer);
+//  int w, h;
+//  SDL_GetWindowSize(window, &w, &h);
 
   /* Le widget est-il sensible */
   if (widget_sdl_is_sensitive (widget) == false) {
@@ -398,6 +403,16 @@ widget_sdl_is_visible (t_widget_sdl *widget) {
   return widget->visible;
 }
 
+t_logs*
+widget_sdl_get_logs (t_widget_sdl *widget) {
+  if (widget == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return NULL;
+  }
+
+  return widget->logs;
+}
+
 static
 void widget_sdl_mouse_motion_update (t_widget_sdl *widget, SDL_Event *event) {
   if (widget == NULL) {
@@ -448,7 +463,8 @@ void widget_sdl_mouse_button_down_update (t_widget_sdl *widget, SDL_Event *event
   widget_sdl_set_pointer_position (widget, event->motion.x, event->motion.y);
 
   /* Exécution du callback pour l'appui du bouton de la souris */
-  if (widget_sdl_pt_is_in_rect (widget->x, widget->y, &widget->actual_size)) {
+  if (widget_sdl_pt_is_in_rect (widget->x, widget->y, &widget->actual_size))
+ {
     t_liste *liste = widget->mouse_clic_cb_list;
     while (liste) {
       if (liste->donnee) {
@@ -505,6 +521,8 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
   /* Si le bouton est insensible on sort */
   if (widget->sensitive == false)
     return;
+
+	widget->events = event;
 
   switch(event->type) {
   case SDL_MOUSEMOTION :
@@ -580,6 +598,31 @@ widget_sdl_is_sensitive (t_widget_sdl *widget) {
  return widget->sensitive;
 }
 
+void
+widget_sdl_set_name (t_widget_sdl *widget, const char *name) {
+  if (widget == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+	if (name == NULL)
+  	return;
+
+	if (widget->name)
+		free (widget->name);
+
+	widget->name = strdup (name);
+}
+
+char*
+widget_sdl_get_name (t_widget_sdl *widget) {
+  if (widget == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return NULL;
+  }
+
+ return widget->name;
+}
 
 bool
 widget_sdl_is_activate (t_widget_sdl *widget) {

@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ihm:  Fichier source de /home/gerald/Projects/morpion/src/ihm/src/widget_sdl.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ihm
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">/home/gerald/Projects/morpion/src/ihm/src/widget_sdl.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="widget__sdl_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __WIDGET_SDL__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __WIDGET_SDL__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span><span class="comment">// pour utiliser la sdl pour coller autre que des bmp</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SDL2/SDL_ttf.h&gt;</span> <span class="comment">// Pour utiliser les polices avec la SDL</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SDL2/SDL_mixer.h&gt;</span> <span class="comment">// Pour utiliser les sons avec la SDL</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="logs_8h.html">logs.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="define__sdl_8h.html">define_sdl.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="tooltip__sdl_8h.html">tooltip_sdl.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="chain__list_8h.html">chain_list.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a33cf1d8ef1d06ee698a7fabf40eb3a7f">   23</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code hl_enumvalue" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197ab921f9083c52df371b0abb5f4672a8cd">FOND</a>, <a class="code hl_enumvalue" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a33cf1d8ef1d06ee698a7fabf40eb3a7f">ACTIVE</a>, <a class="code hl_enumvalue" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a006caa271235cbc8b2a296d3b7ceeb52">CADRE</a>, <a class="code hl_enumvalue" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a89c565ef0c237f715f0ba2f001205b01">INSENSIBLE</a>} <a class="code hl_enumeration" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197">WIDGET_SDL_TYPE_OF_COLOR</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">typedef</span> <span class="keyword">struct </span>t_widget_sdl t_widget_sdl;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">struct </span>t_widget_sdl {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  SDL_Renderer *renderer;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <a class="code hl_struct" href="structt__logs.html">t_logs</a> *logs;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  FILE *file_error;                  <span class="comment">// Descripteur du fichier des logs errors</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  SDL_Event *events;                 <span class="comment">// Liste des évènements actuels transmis</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">char</span> *name;                        <span class="comment">// Nom du widget. Utile pour le retrouver dans la liste des widgets incorporés dans l&#39;ihm</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  SDL_Surface *cursor;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordtype">void</span> *widget_child;                <span class="comment">// pointeur sur le widget enfant qui implémente le widget actuel du type spécifique au widget enfant</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  void (*destroy_widget_child_fct)(<span class="keywordtype">void</span> **widget_whild); <span class="comment">// Pointeur sur la fonction spécifique de destruction du widget enfant</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  t_liste *child_widget_list;        <span class="comment">// Liste des widgets enfants incorporés dans ce widget (contient des pointeurs de type t_widget_sdl)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordtype">int</span> x, y;                          <span class="comment">// position de la souris</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  SDL_Color couleur_fond;            <span class="comment">// Couleur noire transparente</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  SDL_Color couleur_active;          <span class="comment">// Couleur grise à moitié transparente</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  SDL_Color couleur_cadre;           <span class="comment">// Couleur du cadre</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  SDL_Color couleur_insensible;      <span class="comment">// Couleur du widget lorsqu&#39;il est insensible aux évènements</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordtype">int</span> original_window_with;          <span class="comment">// Largeur originelle de la fenêtre</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordtype">int</span> original_window_height;        <span class="comment">// Hauteur originelle de la fenêtre</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  SDL_Rect original_size;            <span class="comment">// Dimension et position originelle du widget</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  SDL_Rect actual_size;              <span class="comment">// Taille réelle du widget</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keywordtype">bool</span> activate;                     <span class="comment">// État du widget (true lorsque la souris est dessus)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  <span class="keywordtype">bool</span> sensitive;                    <span class="comment">// État du widget (true si le widget est sensible aux évènements)</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  <span class="keywordtype">bool</span> visible;                      <span class="comment">// Affichage ou non du widget</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  <span class="keywordtype">bool</span> modale;                       <span class="comment">// Si vaut true le widget doit être affiché par dessus les autres et tous les autres sont désactivés tant que ce dernier est apparent.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  void (*create_texture_cb)(t_widget_sdl *widget, <span class="keywordtype">void</span> *userdata);  <span class="comment">// callback de calcul de la texture du widget enfant</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  <span class="keywordtype">void</span> *create_texture_userdata;     <span class="comment">// donnée personnelle du callback du même nom</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  void (*draw_on_renderer_cb)(t_widget_sdl *widget);                <span class="comment">// callback pour dessiner la texture dans le renderer</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  t_liste *userdata;                 <span class="comment">// données personnelles attachées au widget</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  t_liste *mouse_clic_cb_list;       <span class="comment">// liste des fonctions à appeler lorsque un clic de la souris survient</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  t_liste *mouse_on_cb_list;         <span class="comment">// liste des fonctions à appeler lorsque la souris est sur le widget</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  t_liste *mouse_down_clic_cb_list;  <span class="comment">// liste des fonctions à appeler lorsque le bouton de la souris reste enfoncée.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  t_tooltip_sdl *tooltip;            <span class="comment">// Bulle d&#39;aide affichée si elle existe</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="comment">/* Callback activé lors du clic de la souris sur le widget.</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">   * Le paramètre any_widget pourra être de n&#39;importe quel type</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">   * de widget enfant à t_widget_sdl. */</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>  void (*mouse_clic_cb)(<span class="keywordtype">void</span> *any_widget, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordtype">void</span> *userdata;                                            <span class="comment">// donnée personnelle pour le callback mouse_is_on_cb</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>} t_mouse_clic;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  <span class="comment">/* Callback activé lorsque la souris est sur le widget.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">   * Le paramètre any_widget pourra être de n&#39;importe quel type</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">   * de widget enfant à t_widget_sdl. */</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  void (*mouse_on_cb)(<span class="keywordtype">void</span> *any_widget, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordtype">void</span> *userdata;                                            <span class="comment">// donnée personnelle pour le callback mouse_is_on_cb</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>} t_mouse_on;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="comment">/* Callback activé lorsque la souris est sur le widget.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">   * Le paramètre any_widget pourra être de n&#39;importe quel type</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">   * de widget enfant à t_widget_sdl. */</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  void (*mouse_down_clic_cb)(<span class="keywordtype">void</span> *any_widget, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keywordtype">void</span> *userdata;  <span class="comment">// donnée personnelle pour le callback mouse_is_down_clic_cb</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>} t_mouse_down_clic;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="comment">/* Callback activé lorsque la souris est sur le widget.</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">   * Le paramètre any_widget pourra être de n&#39;importe quel type</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">   * de widget enfant à t_widget_sdl. */</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  void (*mouse_clic_cb)(<span class="keywordtype">void</span> *any_widget, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  <span class="keywordtype">void</span> *userdata;  <span class="comment">// donnée personnelle pour le callback mouse_is_down_clic_cb</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>} t_mouse_up_clic;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keywordtype">char</span> *name;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>  <span class="keywordtype">void</span> *userdata;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>} t_userdata;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a1674143bb40994b392a0f11d8a6ec496">  130</a></span>t_widget_sdl *<a class="code hl_function" href="widget__sdl_8h.html#a1674143bb40994b392a0f11d8a6ec496">widget_sdl_new</a> (<a class="code hl_struct" href="structt__logs.html">t_logs</a> *logs);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a1ea83cd84f545a227d38ebafdd4e3ed2">  138</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a1ea83cd84f545a227d38ebafdd4e3ed2">widget_sdl_free</a> (t_widget_sdl **widget);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keywordtype">void</span> widget_sdl_set_renderer (t_widget_sdl *widget, SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keywordtype">void</span> widget_sdl_set_callback_create_texture (t_widget_sdl *widget, <span class="keywordtype">void</span> *callback, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keywordtype">void</span> widget_sdl_renderer_update (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="keywordtype">void</span> widget_sdl_set_callback_renderer_update (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a89c6af7afc7244b32c6b9c97e93a60bc">  183</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a89c6af7afc7244b32c6b9c97e93a60bc">widget_sdl_set_mouse_clic_callback</a> (t_widget_sdl *widget, <span class="keywordtype">void</span> *callback, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a6856343aad94ced0b803b6ebb0613831">  193</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a6856343aad94ced0b803b6ebb0613831">widget_sdl_set_mouse_on_callback</a> (t_widget_sdl *widget, <span class="keywordtype">void</span> *callback, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a365cc7da2e40ebfd589fcfac80c18b19">  203</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a365cc7da2e40ebfd589fcfac80c18b19">widget_sdl_set_mouse_down_clic_callback</a> (t_widget_sdl *widget, <span class="keywordtype">void</span> *callback, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a5bf9c38d533ea9319694c4ad1c0eff99">  214</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a5bf9c38d533ea9319694c4ad1c0eff99">widget_sdl_add_child_widget</a> (t_widget_sdl *widget, t_widget_sdl *widget_child);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#ad3d2140f83276493feedd1914e4fbcb1">  224</a></span>t_liste *<a class="code hl_function" href="widget__sdl_8h.html#ad3d2140f83276493feedd1914e4fbcb1">widget_sdl_get_child_widgets_list</a> (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#abecd72a9b3926a68ab0a78f5d24dda02">  234</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#abecd72a9b3926a68ab0a78f5d24dda02">widget_sdl_set_color</a> (t_widget_sdl *widget, SDL_Color color, <a class="code hl_enumeration" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197">WIDGET_SDL_TYPE_OF_COLOR</a> type_of_color);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#ada058d44c496874400bb057f03fdb015">  243</a></span>SDL_Color *<a class="code hl_function" href="widget__sdl_8h.html#ada058d44c496874400bb057f03fdb015">widget_sdl_get_color</a> (t_widget_sdl *widget, <a class="code hl_enumeration" href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197">WIDGET_SDL_TYPE_OF_COLOR</a> type_of_color);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#ad801188a016db36fe8a45ba035ca77f4">  257</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#ad801188a016db36fe8a45ba035ca77f4">widget_sdl_set_size</a> (t_widget_sdl *widget, <span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y, <span class="keywordtype">int</span> *w, <span class="keywordtype">int</span> *h);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a20528fe187f99f632fc8e92995fddac0">  266</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="widget__sdl_8h.html#a20528fe187f99f632fc8e92995fddac0">widget_sdl_get_size</a> (t_widget_sdl *widget, SDL_Rect *size);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#abafc13605794154b629e6ce4e24c1020">  277</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#abafc13605794154b629e6ce4e24c1020">widget_sdl_set_modale</a> (t_widget_sdl *widget, <span class="keywordtype">bool</span> modale);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#aa6420a16c833e2d89beb9ad98884603c">  287</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="widget__sdl_8h.html#aa6420a16c833e2d89beb9ad98884603c">widget_sdl_is_modale</a> (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span><span class="keywordtype">void</span> widget_sdl_get_mouse_position (t_widget_sdl *widget, <span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y);</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="keywordtype">bool</span> widget_sdl_mouse_on (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span><span class="keywordtype">void</span> widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *events);</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a1a97e9e752103440c017c674eb8124e4">  323</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a1a97e9e752103440c017c674eb8124e4">widget_sdl_set_visible</a> (t_widget_sdl *widget, <span class="keywordtype">bool</span> visible);</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a307f04b2f768762f58d9e1e886a7da8e">  331</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="widget__sdl_8h.html#a307f04b2f768762f58d9e1e886a7da8e">widget_sdl_is_visible</a> (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#afce49e92ad38ecdb4d95c6ad472d2fe8">  340</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#afce49e92ad38ecdb4d95c6ad472d2fe8">widget_sdl_set_sensitive</a> (t_widget_sdl *widget, <span class="keywordtype">bool</span> state);</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a1f24d1f909da7b8caa2c5872e6cf808f">  348</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="widget__sdl_8h.html#a1f24d1f909da7b8caa2c5872e6cf808f">widget_sdl_is_sensitive</a> (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a69ae0b83b520a048874085b6d85295a8">  357</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a69ae0b83b520a048874085b6d85295a8">widget_sdl_set_name</a> (t_widget_sdl *widget, <span class="keyword">const</span> <span class="keywordtype">char</span> *name);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a4269a5e5b544481e27499ffe3d5330b6">  365</a></span><span class="keywordtype">char</span> *<a class="code hl_function" href="widget__sdl_8h.html#a4269a5e5b544481e27499ffe3d5330b6">widget_sdl_get_name</a> (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a8f27035b5b6a75e7e28a823102c33df8">  373</a></span><a class="code hl_struct" href="structt__logs.html">t_logs</a> *<a class="code hl_function" href="widget__sdl_8h.html#a8f27035b5b6a75e7e28a823102c33df8">widget_sdl_get_logs</a> (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span><span class="keywordtype">bool</span> widget_sdl_is_activate (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>SDL_Renderer *widget_sdl_get_renderer (t_widget_sdl *widget);</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span> </div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#aea4e56c60ad770fd3a65eb210e904266">  400</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#aea4e56c60ad770fd3a65eb210e904266">widget_sdl_set_tooltip</a> (t_widget_sdl *widget, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span> </div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a4825dc1c5b9e727854acc7ccca2c52be">  409</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="widget__sdl_8h.html#a4825dc1c5b9e727854acc7ccca2c52be">widget_sdl_set_cursor_from_file</a>(t_widget_sdl *widget, <span class="keyword">const</span> <span class="keywordtype">char</span> *file);</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span> </div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#af094b1d2ac2bf1e4bd11706a62d84cfc">  418</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#af094b1d2ac2bf1e4bd11706a62d84cfc">widget_sdl_set_cursor_from_surface</a> (t_widget_sdl *widget, SDL_Surface *cursor);</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span> </div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span><span class="comment">/* Attache une donnée personnelle */</span></div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a20973dc08a0a0f3a785834b662e7abf0">  434</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="widget__sdl_8h.html#a20973dc08a0a0f3a785834b662e7abf0">widget_sdl_set_user_data</a> (t_widget_sdl *widget, <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">void</span> *userdata);</div>
+<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span> </div>
+<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span><span class="comment">/* Récupère la donnée personnelle */</span></div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno"><a class="line" href="widget__sdl_8h.html#a098f91b9e164d681905d843a8535beb4">  444</a></span><span class="keywordtype">void</span>* <a class="code hl_function" href="widget__sdl_8h.html#a098f91b9e164d681905d843a8535beb4">widget_sdl_get_user_data</a> (t_widget_sdl *widget, <span class="keyword">const</span> <span class="keywordtype">char</span>*name);</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span> </div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span><span class="keywordtype">bool</span> widget_sdl_pt_is_in_rect (<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, SDL_Rect *rect);</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="achain__list_8h_html"><div class="ttname"><a href="chain__list_8h.html">chain_list.h</a></div></div>
+<div class="ttc" id="adefine__sdl_8h_html"><div class="ttname"><a href="define__sdl_8h.html">define_sdl.h</a></div></div>
+<div class="ttc" id="alogs_8h_html"><div class="ttname"><a href="logs_8h.html">logs.h</a></div></div>
+<div class="ttc" id="astructt__logs_html"><div class="ttname"><a href="structt__logs.html">t_logs</a></div><div class="ttdef"><b>Definition</b> logs.h:12</div></div>
+<div class="ttc" id="atooltip__sdl_8h_html"><div class="ttname"><a href="tooltip__sdl_8h.html">tooltip_sdl.h</a></div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a098f91b9e164d681905d843a8535beb4"><div class="ttname"><a href="widget__sdl_8h.html#a098f91b9e164d681905d843a8535beb4">widget_sdl_get_user_data</a></div><div class="ttdeci">void * widget_sdl_get_user_data(t_widget_sdl *widget, const char *name)</div><div class="ttdoc">Renvoie la donnée personnelle sélectionnée.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a1674143bb40994b392a0f11d8a6ec496"><div class="ttname"><a href="widget__sdl_8h.html#a1674143bb40994b392a0f11d8a6ec496">widget_sdl_new</a></div><div class="ttdeci">t_widget_sdl * widget_sdl_new(t_logs *logs)</div><div class="ttdoc">Constructeur d'un nouvel objet t_widget_sdl.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a1a97e9e752103440c017c674eb8124e4"><div class="ttname"><a href="widget__sdl_8h.html#a1a97e9e752103440c017c674eb8124e4">widget_sdl_set_visible</a></div><div class="ttdeci">void widget_sdl_set_visible(t_widget_sdl *widget, bool visible)</div><div class="ttdoc">Rend visible ou non le widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a1ea83cd84f545a227d38ebafdd4e3ed2"><div class="ttname"><a href="widget__sdl_8h.html#a1ea83cd84f545a227d38ebafdd4e3ed2">widget_sdl_free</a></div><div class="ttdeci">void widget_sdl_free(t_widget_sdl **widget)</div><div class="ttdoc">Destructeur de l'objet t_widget_sdl.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a1f24d1f909da7b8caa2c5872e6cf808f"><div class="ttname"><a href="widget__sdl_8h.html#a1f24d1f909da7b8caa2c5872e6cf808f">widget_sdl_is_sensitive</a></div><div class="ttdeci">bool widget_sdl_is_sensitive(t_widget_sdl *widget)</div><div class="ttdoc">Renvoie l'état de sensibilisation du widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a20528fe187f99f632fc8e92995fddac0"><div class="ttname"><a href="widget__sdl_8h.html#a20528fe187f99f632fc8e92995fddac0">widget_sdl_get_size</a></div><div class="ttdeci">bool widget_sdl_get_size(t_widget_sdl *widget, SDL_Rect *size)</div><div class="ttdoc">Renvoie la position et la taille du widget dans la fenêtre dans le pointeur size.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a20973dc08a0a0f3a785834b662e7abf0"><div class="ttname"><a href="widget__sdl_8h.html#a20973dc08a0a0f3a785834b662e7abf0">widget_sdl_set_user_data</a></div><div class="ttdeci">void widget_sdl_set_user_data(t_widget_sdl *widget, const char *name, void *userdata)</div><div class="ttdoc">Attache une donnée personnelle.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a307f04b2f768762f58d9e1e886a7da8e"><div class="ttname"><a href="widget__sdl_8h.html#a307f04b2f768762f58d9e1e886a7da8e">widget_sdl_is_visible</a></div><div class="ttdeci">bool widget_sdl_is_visible(t_widget_sdl *widget)</div><div class="ttdoc">Renvoie l'état d'affichage du widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a365cc7da2e40ebfd589fcfac80c18b19"><div class="ttname"><a href="widget__sdl_8h.html#a365cc7da2e40ebfd589fcfac80c18b19">widget_sdl_set_mouse_down_clic_callback</a></div><div class="ttdeci">void widget_sdl_set_mouse_down_clic_callback(t_widget_sdl *widget, void *callback, void *userdata)</div><div class="ttdoc">Affecte la fonction callback lorsqu'un bouton de la souris est enfoncé</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a4269a5e5b544481e27499ffe3d5330b6"><div class="ttname"><a href="widget__sdl_8h.html#a4269a5e5b544481e27499ffe3d5330b6">widget_sdl_get_name</a></div><div class="ttdeci">char * widget_sdl_get_name(t_widget_sdl *widget)</div><div class="ttdoc">Renvoie le nom du widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a4825dc1c5b9e727854acc7ccca2c52be"><div class="ttname"><a href="widget__sdl_8h.html#a4825dc1c5b9e727854acc7ccca2c52be">widget_sdl_set_cursor_from_file</a></div><div class="ttdeci">bool widget_sdl_set_cursor_from_file(t_widget_sdl *widget, const char *file)</div><div class="ttdoc">Charge une nouvelle image du curseur personnalisée lorsqu'il se déplace sur le widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a5bf9c38d533ea9319694c4ad1c0eff99"><div class="ttname"><a href="widget__sdl_8h.html#a5bf9c38d533ea9319694c4ad1c0eff99">widget_sdl_add_child_widget</a></div><div class="ttdeci">void widget_sdl_add_child_widget(t_widget_sdl *widget, t_widget_sdl *widget_child)</div><div class="ttdoc">Ajoute au widget courant un widget enfant.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a6856343aad94ced0b803b6ebb0613831"><div class="ttname"><a href="widget__sdl_8h.html#a6856343aad94ced0b803b6ebb0613831">widget_sdl_set_mouse_on_callback</a></div><div class="ttdeci">void widget_sdl_set_mouse_on_callback(t_widget_sdl *widget, void *callback, void *userdata)</div><div class="ttdoc">Affecte la fonction callback lorsque la souris se déplace sur le widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a69ae0b83b520a048874085b6d85295a8"><div class="ttname"><a href="widget__sdl_8h.html#a69ae0b83b520a048874085b6d85295a8">widget_sdl_set_name</a></div><div class="ttdeci">void widget_sdl_set_name(t_widget_sdl *widget, const char *name)</div><div class="ttdoc">Change le nom du widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a89c6af7afc7244b32c6b9c97e93a60bc"><div class="ttname"><a href="widget__sdl_8h.html#a89c6af7afc7244b32c6b9c97e93a60bc">widget_sdl_set_mouse_clic_callback</a></div><div class="ttdeci">void widget_sdl_set_mouse_clic_callback(t_widget_sdl *widget, void *callback, void *userdata)</div><div class="ttdoc">Affecte la fonction callback lorsque un clic de souris est émis sur le widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_a8f27035b5b6a75e7e28a823102c33df8"><div class="ttname"><a href="widget__sdl_8h.html#a8f27035b5b6a75e7e28a823102c33df8">widget_sdl_get_logs</a></div><div class="ttdeci">t_logs * widget_sdl_get_logs(t_widget_sdl *widget)</div><div class="ttdoc">Renvoie le pointeur des logs de l'ihm.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aa07fac70ec143822e58da06661cd0197"><div class="ttname"><a href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197">WIDGET_SDL_TYPE_OF_COLOR</a></div><div class="ttdeci">WIDGET_SDL_TYPE_OF_COLOR</div><div class="ttdef"><b>Definition</b> widget_sdl.h:23</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aa07fac70ec143822e58da06661cd0197a006caa271235cbc8b2a296d3b7ceeb52"><div class="ttname"><a href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a006caa271235cbc8b2a296d3b7ceeb52">CADRE</a></div><div class="ttdeci">@ CADRE</div><div class="ttdef"><b>Definition</b> widget_sdl.h:23</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aa07fac70ec143822e58da06661cd0197a33cf1d8ef1d06ee698a7fabf40eb3a7f"><div class="ttname"><a href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a33cf1d8ef1d06ee698a7fabf40eb3a7f">ACTIVE</a></div><div class="ttdeci">@ ACTIVE</div><div class="ttdef"><b>Definition</b> widget_sdl.h:23</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aa07fac70ec143822e58da06661cd0197a89c565ef0c237f715f0ba2f001205b01"><div class="ttname"><a href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197a89c565ef0c237f715f0ba2f001205b01">INSENSIBLE</a></div><div class="ttdeci">@ INSENSIBLE</div><div class="ttdef"><b>Definition</b> widget_sdl.h:23</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aa07fac70ec143822e58da06661cd0197ab921f9083c52df371b0abb5f4672a8cd"><div class="ttname"><a href="widget__sdl_8h.html#aa07fac70ec143822e58da06661cd0197ab921f9083c52df371b0abb5f4672a8cd">FOND</a></div><div class="ttdeci">@ FOND</div><div class="ttdef"><b>Definition</b> widget_sdl.h:23</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aa6420a16c833e2d89beb9ad98884603c"><div class="ttname"><a href="widget__sdl_8h.html#aa6420a16c833e2d89beb9ad98884603c">widget_sdl_is_modale</a></div><div class="ttdeci">bool widget_sdl_is_modale(t_widget_sdl *widget)</div><div class="ttdoc">Renvoie l'état du widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_abafc13605794154b629e6ce4e24c1020"><div class="ttname"><a href="widget__sdl_8h.html#abafc13605794154b629e6ce4e24c1020">widget_sdl_set_modale</a></div><div class="ttdeci">void widget_sdl_set_modale(t_widget_sdl *widget, bool modale)</div><div class="ttdoc">Indique si le widget doit être affiché par dessus tous les autres.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_abecd72a9b3926a68ab0a78f5d24dda02"><div class="ttname"><a href="widget__sdl_8h.html#abecd72a9b3926a68ab0a78f5d24dda02">widget_sdl_set_color</a></div><div class="ttdeci">void widget_sdl_set_color(t_widget_sdl *widget, SDL_Color color, WIDGET_SDL_TYPE_OF_COLOR type_of_color)</div><div class="ttdoc">Change la couleur par défaut d'une des composantes du widget.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_ad3d2140f83276493feedd1914e4fbcb1"><div class="ttname"><a href="widget__sdl_8h.html#ad3d2140f83276493feedd1914e4fbcb1">widget_sdl_get_child_widgets_list</a></div><div class="ttdeci">t_liste * widget_sdl_get_child_widgets_list(t_widget_sdl *widget)</div><div class="ttdoc">Renvoie la liste des widgets enfants.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_ad801188a016db36fe8a45ba035ca77f4"><div class="ttname"><a href="widget__sdl_8h.html#ad801188a016db36fe8a45ba035ca77f4">widget_sdl_set_size</a></div><div class="ttdeci">void widget_sdl_set_size(t_widget_sdl *widget, int *x, int *y, int *w, int *h)</div><div class="ttdoc">Change la taille et la position du widget dans la fenêtre.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_ada058d44c496874400bb057f03fdb015"><div class="ttname"><a href="widget__sdl_8h.html#ada058d44c496874400bb057f03fdb015">widget_sdl_get_color</a></div><div class="ttdeci">SDL_Color * widget_sdl_get_color(t_widget_sdl *widget, WIDGET_SDL_TYPE_OF_COLOR type_of_color)</div><div class="ttdoc">Renvoie la couleur du composant choisi.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_aea4e56c60ad770fd3a65eb210e904266"><div class="ttname"><a href="widget__sdl_8h.html#aea4e56c60ad770fd3a65eb210e904266">widget_sdl_set_tooltip</a></div><div class="ttdeci">void widget_sdl_set_tooltip(t_widget_sdl *widget, const char *text)</div><div class="ttdoc">Ajoute ou modifie une bulle d'aide.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_af094b1d2ac2bf1e4bd11706a62d84cfc"><div class="ttname"><a href="widget__sdl_8h.html#af094b1d2ac2bf1e4bd11706a62d84cfc">widget_sdl_set_cursor_from_surface</a></div><div class="ttdeci">void widget_sdl_set_cursor_from_surface(t_widget_sdl *widget, SDL_Surface *cursor)</div><div class="ttdoc">Change l_image du curseur depuis une surface.</div></div>
+<div class="ttc" id="awidget__sdl_8h_html_afce49e92ad38ecdb4d95c6ad472d2fe8"><div class="ttname"><a href="widget__sdl_8h.html#afce49e92ad38ecdb4d95c6ad472d2fe8">widget_sdl_set_sensitive</a></div><div class="ttdeci">void widget_sdl_set_sensitive(t_widget_sdl *widget, bool state)</div><div class="ttdoc">Rend sensible ou non le widget. Lorsqu'il est insensible le widget est grisé par défaut.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

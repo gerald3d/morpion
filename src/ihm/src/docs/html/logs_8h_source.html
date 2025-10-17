@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ihm:  Fichier source de /home/gerald/Projects/morpion/src/ihm/src/logs.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ihm
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">/home/gerald/Projects/morpion/src/ihm/src/logs.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="logs_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __LOGS_H__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __LOGS_H__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680a230506cce5c68c3bac5a821c42ed3473">   10</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code hl_enumvalue" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680aeaa93b1568dcc17932dffd99fcd483df">LOG_STANDARD</a>, <a class="code hl_enumvalue" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680a230506cce5c68c3bac5a821c42ed3473">LOG_ERROR</a>} <a class="code hl_enumeration" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680">TYPE_OF_LOGS</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structt__logs.html">   12</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structt__logs.html#a1e246bab47e4fbbe89bcc92c94f46bea">   13</a></span>  <span class="keywordtype">char</span> *fichier_standard,  *<a class="code hl_variable" href="structt__logs.html#a1e246bab47e4fbbe89bcc92c94f46bea">fichier_erreur</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structt__logs.html#a04851888a0e3a8c5bc7b04e5d3c17901">   14</a></span>  FILE *<a class="code hl_variable" href="structt__logs.html#a04851888a0e3a8c5bc7b04e5d3c17901">descripteur_de_fichier_standard</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structt__logs.html#a0ea645026d0dfd29ae0693b789dcb1a8">   15</a></span>  FILE *<a class="code hl_variable" href="structt__logs.html#a0ea645026d0dfd29ae0693b789dcb1a8">descripteur_de_fichier_erreur</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structt__logs.html#a17e45fba0011af151378de5026b03193">   16</a></span>  <a class="code hl_enumeration" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680">TYPE_OF_LOGS</a> <a class="code hl_variable" href="structt__logs.html#a17e45fba0011af151378de5026b03193">log_type</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>} <a class="code hl_struct" href="structt__logs.html">t_logs</a>;</div>
+</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">/* Initialise une donnée dûment remplie.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * si un des deux ou les deux paramètres sont à NULL ils prennent les valeurs</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * suivantes par défaut : standard_logs.txt et error_logs.txt.</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * Si les deux noms sont identiques l&#39;opération échoue et renvoie NULL.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * Si une erreur survient la fonction renvoie NULL.</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * Pour toute erreur un message en console est affiché. */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="logs_8h.html#a9e38457412c9e5c4bd073c036a2812a9">   25</a></span><a class="code hl_struct" href="structt__logs.html">t_logs</a> *<a class="code hl_function" href="logs_8h.html#a9e38457412c9e5c4bd073c036a2812a9">logs_init</a> (<span class="keyword">const</span> <span class="keywordtype">char</span> *fichier_standard, <span class="keyword">const</span> <span class="keywordtype">char</span> *fichier_erreur);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/* Libération mémoire.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * Si logs vaut NULL la fonction est sans effet */</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="logs_8h.html#af47c7dac5a144ae41500bb770b9a782b">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="logs_8h.html#af47c7dac5a144ae41500bb770b9a782b">logs_liberation</a> (<a class="code hl_struct" href="structt__logs.html">t_logs</a> *logs);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/* Écriture dans le fichier log désigné par log_type.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment"> * Si la sauvegarde échoue un message est affiché en console et</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment"> * la fonction renvoie false.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"> * Remarque : en cas d&#39;échec le pointeur logs n&#39;est pas libéré. */</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">/* bool logs_write (t_logs *logs, const char *message, TYPE_OF_LOGS log_type); */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">/* Récupération du descripteur de fichier.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"> * Si une erreur survient un message d&#39;erreur est affiché en console et</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"> * la fonction renvoie NULL */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="logs_8h.html#a1a15245027cb2a70d47fcd616dddb98a">   41</a></span>FILE *<a class="code hl_function" href="logs_8h.html#a1a15245027cb2a70d47fcd616dddb98a">logs_descripteur_fichier</a> (<a class="code hl_struct" href="structt__logs.html">t_logs</a> *logs, <a class="code hl_enumeration" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680">TYPE_OF_LOGS</a> log_type);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/* Ajoute un texte dans le descripteur choisi.*/</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="logs_8h.html#a46e2079f34b3608ef3ecc6138c3b46ce">   44</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="logs_8h.html#a46e2079f34b3608ef3ecc6138c3b46ce">logs_save</a> (<a class="code hl_struct" href="structt__logs.html">t_logs</a> *logs, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, <a class="code hl_enumeration" href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680">TYPE_OF_LOGS</a> log_type);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="alogs_8h_html_a1a15245027cb2a70d47fcd616dddb98a"><div class="ttname"><a href="logs_8h.html#a1a15245027cb2a70d47fcd616dddb98a">logs_descripteur_fichier</a></div><div class="ttdeci">FILE * logs_descripteur_fichier(t_logs *logs, TYPE_OF_LOGS log_type)</div></div>
+<div class="ttc" id="alogs_8h_html_a46e2079f34b3608ef3ecc6138c3b46ce"><div class="ttname"><a href="logs_8h.html#a46e2079f34b3608ef3ecc6138c3b46ce">logs_save</a></div><div class="ttdeci">void logs_save(t_logs *logs, const char *text, TYPE_OF_LOGS log_type)</div></div>
+<div class="ttc" id="alogs_8h_html_a9e38457412c9e5c4bd073c036a2812a9"><div class="ttname"><a href="logs_8h.html#a9e38457412c9e5c4bd073c036a2812a9">logs_init</a></div><div class="ttdeci">t_logs * logs_init(const char *fichier_standard, const char *fichier_erreur)</div></div>
+<div class="ttc" id="alogs_8h_html_ab43c8af1912d24db44c847a572c9d680"><div class="ttname"><a href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680">TYPE_OF_LOGS</a></div><div class="ttdeci">TYPE_OF_LOGS</div><div class="ttdef"><b>Definition</b> logs.h:10</div></div>
+<div class="ttc" id="alogs_8h_html_ab43c8af1912d24db44c847a572c9d680a230506cce5c68c3bac5a821c42ed3473"><div class="ttname"><a href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680a230506cce5c68c3bac5a821c42ed3473">LOG_ERROR</a></div><div class="ttdeci">@ LOG_ERROR</div><div class="ttdef"><b>Definition</b> logs.h:10</div></div>
+<div class="ttc" id="alogs_8h_html_ab43c8af1912d24db44c847a572c9d680aeaa93b1568dcc17932dffd99fcd483df"><div class="ttname"><a href="logs_8h.html#ab43c8af1912d24db44c847a572c9d680aeaa93b1568dcc17932dffd99fcd483df">LOG_STANDARD</a></div><div class="ttdeci">@ LOG_STANDARD</div><div class="ttdef"><b>Definition</b> logs.h:10</div></div>
+<div class="ttc" id="alogs_8h_html_af47c7dac5a144ae41500bb770b9a782b"><div class="ttname"><a href="logs_8h.html#af47c7dac5a144ae41500bb770b9a782b">logs_liberation</a></div><div class="ttdeci">void logs_liberation(t_logs *logs)</div></div>
+<div class="ttc" id="astructt__logs_html"><div class="ttname"><a href="structt__logs.html">t_logs</a></div><div class="ttdef"><b>Definition</b> logs.h:12</div></div>
+<div class="ttc" id="astructt__logs_html_a04851888a0e3a8c5bc7b04e5d3c17901"><div class="ttname"><a href="structt__logs.html#a04851888a0e3a8c5bc7b04e5d3c17901">t_logs::descripteur_de_fichier_standard</a></div><div class="ttdeci">FILE * descripteur_de_fichier_standard</div><div class="ttdef"><b>Definition</b> logs.h:14</div></div>
+<div class="ttc" id="astructt__logs_html_a0ea645026d0dfd29ae0693b789dcb1a8"><div class="ttname"><a href="structt__logs.html#a0ea645026d0dfd29ae0693b789dcb1a8">t_logs::descripteur_de_fichier_erreur</a></div><div class="ttdeci">FILE * descripteur_de_fichier_erreur</div><div class="ttdef"><b>Definition</b> logs.h:15</div></div>
+<div class="ttc" id="astructt__logs_html_a17e45fba0011af151378de5026b03193"><div class="ttname"><a href="structt__logs.html#a17e45fba0011af151378de5026b03193">t_logs::log_type</a></div><div class="ttdeci">TYPE_OF_LOGS log_type</div><div class="ttdef"><b>Definition</b> logs.h:16</div></div>
+<div class="ttc" id="astructt__logs_html_a1e246bab47e4fbbe89bcc92c94f46bea"><div class="ttname"><a href="structt__logs.html#a1e246bab47e4fbbe89bcc92c94f46bea">t_logs::fichier_erreur</a></div><div class="ttdeci">char * fichier_erreur</div><div class="ttdef"><b>Definition</b> logs.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

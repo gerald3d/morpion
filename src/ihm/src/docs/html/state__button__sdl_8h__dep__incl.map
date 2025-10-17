@@ -1,0 +1,9 @@
+<map id="/home/gerald/Projects/morpion/src/ihm/src/state_button_sdl.h" name="/home/gerald/Projects/morpion/src/ihm/src/state_button_sdl.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,169,60"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="184,17,193,23,196,33,188,46,170,53,169,48,185,42,191,32,188,26,181,21"/>
+<area shape="rect" id="Node000002" href="$ihm__sdl_8h.html" title=" " alt="" coords="5,211,169,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,73,55,109,51,135,55,162,63,187,74,209,69,212,58,189,50,163,46,135,50,107,63,71"/>
+<area shape="rect" id="Node000003" href="$toggle__button__sdl_8h.html" title=" " alt="" coords="65,108,229,163"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="112,70,134,107,129,109,108,73"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="127,176,105,212,101,209,122,173"/>
+</map>

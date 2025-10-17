@@ -1,0 +1,32 @@
+<map id="/home/gerald/Projects/morpion/src/ihm/src/chain_list.h" name="/home/gerald/Projects/morpion/src/ihm/src/chain_list.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="196,5,360,60"/>
+<area shape="rect" id="Node000002" href="$widget__sdl_8h.html" title=" " alt="" coords="196,108,360,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="281,74,281,108,275,108,275,74"/>
+<area shape="rect" id="Node000003" href="$button__sdl_8h.html" title=" " alt="" coords="25,313,189,368"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,175,211,212,129,315,125,312,207,209,241,171"/>
+<area shape="rect" id="Node000004" href="$dialog__sdl_8h.html" title=" " alt="" coords="163,416,327,471"/>
+<area shape="poly" id="edge13_Node000002_Node000004" title=" " alt="" coords="274,176,255,314,248,416,243,416,250,313,269,176"/>
+<area shape="rect" id="Node000005" href="$ihm__sdl_8h.html" title=" " alt="" coords="360,519,524,573"/>
+<area shape="poly" id="edge15_Node000002_Node000005" title=" " alt="" coords="189,170,118,204,84,225,54,249,29,275,14,303,8,334,15,367,41,411,76,448,119,477,167,499,217,516,268,527,360,540,359,545,267,533,216,521,165,504,116,481,73,452,37,415,10,369,3,334,9,302,25,272,50,245,81,221,115,199,187,165"/>
+<area shape="rect" id="Node000006" href="$case__sdl_8h.html" title=" " alt="" coords="504,211,668,265"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="372,164,507,208,505,213,370,169"/>
+<area shape="rect" id="Node000007" href="$config__cursor__sdl_8h.html" title=" " alt="" coords="316,211,480,265"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="322,169,368,209,365,213,318,174"/>
+<area shape="rect" id="Node000008" href="$game__config__sdl_8h.html" title=" " alt="" coords="265,313,429,368"/>
+<area shape="poly" id="edge14_Node000002_Node000008" title=" " alt="" coords="286,176,294,219,307,264,332,312,327,315,302,266,289,220,280,177"/>
+<area shape="rect" id="Node000009" href="$state__button__sdl_8h.html" title=" " alt="" coords="607,313,771,368"/>
+<area shape="poly" id="edge16_Node000002_Node000009" title=" " alt="" coords="374,138,462,146,553,159,632,179,662,193,683,209,697,233,702,261,702,289,698,314,693,313,697,289,697,262,692,235,679,212,659,197,630,184,552,164,461,151,374,144"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="155,374,210,414,207,418,152,378"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="113,381,125,427,136,450,152,469,174,487,199,501,253,523,308,536,360,542,359,547,307,541,251,528,196,506,171,491,148,473,132,452,120,429,108,382"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="309,474,392,516,389,521,307,479"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="571,279,457,519,452,517,566,276"/>
+<area shape="poly" id="edge12_Node000007_Node000005" title=" " alt="" coords="428,276,445,313,455,369,457,427,449,519,444,518,451,426,449,370,440,314,423,278"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="381,279,363,314,358,312,376,276"/>
+<area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="313,380,273,418,270,414,309,376"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="368,379,432,517,427,519,363,381"/>
+<area shape="poly" id="edge17_Node000009_Node000005" title=" " alt="" coords="645,379,597,418,538,473,478,521,475,517,535,469,594,414,642,375"/>
+<area shape="poly" id="edge18_Node000009_Node000009" title=" " alt="" coords="786,325,794,331,797,341,790,354,772,361,770,356,786,350,792,340,790,334,783,329"/>
+<area shape="rect" id="Node000010" href="$toggle__button__sdl_8h.html" title=" " alt="" coords="607,416,771,471"/>
+<area shape="poly" id="edge19_Node000009_Node000010" title=" " alt="" coords="691,382,691,416,686,416,686,382"/>
+<area shape="poly" id="edge20_Node000010_Node000005" title=" " alt="" coords="613,478,507,521,505,516,611,473"/>
+</map>

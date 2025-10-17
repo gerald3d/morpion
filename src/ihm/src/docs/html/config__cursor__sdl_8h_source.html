@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ihm:  Fichier source de /home/gerald/Projects/morpion/src/ihm/src/config_cursor_sdl.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ihm
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">/home/gerald/Projects/morpion/src/ihm/src/config_cursor_sdl.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="config__cursor__sdl_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __CONFIG_CURSOR_SDL__</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __CONFIG_CURSOR_SDL__</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="widget__sdl_8h.html">widget_sdl.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dca4dd51ad73508d6fc83a502966779e48e">   17</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code hl_enumvalue" href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dca4dd51ad73508d6fc83a502966779e48e">HORIZONTAL</a>, <a class="code hl_enumvalue" href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dca1a88641fcd39f2ed3e58a18526e97138">VERTICAL</a>} <a class="code hl_enumeration" href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dc">TYPE_OF_CONFIG_CURSOR</a>; <span class="comment">// type de déplacement du curseur</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">typedef</span> <span class="keyword">struct </span>t_config_cursor_sdl t_config_cursor_sdl;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">struct </span>t_config_cursor_sdl {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  t_widget_sdl *widget;              <span class="comment">// widget parent qui gère les fonctions principales graphiques</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  SDL_Surface *image;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  SDL_Surface *surface;              <span class="comment">// Surface pour dessiner le curseur selon son état</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  SDL_Rect start_position;           <span class="comment">// Position graphique de départ du curseur (taille 3)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <a class="code hl_enumeration" href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dc">TYPE_OF_CONFIG_CURSOR</a> cursor_type; <span class="comment">// Choix de déplacement du curseur</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  <span class="keywordtype">int</span> offset;                        <span class="comment">// Décalage en pixels pour chaque pas de déplacement</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordtype">int</span> new_xoffset, new_yoffset;      <span class="comment">// Prend la valeur 1 à chaque fois que le curseur se déplace. Utilisé pour calculer la nouvelle position graphique du curseur</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> position;             <span class="comment">// La position du curseur. Démarre à 0</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">int</span> mouse_posx, mouse_posy;        <span class="comment">// Sauvegarde de la position de la souris lorsque le bouton de la souris vient d&#39;être enfoncé sur le curseur</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordtype">bool</span> first_use;                    <span class="comment">// Si le bouton vient d&#39;être enfoncé.</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <span class="keywordtype">bool</span> pressed_button;               <span class="comment">// Vaut true tant que le bouton est enfoncé</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#a6f6740cc1891b42cc0d6d2b0cdf6ed20">   50</a></span>t_config_cursor_sdl *<a class="code hl_function" href="config__cursor__sdl_8h.html#a6f6740cc1891b42cc0d6d2b0cdf6ed20">config_cursor_sdl_new</a> (SDL_Rect size, <a class="code hl_struct" href="structt__logs.html">t_logs</a> *logs);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> config_cursor_sdl_free (<span class="keywordtype">void</span> **config_cursor);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>t_widget_sdl *config_cursor_sdl_get_widget (t_config_cursor_sdl *config_cursor);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#a309ef49cde728b9fea9bf3cbbc57f66a">   75</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="config__cursor__sdl_8h.html#a309ef49cde728b9fea9bf3cbbc57f66a">config_cursor_sdl_set_image_from_file</a> (t_config_cursor_sdl *config_cursor, <span class="keyword">const</span> <span class="keywordtype">char</span> *file);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#af47405a204b41c4a12110904eb914a4b">   84</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="config__cursor__sdl_8h.html#af47405a204b41c4a12110904eb914a4b">config_cursor_sdl_set_image_from_surface</a> (t_config_cursor_sdl *config_cursor, SDL_Surface *image);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#ac10ec53ddedde16a84e074156b8f5978">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="config__cursor__sdl_8h.html#ac10ec53ddedde16a84e074156b8f5978">config_cursor_sdl_set_type</a> (t_config_cursor_sdl *config_cursor, <a class="code hl_enumeration" href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dc">TYPE_OF_CONFIG_CURSOR</a> alignment);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#aec55d95271c83b61d416834eeb3f223f">  102</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="config__cursor__sdl_8h.html#aec55d95271c83b61d416834eeb3f223f">config_cursor_sdl_set_position</a> (t_config_cursor_sdl *config_cursor, <span class="keywordtype">int</span> position);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="config__cursor__sdl_8h.html#ab30c021575cbe6158adc6728c1089539">  110</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="config__cursor__sdl_8h.html#ab30c021575cbe6158adc6728c1089539">config_cursor_sdl_get_position</a> (t_config_cursor_sdl *config_cursor);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_a309ef49cde728b9fea9bf3cbbc57f66a"><div class="ttname"><a href="config__cursor__sdl_8h.html#a309ef49cde728b9fea9bf3cbbc57f66a">config_cursor_sdl_set_image_from_file</a></div><div class="ttdeci">bool config_cursor_sdl_set_image_from_file(t_config_cursor_sdl *config_cursor, const char *file)</div><div class="ttdoc">Choix de l'image pour représenter le curseur depuis le disque dur.</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_a6448d30e0145cd899e73c5a06fd465dc"><div class="ttname"><a href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dc">TYPE_OF_CONFIG_CURSOR</a></div><div class="ttdeci">TYPE_OF_CONFIG_CURSOR</div><div class="ttdef"><b>Definition</b> config_cursor_sdl.h:17</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_a6448d30e0145cd899e73c5a06fd465dca1a88641fcd39f2ed3e58a18526e97138"><div class="ttname"><a href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dca1a88641fcd39f2ed3e58a18526e97138">VERTICAL</a></div><div class="ttdeci">@ VERTICAL</div><div class="ttdef"><b>Definition</b> config_cursor_sdl.h:17</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_a6448d30e0145cd899e73c5a06fd465dca4dd51ad73508d6fc83a502966779e48e"><div class="ttname"><a href="config__cursor__sdl_8h.html#a6448d30e0145cd899e73c5a06fd465dca4dd51ad73508d6fc83a502966779e48e">HORIZONTAL</a></div><div class="ttdeci">@ HORIZONTAL</div><div class="ttdef"><b>Definition</b> config_cursor_sdl.h:17</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_a6f6740cc1891b42cc0d6d2b0cdf6ed20"><div class="ttname"><a href="config__cursor__sdl_8h.html#a6f6740cc1891b42cc0d6d2b0cdf6ed20">config_cursor_sdl_new</a></div><div class="ttdeci">t_config_cursor_sdl * config_cursor_sdl_new(SDL_Rect size, t_logs *logs)</div><div class="ttdoc">Constructeur d'un nouvel objet t_config_cursor_sdl.</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_ab30c021575cbe6158adc6728c1089539"><div class="ttname"><a href="config__cursor__sdl_8h.html#ab30c021575cbe6158adc6728c1089539">config_cursor_sdl_get_position</a></div><div class="ttdeci">int config_cursor_sdl_get_position(t_config_cursor_sdl *config_cursor)</div><div class="ttdoc">Renvoie la position actuelle du curseur.</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_ac10ec53ddedde16a84e074156b8f5978"><div class="ttname"><a href="config__cursor__sdl_8h.html#ac10ec53ddedde16a84e074156b8f5978">config_cursor_sdl_set_type</a></div><div class="ttdeci">void config_cursor_sdl_set_type(t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment)</div><div class="ttdoc">Change le type de déplacement du cureseur.</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_aec55d95271c83b61d416834eeb3f223f"><div class="ttname"><a href="config__cursor__sdl_8h.html#aec55d95271c83b61d416834eeb3f223f">config_cursor_sdl_set_position</a></div><div class="ttdeci">void config_cursor_sdl_set_position(t_config_cursor_sdl *config_cursor, int position)</div><div class="ttdoc">Donne la position du curseur [0, ..].</div></div>
+<div class="ttc" id="aconfig__cursor__sdl_8h_html_af47405a204b41c4a12110904eb914a4b"><div class="ttname"><a href="config__cursor__sdl_8h.html#af47405a204b41c4a12110904eb914a4b">config_cursor_sdl_set_image_from_surface</a></div><div class="ttdeci">bool config_cursor_sdl_set_image_from_surface(t_config_cursor_sdl *config_cursor, SDL_Surface *image)</div><div class="ttdoc">Choix de l'image pour représenter le curseur depuis une surface SDL.</div></div>
+<div class="ttc" id="astructt__logs_html"><div class="ttname"><a href="structt__logs.html">t_logs</a></div><div class="ttdef"><b>Definition</b> logs.h:12</div></div>
+<div class="ttc" id="awidget__sdl_8h_html"><div class="ttname"><a href="widget__sdl_8h.html">widget_sdl.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

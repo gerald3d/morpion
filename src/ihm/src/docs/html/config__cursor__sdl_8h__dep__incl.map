@@ -1,0 +1,11 @@
+<map id="/home/gerald/Projects/morpion/src/ihm/src/config_cursor_sdl.h" name="/home/gerald/Projects/morpion/src/ihm/src/config_cursor_sdl.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="116,5,280,60"/>
+<area shape="rect" id="Node000002" href="$game__config__sdl_8h.html" title=" " alt="" coords="56,108,220,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,73,156,109,151,107,173,70"/>
+<area shape="rect" id="Node000004" href="$ihm__sdl_8h.html" title=" " alt="" coords="125,313,289,368"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="221,71,234,107,240,165,236,222,228,274,218,314,213,312,223,273,231,221,235,165,229,109,216,73"/>
+<area shape="rect" id="Node000003" href="$dialog__sdl_8h.html" title=" " alt="" coords="5,211,169,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="121,176,103,212,98,209,116,174"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="165,173,183,210,199,264,207,313,202,313,193,265,178,212,160,176"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="131,272,178,311,174,315,127,276"/>
+</map>

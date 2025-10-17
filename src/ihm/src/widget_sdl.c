@@ -1,6 +1,5 @@
 #include "widget_sdl.h"
 
-static bool widget_sdl_pt_is_in_rect (int x, int y, SDL_Rect *rect);
 static void widget_sdl_set_pointer_position (t_widget_sdl *widget, int x, int y);
 
 t_widget_sdl*
@@ -93,7 +92,7 @@ widget_sdl_free (t_widget_sdl **widget) {
     }
     liste_liberation (&(*widget)->mouse_on_cb_list);
   }
-
+  
   if ((*widget)->mouse_down_clic_cb_list) {
     t_liste *liste = (*widget)->mouse_down_clic_cb_list;
     while (liste) {
@@ -103,7 +102,7 @@ widget_sdl_free (t_widget_sdl **widget) {
     }
     liste_liberation (&(*widget)->mouse_down_clic_cb_list);
   }
-
+  
   if ((*widget)->destroy_widget_child_fct)
     (*widget)->destroy_widget_child_fct (&(*widget)->widget_child);
 
@@ -112,10 +111,10 @@ widget_sdl_free (t_widget_sdl **widget) {
     while (liste) {
       t_widget_sdl *child = (t_widget_sdl*)liste->donnee;
       if (child) {
-				if (child->destroy_widget_child_fct)
-					child->destroy_widget_child_fct (&child->widget_child);
+	if (child->destroy_widget_child_fct)
+	  child->destroy_widget_child_fct (&child->widget_child);
 
-				widget_sdl_free (&child);
+	widget_sdl_free (&child);
       }
       liste = liste->suivant;
     }
@@ -194,6 +193,11 @@ void
 widget_sdl_set_mouse_clic_callback (t_widget_sdl *widget, void *callback, void *userdata) {
   if (widget == NULL) {
     fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  if (callback==NULL) {
+    fprintf (stderr, "Erreur dans %s(); : callback ne doit pas être NULL.\n", __func__);
     return;
   }
 
@@ -476,7 +480,7 @@ void widget_sdl_mouse_button_down_update (t_widget_sdl *widget, SDL_Event *event
 }
 
 static
-void widget_sdl_mouse_button_up_update (t_widget_sdl *widget, SDL_Event *event) {
+void widget_sdl_mouse_button_clic_update (t_widget_sdl *widget, SDL_Event *event) {
   if (widget == NULL) {
     fprintf (stderr, "Erreur dans %s(); : widget ne doit pas être NULL.\n", __func__);
     return;
@@ -497,8 +501,9 @@ void widget_sdl_mouse_button_up_update (t_widget_sdl *widget, SDL_Event *event) 
     t_liste *liste = widget->mouse_clic_cb_list;
     while (liste) {
       if (liste->donnee) {
-				t_mouse_clic *donnee = (t_mouse_clic*)liste->donnee;
-				donnee->mouse_clic_cb (widget->widget_child, donnee->userdata);
+ 	t_mouse_clic *donnee = (t_mouse_clic*)liste->donnee;
+	if (donnee->mouse_clic_cb)
+	  donnee->mouse_clic_cb (widget->widget_child, donnee->userdata);
       }
       liste = liste->suivant;
     }
@@ -565,12 +570,11 @@ widget_sdl_set_events (t_widget_sdl *widget, SDL_Event *event) {
 				t_widget_sdl *child = NULL;
 				while (liste) {
 	  			child = (t_widget_sdl*)liste->donnee;
-	  			widget_sdl_mouse_button_up_update (child, event);
+  				widget_sdl_mouse_button_clic_update (child, event);
 	  			liste = liste->suivant;
 				}
       }
-			widget_sdl_mouse_button_up_update (widget, event);
-
+     	widget_sdl_mouse_button_clic_update (widget, event);
       break;
     }
   default :
@@ -835,7 +839,7 @@ widget_sdl_set_cursor_from_surface (t_widget_sdl *widget, SDL_Surface *cursor) {
 
 /*----------------------------------*/
 
-static bool
+bool
 widget_sdl_pt_is_in_rect (int x, int y, SDL_Rect *rect) {
   if (rect == NULL)
     return false;

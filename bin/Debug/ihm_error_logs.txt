@@ -1,3 +1,0 @@
-première entrée dans config_cursor_sdl_mouse_button_down_cb(); Sauvegarde de la position de la souris : 336, 193
-Enter in config_cursor_sdl_mouse_button_up_cb
-Enter in config_cursor_sdl_mouse_button_up_cb

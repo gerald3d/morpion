@@ -43,10 +43,42 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
     game_config_sdl_free ((void**)&game_config);
     return NULL;
   }
+  game_config->corres_position_cases = malloc(15*sizeof(int));
+  game_config->corres_position_cases [0] = 0;
+  game_config->corres_position_cases [1] = 0;
+  game_config->corres_position_cases [2] = 0;
+  game_config->corres_position_cases [3] = 3;
+  game_config->corres_position_cases [4] = 4;
+  game_config->corres_position_cases [5] = 5;
+  game_config->corres_position_cases [6] = 6;
+  game_config->corres_position_cases [7] = 8;
+  game_config->corres_position_cases [8] = 10;
+  game_config->corres_position_cases [9] = 12;
+  game_config->corres_position_cases [10] = 15;
+  game_config->corres_position_cases [11] = 20;
+  game_config->corres_position_cases [12] = 22;
+  game_config->corres_position_cases [13] = 25;
+  game_config->corres_position_cases [14] = 30;
+  game_config->corres_cases_position = malloc(31*sizeof(int));
+  game_config->corres_cases_position [3] = 3;
+  game_config->corres_cases_position [4] = 4;
+  game_config->corres_cases_position [5] = 5;
+  game_config->corres_cases_position [6] = 6;
+  game_config->corres_cases_position [8] = 7;
+  game_config->corres_cases_position [10] = 8;
+  game_config->corres_cases_position [12] = 9;
+  game_config->corres_cases_position [15] = 10;
+  game_config->corres_cases_position [20] = 11;
+  game_config->corres_cases_position [22] = 12;
+  game_config->corres_cases_position [25] = 13;
+  game_config->corres_cases_position [30] = 14;
 
   game_config->columns = 3;
   game_config->lines = 3;
-//fprintf (logs_descripteur_fichier(logs, LOG_STANDARD), "position du curseur vertical : %d, %d\n", size.x - 10, size.y + 35 + (14 * (game_config->lines-3)));
+
+  /***************POUR DEBUG*************/
+  game_config->vert_cursor = NULL;
+  game_config->horiz_cursor = NULL;
 
   /* Création du curseur vertical */
   game_config->vert_cursor = config_cursor_sdl_new((SDL_Rect){size.x - 10, size.y + 35 + (14 * (game_config->lines-3)), 14, 14}, logs);
@@ -56,10 +88,7 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
     return NULL;
   }
 
-  /**** POUR DEBUG */
-  widget_sdl_set_name(game_config->vert_cursor->widget, "curseur vertical");
-
-  config_cursor_set_type (game_config->vert_cursor, VERTICAL);
+  config_cursor_sdl_set_type (game_config->vert_cursor, VERTICAL);
   config_cursor_sdl_set_image_from_file(game_config->vert_cursor, "ihm/images/image-Curseur.png");
 
   /* Ajout du curseur vertical au game_config */
@@ -73,10 +102,7 @@ game_config_sdl_new (SDL_Rect size, t_logs *logs) {
     return NULL;
   }
 
-  /**** POUR DEBUG */
-  widget_sdl_set_name(game_config->horiz_cursor->widget, "curseur horizontal");
-
-  config_cursor_set_type (game_config->horiz_cursor, HORIZONTAL);
+  config_cursor_sdl_set_type (game_config->horiz_cursor, HORIZONTAL);
   config_cursor_sdl_set_image_from_file(game_config->horiz_cursor, "ihm/images/image-Curseur.png");
 
 	/* Ajout du curseur horizontal au game_config */
@@ -117,7 +143,7 @@ game_config_sdl_free (void **game_config) {
 		t_widget_sdl *widget = config_cursor_sdl_get_widget(config->vert_cursor);
 		widget_sdl_free(&widget);
 	}
-
+	free (config->corres_cases_position);	free (config->corres_position_cases);
   free (config);
 
   config = NULL;
@@ -131,6 +157,32 @@ game_config_sdl_get_widget (t_game_config_sdl *game_config) {
   }
 
  return game_config->widget;
+}
+
+void
+game_config_sdl_get_tab_size (t_game_config_sdl *game_config, int *horizontal, int *vertical) {
+	if (game_config == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : game_config ne doit pas être NULL.\n", __func__);
+    return;
+  }
+
+  if (horizontal != NULL)
+		*horizontal = game_config->corres_position_cases [config_cursor_sdl_get_position (game_config->horiz_cursor)];
+
+  if (vertical != NULL)
+		*vertical = game_config->corres_position_cases [config_cursor_sdl_get_position (game_config->vert_cursor)];
+}
+
+void
+game_config_sdl_set_tab_size (t_game_config_sdl *game_config, int *horizontal, int *vertical) {
+	if (game_config == NULL) {
+    fprintf (stderr, "Erreur dans %s(); : game_config ne doit pas être NULL.\n", __func__);
+    return;
+  }  if (horizontal != NULL && *horizontal>=3 && *horizontal<31)
+		config_cursor_sdl_set_position (game_config->horiz_cursor, game_config->corres_cases_position [*horizontal]);
+
+  if (vertical != NULL && *vertical>=3 && *vertical<31)
+		config_cursor_sdl_set_position (game_config->vert_cursor, game_config->corres_cases_position [*vertical]);
 }
 
 /*------------------------------------------------------------------*/

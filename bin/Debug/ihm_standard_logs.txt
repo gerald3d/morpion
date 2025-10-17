@@ -1,2 +1,2 @@
-10:40:30 : Ouverture du fichier : ihm_standard_logs.txt : OK
+15:34:07 : Ouverture du fichier : ihm_standard_logs.txt : OK
 Ouverture du fichier : ihm_error_logs.txt : OK

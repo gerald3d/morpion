@@ -106,6 +106,18 @@ typedef struct {
  * L'utilisateur final ne doit pas accéder à un de ses membres directement.
  */
 typedef struct {
+  /* Callback activé lorsque la souris est sur le widget.
+   * Le paramètre any_widget pourra être de n'importe quel type
+   * de widget enfant à t_widget_sdl. */
+  void (*mouse_clic_cb)(void *any_widget, void *userdata);
+  void *userdata;  // donnée personnelle pour le callback mouse_is_down_clic_cb
+} t_mouse_up_clic;
+
+/*!
+ * \private Structure privée.
+ * L'utilisateur final ne doit pas accéder à un de ses membres directement.
+ */
+typedef struct {
   char *name;
   void *userdata;
 } t_userdata;
@@ -431,4 +443,15 @@ void widget_sdl_set_user_data (t_widget_sdl *widget, const char *name, void *use
  */
 void* widget_sdl_get_user_data (t_widget_sdl *widget, const char*name);
 
+/*! \private
+ * \brief Vérifie si (x, y) est compris dans le rectangle rect.
+ * @param x Abscisse des coordonnées à vérifier.
+ * @param y Ordonnée des coordonnées à vérifier.
+ * @param rect Rectangle dans lequel (x,y) doit être inscirt.
+ *
+ * Renvoie true ou false selon le cas.
+ *
+ * Si une erreur survient la fonction renvoie false et un message est affiché en console.
+ */
+bool widget_sdl_pt_is_in_rect (int x, int y, SDL_Rect *rect);
 #endif

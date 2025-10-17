@@ -81,7 +81,7 @@ morp_sdl_init (t_logs *logs)
   fprintf (descripteur_fichier_standard, "Chargement de SDL_Init (video et audio) : OK\n");
 
   //si creation = erreur
-  if(SDL_CreateWindowAndRenderer(EcranLarg, EcranHaut, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE,
+  if(SDL_CreateWindowAndRenderer(EcranLarg, EcranHaut, SDL_WINDOW_SHOWN,
 				 &morp_sdl->window, &morp_sdl->renderer)!=0)
     {
       //Si l'initialisation de Window et Renderer a échoué, on retourne NULL

@@ -1,9 +1,0 @@
-<map id="tooltip_sdl_set_text" name="tooltip_sdl_set_text">
-<area shape="rect" id="Node000001" title=" " alt="" coords="496,5,647,31"/>
-<area shape="rect" id="Node000002" href="$tooltip__sdl_8c.html#a33113d17d6fc03a7789ac1c0924eb07a" title=" " alt="" coords="324,5,448,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="482,21,448,21,448,15,482,15"/>
-<area shape="rect" id="Node000003" href="$widget__sdl_8c.html#aea4e56c60ad770fd3a65eb210e904266" title=" " alt="" coords="108,5,276,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="310,21,276,21,276,15,310,15"/>
-<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>

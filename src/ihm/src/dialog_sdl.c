@@ -31,6 +31,7 @@ dialog_sdl_new (SDL_Rect size, t_logs *logs) {
 
   dialog->title = NULL;
   dialog->surface = NULL;
+  dialog->font = NULL;
 
   /* Ajout du bouton de fermeture en haut à droite */
   dialog->close_button = button_sdl_new (IMAGE, NULL, (SDL_Rect){size.x + size.w - 30, size.y, 30, 30}, logs);
@@ -108,7 +109,7 @@ dialog_sdl_free (void **dialog) {
     fprintf (stderr, "Erreur dans %s(); : dialog ne doit pas être NULL.\n", __func__);
     return;
   }
-
+ printf ("Enter in %s\n", __func__);
   t_dialog_sdl *dial = *dialog;
 
   if (dial->surface)
@@ -125,12 +126,12 @@ dialog_sdl_free (void **dialog) {
   }
 
   if (dial->annul_button) {
-  	t_widget_sdl *widget = button_sdl_get_widget(dial->annul_button);
+	t_widget_sdl *widget = button_sdl_get_widget(dial->annul_button);
     widget_sdl_free(&widget);
   }
 
-  if (dial->font)
-    TTF_CloseFont(dial->font);
+  /* if (dial->font) */
+  /*   TTF_CloseFont(dial->font); */
 
   if (dial->title)
     free (dial->title);

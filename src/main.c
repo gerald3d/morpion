@@ -61,9 +61,6 @@
 //Mix_Music *TabMusique[NbMusiques]= {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL}; //Null,Gremlins,Hp,Mario,Poke1,Poke2,SW1,SW2
 
 
-
-
-
 int main(int argc, char **argv)
 {
   /* Initialisation des logs */
@@ -81,6 +78,8 @@ int main(int argc, char **argv)
 
   SDL_Event event; //pour gérer les évenements souris et clavier
 
+  /*********** POUR DEBUG ***************/
+  t_tab_size tab_size = {10, 12};
 
   int i;
   int JeuFini = NON; //[NON : on continue][OUI : on arrête le jeu], pour la boucle de jeu
@@ -121,7 +120,7 @@ int main(int argc, char **argv)
   /**********************/ //debut du programme
 
   /* Création de l'ihm */
-  t_ihm_sdl *ihm_sdl = creation_interface (morp_sdl);
+  t_ihm_sdl *ihm_sdl = creation_interface (morp_sdl, &tab_size);
   if (ihm_sdl == NULL) {
     morp_sdl_liberation_ressources(morp_sdl, NbImagesMax, NbImagesPionMax,
 				   NbTexteMessageMax, NbTexteBoutonMax, NbMusiquesMax);
@@ -130,12 +129,6 @@ int main(int argc, char **argv)
     logs_liberation (logs);
     exit (EXIT_FAILURE);
   }
-
-  // Restaurer stdout et stderr
-//  freopen("CON", "w", stdout);
-  // Restaurer stderr
-//  freopen("CON", "w", stderr);
-
 
   AfficheTitre(morp_sdl); //Affiche le titre du jeu sur fond marron
   /* AfficheBoutons(morp_sdl, Joueur, DimJeu, EcranJeu); */

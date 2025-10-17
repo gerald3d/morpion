@@ -6,6 +6,12 @@
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_mixer.h>
 
+/*********** POUR DEBUG ***************/
+typedef struct {
+	int columns;
+	int lines;
+} t_tab_size;
+
 /**************************************/
 #define EcranLarg 800 //dimensions de l'écran
 #define EcranHaut 602

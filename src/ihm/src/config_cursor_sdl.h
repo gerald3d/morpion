@@ -29,7 +29,7 @@ typedef struct t_config_cursor_sdl t_config_cursor_sdl;
 struct t_config_cursor_sdl {
   t_widget_sdl *widget;              // widget parent qui gère les fonctions principales graphiques
   SDL_Surface *image;
-  SDL_Surface *surface;              // Surface pour dessiner le curseur selon son état
+  SDL_Surface *surface;              // Surface pour dessiner le curseur selon son état  SDL_Rect start_position;           // Position graphique de départ du curseur (taille 3)
   TYPE_OF_CONFIG_CURSOR cursor_type; // Choix de déplacement du curseur
   int offset;                        // Décalage en pixels pour chaque pas de déplacement
   int new_xoffset, new_yoffset;      // Prend la valeur 1 à chaque fois que le curseur se déplace. Utilisé pour calculer la nouvelle position graphique du curseur
@@ -89,7 +89,7 @@ bool config_cursor_sdl_set_image_from_surface (t_config_cursor_sdl *config_curso
  *
  * Si une erreur survient la fonction est sans effet et un message est affiché en console.
  */
-void config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment);
+void config_cursor_sdl_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment);
 
 /*!
  * \brief Donne la position du curseur [0, ..]
@@ -98,7 +98,7 @@ void config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_
  *
  * Si une erreur survient la fonction est sans effet et un message est affiché en console.
  */
-void config_cursor_set_position (t_config_cursor_sdl *config_cursor, unsigned int position);
+void config_cursor_sdl_set_position (t_config_cursor_sdl *config_cursor, int position);
 
 /*!
  * \brief Renvoie la position actuelle du curseur
@@ -106,7 +106,7 @@ void config_cursor_set_position (t_config_cursor_sdl *config_cursor, unsigned in
  *
  * Si une erreur survient la fonction est sans effet et un message est affiché en console.
  */
-unsigned int config_cursor_sdl_get_position (t_config_cursor_sdl *config_cursor);
+int config_cursor_sdl_get_position (t_config_cursor_sdl *config_cursor);
 
 
 #endif

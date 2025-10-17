@@ -1,0 +1,3 @@
+Erreur de chargement de la police : Couldn't open ./Ressources/times.ttf
+
+Oct 16 2025 - 15:25:26

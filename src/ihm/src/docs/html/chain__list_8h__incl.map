@@ -1,9 +1,0 @@
-<map id="/home/gerald/Projects/ihm/src/chain_list.h" name="/home/gerald/Projects/ihm/src/chain_list.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="63,5,227,45"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,88,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,48,74,87,71,82,120,43"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="112,93,179,119"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,46,148,79,143,79,143,46"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="203,93,274,119"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,44,216,82,212,86,166,48"/>
-</map>

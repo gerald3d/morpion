@@ -31,7 +31,7 @@ config_cursor_sdl_new (SDL_Rect size, t_logs *logs) {
 
   /* Affectation de la fonction de destruction du bouton au widget */
   config_cursor->widget->destroy_widget_child_fct = config_cursor_sdl_free;
-
+  config_cursor->start_position = (SDL_Rect){size.x, size.y, size.w, size.h};
   widget_sdl_set_size (config_cursor->widget, &size.x, &size.y, &size.w, &size.h);
 
   /* transparence du cadre et du fond */
@@ -150,7 +150,7 @@ config_cursor_sdl_set_image_from_surface (t_config_cursor_sdl *config_cursor, SD
 }
 
 void
-config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment) {
+config_cursor_sdl_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSOR alignment) {
   if (config_cursor == NULL) {
     fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
     return;
@@ -165,16 +165,16 @@ config_cursor_set_type (t_config_cursor_sdl *config_cursor, TYPE_OF_CONFIG_CURSO
 }
 
 void
-config_cursor_set_position (t_config_cursor_sdl *config_cursor, unsigned int position) {
+config_cursor_sdl_set_position (t_config_cursor_sdl *config_cursor, int position) {
   if (config_cursor == NULL) {
     fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
     return;
   }
 
-  config_cursor->position = position;
+  config_cursor->position = position;  /* Mise à jour graphique */  int corres_graph [] = {0,0,0,0,1,2,3,4,5,6,7,8,9,10,11};  SDL_Rect widget_size;  SDL_Rect size;  widget_sdl_get_size (config_cursor->widget, &widget_size);  widget_sdl_get_size (config_cursor->widget, &size);  if (config_cursor->cursor_type == HORIZONTAL) {    size.x = config_cursor->start_position.x + (corres_graph[position])*config_cursor->offset;    widget_sdl_set_size (config_cursor->widget, &size.x, &size.y, &widget_size.w, &widget_size.h);    config_cursor->new_yoffset = 0;  }  if (config_cursor->cursor_type == VERTICAL) {    size.y = config_cursor->start_position.y + (corres_graph[position])*config_cursor->offset;    widget_sdl_set_size (config_cursor->widget, &size.x, &size.y, &widget_size.w, &widget_size.h);    config_cursor->new_yoffset = 0;  }
 }
 
-unsigned int
+int
 config_cursor_sdl_get_position (t_config_cursor_sdl *config_cursor) {
   if (config_cursor == NULL) {
     fprintf (stderr, "Erreur dans %s(); : config_cursor ne doit pas être NULL.\n", __func__);
@@ -254,7 +254,6 @@ config_cursor_sdl_mouse_button_down_cb (t_config_cursor_sdl *config_cursor, void
 		config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
 		config_cursor->first_use = false;
 		config_cursor->pressed_button = true;
-		fprintf (config_cursor->widget->file_error, "première entrée dans %s(); Sauvegarde de la position de la souris : %d, %d\n", __func__, config_cursor->mouse_posx, config_cursor->mouse_posy);
 		return;
   }
 }
@@ -285,10 +284,20 @@ config_cursor_sdl_mouse_move_cb (t_config_cursor_sdl *config_cursor, void *userd
   /* Pour éviter un warning à la compilation. userdata n'est pas utilisé ici */
   (void)userdata;
 
+  /* Si la souris n'est plus sur le curseur (avec un delta de offset) et que le bouton est relâché on sort en initialisant le curseur */
+//  if (widget_sdl_pt_is_in_rect (config_cursor->widget->x, config_cursor->widget->y, &config_cursor->widget->actual_size) == false &&
+//			config_cursor->pressed_button == false){
+//		config_cursor->pressed_button = false;
+//		config_cursor->first_use = true;
+//		config_cursor->new_xoffset = 0;
+//		config_cursor->new_yoffset = 0;
+//  	return;
+//  }
+
   /* Si le bouton de la souris est toujours enfoncé on regarde le déplacement de la souris */
   if (config_cursor->pressed_button) {
 		switch (config_cursor->cursor_type) {
-			case HORIZONTAL :
+			case HORIZONTAL : {
 				int ecart = config_cursor->widget->events->motion.x - config_cursor->mouse_posx;
 				if (ecart >= config_cursor->offset) {
 					if (config_cursor->position < 14) {
@@ -314,25 +323,36 @@ config_cursor_sdl_mouse_move_cb (t_config_cursor_sdl *config_cursor, void *userd
 					break;
 				}
 				break;
-//			case VERTICAL :
-//				if (config_cursor->widget->events->motion.y - config_cursor->mouse_posy <= -config_cursor->offset ||
-//						config_cursor->widget->events->motion.y - config_cursor->mouse_posy >= config_cursor->offset) {
-//					/* Mise à jour du décalage */
-//					if (config_cursor->widget->events->motion.y - config_cursor->mouse_posy <= -config_cursor->offset) {
-//						if (config_cursor->position > 3)
-//							config_cursor->position --;
-//					} else {
-//						if (config_cursor->position < 27)
-//							config_cursor->position ++;
-//					}
-//					/* Mise à jour de la position de la souris */
-//					config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
-//					config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
-//				}
-//				break;
+			}
+			case VERTICAL : {
+				int ecart = config_cursor->widget->events->motion.y - config_cursor->mouse_posy;
+				if (ecart >= config_cursor->offset) {
+					if (config_cursor->position < 14) {
+						config_cursor->position ++;
+						/* Mise à jour de la position de la souris */
+						config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
+						config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
+						/* décalage graphique */
+						config_cursor->new_yoffset = 1;
+					}
+					break;
+				}
+
+				if (ecart <= -config_cursor->offset) {
+					if (config_cursor->position > 3) {
+						config_cursor->position --;
+						/* Mise à jour de la position de la souris */
+					config_cursor->mouse_posx = config_cursor->widget->events->motion.x;
+					config_cursor->mouse_posy = config_cursor->widget->events->motion.y;
+					/* décalage graphique */
+					config_cursor->new_yoffset = -1;
+					}
+					break;
+				}
+				break;
+			}
 			default :
 				break;
 		}
-//		fprintf (config_cursor->widget->file_error, "Etat position du curseur après modification : %d\n\n", config_cursor->position);
   }
 }

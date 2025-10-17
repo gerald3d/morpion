@@ -87,6 +87,12 @@ liste_enleve_un_maillon (t_liste *liste, void *donnee) {
 
 			element_a_supprimer = list;
 
+			/* Si l'élément à supprimer est le dernier de la liste */
+			if (list->suivant == NULL) {
+			  list->precedent->suivant = NULL;
+			  return nouvelle_liste;
+			}
+
 			/* Attachement du maillon précédent au maillon suivant */
 			if (maillon_precedent)
 				maillon_precedent->suivant = maillon_suivant;

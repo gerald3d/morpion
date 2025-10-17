@@ -1,6 +1,0 @@
-<map id="t_ihm_sdl" name="t_ihm_sdl">
-<area shape="rect" id="Node000001" title="Structure privée. L&#39;utilisateur final ne doit pas accéder à un de ses membres directement." alt="" coords="5,97,91,123"/>
-<area shape="rect" id="Node000002" href="$structt__liste.html" title=" " alt="" coords="17,7,79,33"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,46,51,97,45,97,45,46"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="94,10,102,13,106,20,98,29,80,31,80,26,95,24,101,20,99,17,92,15"/>
-</map>

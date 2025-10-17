@@ -1,9 +1,0 @@
-<map id="button_sdl_free" name="button_sdl_free">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
-<area shape="rect" id="Node000002" href="$widget__sdl_8c.html#a1ea83cd84f545a227d38ebafdd4e3ed2" title=" " alt="" coords="176,31,301,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,41,162,41,162,46,128,46"/>
-<area shape="rect" id="Node000003" href="$chain__list_8c.html#a169c401bb343eee17e7913959fdf5844" title=" " alt="" coords="351,5,470,31"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,31,337,26,338,31,302,37"/>
-<area shape="rect" id="Node000004" href="$tooltip__sdl_8c.html#a6761339c4d96294980c08128533cdfa4" title=" " alt="" coords="349,55,472,80"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="302,49,336,54,336,60,301,55"/>
-</map>

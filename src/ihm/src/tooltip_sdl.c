@@ -40,14 +40,14 @@ tooltip_sdl_free (t_tooltip_sdl **tooltip) {
     return;
   }
 
-  if ((*tooltip)->font)
-    TTF_CloseFont((*tooltip)->font);
+  /* if ((*tooltip)->font) */
+  /*   TTF_CloseFont((*tooltip)->font); */
   
   if ((*tooltip)->text)
     free ((*tooltip)->text);
 
-  if ((*tooltip)->surface)
-    SDL_FreeSurface((*tooltip)->surface);
+  /* if ((*tooltip)->surface) */
+  /*   SDL_FreeSurface((*tooltip)->surface); */
 
   if ((*tooltip)->texture)
     SDL_DestroyTexture ((*tooltip)->texture);

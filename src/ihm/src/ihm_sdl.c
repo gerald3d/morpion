@@ -22,11 +22,16 @@ ihm_sdl_new (SDL_Renderer *renderer) {
 	  return NULL;
   }
 
+	// Restaurer stdout et stderr
+//  freopen("CON", "w", stdout);
+  // Restaurer stderr
+//  freopen("CON", "w", stderr);
+
   ihm_sdl->file_error = logs_descripteur_fichier (ihm_sdl->logs, LOG_ERROR);
   ihm_sdl->widget_list = NULL;
   ihm_sdl->insensible_widgets_list = NULL;
 
-  return ihm_sdl;
+   return ihm_sdl;
 }
 
 void

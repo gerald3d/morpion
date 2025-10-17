@@ -361,21 +361,18 @@ void AfficheJeu(t_morp_sdl *morp_sdl, Case *plateau, Joueur Joueur, DimPlateau D
 /* Callback appelé lorsque le bouton Nouveau est cliqué */
 void
 clic_sur_le_bouton_nouveau (t_button_sdl *button, void *userdata) {
-  printf ("Enter in %s ();\n", __func__);
 
 }
 
 /* Callback appelé lorsque le bouton Annuler est cliqué */
 void
 clic_sur_le_bouton_annuler (t_button_sdl *button, void *userdata) {
-  printf ("Enter in %s ();\n", __func__);
 
 }
 
 /* Callback appelé lorsque le bouton CoudPous est cliqué */
 void
 clic_sur_le_bouton_coudpous (t_button_sdl *button, void *userdata) {
-  printf ("Enter in %s ();\n", __func__);
 
 }
 
@@ -399,8 +396,13 @@ clic_sur_le_bouton_de_fermeture_du_dialogue (t_button_sdl *button, void *userdat
  * du configurateur du plateau de jeu */
 void clic_sur_le_bouton_de_validation_du_dialogue (t_button_sdl *button, void *userdata) {
 	t_dialog_sdl *dialog = (t_dialog_sdl*)userdata;
+	t_game_config_sdl *game_config = (t_game_config_sdl*)widget_sdl_get_user_data(button_sdl_get_widget(button), "game_config");
 
 	/* Changer les caractéristiques du plateau jeu */
+
+	/***** Sauver la nouvelle taille (POUR DEBUG) *********/
+	t_tab_size *tab_size = (t_tab_size*)widget_sdl_get_user_data(button_sdl_get_widget(button), "tab_size");
+	game_config_sdl_get_tab_size (game_config, &tab_size->columns, &tab_size->lines);
 
 	/* Initialise le jeu */
 
@@ -411,7 +413,10 @@ void clic_sur_le_bouton_de_validation_du_dialogue (t_button_sdl *button, void *u
 /* Callback appelé lorsque le bouton configurateur de plateau de jeu est cliqué */
 void
 clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
-	t_ihm_sdl *ihm_sdl = (t_ihm_sdl*)userdata;
+	t_ihm_sdl *ihm_sdl = (t_ihm_sdl*)widget_sdl_get_user_data(button_sdl_get_widget(button), "ihm_sdl");
+	t_tab_size *tab_size = (t_tab_size*)userdata;
+	if (ihm_sdl==NULL)
+		fprintf (button->widget->file_error, "ihm NULL\n");
 
 	/* Création d'une fenêtre de dialogue */
 	t_dialog_sdl *dialog = NULL;
@@ -438,7 +443,7 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 	widget_sdl_set_tooltip (button_sdl_get_widget(close_button), "Fermeture sans modification de la configuration");
 
 	/* Ajout d'un callback pour gérer le clic de la souris.
-	* Ce callback va rendre la fenêtre de dialogue invisible */
+	* Ce callback va détruire la fenêtre de dialogue et la supprimer de l'ihm */
 	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(close_button), clic_sur_le_bouton_de_fermeture_du_dialogue, dialog);
 
 	t_button_sdl *annul_button = dialog_sdl_get_annul_button  (dialog);
@@ -450,7 +455,7 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
 	widget_sdl_set_tooltip (button_sdl_get_widget(annul_button), "Fermeture sans modification de la configuration");
 
 	/* Ajout d'un callback pour gérer le clic de la souris.
-	* Ce callback va rendre la fenêtre de dialogue invisible */
+	* Ce callback va détruire la fenêtre de dialogue et la supprimer de l'ihm */
 	widget_sdl_set_mouse_clic_callback(button_sdl_get_widget(annul_button), clic_sur_le_bouton_de_fermeture_du_dialogue, dialog);
 
 	t_button_sdl *valid_button = dialog_sdl_get_valid_button  (dialog);
@@ -477,6 +482,17 @@ clic_sur_le_bouton_size_config(t_button_sdl *button, void *userdata) {
   t_game_config_sdl *game_config = game_config_sdl_new ((SDL_Rect){dial_size.x + dial_size.w / 2 - config_width /2,
 																												dial_size.y + dial_size.h / 2 - config_height / 2,
 																												config_width, config_height}, ihm_sdl_get_logs(ihm_sdl));
+
+	/********* POUR DEBUG ************/
+	widget_sdl_set_name (game_config->widget, "game_config");
+
+	/* Ajout en donnée personnelle du pointeur du configurateur au bouton de validation */
+	widget_sdl_set_user_data(button_sdl_get_widget(valid_button), "game_config", game_config);
+	widget_sdl_set_user_data(button_sdl_get_widget(valid_button), "tab_size", tab_size);
+	/* On fixe la taille du plateau de jeu avec tab_size*/	game_config_sdl_set_tab_size(game_config, &tab_size->columns, &tab_size->lines);
+	/***************************/
+
+	/* Configuration de la position des curseurs */	game_config_sdl_set_tab_size (game_config, &tab_size->columns, &tab_size->lines);
 
   /* Insertion du configurateur dans la fenêtre de dialogue */
   widget_sdl_add_child_widget(dialog_sdl_get_widget(dialog), game_config_sdl_get_widget(game_config));
@@ -569,7 +585,7 @@ creation_plateau_de_jeu (t_ihm_sdl *ihm_sdl, unsigned int taille) {
 }
 
 t_ihm_sdl*
-creation_interface (t_morp_sdl *morp_sdl) {
+creation_interface (t_morp_sdl *morp_sdl, t_tab_size *tab_size) {
   t_ihm_sdl *ihm_sdl = ihm_sdl_new (morp_sdl->renderer);
   if (ihm_sdl == NULL)
     return NULL;
@@ -647,8 +663,11 @@ creation_interface (t_morp_sdl *morp_sdl) {
   /* Change le curseur lorsque la souris est sur le bouton */
   widget_sdl_set_cursor_from_file (button_sdl_get_widget (bouton_size_config), cursor_sdl);
 
+  /* Ajout en donnée personnelle du pointeur sur l'ihm */
+  widget_sdl_set_user_data(button_sdl_get_widget(bouton_size_config), "ihm_sdl", ihm_sdl);
+
   /* Affectation d'un callback lors du clic de la souris sur le bouton. */
-  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_size_config), clic_sur_le_bouton_size_config, ihm_sdl);
+  widget_sdl_set_mouse_clic_callback (button_sdl_get_widget (bouton_size_config), clic_sur_le_bouton_size_config, tab_size);
 
   /* Pour changer la couleur de fond du bouton */
   widget_sdl_set_color (button_sdl_get_widget (bouton_size_config), couleurTexteMarron, FOND);

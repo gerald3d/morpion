@@ -28,6 +28,6 @@ void AffichePointeur(t_morp_sdl *morp_sdl, Case *plateau, Joueur Joueur, DimPlat
 void AfficheJeu(t_morp_sdl *morp_sdl, Case *plateau, Joueur Joueur, DimPlateau DimJeu, int PartieFinie);
 
 
-t_ihm_sdl *creation_interface (t_morp_sdl *morp_sdl);
+t_ihm_sdl *creation_interface (t_morp_sdl *morp_sdl, t_tab_size *tab_size);
 #endif
 

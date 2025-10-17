@@ -1,8 +1,0 @@
-<map id="widget_sdl_set_mouse_clic_callback" name="widget_sdl_set_mouse_clic_callback">
-<area shape="rect" id="Node000001" title=" " alt="" coords="320,5,491,45"/>
-<area shape="rect" id="Node000002" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="306,28,60,28,60,23,306,23"/>
-<area shape="rect" id="Node000003" href="$state__button__sdl_8c.html#aa2d98a05c4e1e059aa5b909bbd08079a" title=" " alt="" coords="108,38,272,63"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="307,40,273,44,272,38,306,34"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="97,38,60,32,60,27,98,33"/>
-</map>
